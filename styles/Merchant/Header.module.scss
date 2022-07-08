@@ -188,7 +188,7 @@
 .heading_section {
     display: flex;
     justify-content: center;
-    font-weight: 500;
+    font-weight: 600;
     font-family: Roboto-Light,sans-serif;
 }
 
@@ -213,9 +213,115 @@
  .input_section1 {
     height: 65px !important;
     width: 160px;
-    border-radius: 72px 83px 90px 81px !important;
+    border-radius: 82px 82px 82px 82px !important;
     background-color: #002b6b !important;
     color: white !important;
     left: 1046px !important;
     position: absolute !important;
+}
+
+.phone_icon {
+    transform: rotate(124deg);
+    top: -3px;
+    position: relative;
+}
+
+
+
+
+// ----------------------------------------------
+.searchbar {
+    display: flex;
+    justify-content: center;
+    margin: 28px auto;
+    max-width: 811px;
+    align-items: center;
+    /* border: solid 1px #a6b1c4; */
+    box-shadow: 2px 2px 9px 1px rgb(166 177 196 / 25%);
+    border-radius: 30px;
+
+
+.citylist input[type="text"] {width: 100%;border: none;margin: 0px 0px 0px 25px;outline: none;flex: 1;}
+
+.citylist ul.city_list {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    display: none;
+}
+
+.citylist {
+    border: solid 1px #a6b1c4;
+    border-radius: 32px 0 0 32px;
+    margin-left: -1px;
+    height: 62px;
+    display: flex;
+    z-index: 1;
+    position: relative;
+    /* width: 190px; */
+    padding: 0px 5px 0px 30px;
+    border-right: 0px;
+}
+
+ 
+
+.citylist input:focus + ul.city_list {
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    background: inherit;
+    width: 197px;
+    margin-top: 1px;
+    background-color: #364357;
+    border-radius: 0 0 20px 20px;
+    padding-bottom: 25px;
+}
+
+.searchbox input {
+    padding: 0;
+    height: 62px;
+    text-indent: 1px;
+}
+
+  button {
+    height: 65px !important;
+    width: 160px;
+    border-radius: 82px 82px 82px 82px !important;
+    background-color: #002b6b !important;
+    color: white !important;
+}
+
+span.map_icon {
+    position: absolute;
+    top: 50%;
+    left: 35px;
+    transform: translate(-50% , -50%);
+}
+
+ .searchbox {
+    position: relative;
+    flex: 1;
+}
+
+    input {
+    width: 100%;
+    padding: 5px 10px !important;
+    flex: 1;
+    outline: none;
+    border: solid 1px #a6b1c4;
+}
+
+   button {
+    position: absolute;
+    right: -30px;
+    cursor: pointer;
+}
+
+.citylist ul.city_list li {
+    padding: 10px 32px 10px 49px;
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+}
 }

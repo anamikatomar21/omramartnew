@@ -86,8 +86,12 @@ const Header: NextPage = () => {
 
         <ul className={styles.flex_box1}>
           <li className={styles.button_box1}>
-         <i className="fas fa-phone"></i>
-        <span>9876357367</span>  
+            <span className={styles.phone_icon}>
+              {" "}
+              <i className="fa fa-phone"></i>{" "}
+            </span>
+
+            <span>9876357367</span>
           </li>
           <li className={styles.button_box}>
             <i className="fas fa-user"></i>
@@ -98,45 +102,51 @@ const Header: NextPage = () => {
       </div>
 
       <div className={styles.flex_section}>
-        <h1 className={styles.heading_section}>India's First Laundry/Dry Cleaning Marketplace</h1>
+        <h1 className={styles.heading_section}>
+          India's First Laundry/Dry Cleaning Marketplace
+        </h1>
       </div>
-      <div className="searchbox">
-        <div className={styles.searchinnerbox}>
-         <div className="cityboxlist">
-         <input type="text"  placeholder="" className={styles.cityinput}/>
+     
 
-<ul className="city_list">
-  {/* <li>a</li>
-  <li>a</li>
-  <li>a</li>
-  <li>a</li>
-  <li>a</li>
-  <li>a</li>
-  <li>a</li>
-  <li>a</li>
-  <li>a</li>
-  <li>a</li>
-  <li>a</li> */}
-</ul>
-         </div>
-           
+         
+
+
+
+
+      <div className={styles.searchbar}>
+        <div className={styles.citylist}>
+          <span className={styles.map_icon}>
+            <i className="fa fa-map"></i> 
+          </span>
           <input
+              type="text"
+              placeholder="All Cities"
+              className={styles.cityinputt}
+            />
+            <ul className={styles.city_list}>
+  <li>Agra</li>
+  <li>Delhi</li>
+  <li>Mumbai</li>
+  <li>Banglore</li>
+  <li>Pune</li>
+ 
+</ul>
+        </div>
+        <div className={styles.searchbox}>
+        <input
             type="text"
-            placeholder="Search.."
-            className={styles.input_section}
+            placeholder="What are you looking for..."
+            className={styles.input_sectionn}
           />
-
-          <button type="submit" className={styles.input_section1}>
-            <i className="fa fa-search"></i>
+          <button type="submit" className={styles.input_section1r}>
+            <i className="fa fa-search"></i>Search
           </button>
         </div>
+
+
       </div>
 
-
-<div className=""></div>
-
-
-
+      <div className=""></div>
     </div>
   );
 };

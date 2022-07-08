@@ -30,7 +30,7 @@ const UpdatedProductCard: NextPage = () => {
 
     return (
 <div > 
-    <h1>Chemical & Detergent</h1>
+    <h1 className={styles.heading_section}>Chemical & Detergent</h1>
         <div className={styles.container}>
 <div className="background_section"></div>
             <div className={styles.productcard}>

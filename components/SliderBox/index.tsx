@@ -30,10 +30,20 @@ const SliderBox: NextPage = () => {
 
     return (
 <div className={styles.Flex_Section}>
-
-      <div className={styles.sliderBox}></div>
-<div className={styles.sliderBox}></div>
-
+<div>
+    <Image
+    src="/omratrade/sliderbanner.png"
+    width={600} height={300} alt="facemask"
+    className="facemask"
+  />
+  </div>
+  <div>
+  <Image
+  src="/omratrade/sliderbanner2.png"
+  width={600} height={300} alt="facemask"
+  className="facemask"
+/>
+</div>
 </div>
     )
 

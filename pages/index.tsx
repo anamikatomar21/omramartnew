@@ -92,7 +92,7 @@ const CategoryProduct: NextPage = () => {
                   <Image
                     src="/omratrade/homebanner.png"
                     className={styles.imagestyle}
-                    width={1580}
+                    width={1450}
                     height={550}
                     alt="image1"
                   />
@@ -103,7 +103,7 @@ const CategoryProduct: NextPage = () => {
                   <Image
                     src="/omratrade/homebanner.png"
                     className={styles.imagestyle}
-                    width={1580}
+                    width={1450}
                     height={550}
                     alt="image1"
                   />
@@ -114,7 +114,7 @@ const CategoryProduct: NextPage = () => {
                   <Image
                     src="/omratrade/homebanner.png"
                     className={styles.imagestyle}
-                    width={1580}
+                    width={1450}
                     height={550}
                     alt="image1"
                   />
@@ -126,7 +126,7 @@ const CategoryProduct: NextPage = () => {
                   <Image
                     src="/omratrade/homebanner.png"
                     className={styles.imagestyle}
-                    width={1580}
+                    width={1450}
                     height={550}
                     alt="image1"
                   />
@@ -137,7 +137,7 @@ const CategoryProduct: NextPage = () => {
                 <div>
                   <Image
                     src="/omratrade/homebanner.png"
-                    width={1580}
+                    width={1450}
                     height={550}
                     alt="image1"
                   />
@@ -162,7 +162,7 @@ const CategoryProduct: NextPage = () => {
                   <Image
                     src="/omratrade/homebanner.png"
                     className={styles.imagestyle}
-                    width={1580}
+                    width={1450}
                     height={550}
                     alt="image1"
                   />
@@ -173,7 +173,7 @@ const CategoryProduct: NextPage = () => {
                   <Image
                     src="/omratrade/homebanner.png"
                     className={styles.imagestyle}
-                    width={1500}
+                    width={1450}
                     height={550}
                     alt="image1"
                   />
@@ -184,7 +184,7 @@ const CategoryProduct: NextPage = () => {
                   <Image
                     src="/omratrade/homebanner.png"
                     className={styles.imagestyle}
-                    width={1500}
+                    width={1450}
                     height={550}
                     alt="image1"
                   />
@@ -196,7 +196,7 @@ const CategoryProduct: NextPage = () => {
                   <Image
                     src="/omratrade/homebanner.png"
                     className={styles.imagestyle}
-                    width={1500}
+                    width={1450}
                     height={550}
                     alt="image1"
                   />
@@ -207,8 +207,8 @@ const CategoryProduct: NextPage = () => {
                 <div>
                   <Image
                      src="/omratrade/homebanner.png"
-                    width={1500}
-                    height={550}
+                     width={1450}
+                     height={550}
                     alt="image1"
                   />
                 </div>
@@ -248,7 +248,7 @@ const CategoryProduct: NextPage = () => {
           </div>
         </div> */}
 
-        <div className="div-flex-box" style={{ background: "white", marginTop: "300px" }}>
+        {/* <div className="div-flex-box" style={{ background: "white", marginTop: "300px" }}>
           <h1 className="gallery-heading">Software </h1>
 
           <Carousels responsive={responsive} slidesToSlide={4}>
@@ -300,8 +300,115 @@ const CategoryProduct: NextPage = () => {
               </div>
             </div>
           </Carousels>
-        </div>
+        </div> */}
 
+        {/* <div className="div-flex-box">
+          <h1 className="gallery-heading">Industry Tools & supply</h1>
+
+          <Carousels responsive={responsive} slidesToSlide={4}>
+            <div className={styles.productcard}>
+                <div className={styles.backg}>
+                <div className={styles.imgone}>
+                    <div className={styles.productimg}>
+                    </div>
+                    </div>
+                </div>
+                <div className={styles.producttext}>
+                    <h3>Software</h3>
+                    <p>Merchant Name:ABC PVT ltd</p>
+                </div>
+                <div className={styles.productcart}>
+                    <button type="submit">View More</button>
+                </div>
+            </div>
+
+            <div className={styles.productcard}>
+                <div className={styles.imgtwo}>
+                    <div className={styles.productimg}>
+                    </div>
+                </div>
+                <div className={styles.producttext}>
+                    <h3>Agriculture</h3>
+                    <p>Merchant Name:ABC PVT ltd</p>
+                </div>
+                <div className={styles.productcart}>
+                    <button type="submit">Buy Now</button>
+                </div>
+            </div>
+
+            <div className={styles.productcard}>
+                <div className={styles.imgtwo}>
+                    <div className={styles.productimg}>
+                    </div>
+                </div>
+                <div className={styles.producttext}>
+                    <h3>Agriculture</h3>
+                    <p>Merchant Name:ABC PVT ltd</p>
+                </div>
+                <div className={styles.productcart}>
+                    <button type="submit">Buy Now</button>
+                </div>
+            </div>
+
+            <div className={styles.productcard}>
+                <div className={styles.imgtwo}>
+                    <div className={styles.productimg}>
+                    </div>
+                </div>
+                <div className={styles.producttext}>
+                    <h3>Agriculture</h3>
+                    <p>Merchant Name:ABC PVT ltd</p>
+                </div>
+                <div className={styles.productcart}>
+                    <button type="submit">Buy Now</button>
+                </div>
+            </div>
+
+            <div className={styles.productcard}>
+                <div className={styles.imgtwo}>
+                    <div className={styles.productimg}>
+                    </div>
+                </div>
+                <div className={styles.producttext}>
+                    <h3>Agriculture</h3>
+                    <p>Merchant Name:ABC PVT ltd</p>
+                </div>
+                <div className={styles.productcart}>
+                    <button type="submit">Buy Now</button>
+                </div>
+            </div>
+
+            <div className={styles.productcard}>
+                <div className={styles.imgtwo}>
+                    <div className={styles.productimg}>
+                    </div>
+                </div>
+                <div className={styles.producttext}>
+                    <h3>Agriculture</h3>
+                    <p>Merchant Name:ABC PVT ltd</p>
+                </div>
+                <div className={styles.productcart}>
+                    <button type="submit">Buy Now</button>
+                </div>
+            </div>
+
+            <div className={styles.productcard}>
+                <div className={styles.backg}>
+                <div className={styles.imgone}>
+                    <div className={styles.productimg}>
+                    </div>
+                    </div>
+                </div>
+                <div className={styles.producttext}>
+                    <h3>Software</h3>
+                    <p>Merchant Name:ABC PVT ltd</p>
+                </div>
+                <div className={styles.productcart}>
+                    <button type="submit">View More</button>
+                </div>
+            </div>
+          </Carousels>
+        </div> */}
 
     
 

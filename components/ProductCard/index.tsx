@@ -4,7 +4,7 @@ import styles from '../../styles/Merchant/updatedproductcard.module.scss';
 function ProductCard() {
   return (
     <div> 
-    <h1>Chemical & Detergent</h1>
+   <h1 className={styles.heading_section}>Chemical & Detergent</h1>
         <div className={styles.container}>
 
             <div className={styles.productcard}>

@@ -47,7 +47,7 @@ const Test3: NextPage = () => {
   console.log(related_product_merchant);
 
   return (
-    <UserLayout>
+    <div>
       <div className={styles.Section_Box}>
         {data?.data.map((item: any) => {
           console.log(item.product_name == Product_id);
@@ -590,7 +590,7 @@ const Test3: NextPage = () => {
                        </div>
                    </div> */}
       </div>
-    </UserLayout>
+      </div>
   );
 };
 
