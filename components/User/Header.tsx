@@ -116,7 +116,7 @@ const Header: NextPage = () => {
       <div className={styles.searchbar}>
         <div className={styles.citylist}>
           <span className={styles.map_icon}>
-            <i className="fa fa-map"></i> 
+            <i className="fa fa-map-marker"></i> 
           </span>
           <input
               type="text"

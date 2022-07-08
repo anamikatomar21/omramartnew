@@ -1470,3 +1470,13 @@ font-weight: 700;
   margin-right:65px !important;
 }
 
+.marginarea{margin-top: 300px;}
+
+
+.carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:before {
+  margin: 0 79px !important;
+  display: inline-block;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  content: '';
+}

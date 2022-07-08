@@ -163,7 +163,7 @@ const CategoryProduct: NextPage = () => {
                     src="/omratrade/homebanner.png"
                     className={styles.imagestyle}
                     width={1450}
-                    height={550}
+                    height={450}
                     alt="image1"
                   />
                   {/* <p className="legend">Image 1</p> */}
@@ -174,7 +174,7 @@ const CategoryProduct: NextPage = () => {
                     src="/omratrade/homebanner.png"
                     className={styles.imagestyle}
                     width={1450}
-                    height={550}
+                    height={450}
                     alt="image1"
                   />
                   {/* <p className="legend">Image 2</p> */}
@@ -185,7 +185,7 @@ const CategoryProduct: NextPage = () => {
                     src="/omratrade/homebanner.png"
                     className={styles.imagestyle}
                     width={1450}
-                    height={550}
+                    height={450}
                     alt="image1"
                   />
 
@@ -197,7 +197,7 @@ const CategoryProduct: NextPage = () => {
                     src="/omratrade/homebanner.png"
                     className={styles.imagestyle}
                     width={1450}
-                    height={550}
+                    height={450}
                     alt="image1"
                   />
 
@@ -208,7 +208,7 @@ const CategoryProduct: NextPage = () => {
                   <Image
                      src="/omratrade/homebanner.png"
                      width={1450}
-                     height={550}
+                     height={450}
                     alt="image1"
                   />
                 </div>
@@ -411,7 +411,7 @@ const CategoryProduct: NextPage = () => {
         </div> */}
 
     
-
+<div className={styles.marginarea}></div>
        
 
         <div  className={styles.productdiv}>
