@@ -1,0 +1,147 @@
+.Flex_Section{
+
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    flex-wrap: wrap;
+    margin-left: 140px;
+   
+
+    
+}
+// .Flex_Section1{
+
+//     display: flex;
+//     justify-content: space-evenly;
+//     width: 100%;
+//     font-size: 16px;
+//     font-family: 'Poppins', sans-serif;
+
+    
+// }
+
+.img_box{
+    background-image: url(/omratrade/laundry.png);
+    border-radius: 10px 10px 10px 10px;
+    height: 220px;
+    width: 220px;
+    box-shadow: 5px 6px #00000029;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+    color:#3D898D;
+
+
+}
+
+.img_box1{
+    background-image: url(/omratrade/laundery2.png);
+    border-radius: 10px 10px 10px 10px;
+    height: 220px;
+    width: 220px;
+    box-shadow: 5px 6px #00000029;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+    color: #A5A03F;
+
+
+}
+.img_box2{
+    background-image: url(/omratrade/laundery3.png);
+    border-radius: 10px 10px 10px 10px;
+    height: 220px;
+    width: 220px;
+    box-shadow: 5px 6px #00000029;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+    color: #AE7844;
+
+
+}
+.img_box3{
+    background-image: url(/omratrade/laundery4.png);
+    border-radius: 10px 10px 10px 10px;
+    height: 220px;
+    width: 220px;
+    box-shadow: 5px 6px #00000029;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+    color: #84A25B;
+
+
+}
+
+.img_box4{
+    background-image: url(/omratrade/laundery5.png);
+    border-radius: 10px 10px 10px 10px;
+    height: 220px;
+    width: 220px;
+    box-shadow: 5px 6px #00000029;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+    color: #1CA463;
+
+
+}
+
+.img_box5{
+    background-image: url(/omratrade/laundery6.png);
+    border-radius: 10px 10px 10px 10px;
+    height: 220px;
+    width: 220px;
+    box-shadow: 5px 6px #00000029;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+    color: #BF4281;
+
+
+}
+.img_box6{
+    background-image: url(/omratrade/laundery7.png);
+    border-radius: 10px 10px 10px 10px;
+    height: 220px;
+    width: 220px;
+    box-shadow: 5px 6px #00000029;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+    color: #603A9C;
+
+
+}
+.img_box7{
+    background-image: url(/omratrade/laundery8.png);
+    border-radius: 10px 10px 10px 10px;
+    height: 220px;
+    width: 220px;
+    box-shadow: 5px 6px #00000029;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+
+
+}
+
+
+// width: calc(100%/4 - 15px);
+//     margin: 0px;
+//     height: 400px;
+//     background-size: cover;
+
+.midbanner{
+    background-image: url(/omratrade/midbanner.png);
+  
+
+    height: 820px;
+    background-repeat: no-repeat;
+    /* display: flex; */
+    width: 100%;
+    gap: 30px !important;
+    margin-top: 40px;
+    margin-left: 130px;
+
+}
+
+// .img_box,.img_box1,.img_box2,.img_box3,.img_box4,.img_box5,.img_box6:hover{
+
+//     transform: scale(1.1);
+// }

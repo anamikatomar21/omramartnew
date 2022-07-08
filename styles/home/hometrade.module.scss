@@ -1,0 +1,64 @@
+ /* Define standard variables and values for website */
+ $bgcolor: lightblue;
+ $textcolor: darkblue;
+ $fontsize: 18px;
+ 
+ /* Use the variables */
+ // body {
+ //   background-color: $bgcolor;
+ //   color: $textcolor;
+ //   font-size: $fontsize;
+ // }
+ 
+ .requirementstylebox{
+     width: 800px;
+     height: 600;
+     
+    padding: auto;
+    margin-left: 20;
+ }
+ 
+ .inputbox{
+     width: 100px;
+     height: 50px;
+ }
+ 
+ .requirementstyle{
+     width: 300px;
+ }
+ 
+ .inputform{
+     width: 300px;
+     height: 40px;
+     // border-color: forestgreen;
+     
+ }
+ 
+ .modelfooter{
+     // margin-top: auto;
+     margin-left: 400px;
+ }
+ 
+ .message_formsignup__ynmuT{
+     padding-left: 30px;
+ }
+ 
+ 
+ .form-group label {position: static;}
+ 
+ 
+ .TextareaBox{
+ 
+     width: 300px;
+     height: 40px;
+     border: 2px solid black;
+     border-radius: 4px;
+ }
+ .TextareaBox1{
+ 
+     margin-top: 17px;
+     border: 2px solid black;
+     border-radius: 4px;
+     font-family: popins;
+     font-family: 'Poppins', sans-serif;
+ }

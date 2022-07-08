@@ -1,0 +1,35 @@
+.mov {
+    /* background-color: antiquewhite; */
+    padding: 42px 26px;
+    background: #f6f6f6;
+    border-radius: 15px;
+    width: 80%;
+    margin: 18px 115px;
+    display: flex;
+    flex-direction: column;
+}
+
+ul.box345 li {
+    position: relative;
+    width: 100%;
+    padding-left: 200px;
+    margin: 30px 14px;
+}
+.form_Box{
+
+    margin:3px 7px;
+    padding: 4px 5px;
+}
+
+.Add_Button {
+    background-color: #002b6b !important;
+    color: white !important;
+    border-radius: 5px;
+    width: 50%;
+    border: none;
+    /* display: flex; */
+    /* justify-content: space-around; */
+    /* flex-direction: row; */
+    margin-left: 121px;
+    height: 36px;
+}

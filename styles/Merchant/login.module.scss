@@ -1,0 +1,252 @@
+// .FlexContainer{
+
+//   display: flex;
+//   justify-content: space-evenly;
+// }
+
+// section .contentBx .formBx {
+//   width: 50%;
+// }
+
+
+// section .contentBx {
+
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 50%;
+//   height: 100%;
+//   line-height: 34px;
+// }
+
+/* login form */
+
+
+// body{
+
+// background-image:url('/omratrade/pink.png');
+// background-repeat: no-repeat;
+// height: 100%;
+// width: 100%;
+// background-size: cover;
+
+// }
+.SectionBox {
+    background-image:url('/omratrade/pink.png');
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+  }
+  
+  section .imgBx {
+  
+    position: relative;
+    width: 50%;
+    height: 100%;
+  
+  }
+  .login_Box
+  {  position: absolute !important;
+      inset: 0px !important;
+      box-sizing: border-box !important;
+      padding: 0px !important;
+      border: none !important;
+      margin: auto !important;
+      display: block !important;
+      width: 0px !important;
+      height: 0px !important;
+      min-width: 51% !important;
+      max-width: 96% !important;
+      min-height: 41% !important;
+      max-height: 24% !important;
+  }
+  
+  
+  section .imgBx:before {
+    
+    content: "";
+    position: absolute;
+    top: 153px;
+    left: 105px;
+    width: 77%;
+    height: 58%;
+    /* background: linear-gradient(225deg, #e91e63, #03a9f4); */
+    background-color: rgba(13, 7, 103, 0.2392156863);
+    /* z-index: 1; */
+    /* mix-blend-mode: screen; */
+    border-radius: 58px;
+  }
+  
+  
+  
+  section .imgBx img {
+    position: absolute;
+    top: 114px;
+    left: 97px;
+    width: 41%;
+    height: 42%;
+    /* object-fit: cover; */
+    display: flex;
+    margin-top: 82px;
+    margin-left: 131px;
+  }
+  
+  
+  section .contentBx {
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    line-height: 34px;
+  }
+  
+  section .contentBx .formBx {
+    width: 50%;
+  }
+  
+  section .contentBx .formBx h2 {
+  
+  
+    color: #607d8b;
+    font-weight: 600;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #ff4584;
+    display: inline-block;
+    letter-spacing: 1px;
+  }
+  
+  
+  section .contentBx .formBx .inputBx {
+    margin-bottom: 20px;
+  }
+  
+  section .contentBx .formBx .inputBx span {
+    font-size: 16px;
+  
+    margin-bottom: 5px;
+  
+    display: inline-block;
+    color: #607d8b;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 1px;
+  
+  }
+  
+  .InputBox{
+  
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    font-weight: 400;
+  
+    font-size: 16px;
+    letter-spacing: 1px;
+    border: 1px solid #607d8b;
+    color: #607d8b;
+    background: transparent;
+    border-radius: 30px;
+  
+  
+  }
+  
+  .buttonsection{
+    
+      background: #04010b;
+      color: #fff;
+      outline: none;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 21px;
+      width: 100%;
+      width: 100%;
+      padding: 10px 20px;
+      outline: none;
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 1px;
+      border: 1px solid #607d8b;
+      color: #eff2f3;
+      /* background: transparent; */
+      border-radius: 30px;
+  }
+  
+  
+  .span-box{
+  
+    margin-left: 100px;
+    
+  }
+  section .contentBx .formBx .inputBx input[type="submit"]:hover {
+  
+    background: #f53677;
+  }
+  
+  section.contentBx .formBx .remember {
+    margin-bottom: 10px;
+    color: #607d8b;
+    font-weight: 400;
+    font-size: 14px;
+  
+  }
+  
+  section .contentBx .formBx .inputBx p {
+  
+    color: #607d8b;
+  }
+  
+  section .contentBx .formBx .inputBx p a {
+  
+    color: #ff4584;
+  }
+  
+  section .contentBx .formBx h3 {
+  
+    color: #607d8b;
+    text-align: center;
+    margin: 80px 0 10px;
+    font-weight: 500;
+  }
+  
+  section .contentBx .formBx .sci {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  section .contentBx .formBx li {
+    list-style: none;
+    width: 5px;
+    height: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #607d8b;
+  
+    border-radius: 50%;
+    margin: 0 7px;
+    cursor: pointer;
+  }
+  
+  .login_Box
+  {  position: absolute;
+      inset: 0px;
+      box-sizing: border-box;
+      padding: 0px;
+      border: none;
+      margin: auto;
+      display: block;
+      width: 0px;
+      height: 0px;
+      min-width: 51%;
+      max-width: 96%;
+      min-height: 41%;
+      max-height: 24%;
+  }
