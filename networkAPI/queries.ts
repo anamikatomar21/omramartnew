@@ -4,22 +4,28 @@ import {
 } from 'react-query';
 
 import {
+  bannersImages,
   Category,
   companyProfle,
   getApprovalProduct,
+  getBannerImages,
   getBussinessDetails,
   getCategory,
   getCompnyProfile,
+  getMerchantCredentials,
   getProductById,
   getProducts,
   getPublicProduct,
   login,
   register,
   sellProduct,
+  updateBannerImage,
   updateProduct,
   UserDetails,
 } from './api';
 import {
+  bannerImages,
+  bannerImagesUpdate,
   Login,
   productCategory,
   Register,
@@ -62,8 +68,13 @@ export const userProduct = () => useMutation(
     manufacturer_address,
     brand,
     product_image1,
+    product_image2,
+    product_image3,
+    product_image4,
+    product_image5,
   
     category,
+    sub_category,
 
     price,
     product_Specification,
@@ -83,8 +94,13 @@ export const userProduct = () => useMutation(
   manufacturer_address,
   brand,
   product_image1,
+  product_image2,
+  product_image3,
+  product_image4,
+  product_image5,
 
   category,
+  sub_category,
   price,
   product_Specification,
   inputList,
@@ -105,29 +121,53 @@ export const useUpdateProduct = () => useMutation(
 export const useCategory = () => useMutation(
   ({
     category_name,
-    category_image
-  
-    
-
-    
+    category_image 
   }:productCategory):Promise<Object> => 
   Category(
-    
- 
   category_name,
   category_image
+))
 
-  
- 
-  )
+export const useBanner = () => useMutation(
+  ({
+    banner_name,
+    type,
+    banner_image1,
+    banner_image2,
+    banner_image3,
+    banner_image4,
+  }:bannerImages):Promise<Object> => 
+  bannersImages(
+    banner_name,
+    type,
+    banner_image1,
+    banner_image2,
+    banner_image3,
+    banner_image4,
+))
 
-)
+export const useUpdateBanner = () => useMutation(
+  ({  banner_image1,
+    banner_image2,
+    banner_image3,
+    banner_image4,
+    id}:bannerImagesUpdate): Promise<Object> =>
+  updateBannerImage(
+    banner_image1,
+    banner_image2,
+    banner_image3,
+    banner_image4,
+    id)
+);
 
 export const useProducts = () => useQuery("products",getProducts);
 export const useGetCompanyProfile =() => useQuery("companyprofile",getCompnyProfile)
 export const useGetBussinessDetails = () => useQuery("getBussinessDetails", getBussinessDetails)
+export const useGetMerchantDetails  = () => useQuery("getUser", getMerchantCredentials)
 export const usePublicProduct = () => useQuery("product",getPublicProduct)
 export const useProductForApproval = () => useQuery("product",getApprovalProduct)
 export const useGetCategory = () => useQuery("category",getCategory)
 export const useGetProductById= (id:string) =>
   useQuery("myself", (): Promise<any> => getProductById(id));
+
+export const useGetBanner = () =>useQuery('banner',getBannerImages)

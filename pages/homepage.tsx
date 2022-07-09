@@ -1,23 +1,28 @@
-import "react-multi-carousel/lib/styles.css";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Header from "../components/header/header";
+import 'react-multi-carousel/lib/styles.css';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
-import type { NextPage } from "next";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { Toaster } from "react-hot-toast";
-import Carousels from "react-multi-carousel";
-import { Carousel } from "react-responsive-carousel";
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { Toaster } from 'react-hot-toast';
+import Carousels from 'react-multi-carousel';
+import { Carousel } from 'react-responsive-carousel';
 
-import UserLayout from "../components/User/Layout";
-import { useGetCategory, usePublicProduct } from "../networkAPI/queries";
+import UserLayout from '../components/User/Layout';
+import {
+  useGetCategory,
+  usePublicProduct,
+} from '../networkAPI/queries';
+import styles from '../styles/Merchant/newfooter.module.scss';
 // import styles from '../styles/Merchant/categoryproduct.module.scss';
 // import styles from "../styles/Merchant/productcard.module.scss";
-import styles1 from "../styles/Merchant/view.module.scss";
-import styles from "../styles/Merchant/newfooter.module.scss";
-import Link from "next/link";
+import styles1 from '../styles/Merchant/view.module.scss';
 
 const HomePage: NextPage = () => {
   const router = useRouter();
@@ -358,9 +363,9 @@ const HomePage: NextPage = () => {
        
       
      <h3>Office Address</h3>
-    <p>ADDRESS Office-1: E-Laundry (" A Product of OMRA Solutions") Office No: 103 & 105, D-20 Sector 63, Noida (UP)</p>
+    <p>ADDRESS Office-1: E-Laundry  A Product of OMRA Solutions Office No: 103 & 105, D-20 Sector 63, Noida (UP)</p>
 
-    <p>Office-2: E-Laundry (" A Product of OMRA Solutions") F32, First Floor, Cosmos Square , Rustomjee Global City, Virar West , Maharashtra 401303</p>
+    <p>Office-2: E-Laundry  A Product of OMRA Solutions F32, First Floor, Cosmos Square , Rustomjee Global City, Virar West , Maharashtra 401303</p>
        
     </div>
            

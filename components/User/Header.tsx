@@ -60,13 +60,13 @@
 // }
 // export default Header;
 
-import React from "react";
+import React from 'react';
 
-import { NextPage } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import { NextPage } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import styles from "../../styles/Merchant/Header.module.scss";
+import styles from '../../styles/Merchant/Header.module.scss';
 
 const Header: NextPage = () => {
   return (
@@ -103,7 +103,7 @@ const Header: NextPage = () => {
 
       <div className={styles.flex_section}>
         <h1 className={styles.heading_section}>
-          India's First Laundry/Dry Cleaning Marketplace
+          India First Laundry/Dry Cleaning Marketplace
         </h1>
       </div>
      

@@ -29,9 +29,11 @@ export const messageMe1Validations = Yup.object().shape({
     .max(15, "Name must be less than 50 characters")
     .required("Required"),
 
-    Year_of_establishment: Yup.string()
-    .min(4, "Name must be at least 3 characters")
-    .max(5, "Name must be less than 50 characters")
+    Year_of_establishment: Yup.number()
+    .positive().integer()
+    // .min(4, "Name must be at least 4 characters")
+    .max(4, "Name must be less than 4 characters")
+    
     .required("Required"),
 
     GST_No: Yup.string()
