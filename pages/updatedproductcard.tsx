@@ -24,7 +24,7 @@ import { useLogin } from '../networkAPI/queries';
 import React, { Component } from 'react';
 
 
-
+import Carousels from "react-multi-carousel";
 const UpdatedProductCard: NextPage = () => {
 
 

@@ -167,9 +167,9 @@ const NewFooter: NextPage = () => {
                   <li>
                     <a href="privacy-policy/">Privacy Policy</a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="/free-trial/">Book Your Demo</a>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
