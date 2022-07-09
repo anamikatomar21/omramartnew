@@ -108,8 +108,9 @@ const Test3: NextPage = () => {
                             ? item.product_image1[0]
                             : "/ omratrade/chair1.png"
                         }
-                        width={500}
-                        height={700}
+                        width={1400}
+                        height={1500}
+                        priority
                         id="imagebox"
                         alt=""
                       />
@@ -122,7 +123,7 @@ const Test3: NextPage = () => {
                       Merchant: {item.vendors_name}
                     </p>
                     <h2>{item.product_name}</h2>
-                    <div className={styles.rating}>
+                    <div className={styles.ratingnew}>
                       <i className="fa fa-star"></i>
                       <i className="fa fa-star"></i>
                       <i className="fa fa-star"></i>
@@ -279,19 +280,21 @@ const Test3: NextPage = () => {
                   <div className=" ">
                     <div className={styles.columns}>
                       <div className={styles.items}>
-                        <h2>{item2.product_name}</h2>
+                       
                         <Image
                           src={
                             item2.product_image1[0]
                               ? item2.product_image1[0]
                               : "/omratrade/chair2.png"
                           }
-                          width={500}
-                          height={500}
+                          width={800}
+                          height={600}
+                          priority
                           alt=""
                         />
+                         <h2>{item2.product_name}</h2>
                         <div className={styles.details}>
-                          <p>{item2.product_description} </p>
+                          <p className={styles.product_desc}>{item2.product_description} </p>
                           <div className={styles.rating}>
                             <i className="fa fa-star"></i>
                             <i className="fa fa-star"></i>
@@ -309,28 +312,7 @@ const Test3: NextPage = () => {
               }
             })}
 
-            <div className={styles.columns}>
-              <div className={styles.items}>
-                <Image
-                  src="/omratrade/chair2.png"
-                  width={500}
-                  height={500}
-                  alt=""
-                />
-                <div className={styles.details}>
-                  <p>Lorem ipsum dolor ipsum </p>
-                  <div className={styles.rating}>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star-half-o"></i>
-                    <i className="fa fa-star-o"></i>
-                  </div>
-
-                  {/* <p>USD $80.00</p> */}
-                </div>
-              </div>
-            </div>
+            
             {/* <div className={styles.columns}>
               <div className={styles.items}>
                 <Image

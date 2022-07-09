@@ -1,6 +1,27 @@
 // .ImageSection{
 //     width: 100%;
 // }
+.columns{
+  h2{
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    color: #002b6b;
+  }
+}
+.product_desc{
+  font-size: 12px;
+  text-align: center;
+}
+.rating{
+  justify-content: center;
+}
+.marg{
+  h2{
+    color: #002b6b !important;
+  }
+}
 // .row1{
 //     width: 90%;
 //     height: 100vh;
@@ -243,7 +264,10 @@ button .fa {
 
 .details p {
   font-size: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+  padding-top: -8px;
+  margin-top: -15px !important;
+  font-weight: 400;
 }
 .pincodestyle{
   display: flex;
