@@ -1,27 +1,32 @@
-import "react-multi-carousel/lib/styles.css";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Header from "../components/header/header";
+import 'react-multi-carousel/lib/styles.css';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
-import type { NextPage } from "next";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { Toaster } from "react-hot-toast";
-import Carousels from "react-multi-carousel";
-import { Carousel } from "react-responsive-carousel";
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { Toaster } from 'react-hot-toast';
+import { Carousel } from 'react-responsive-carousel';
 
-import UserLayout from "../components/User/Layout";
-import { useGetCategory, usePublicProduct } from "../networkAPI/queries";
+import Category from '../components/Category';
+import CompanyDescription from '../components/CompanyDescription';
+import Footer from '../components/Footer/footer';
+import ProductCard from '../components/ProductCard';
+import SliderBox from '../components/SliderBox';
+import SmallBanner from '../components/SmallBanner';
+import UserLayout from '../components/User/Layout';
+import {
+  useGetCategory,
+  usePublicProduct,
+} from '../networkAPI/queries';
 // import styles from '../styles/Merchant/categoryproduct.module.scss';
-import styles from "../styles/Merchant/productcard.module.scss";
-import Link from "next/link";
-import ProductCard from "../components/ProductCard";
-import Category from "../components/Category";
-import SmallBanner from "../components/SmallBanner";
-import CompanyDescription from "../components/CompanyDescription";
-import SliderBox from "../components/SliderBox";
-import Footer from "../components/Footer/footer";
+import styles from '../styles/Merchant/productcard.module.scss';
+
 const CategoryProduct: NextPage = () => {
   const router = useRouter();
 
@@ -80,7 +85,7 @@ const CategoryProduct: NextPage = () => {
 
   return (
     <div className={styles.containerMain}>
-      <Header />
+      {/* <Header /> */}
       <Toaster position="bottom-center" />
 
       <UserLayout>

@@ -18,16 +18,18 @@ const AdminSidebar: NextPage = () => {
           <nav className={styles.sidebar} id="drawerAccordion">
             <ul>
 
-              <li><Link href="/admindashboard/all_merchant">All Merchant</Link></li>
+            <li><Link href="/admindashboard/all_merchant">All Merchant</Link></li>
+              <li><Link href="/admindashboard/users">Merchants Credentials</Link></li>
               <li><Link href="/admindashboard/add_category">Add Category</Link></li>
               <li><Link href="/admindashboard/all_category">All Category</Link></li>
+              <li><Link href="/admindashboard/banner/add_banners">Add Banner</Link></li>
+              <li><Link href="/admindashboard/banner">All Banner</Link></li>
               <li><Link href="/admindashboard/approved_listing">Seller Products</Link></li>
               <li><Link href="/admindashboard/index">Approved Listing</Link></li>
               <li><Link href="">Edit Listing</Link></li>
               <li><Link href="">Deleted Listing</Link></li>
               <li><Link href="">Reject Listing</Link></li>
               <li><Link href="">Block User</Link></li>
-             
        
 
               {/* <li><a href="">Overview</a></li>

@@ -1,12 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
-import type { NextPage } from "next";
-import Image from "next/image";
-import { useRouter } from "next/router";
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
-import UserLayout from "../components/User/Layout";
-import { usePublicProduct } from "../networkAPI/queries";
-import styles from "../styles/Merchant/productpreview.module.scss";
+import { usePublicProduct } from '../networkAPI/queries';
+import styles from '../styles/Merchant/productpreview.module.scss';
 
 const Test3: NextPage = () => {
   const router = useRouter();

@@ -57,8 +57,12 @@ const Upload_Product: NextPage = () => {
 
   const [product_image1, setProduct_image1] = useState<any>("");
   const [product_image2, setProduct_image2] = useState<any>("");
-
+  const [product_image3, setProduct_image3] = useState<any>("");
+  const [product_image4, setProduct_image4] = useState<any>("");
+  const [product_image5, setProduct_image5] = useState<any>("");
+ 
   const [category, setCategory] = useState<string>("");
+  const [sub_category, setSub_Categoery] = useState<string>("")
 
   const [price, setPrice] = useState<string>("0");
 
@@ -81,8 +85,12 @@ const Upload_Product: NextPage = () => {
   const [capacity, setCapacity] = useState<string>("");
 
   const [model_no, setModel_no] = useState<string>("");
-  const [product_image2Preview, setProduct_image2Preview] = useState<any>("");
+  
   const [product_image1Preview, setProduct_image1Preview] = useState<any>("");
+  const [product_image2Preview, setProduct_image2Preview] = useState<any>("");
+  const [product_image3Preview, setProduct_image3Preview] = useState<any>("");
+  const [product_image4Preview, setProduct_image4Preview] = useState<any>("");
+  const [product_image5Preview, setProduct_image5Preview] = useState<any>("");
 
   // const [product_name,setProduct_name] =useState<string>("")
   const router = useRouter();
@@ -137,8 +145,13 @@ const Upload_Product: NextPage = () => {
       brand,
 
       product_image1,
+      product_image2,
+      product_image3,
+      product_image4,
+      product_image5,
 
       category,
+      sub_category,
 
       price,
       inputList,
@@ -225,9 +238,21 @@ const Upload_Product: NextPage = () => {
       const objectUrl2 = URL.createObjectURL(product_image2);
       setProduct_image2Preview(objectUrl2);
     }
+    if (product_image3) {
+      const objectUrl3 = URL.createObjectURL(product_image3);
+      setProduct_image2Preview(objectUrl3);
+    }
+    if (product_image4) {
+      const objectUrl4 = URL.createObjectURL(product_image4);
+      setProduct_image2Preview(objectUrl4);
+    }
+    if (product_image5) {
+      const objectUrl5 = URL.createObjectURL(product_image5);
+      setProduct_image2Preview(objectUrl5);
+    }
     // return () => {URL.revokeObjectURL(objectUrl);
     //   URL.revokeObjectURL(objectUrl2);}
-  }, [product_image1, product_image2]);
+  }, [product_image1, product_image2,product_image3, product_image4,product_image5]);
 
   return (
     <DashboardLayout>
@@ -248,7 +273,7 @@ const Upload_Product: NextPage = () => {
                   />
                 )}
               </div>
-              {/* <div>
+              <div>
                 {product_image2Preview && (
                   <Image
                     src={product_image2Preview}
@@ -258,7 +283,29 @@ const Upload_Product: NextPage = () => {
                     alt=""
                   />
                 )}
-              </div> */}
+              </div>
+              <div>
+                {product_image3Preview && (
+                  <Image
+                    src={product_image3Preview}
+                    className={styles.imagestyle2}
+                    width={200}
+                    height={200}
+                    alt=""
+                  />
+                )}
+              </div>
+              <div>
+                {product_image4Preview && (
+                  <Image
+                    src={product_image4Preview}
+                    className={styles.imagestyle2}
+                    width={200}
+                    height={200}
+                    alt=""
+                  />
+                )}
+              </div>
             </div>
           </li>
 
@@ -279,9 +326,30 @@ const Upload_Product: NextPage = () => {
 
                 <div className="col-md-4">
                   <input
-                    type="file" multiple
+                    type="file" 
                     name="product_image2"
-                    // onChange={(e: any) => setProduct_image2(URL.createObjectURL(e.target.files[0]))}
+                    onChange={(e: any) => setProduct_image2(URL.createObjectURL(e.target.files[0]))}
+                  />
+                </div>
+                <div className="col-md-4">
+                  <input
+                    type="file" 
+                    name="product_image2"
+                    onChange={(e: any) => setProduct_image3(URL.createObjectURL(e.target.files[0]))}
+                  />
+                </div>
+                <div className="col-md-4">
+                  <input
+                    type="file" 
+                    name="product_image2"
+                    onChange={(e: any) => setProduct_image4(URL.createObjectURL(e.target.files[0]))}
+                  />
+                </div>
+                <div className="col-md-4">
+                  <input
+                    type="file" 
+                    name="product_image2"
+                    onChange={(e: any) => setProduct_image5(URL.createObjectURL(e.target.files[0]))}
                   />
                 </div>
 

@@ -1,13 +1,13 @@
-import "react-multi-carousel/lib/styles.css";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import 'react-multi-carousel/lib/styles.css';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-import React from "react";
+import React from 'react';
 
-import type { NextPage } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import styles from "../../styles/Merchant/newfooter.module.scss";
+import styles from '../../styles/Merchant/newfooter.module.scss';
 
 const NewFooter: NextPage = () => {
   return (
@@ -91,12 +91,12 @@ const NewFooter: NextPage = () => {
           <div className="col-md-6">
             <h3>Office Address</h3>
             <p>
-              ADDRESS Office-1: E-Laundry (" A Product of OMRA Solutions")
+              ADDRESS Office-1: E-Laundry A Product of OMRA Solutions
               Office No: 103 & 105, D-20 Sector 63, Noida (UP)
             </p>
 
             <p>
-              Office-2: E-Laundry (" A Product of OMRA Solutions") F32, First
+              Office-2: E-Laundry  A Product of OMRA Solutions F32, First
               Floor, Cosmos Square , Rustomjee Global City, Virar West ,
               Maharashtra 401303
             </p>
