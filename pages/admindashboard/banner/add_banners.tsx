@@ -111,7 +111,7 @@ const Upload_Banner: NextPage = () => {
         <div className="box3">
           <form action="" onSubmit={handleLogin}>
             <ul className="box345">
-              <li>
+              {/* <li>
                 <label htmlFor="banner_name" className="omra-lael">
                   Banner Name
                 </label>
@@ -121,7 +121,7 @@ const Upload_Banner: NextPage = () => {
                   id="banner_name"
                   onChange={(e) => setBanner_name(e.target.value)}
                 />
-              </li>
+              </li> */}
               <li>
                 <label htmlFor="banner_type" className="omra-lael">
                   Banner Type

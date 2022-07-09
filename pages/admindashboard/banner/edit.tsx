@@ -26,7 +26,8 @@ interface Person {
       count: 12,
     };
     const router = useRouter();
-    const _Id =router.query._id
+    const _Id =router.query._Id
+    console.log(_Id)
   
     // const [banner_name, setBanner_name] = useState<string>("");
     // const [type ,setType] = useState<string>("")
@@ -41,24 +42,25 @@ interface Person {
   
     // const [product_name,setProduct_name] =useState<string>("")
   
-    const { error, isLoading, data, mutate } = useUpdateBanner();
-    console.log(data);
-  
+    const { error, isLoading, data, mutate, } = useUpdateBanner();
+    console.log("DATA",data);
+
+    
+    console.log("ROUTE ID",_Id);
     const field_color = {
       color: "red",
     };
   
-    const handleLogin = (item:any) => {
+    const handleLogin = (e:any,) => {
+      e.preventDefault()
      
-  
+  console.log(e)
       mutate({
-        
         banner_image1,
         banner_image2,
         banner_image3,
         banner_image4,
-        id:item._id
-       
+        id:''
         
       });
     };
@@ -69,7 +71,7 @@ interface Person {
       }
   
       if (data) {
-        toast.success("upload Successfull");
+        toast.success("update Successfull");
         router.replace("/admindashboard/banner");
       }
     }, [error, data, router]);
@@ -135,6 +137,7 @@ interface Person {
                     onChange={(e) => setType(e.target.value)}
                   />
                 </li> */}
+               
   
                 <li>
                   <label htmlFor="banner_image" className="omra-lael">

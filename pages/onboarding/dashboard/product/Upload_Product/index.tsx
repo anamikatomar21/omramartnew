@@ -240,15 +240,15 @@ const Upload_Product: NextPage = () => {
     }
     if (product_image3) {
       const objectUrl3 = URL.createObjectURL(product_image3);
-      setProduct_image2Preview(objectUrl3);
+      setProduct_image3Preview(objectUrl3);
     }
     if (product_image4) {
       const objectUrl4 = URL.createObjectURL(product_image4);
-      setProduct_image2Preview(objectUrl4);
+      setProduct_image4Preview(objectUrl4);
     }
     if (product_image5) {
       const objectUrl5 = URL.createObjectURL(product_image5);
-      setProduct_image2Preview(objectUrl5);
+      setProduct_image5Preview(objectUrl5);
     }
     // return () => {URL.revokeObjectURL(objectUrl);
     //   URL.revokeObjectURL(objectUrl2);}
@@ -306,6 +306,17 @@ const Upload_Product: NextPage = () => {
                   />
                 )}
               </div>
+              <div>
+                {product_image5Preview && (
+                  <Image
+                    src={product_image5Preview}
+                    className={styles.imagestyle2}
+                    width={200}
+                    height={200}
+                    alt=""
+                  />
+                )}
+              </div>
             </div>
           </li>
 
@@ -328,28 +339,28 @@ const Upload_Product: NextPage = () => {
                   <input
                     type="file" 
                     name="product_image2"
-                    onChange={(e: any) => setProduct_image2(URL.createObjectURL(e.target.files[0]))}
+                    onChange={(e: any) => setProduct_image2((e.target.files[0]))}
                   />
                 </div>
                 <div className="col-md-4">
                   <input
                     type="file" 
-                    name="product_image2"
-                    onChange={(e: any) => setProduct_image3(URL.createObjectURL(e.target.files[0]))}
+                    name="product_image3"
+                    onChange={(e: any) => setProduct_image3((e.target.files[0]))}
                   />
                 </div>
                 <div className="col-md-4">
                   <input
                     type="file" 
-                    name="product_image2"
-                    onChange={(e: any) => setProduct_image4(URL.createObjectURL(e.target.files[0]))}
+                    name="product_image4"
+                    onChange={(e: any) => setProduct_image4((e.target.files[0]))}
                   />
                 </div>
                 <div className="col-md-4">
                   <input
                     type="file" 
-                    name="product_image2"
-                    onChange={(e: any) => setProduct_image5(URL.createObjectURL(e.target.files[0]))}
+                    name="product_image5"
+                    onChange={(e: any) => setProduct_image5((e.target.files[0]))}
                   />
                 </div>
 

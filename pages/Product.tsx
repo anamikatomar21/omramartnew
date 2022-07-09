@@ -72,8 +72,8 @@ const Test3: NextPage = () => {
                       />
                       <Image
                         src={
-                          item.product_image1[0]
-                            ? item.product_image1[0]
+                          item.product_image2[0]
+                            ? item.product_image2[0]
                             : "/ omratrade/chair1.png"
                         }
                         width={150}
@@ -82,8 +82,8 @@ const Test3: NextPage = () => {
                       />
                       <Image
                         src={
-                          item.product_image1[0]
-                            ? item.product_image1[0]
+                          item.product_image3[0]
+                            ? item.product_image3[0]
                             : "/ omratrade/chair1.png"
                         }
                         width={150}
@@ -92,8 +92,8 @@ const Test3: NextPage = () => {
                       />
                       <Image
                         src={
-                          item.product_image1[0]
-                            ? item.product_image1[0]
+                          item.product_image4[0]
+                            ? item.product_image4[0]
                             : "/ omratrade/chair1.png"
                         }
                         width={150}

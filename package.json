@@ -32,6 +32,7 @@
     "sass": "^1.52.1",
     "styled-components": "^5.3.5",
     "use-places-autocomplete": "^4.0.0",
+    "usehooks-ts": "^2.6.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

@@ -21,6 +21,7 @@ import SliderBox from '../components/SliderBox';
 import SmallBanner from '../components/SmallBanner';
 import UserLayout from '../components/User/Layout';
 import {
+  useGetBanner,
   useGetCategory,
   usePublicProduct,
 } from '../networkAPI/queries';
@@ -42,6 +43,8 @@ const CategoryProduct: NextPage = () => {
   const category_data = data2.data;
   console.log(data2.data);
   console.log(data);
+  const bannerData = useGetBanner().data?.data;
+  console.log(bannerData);
   //   const getProduct=useGetProductById("")
   //   console.log(getProduct)
 
@@ -92,10 +95,16 @@ const CategoryProduct: NextPage = () => {
         <div className={styles.container}>
           <div className={styles.right}>
             <div>
-              <Carousel>
+            {bannerData?.map((item:any,index:any) => {
+                  return(
+              <Carousel key={index}>
+                
+                  
+               
+                
                 <div>
                   <Image
-                    src="/omratrade/homebanner.png"
+                    src={item.banner_image1[0]?item.banner_image1[0]:"/omratrade/homebanner.png"}
                     className={styles.imagestyle}
                     width={1450}
                     height={550}
@@ -106,7 +115,7 @@ const CategoryProduct: NextPage = () => {
 
                 <div>
                   <Image
-                    src="/omratrade/homebanner.png"
+                     src={item.banner_image1[0]?item.banner_image2[0]:"/omratrade/homebanner.png"}
                     className={styles.imagestyle}
                     width={1450}
                     height={550}
@@ -117,7 +126,7 @@ const CategoryProduct: NextPage = () => {
 
                 <div>
                   <Image
-                    src="/omratrade/homebanner.png"
+                     src={item.banner_image1[0]?item.banner_image3[0]:"/omratrade/homebanner.png"}
                     className={styles.imagestyle}
                     width={1450}
                     height={550}
@@ -129,7 +138,7 @@ const CategoryProduct: NextPage = () => {
 
                 <div>
                   <Image
-                    src="/omratrade/homebanner.png"
+                     src={item.banner_image1[0]?item.banner_image4[0]:"/omratrade/homebanner.png"}
                     className={styles.imagestyle}
                     width={1450}
                     height={550}
@@ -141,13 +150,19 @@ const CategoryProduct: NextPage = () => {
 
                 <div>
                   <Image
-                    src="/omratrade/homebanner.png"
+                    src={item.banner_image1[0]?item.banner_image4[0]:"/omratrade/homebanner.png"}
                     width={1450}
                     height={550}
                     alt="image1"
                   />
                 </div>
+
+               
+                
+                
               </Carousel>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -159,13 +174,21 @@ const CategoryProduct: NextPage = () => {
         </div>
 
         <div className={styles.container}>
-          
           <div className={styles.right}>
             <div>
-              <Carousel>
+            {bannerData?.map((item:any,index:any) => {
+              console.log(item)
+const isAdvwdvwetize=  item.type=="advertize"
+if(item.type=="advertize")
+            
+return(
+
+
+
+              <Carousel key={index}>
                 <div>
                   <Image
-                    src="/omratrade/homebanner.png"
+                  src={item.banner_image1[0]?item.banner_image1[0]:"/omratrade/homebanner.png"}
                     className={styles.imagestyle}
                     width={1450}
                     height={450}
@@ -176,7 +199,7 @@ const CategoryProduct: NextPage = () => {
 
                 <div>
                   <Image
-                    src="/omratrade/homebanner.png"
+                  src={item.banner_image2[0]?item.banner_image2[0]:"/omratrade/homebanner.png"}
                     className={styles.imagestyle}
                     width={1450}
                     height={450}
@@ -187,7 +210,7 @@ const CategoryProduct: NextPage = () => {
 
                 <div>
                   <Image
-                    src="/omratrade/homebanner.png"
+                  src={item.banner_image3[0]?item.banner_image3[0]:"/omratrade/homebanner.png"}
                     className={styles.imagestyle}
                     width={1450}
                     height={450}
@@ -199,7 +222,7 @@ const CategoryProduct: NextPage = () => {
 
                 <div>
                   <Image
-                    src="/omratrade/homebanner.png"
+                    src={item.banner_image4[0]?item.banner_image4[0]:"/omratrade/homebanner.png"}
                     className={styles.imagestyle}
                     width={1450}
                     height={450}
@@ -211,13 +234,16 @@ const CategoryProduct: NextPage = () => {
 
                 <div>
                   <Image
-                     src="/omratrade/homebanner.png"
-                     width={1450}
-                     height={450}
+                    src="/omratrade/homebanner.png"
+                    width={1450}
+                    height={450}
                     alt="image1"
                   />
                 </div>
               </Carousel>
+ ) 
+                
+              })}
             </div>
           </div>
         </div>
@@ -415,23 +441,25 @@ const CategoryProduct: NextPage = () => {
           </Carousels>
         </div> */}
 
-    
-<div className={styles.marginarea}></div>
-       
+        <div className={styles.marginarea}></div>
 
-        <div  className={styles.productdiv}>
+        <div className={styles.productdiv}>
           <ProductCard />
         </div>
-        <div  className={styles.productdiv}>
+        <div className={styles.productdiv}>
           <ProductCard />
         </div>
         <div>
-        <div><SliderBox/></div>
-        <div  className={styles.productdiv}>
-          <ProductCard />
-        </div>
-        
-        <div><CompanyDescription/></div>
+          <div>
+            <SliderBox />
+          </div>
+          <div className={styles.productdiv}>
+            <ProductCard />
+          </div>
+
+          <div>
+            <CompanyDescription />
+          </div>
           <Footer />
         </div>
       </UserLayout>

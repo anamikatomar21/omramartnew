@@ -12,6 +12,7 @@ import {
   getBussinessDetails,
   getCategory,
   getCompnyProfile,
+  getHomeCategory,
   getMerchantCredentials,
   getProductById,
   getProducts,
@@ -167,6 +168,7 @@ export const useGetMerchantDetails  = () => useQuery("getUser", getMerchantCrede
 export const usePublicProduct = () => useQuery("product",getPublicProduct)
 export const useProductForApproval = () => useQuery("product",getApprovalProduct)
 export const useGetCategory = () => useQuery("category",getCategory)
+export const useGetHomeCategory = () => useQuery("category",getHomeCategory)
 export const useGetProductById= (id:string) =>
   useQuery("myself", (): Promise<any> => getProductById(id));
 

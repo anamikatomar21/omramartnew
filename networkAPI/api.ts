@@ -175,6 +175,7 @@ export const getProductById= (id:string): Promise<any> =>
     };
 
     export const getCategory = () => axios.get<any>("/api/category/get_category");
+    export const getHomeCategory = () => axios.get<any>("/api/category/get_home_cat");
 
 
     export const bannersImages = (
@@ -215,8 +216,8 @@ export const getProductById= (id:string): Promise<any> =>
           banner_image1  ,
           banner_image2,
           banner_image3,
-          banner_image4,
-          id
+          banner_image4
+         
               
         })
         .then((response) => response.data);

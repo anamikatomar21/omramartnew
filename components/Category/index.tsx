@@ -1,14 +1,14 @@
 import React from 'react';
 
 import {
-  useGetCategory,
+  useGetHomeCategory,
   usePublicProduct,
 } from '../../networkAPI/queries';
 import styles from '../../styles/Merchant/view.module.scss';
 
 function Category() {
   const { data, status } = usePublicProduct();
-  const data2 = useGetCategory();
+  const data2 = useGetHomeCategory();
   const category_data = data2.data;
   console.log(data2.data);
   console.log(data);
