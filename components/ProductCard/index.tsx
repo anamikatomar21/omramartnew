@@ -56,7 +56,7 @@ function ProductCard() {
    {data?.data.map((item: any, index: any) => {
            if (item.isApproved == true) {
              return (
-     <div className={styles.productcard}>
+     <div className={styles.productcard} onClick={() => router.push(`/Product?id=${item._id}`)}>
        <div className={styles.backg}>
          <div className={styles.imgone} style={{backgroundImage:`url(${item.product_image1[0]})`}}>
            <div className={styles.productimg}>
