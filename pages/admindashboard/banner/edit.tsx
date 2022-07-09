@@ -60,7 +60,7 @@ interface Person {
         banner_image2,
         banner_image3,
         banner_image4,
-        id:''
+        id:_Id as string,
         
       });
     };

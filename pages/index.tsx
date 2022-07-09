@@ -454,7 +454,9 @@ return(
             <SliderBox />
           </div>
           <div className={styles.productdiv}>
+            
             <ProductCard />
+           
           </div>
 
           <div>

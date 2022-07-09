@@ -23,12 +23,14 @@ const Admin: NextPage = () => {
 
   const dropdownRef = useRef<any>(null);
   const [select, setSelect] = useState<string>("");
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean[]>([]);
 
-  console.log(isOpen ? "true" : "false");
+  
 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
+  const togglePopup = (index:number) => {
+    const temp  =  [...isOpen]
+    temp[index] = !temp[index]
+    setIsOpen(temp)
   };
 
   useEffect(() => {
@@ -36,7 +38,7 @@ const Admin: NextPage = () => {
 
     function handleOutsideClick(event: any) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
+        setIsOpen([false]);
         setSelect("");
       }
     }
@@ -51,6 +53,15 @@ const Admin: NextPage = () => {
   const test = getData.data;
   // console.log(data?.data.length);
   const { error, isLoading, data, mutate, isSuccess } = useUpdateProduct();
+
+
+  useEffect(()=>{
+
+    for(let i =0 ; i <= test?.data.length ; i++){
+      setIsOpen([...isOpen,false])
+    }
+
+  },[test])
 
   // useEffect(() => {
   //   if (!isOpen) return;
@@ -187,11 +198,11 @@ const Admin: NextPage = () => {
                                 <button
                                   type="button"
                                   className="reject-button"
-                                  onClick={() => setIsOpen(!isOpen)}
+                                  onClick={() => togglePopup(index)}
                                 >
                                   Decline
                                 </button>
-                                {isOpen && (
+                                {isOpen[index] && (
                                   <Popup
                                     content={
                                       <>

@@ -20,10 +20,11 @@ function ProductCard() {
         <div key={''}>
       <h1 className={styles.heading_section}>chemical and Detergent</h1>
       <div className={styles.container}>
-      {data?.data.map((item: any, index: any) => {
-              if (item.isApproved == true) {
+      {data?.data.filter((item:any)=>item.isApproved == true).map((item: any, index: any) => {
+        console.log(item)
+             
                 return (
-        <div className={styles.productcard}>
+        <div className={styles.productcard} key={index}>
           <div className={styles.backg}>
             <div className={styles.imgone} style={{backgroundImage:`url(${item.product_image1[0]})`}}>
               <div className={styles.productimg}>
@@ -49,7 +50,7 @@ function ProductCard() {
           </div>
         </div>
               );
-            }
+            
           })}
         {/* <div className={styles.productcard}>
           <div className={styles.backg}>
