@@ -1,194 +1,196 @@
 
 .heading_section{
-    margin-left: 68px;
-    color: #002b6b;
-    padding-top: 20px ;
+  margin-left: 68px;
+  color: #002b6b;
+  padding-top: 20px ;
 }
 
 .backg{
-    background-color: #ffff;
-    height: 352px !important;
-    max-width: 100%;
-    border-radius: 9px 9px 9px 9px;
+  background-color: #ffff;
+  // height: 352px !important;
+  height: 231px !important;
+  max-width: 100%;
+  border-radius: 9px 9px 9px 9px;
 }
 .backg2{
-    background-color: #D7CBEC;
-    height: 352px !important;
-    max-width: 100%;
-    border-radius: 9px 9px 9px 9px;
+  background-color: #D7CBEC;
+  height: 352px !important;
+  max-width: 100%;
+  border-radius: 9px 9px 9px 9px;
 }
 .backg3{
-    background-color: #A3CBF8;
-    height: 352px !important;
-    max-width: 100%;
-    border-radius: 9px 9px 9px 9px;
+  background-color: #A3CBF8;
+  height: 352px !important;
+  max-width: 100%;
+  border-radius: 9px 9px 9px 9px;
 }
 .container {
-    display: flex;
-    // margin-top: 40px;
-    height: 391px;
-    // width: 70%;
-    margin:40px auto auto 40px;
-    // background-color: #E5CECF;
+  display: flex;
+  // margin-top: 40px;
+  height: 391px;
+  // width: 70%;
+  margin: 40px auto auto 11px;
+  // background-color: #E5CECF;
+}
+
+/* PRODUCT CARD */
+
+.productcard {
+  // background-color: #f5f6fa;
+  cursor: pointer;
+  border-radius: 10px;
+  color: #2f3640;
+  margin: 0 2em;
+  transition: all linear .2s;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // box-shadow: 2px 14px 10px 0px #8888
+}
+.productcard1 {
+  // background-color: #f5f6fa;
+  border-radius: 10px;
+  color: #2f3640;
+  margin: 0 2em;
+  transition: all linear .2s;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.productcard2 {
+  // background-color: #f5f6fa;
+  border-radius: 10px;
+  color: #2f3640;
+  margin: 0 2em;
+  transition: all linear .2s;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.productcard:hover,
+.productcard:active {
+  box-shadow: .2em .5em .5em rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+}
+.productcard1:hover,
+.productcard1:active {
+  box-shadow: .2em .5em .5em rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+}
+.productcard2:hover,
+.productcard2:active {
+  box-shadow: .2em .5em .5em rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+}
+
+.productimg {
+  border-radius: 10px 10px 0px 0px;
+  height: 50px;
+  max-width: 100%;
+}
+
+.imgone {
+  // background-image: url('/omratrade/chair.png');
+  /* border-radius: 10px 10px 0px 0px; */
+  width: 202px;
+  margin: 11px auto;
+  height: 200px;
+  background-size: cover !important;
+}
+.imgtwo {
+  background-image: url(https://www.freepnglogos.com/uploads/washing-machine-png/washing-machine-appliance-repair-centre-bunbury-south-west-washing-11.png);
+  border-radius: 10px 10px 0px 0px; }
+
+.imgthree {
+  background-image: url(https://youngwonks.s3.amazonaws.com/Blogs/cabinet);
+  border-radius: 10px 10px 0px 0px;}
+
+.imgone,
+.imgtwo,
+.imgthree {
+  background-size: cover;
+  background-position: center;
+}
+
+.producttext {
+  // padding: 1em;
+  text-align: center;
+  background: white;
+}
+
+.productcart button{
+  border: 0;
+  border-radius: 0 0 10px 10px;
+  color: #f5f6fa;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 1em;
+  // text-transform: uppercase;
+  transition: all linear .3s;
+  width: 100%;
+  font-size: 16px;
+}
+
+.productcart2 button{
+  border: 0;
+  border-radius: 0 0 10px 10px;
+  color: #3D6EA8;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 1em;
+  // text-transform: uppercase;
+  transition: all linear .3s;
+  width: 100%;
+  font-size: 16px;
+  background-color: #A3CBF8;
+}
+
+
+
+.productcart button:hover {
+  font-weight: 500;
+  letter-spacing: .1em;
+}
+
+/* color */
+.productcard h3 {
+  color: #002b6b;
+}
+
+.productcard  button {
+  background-color: #002b6b;
+  font-weight: 400;
+  // color: white;
+  // border-radius: 406px;
+  // width: 65%;
+  // margin: 4px 43px;
+}
+
+.productcard1  button {
+  background-color: #D7CBEC !important;
+  font-weight: 400;
+  color: #7344BF;
+}
+
+
+/* media queries */
+@media screen and (max-width: 860px) {
+  .container {
+    display: grid;
+    grid-column-templates: 1fr;
+    grid-auto-rows: auto;
   }
-  
-  /* PRODUCT CARD */
   
   .productcard {
-    // background-color: #f5f6fa;
-    border-radius: 10px;
-    color: #2f3640;
-    margin: 0 2em;
-    transition: all linear .2s;
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    // box-shadow: 2px 14px 10px 0px #8888
+    margin: 1.5em;
   }
-  .productcard1 {
-    // background-color: #f5f6fa;
-    border-radius: 10px;
-    color: #2f3640;
-    margin: 0 2em;
-    transition: all linear .2s;
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .productcard2 {
-    // background-color: #f5f6fa;
-    border-radius: 10px;
-    color: #2f3640;
-    margin: 0 2em;
-    transition: all linear .2s;
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .productcard:hover,
-  .productcard:active {
-    box-shadow: .2em .5em .5em rgba(0, 0, 0, 0.4);
-    transform: scale(1.1);
-  }
-  .productcard1:hover,
-  .productcard1:active {
-    box-shadow: .2em .5em .5em rgba(0, 0, 0, 0.4);
-    transform: scale(1.1);
-  }
-  .productcard2:hover,
-  .productcard2:active {
-    box-shadow: .2em .5em .5em rgba(0, 0, 0, 0.4);
-    transform: scale(1.1);
-  }
-  
-  .productimg {
-    border-radius: 10px 10px 0px 0px;
-    height: 50px;
-    max-width: 100%;
-  }
-  
-  .imgone {
-    // background-image: url('/omratrade/chair.png');
-    /* border-radius: 10px 10px 0px 0px; */
-    width: 202px;
-    margin: 11px auto;
-    height: 200px;
-    background-size: cover !important;
 }
-  .imgtwo {
-    background-image: url(https://www.freepnglogos.com/uploads/washing-machine-png/washing-machine-appliance-repair-centre-bunbury-south-west-washing-11.png);
-    border-radius: 10px 10px 0px 0px; }
-  
-  .imgthree {
-    background-image: url(https://youngwonks.s3.amazonaws.com/Blogs/cabinet);
-    border-radius: 10px 10px 0px 0px;}
-  
-  .imgone,
-  .imgtwo,
-  .imgthree {
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .producttext {
-    // padding: 1em;
-    text-align: center;
-    background: white;
-  }
-  
-  .productcart button{
-    border: 0;
-    border-radius: 0 0 10px 10px;
-    color: #f5f6fa;
-    cursor: pointer;
-    font-family: inherit;
-    padding: 1em;
-    // text-transform: uppercase;
-    transition: all linear .3s;
-    width: 100%;
-    font-size: 16px;
-  }
-  
-  .productcart2 button{
-    border: 0;
-    border-radius: 0 0 10px 10px;
-    color: #3D6EA8;
-    cursor: pointer;
-    font-family: inherit;
-    padding: 1em;
-    // text-transform: uppercase;
-    transition: all linear .3s;
-    width: 100%;
-    font-size: 16px;
-    background-color: #A3CBF8;
-  }
-  
- 
 
-  .productcart button:hover {
-    font-weight: 500;
-    letter-spacing: .1em;
-  }
-  
-  /* color */
-  .productcard h3 {
-    color: #002b6b;
-  }
-  
-  .productcard  button {
-    background-color: #002b6b;
-    font-weight: 400;
-    // color: white;
-    // border-radius: 406px;
-    // width: 65%;
-    // margin: 4px 43px;
-  }
-  
-  .productcard1  button {
-    background-color: #D7CBEC !important;
-    font-weight: 400;
-    color: #7344BF;
-  }
-  
-  
-  /* media queries */
-  @media screen and (max-width: 860px) {
-    .container {
-      display: grid;
-      grid-column-templates: 1fr;
-      grid-auto-rows: auto;
-    }
-    
-    .productcard {
-      margin: 1.5em;
-    }
-  }
-
-  .background_section{
-    background-color: pink;
-    height: 700px;
-  }
+.background_section{
+  background-color: pink;
+  height: 700px;
+}

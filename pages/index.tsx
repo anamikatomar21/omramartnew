@@ -95,7 +95,7 @@ const CategoryProduct: NextPage = () => {
         <div className={styles.container}>
           <div className={styles.right}>
             <div>
-            {bannerData?.map((item:any,index:any) => {
+            {bannerData?.filter((item:any)=> item.type=="advertize").map((item:any,index:any) => {
                   return(
               <Carousel key={index}>
                 
@@ -445,6 +445,7 @@ return(
 
         <div className={styles.productdiv}>
           <ProductCard />
+          {/* <ProductCard title="BEds" data={bedsData}/> */}
         </div>
         <div className={styles.productdiv}>
           <ProductCard />

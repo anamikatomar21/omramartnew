@@ -1,29 +1,8 @@
-import {
-
-    useEffect,
-
-    useState,
-
-} from 'react';
-import styles from '../styles/Merchant/updatedproductcard.module.scss';
-import Image from 'next/image';
+import React from 'react';
 
 import type { NextPage } from 'next';
 
-import { useRouter } from 'next/router';
-
-
-import Link from 'next/link';
-
-
-
-import UserLayout from '../components/User/Layout';
-
-import { useLogin } from '../networkAPI/queries';
-
-import React, { Component } from 'react';
-
-
+import styles from '../styles/Merchant/updatedproductcard.module.scss';
 
 const UpdatedProductCard: NextPage = () => {
 

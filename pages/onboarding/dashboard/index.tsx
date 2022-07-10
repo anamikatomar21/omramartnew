@@ -4,8 +4,8 @@ import { NextPage } from 'next';
 import Router, { useRouter } from 'next/router';
 
 import DashboardLayout from '../../../components/Merchant/Layout';
-import styles from '../../../styles/Merchant/dashboard.module.scss';
 import { useAppSelector } from '../../../redux/hooks';
+import styles from '../../../styles/Merchant/dashboard.module.scss';
 
 const DashBoard: NextPage = () => {
     const { error,user, isAuthenticated} = useAppSelector((state) => state.user);
