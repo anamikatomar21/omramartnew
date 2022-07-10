@@ -16,6 +16,7 @@ import {
   getMerchantCredentials,
   getProductById,
   getProducts,
+  getProductsBycategory,
   getPublicProduct,
   login,
   register,
@@ -160,7 +161,7 @@ export const useUpdateBanner = () => useMutation(
     banner_image4,
     id)
 );
-
+export const useProductsByCategory = (category:string) => useQuery(["products",category],()=>getProductsBycategory(category));
 export const useProducts = () => useQuery("products",getProducts);
 export const useGetCompanyProfile =() => useQuery("companyprofile",getCompnyProfile)
 export const useGetBussinessDetails = () => useQuery("getBussinessDetails", getBussinessDetails)

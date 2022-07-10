@@ -74,7 +74,7 @@ export const sellProduct = (
   sub_category: string,
   price: string,
   product_Specification: string,
-  inputList:any,
+  inputList: any,
   product_description: string,
   capacity: string,
   model_no: string,
@@ -98,7 +98,7 @@ export const sellProduct = (
   formData.append("sub_category", sub_category);
   formData.append("price", price);
   formData.append("product_Specification", product_Specification);
-  formData.append("inputList",inputList);
+  formData.append("inputList", inputList);
   formData.append("product_description", product_description);
   formData.append("capacity", capacity);
   formData.append("model_no", model_no);
@@ -112,17 +112,13 @@ export const sellProduct = (
 // for update product
 export const updateProduct = (
   isApproved: boolean,
-  id:string
-  
+  id: string
 ): Promise<Object> =>
   axios
     .patch<userProductForUpdate>(`/api/user/update_product/${id}`, {
-      isApproved      
+      isApproved,
     })
     .then((response) => response.data);
-
-
-
 
 // axios.get<UserProduct>("/api/user/upload_product",{
 
@@ -130,16 +126,23 @@ export const updateProduct = (
 // .then(
 //   (response)=> response.data
 // )
+
+// export const getProductsBycategory = () => axios.get<any>("/api/getByCategory");
+export const getProductsBycategory = (category:string) => axios.get<any>("/api/getByCategory?category="+category);
+
 export const getProducts = () => axios.get<any>("/api/user/get_products");
-export const getCompnyProfile =() => axios.get<any>("/api/user/companyprofile")
-export const getBussinessDetails =() => axios.get<any>("/api/user/details")
+export const getCompnyProfile = () =>
+  axios.get<any>("/api/user/companyprofile");
+export const getBussinessDetails = () => axios.get<any>("/api/user/details");
 
-export const getMerchantCredentials = () => axios.get<any>("/api/user/userDetails")
+export const getMerchantCredentials = () =>
+  axios.get<any>("/api/user/userDetails");
 
-export const getPublicProduct = () => axios.get<any>('/api/get_products')
-export const getApprovalProduct = () => axios.get<any>('/api/get_products_count')
+export const getPublicProduct = () => axios.get<any>("/api/get_products");
+export const getApprovalProduct = () =>
+  axios.get<any>("/api/get_products_count");
 
-export const getProductById= (id:string): Promise<any> =>
+export const getProductById = (id: string): Promise<any> =>
   axios
     .get<any>(`api/user/get_product/${id}`)
     .then((response) => response.data)
@@ -147,79 +150,61 @@ export const getProductById= (id:string): Promise<any> =>
       throw error;
     });
 
+export const Category = (
+  category_name: string,
 
+  category_image: Blob
+): Promise<Object> => {
+  const formData = new FormData();
+  formData.append("category_name", category_name);
 
+  formData.append("category_image", category_image);
 
+  return axios
+    .post<UserProduct>("/api/category/upload", formData)
+    .then((response) => response.data);
+};
 
+export const getCategory = () => axios.get<any>("/api/category/get_category");
+export const getHomeCategory = () =>
+  axios.get<any>("/api/category/get_home_cat");
 
+export const bannersImages = (
+  banner_name: string,
+  type: string,
+  banner_image1: Blob,
+  banner_image2: Blob,
+  banner_image3: Blob,
+  banner_image4: Blob
+): Promise<Object> => {
+  const formData = new FormData();
+  formData.append("banner_name", banner_name);
+  formData.append("type", type);
 
+  formData.append("banner_image1", banner_image1);
+  formData.append("banner_image2", banner_image2);
+  formData.append("banner_image3", banner_image3);
+  formData.append("banner_image4", banner_image4);
 
+  return axios
+    .post<bannerImages>("/api/banner", formData)
+    .then((response) => response.data);
+};
 
+export const updateBannerImage = (
+  banner_image1: Blob,
+  banner_image2: Blob,
+  banner_image3: Blob,
+  banner_image4: Blob,
+  id: string
+): Promise<Object> =>
+  axios
+    .patch<bannerImages>(`/api/update_banner/${id}`, {
+      banner_image1,
+      banner_image2,
+      banner_image3,
+      banner_image4,
+    })
+    .then((response) => response.data);
 
-
-    export const Category = (
-      category_name:string,
-    
-      category_image: Blob
-      
-    ): Promise<Object> => {
-      const formData = new FormData();
-      formData.append("category_name", category_name);
-     
-      formData.append("category_image", category_image);
-      
-    
-      return axios
-        .post<UserProduct>("/api/category/upload", formData)
-        .then((response) => response.data);
-    };
-
-    export const getCategory = () => axios.get<any>("/api/category/get_category");
-    export const getHomeCategory = () => axios.get<any>("/api/category/get_home_cat");
-
-
-    export const bannersImages = (
-      banner_name:string,
-      type:string,
-      banner_image1:Blob,
-      banner_image2:Blob,
-      banner_image3:Blob,
-      banner_image4:Blob,
-      
-    ): Promise<Object> => {
-      const formData = new FormData();
-      formData.append("banner_name", banner_name);
-      formData.append("type",type);
-     
-      formData.append("banner_image1", banner_image1);
-      formData.append("banner_image2", banner_image2);
-      formData.append("banner_image3", banner_image3);
-      formData.append("banner_image4", banner_image4);
-      
-    
-      return   axios
-        .post<bannerImages>("/api/banner", formData)
-        .then((response) => response.data);
-    };
-
-    export const updateBannerImage = (
-      
-      banner_image1:Blob,
-      banner_image2:Blob,
-      banner_image3:Blob,
-      banner_image4:Blob,
-      id:string
-      
-    ): Promise<Object> =>
-      axios
-        .patch<bannerImages>(`/api/update_banner/${id}`, {
-          banner_image1  ,
-          banner_image2,
-          banner_image3,
-          banner_image4
-         
-              
-        })
-        .then((response) => response.data);
-
-    export const getBannerImages= () => axios.get<any>("/api/get_banner");
+export const getBannerImages = () => axios.get<any>("/api/get_banner");

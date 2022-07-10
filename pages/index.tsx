@@ -23,6 +23,7 @@ import UserLayout from '../components/User/Layout';
 import {
   useGetBanner,
   useGetCategory,
+  useProductsByCategory,
   usePublicProduct,
 } from '../networkAPI/queries';
 // import styles from '../styles/Merchant/categoryproduct.module.scss';
@@ -39,6 +40,13 @@ const CategoryProduct: NextPage = () => {
     setIsOpen(!isOpen);
   };
   const { data, status } = usePublicProduct();
+  const { data:booksProduct, status :status1} = useProductsByCategory("abc books");
+  const { data:booksProduct1, status :status2} = useProductsByCategory("amitcategory")
+  const { data:booksProduct2, status :status3} = useProductsByCategory("machine")
+  console.log(booksProduct?.data)
+  // console.log(booksProduct1)
+  // console.log(booksProduct2)
+
   const data2 = useGetCategory();
   const category_data = data2.data;
   console.log(data2.data);
@@ -47,6 +55,7 @@ const CategoryProduct: NextPage = () => {
   console.log(bannerData);
   //   const getProduct=useGetProductById("")
   //   console.log(getProduct)
+
 
   useEffect(() => {
     if (!isOpen) return;
@@ -95,74 +104,88 @@ const CategoryProduct: NextPage = () => {
         <div className={styles.container}>
           <div className={styles.right}>
             <div>
-            {bannerData?.filter((item:any)=> item.type=="advertize").map((item:any,index:any) => {
-                  return(
-              <Carousel key={index}>
-                
-                  
-               
-                
-                <div>
-                  <Image
-                    src={item.banner_image1[0]?item.banner_image1[0]:"/omratrade/homebanner.png"}
-                    className={styles.imagestyle}
-                    width={1450}
-                    height={550}
-                    alt="image1"
-                  />
-                  {/* <p className="legend">Image 1</p> */}
-                </div>
+              {bannerData
+                ?.filter((item: any) => item.type == "advertize")
+                .map((item: any, index: any) => {
+                  return (
+                    <Carousel key={index}>
+                      <div>
+                        <Image
+                          src={
+                            item.banner_image1[0]
+                              ? item.banner_image1[0]
+                              : "/omratrade/homebanner.png"
+                          }
+                          className={styles.imagestyle}
+                          width={1450}
+                          height={550}
+                          alt="image1"
+                        />
+                        {/* <p className="legend">Image 1</p> */}
+                      </div>
 
-                <div>
-                  <Image
-                     src={item.banner_image1[0]?item.banner_image2[0]:"/omratrade/homebanner.png"}
-                    className={styles.imagestyle}
-                    width={1450}
-                    height={550}
-                    alt="image1"
-                  />
-                  {/* <p className="legend">Image 2</p> */}
-                </div>
+                      <div>
+                        <Image
+                          src={
+                            item.banner_image1[0]
+                              ? item.banner_image2[0]
+                              : "/omratrade/homebanner.png"
+                          }
+                          className={styles.imagestyle}
+                          width={1450}
+                          height={550}
+                          alt="image1"
+                        />
+                        {/* <p className="legend">Image 2</p> */}
+                      </div>
 
-                <div>
-                  <Image
-                     src={item.banner_image1[0]?item.banner_image3[0]:"/omratrade/homebanner.png"}
-                    className={styles.imagestyle}
-                    width={1450}
-                    height={550}
-                    alt="image1"
-                  />
+                      <div>
+                        <Image
+                          src={
+                            item.banner_image1[0]
+                              ? item.banner_image3[0]
+                              : "/omratrade/homebanner.png"
+                          }
+                          className={styles.imagestyle}
+                          width={1450}
+                          height={550}
+                          alt="image1"
+                        />
 
-                  {/* <p className="legend">Image 3</p> */}
-                </div>
+                        {/* <p className="legend">Image 3</p> */}
+                      </div>
 
-                <div>
-                  <Image
-                     src={item.banner_image1[0]?item.banner_image4[0]:"/omratrade/homebanner.png"}
-                    className={styles.imagestyle}
-                    width={1450}
-                    height={550}
-                    alt="image1"
-                  />
+                      <div>
+                        <Image
+                          src={
+                            item.banner_image1[0]
+                              ? item.banner_image4[0]
+                              : "/omratrade/homebanner.png"
+                          }
+                          className={styles.imagestyle}
+                          width={1450}
+                          height={550}
+                          alt="image1"
+                        />
 
-                  {/* <p className="legend">Image 4</p> */}
-                </div>
+                        {/* <p className="legend">Image 4</p> */}
+                      </div>
 
-                <div>
-                  <Image
-                    src={item.banner_image1[0]?item.banner_image4[0]:"/omratrade/homebanner.png"}
-                    width={1450}
-                    height={550}
-                    alt="image1"
-                  />
-                </div>
-
-               
-                
-                
-              </Carousel>
-                )
-              })}
+                      <div>
+                        <Image
+                          src={
+                            item.banner_image1[0]
+                              ? item.banner_image4[0]
+                              : "/omratrade/homebanner.png"
+                          }
+                          width={1450}
+                          height={550}
+                          alt="image1"
+                        />
+                      </div>
+                    </Carousel>
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -176,73 +199,84 @@ const CategoryProduct: NextPage = () => {
         <div className={styles.container}>
           <div className={styles.right}>
             <div>
-            {bannerData?.map((item:any,index:any) => {
-              console.log(item)
-const isAdvwdvwetize=  item.type=="advertize"
-if(item.type=="advertize")
-            
-return(
+              {bannerData?.map((item: any, index: any) => {
+                console.log(item);
+                const isAdvwdvwetize = item.type == "advertize";
+                if (item.type == "advertize")
+                  return (
+                    <Carousel key={index}>
+                      <div>
+                        <Image
+                          src={
+                            item.banner_image1[0]
+                              ? item.banner_image1[0]
+                              : "/omratrade/homebanner.png"
+                          }
+                          className={styles.imagestyle}
+                          width={1450}
+                          height={450}
+                          alt="image1"
+                        />
+                        {/* <p className="legend">Image 1</p> */}
+                      </div>
 
+                      <div>
+                        <Image
+                          src={
+                            item.banner_image2[0]
+                              ? item.banner_image2[0]
+                              : "/omratrade/homebanner.png"
+                          }
+                          className={styles.imagestyle}
+                          width={1450}
+                          height={450}
+                          alt="image1"
+                        />
+                        {/* <p className="legend">Image 2</p> */}
+                      </div>
 
+                      <div>
+                        <Image
+                          src={
+                            item.banner_image3[0]
+                              ? item.banner_image3[0]
+                              : "/omratrade/homebanner.png"
+                          }
+                          className={styles.imagestyle}
+                          width={1450}
+                          height={450}
+                          alt="image1"
+                        />
 
-              <Carousel key={index}>
-                <div>
-                  <Image
-                  src={item.banner_image1[0]?item.banner_image1[0]:"/omratrade/homebanner.png"}
-                    className={styles.imagestyle}
-                    width={1450}
-                    height={450}
-                    alt="image1"
-                  />
-                  {/* <p className="legend">Image 1</p> */}
-                </div>
+                        {/* <p className="legend">Image 3</p> */}
+                      </div>
 
-                <div>
-                  <Image
-                  src={item.banner_image2[0]?item.banner_image2[0]:"/omratrade/homebanner.png"}
-                    className={styles.imagestyle}
-                    width={1450}
-                    height={450}
-                    alt="image1"
-                  />
-                  {/* <p className="legend">Image 2</p> */}
-                </div>
+                      <div>
+                        <Image
+                          src={
+                            item.banner_image4[0]
+                              ? item.banner_image4[0]
+                              : "/omratrade/homebanner.png"
+                          }
+                          className={styles.imagestyle}
+                          width={1450}
+                          height={450}
+                          alt="image1"
+                        />
 
-                <div>
-                  <Image
-                  src={item.banner_image3[0]?item.banner_image3[0]:"/omratrade/homebanner.png"}
-                    className={styles.imagestyle}
-                    width={1450}
-                    height={450}
-                    alt="image1"
-                  />
+                        {/* <p className="legend">Image 4</p> */}
+                      </div>
 
-                  {/* <p className="legend">Image 3</p> */}
-                </div>
-
-                <div>
-                  <Image
-                    src={item.banner_image4[0]?item.banner_image4[0]:"/omratrade/homebanner.png"}
-                    className={styles.imagestyle}
-                    width={1450}
-                    height={450}
-                    alt="image1"
-                  />
-
-                  {/* <p className="legend">Image 4</p> */}
-                </div>
-
-                <div>
-                  <Image
-                    src="/omratrade/homebanner.png"
-                    width={1450}
-                    height={450}
-                    alt="image1"
-                  />
-                </div>
-              </Carousel>
- ) 
-                
+                      <div>
+                        <Image
+                          src="/omratrade/homebanner.png"
+                          width={1450}
+                          height={450}
+                          alt="image1"
+                        />
+                      </div>
+                    </Carousel>
+                  );
               })}
             </div>
           </div>
@@ -341,10 +375,7 @@ return(
                 <div className={styles.backg}>
                 <div className={styles.imgone}>
                     <div className={styles.productimg}>
-                    </div>
-                    </div>
-                </div>
-                <div className={styles.producttext}>
+                    </divadmindashboard/approved_listingsName={styles.producttext}>
                     <h3>Software</h3>
                     <p>Merchant Name:ABC PVT ltd</p>
                 </div>
@@ -442,22 +473,24 @@ return(
         </div> */}
 
         <div className={styles.marginarea}></div>
+       
 
-        <div className={styles.productdiv}>
-          <ProductCard />
+          
+
+        <div className={styles.productdiv} >
+          <ProductCard title="abc books" data={booksProduct} />
           {/* <ProductCard title="BEds" data={bedsData}/> */}
         </div>
+        
         <div className={styles.productdiv}>
-          <ProductCard />
+          <ProductCard title='amitcategory' data={booksProduct1}/>
         </div>
         <div>
           <div>
             <SliderBox />
           </div>
           <div className={styles.productdiv}>
-            
-            <ProductCard />
-           
+            <ProductCard title='machine' data={booksProduct2}/>
           </div>
 
           <div>
