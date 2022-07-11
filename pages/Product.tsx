@@ -8,7 +8,10 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import { usePublicProduct } from '../networkAPI/queries';
+import {
+  usePublicProduct,
+  useSendEmail,
+} from '../networkAPI/queries';
 import styles from '../styles/Merchant/productpreview.module.scss';
 
 const Test3: NextPage = () => {
@@ -16,6 +19,14 @@ const Test3: NextPage = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [select, setSelect] = useState<string>("");
+  const [description,setDescription] = useState<string>("")
+  const [email,setEmail] = useState<string>("")
+  const [phoneNumber,setPhoneNumber] = useState<string>("")
+
+
+
+
+
   const dropdownRef = useRef<any>("");
   const [related_product_merchant, setRelated_product_merchant] =
     useState<string>("");
@@ -24,8 +35,16 @@ const Test3: NextPage = () => {
     setIsOpen(!isOpen);
   };
   const { data, status } = usePublicProduct();
+  const {data:dataMail,mutate} = useSendEmail();
   console.log(data);
   //   {data,error,isLoading} = useGetProductById(id)
+
+  const mailData = dataMail as any;
+
+  const handleEmailSend = () =>{
+    const merchant =data?.data.find((item:any)=>item._id == Product_id)
+    mutate({merchantId:merchant.auther_Id,email,phoneNumber,description})
+  }
 
   useEffect(() => {
     if (!isOpen) return;
@@ -380,6 +399,8 @@ const Test3: NextPage = () => {
                       className={styles.TextareaSection}
                       rows={3}
                       cols={70}
+                      onChange={(e)=> setDescription(e.target.value)}
+                      value={description}
                       placeholder="Please include product name, order quantity, usage, special requests if any in your inquiry."
                     />
                   </li>
@@ -405,6 +426,8 @@ const Test3: NextPage = () => {
                       <input
                         type="email"
                         className={styles.Input}
+                        onChange={(e)=> setEmail(e.target.value)}
+                        value={email}
                         placeholder="EMAIL ID "
                       />
                     </div>
@@ -413,6 +436,8 @@ const Test3: NextPage = () => {
                       <input
                         type="tel"
                         className={styles.Input}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        value={phoneNumber}
                         placeholder="Phone number "
                       />
                     </div>
@@ -452,10 +477,10 @@ const Test3: NextPage = () => {
 
 
                                        </li> */}
-
+<li>{mailData?.message}</li>
                   <li>
-                    <button type="submit" className="submit_button_box">
-                      <a href="#">SEND INQUIRY</a>
+                    <button type="button" className="submit_button_box" onClick={handleEmailSend} >
+                      <a >SEND INQUIRY</a>
                     </button>
                   </li>
                 </ul>

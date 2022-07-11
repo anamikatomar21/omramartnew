@@ -197,14 +197,20 @@ export const updateBannerImage = (
   banner_image3: Blob,
   banner_image4: Blob,
   id: string
-): Promise<Object> =>
-  axios
-    .patch<bannerImages>(`/api/update_banner/${id}`, {
-      banner_image1,
-      banner_image2,
-      banner_image3,
-      banner_image4,
-    })
+): Promise<Object> =>{
+
+const formData = new FormData();
+
+formData.append("banner_image1", banner_image1);
+formData.append("banner_image2", banner_image2);
+formData.append("banner_image3", banner_image3);
+formData.append("banner_image4", banner_image4);
+
+  return axios
+    .patch<bannerImages>(`/api/update_banner/${id}`, formData)
     .then((response) => response.data);
+  }
 
 export const getBannerImages = () => axios.get<any>("/api/get_banner");
+
+export const sendEmail = ({merchantId,email,phoneNumber,description}:any) => axios.post("/api/send-mail",{merchantId,email,phoneNumber,description})

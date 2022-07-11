@@ -59,18 +59,18 @@ const Header: NextPage = () => {
 
               </li>
               {/* <i className="far fa-bell bell-icon"></i> */}
-              <li>
+              {/* <li>
                 <i className="fas fa-user"></i><a href="#">Seller</a>
-              </li>
+              </li> */}
               <li>
                 <i className="fas fa-user"></i><a href="#">Buyer</a>
               </li>
               {/* <li>
                 <i className="fas fa-user"></i> <div >Profile</div>
               </li> */}
-              <li>
+              {/* <li>
                 <i className="fas fa-address-book"></i> <a href="#">Contact Us</a>
-              </li>
+              </li> */}
               <li>
                  <div onClick={Logout}>Logout</div>
               </li>

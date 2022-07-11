@@ -21,6 +21,7 @@ import {
   login,
   register,
   sellProduct,
+  sendEmail,
   updateBannerImage,
   updateProduct,
   UserDetails,
@@ -174,3 +175,7 @@ export const useGetProductById= (id:string) =>
   useQuery("myself", (): Promise<any> => getProductById(id));
 
 export const useGetBanner = () =>useQuery('banner',getBannerImages)
+
+export const useSendEmail = () => useMutation(({merchantId,email,phoneNumber,description}:any)=>
+      sendEmail({merchantId,email,phoneNumber,description})
+)
