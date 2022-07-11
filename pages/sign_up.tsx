@@ -8,8 +8,6 @@ import Head from 'next/head';
 import Router, { useRouter } from 'next/router';
 import toast, { Toaster } from 'react-hot-toast';
 
-// import styles from '../styles/Merchant/login.module.scss'
-import UserLayout from '../components/User/Layout';
 import { handleSignupState } from '../redux/actions/auth';
 import {
   useAppDispatch,
@@ -61,7 +59,7 @@ const SignUp: NextPage = () => {
     if (isAuthenticated) {
       
    
-      toast.success("upload Successfull");
+      toast.success("created Successfully");
       Router.push('/onboarding/profile')
     }
   }, [error, isAuthenticated,user]);

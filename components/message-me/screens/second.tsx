@@ -235,7 +235,9 @@ console.log(bussinessData)
               <div className={styles.inputbox}>
                 <label>Year of Establishment </label>
                 <input
-                  type="text"
+                  type="number"
+                  min={0}
+                  
                   name="Year_of_establishment"
                   className={styles.inputform}
                   placeholder="Year of Establishment"

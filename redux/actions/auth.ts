@@ -56,7 +56,7 @@ export const handleSignupState = (payload:any) => async (dispatch: any) => {
       await axios.post(`/api/signup`, payload).then(async (res:AxiosResponse
         ) => {
       if(res.data.success){
-        dispatch({ type: actionTypes.SET_SIGNUP_SUCCESS, payload: {token:res.data.token , user: res.data.token} });
+        dispatch({ type: actionTypes.SET_SIGNUP_SUCCESS, payload: {token:res.data.token , user: res.data.user} });
       }else{
         dispatch({ type: actionTypes.SET_SIGNUP_FAILURE, payload: res.data.message });
       }

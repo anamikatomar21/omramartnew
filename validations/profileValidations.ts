@@ -29,21 +29,31 @@ export const messageMe1Validations = Yup.object().shape({
     .max(15, "Name must be less than 50 characters")
     .required("Required"),
 
-    Year_of_establishment: Yup.number()
-    .positive().integer()
-    // .min(4, "Name must be at least 4 characters")
-    .max(4, "Name must be less than 4 characters")
+    Year_of_establishment: Yup.string()
+    // .positive().integer()
+    .min(4, "Year must be 4- digit")
+    .max(4, "Year must be 4- digit")
     
     .required("Required"),
 
     GST_No: Yup.string()
-    .min(3, "Name must be at least 3 characters")
-    .max(50, "Name must be less than 50 characters")
+    .matches(
+      /^([a-zA-Z0-9 _-]+)$/,
+      "enter Alpha Numneric value"
+     
+    )
+    .min(15, "GST must be  15 Alpha Numneric value")
+    .max(15, "GST must be 15 Alpha Numneric value")
     .required("Required"),
 
     PAN_No:Yup.string()
-    .min(3, "Name must be at least 3 characters")
-    .max(50, "Name must be less than 50 characters")
+    .matches(
+      /^([a-zA-Z0-9 _-]+)$/,
+      "enter Alpha Numneric value"
+     
+    )
+    .min(10, "PAN must be  10 Alpha Numneric value")
+    .max(10, "PAN must be 10 Alpha Numneric value")
     .required("Required"),
 
    
@@ -62,7 +72,7 @@ export const companyProfileValidationSchema = Yup.object().shape({
 
     description: Yup.string()
     .min(3, "Name must be at least 3 characters")
-    .max(500, "Name must be less than 50 characters")
+    .max(500, "Name must be less than 500 characters")
     .required("Required"),
 
 });

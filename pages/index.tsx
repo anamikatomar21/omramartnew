@@ -40,9 +40,12 @@ const CategoryProduct: NextPage = () => {
     setIsOpen(!isOpen);
   };
   const { data, status } = usePublicProduct();
-  const { data:booksProduct, status :status1} = useProductsByCategory("abc books");
-  const { data:booksProduct1, status :status2} = useProductsByCategory("amitcategory")
-  const { data:booksProduct2, status :status3} = useProductsByCategory("machine")
+  const { data:booksProduct, status :status1} = useProductsByCategory("Laundry Machine & Equipment");
+  const { data:booksProduct1, status :status2} = useProductsByCategory("Dryclean Machine & Equipment")
+  const { data:booksProduct2, status :status3} = useProductsByCategory("Chemical & Detergent")
+  const { data:booksProduct3, status :status4} = useProductsByCategory("Laundry Machine & Equipment");
+  const { data:booksProduct4, status :status5} = useProductsByCategory("Dryclean Machine & Equipment")
+  const { data:booksProduct5, status :status6} = useProductsByCategory("Chemical & Detergent")
   console.log(booksProduct?.data)
   // console.log(booksProduct1)
   // console.log(booksProduct2)
@@ -281,196 +284,11 @@ const CategoryProduct: NextPage = () => {
             </div>
           </div>
         </div>
-        {/* <div
-          className="div-flex-box"
-          style={{ background: "white", marginTop: "300px" }}
-        >
-          <h1 className="gallery-heading">All Category</h1>
+       
 
-          <div className="product-flex-box">
-            {category_data?.data.map((item3: any, index: any) => {
-              console.log(item3);
+        
 
-              return (
-                <div className="gallery2" key={index}>
-                  <a href="#">
-                    <Image
-                      src={
-                        item3.category_image[0]
-                          ? item3.category_image[0]
-                          : "/omratrade/tv.png"
-                      }
-                      width={250}
-                      height={250}
-                      alt="image1"
-                    />
-                  </a>
-
-                  <div className="desc">{item3.category_name}</div>
-                </div>
-              );
-            })}
-          </div>
-        </div> */}
-
-        {/* <div className="div-flex-box" style={{ background: "white", marginTop: "300px" }}>
-          <h1 className="gallery-heading">Software </h1>
-
-          <Carousels responsive={responsive} slidesToSlide={4}>
-            {data?.data.map((item: any, index: any) => {
-              if (item.isApproved == true) {
-                return (
-                  <div
-                    className="gallery2"
-                    key={index}
-                    onClick={() => router.push(`/Product?id=${item._id}`)}
-                    style={{ justifyContent: "left" }}
-                  >
-                    <a>
-                      <Image
-                        src={
-                          item.product_image1[0]
-                            ? item.product_image1[0]
-                            : "/omratrade/tv.png"
-                        }
-                        alt="Picture of the author"
-                        width={300}
-                        height={300}
-                      />
-                    </a>
-
-                    <div className="desc">
-                      {item.product_name}-{item.product_Specification}
-                      <p>Merchant Name:{item.vendors_name}</p>
-                    </div>
-                  </div>
-                );
-              }
-            })}
-
-            <div className="gallery2">
-              <a href="#">
-                <Image
-                  src="/omratrade/tv.png"
-                  alt="facemask"
-                  width={250}
-                  height={250}
-                  className="facemask"
-                />
-              </a>
-
-              <div className="desc">
-                Microtek Superpower 700 700VA
-                <p>Brand:Microtek</p>
-              </div>
-            </div>
-          </Carousels>
-        </div> */}
-
-        {/* <div className="div-flex-box">
-          <h1 className="gallery-heading">Industry Tools & supply</h1>
-
-          <Carousels responsive={responsive} slidesToSlide={4}>
-            <div className={styles.productcard}>
-                <div className={styles.backg}>
-                <div className={styles.imgone}>
-                    <div className={styles.productimg}>
-                    </divadmindashboard/approved_listingsName={styles.producttext}>
-                    <h3>Software</h3>
-                    <p>Merchant Name:ABC PVT ltd</p>
-                </div>
-                <div className={styles.productcart}>
-                    <button type="submit">View More</button>
-                </div>
-            </div>
-
-            <div className={styles.productcard}>
-                <div className={styles.imgtwo}>
-                    <div className={styles.productimg}>
-                    </div>
-                </div>
-                <div className={styles.producttext}>
-                    <h3>Agriculture</h3>
-                    <p>Merchant Name:ABC PVT ltd</p>
-                </div>
-                <div className={styles.productcart}>
-                    <button type="submit">Buy Now</button>
-                </div>
-            </div>
-
-            <div className={styles.productcard}>
-                <div className={styles.imgtwo}>
-                    <div className={styles.productimg}>
-                    </div>
-                </div>
-                <div className={styles.producttext}>
-                    <h3>Agriculture</h3>
-                    <p>Merchant Name:ABC PVT ltd</p>
-                </div>
-                <div className={styles.productcart}>
-                    <button type="submit">Buy Now</button>
-                </div>
-            </div>
-
-            <div className={styles.productcard}>
-                <div className={styles.imgtwo}>
-                    <div className={styles.productimg}>
-                    </div>
-                </div>
-                <div className={styles.producttext}>
-                    <h3>Agriculture</h3>
-                    <p>Merchant Name:ABC PVT ltd</p>
-                </div>
-                <div className={styles.productcart}>
-                    <button type="submit">Buy Now</button>
-                </div>
-            </div>
-
-            <div className={styles.productcard}>
-                <div className={styles.imgtwo}>
-                    <div className={styles.productimg}>
-                    </div>
-                </div>
-                <div className={styles.producttext}>
-                    <h3>Agriculture</h3>
-                    <p>Merchant Name:ABC PVT ltd</p>
-                </div>
-                <div className={styles.productcart}>
-                    <button type="submit">Buy Now</button>
-                </div>
-            </div>
-
-            <div className={styles.productcard}>
-                <div className={styles.imgtwo}>
-                    <div className={styles.productimg}>
-                    </div>
-                </div>
-                <div className={styles.producttext}>
-                    <h3>Agriculture</h3>
-                    <p>Merchant Name:ABC PVT ltd</p>
-                </div>
-                <div className={styles.productcart}>
-                    <button type="submit">Buy Now</button>
-                </div>
-            </div>
-
-            <div className={styles.productcard}>
-                <div className={styles.backg}>
-                <div className={styles.imgone}>
-                    <div className={styles.productimg}>
-                    </div>
-                    </div>
-                </div>
-                <div className={styles.producttext}>
-                    <h3>Software</h3>
-                    <p>Merchant Name:ABC PVT ltd</p>
-                </div>
-                <div className={styles.productcart}>
-                    <button type="submit">View More</button>
-                </div>
-            </div>
-          </Carousels>
-        </div> */}
+        
 
         <div className={styles.marginarea}></div>
        
@@ -478,19 +296,28 @@ const CategoryProduct: NextPage = () => {
           
 
         <div className={styles.productdiv} >
-          <ProductCard title="abc books" data={booksProduct} />
+          <ProductCard title="Laundry Machine & Equipment" data={booksProduct} />
           {/* <ProductCard title="BEds" data={bedsData}/> */}
         </div>
         
         <div className={styles.productdiv}>
-          <ProductCard title='amitcategory' data={booksProduct1}/>
+          <ProductCard title='Dryclean Machine & Equipment' data={booksProduct1}/>
         </div>
         <div>
           <div>
             <SliderBox />
           </div>
           <div className={styles.productdiv}>
-            <ProductCard title='machine' data={booksProduct2}/>
+            <ProductCard title='Chemical & Detergent' data={booksProduct2}/>
+          </div>
+          <div className={styles.productdiv}>
+            <ProductCard title='Laundry bags' data={booksProduct2}/>
+          </div>
+          <div className={styles.productdiv}>
+            <ProductCard title='Hanger' data={booksProduct2}/>
+          </div>
+          <div className={styles.productdiv}>
+            <ProductCard title='QR code printer' data={booksProduct2}/>
           </div>
 
           <div>

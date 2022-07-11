@@ -32,19 +32,23 @@ const Admin: NextPage = () => {
     temp[index] = !temp[index]
     setIsOpen(temp)
   };
+  
+  console.log({isOpen})
 
-  useEffect(() => {
-    if (!isOpen) return;
+  // useEffect(() => {
+  //   if (!isOpen) return;
 
-    function handleOutsideClick(event: any) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen([false]);
-        setSelect("");
-      }
-    }
-    window.addEventListener("click", handleOutsideClick);
-    return () => window.removeEventListener("click", handleOutsideClick);
-  }, [isOpen]);
+  //   function handleOutsideClick(event: any) {
+  //     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  //       setIsOpen([false]);
+  //       setSelect("");
+  //     }
+  //   }
+  //   window.addEventListener("click", handleOutsideClick);
+  //   return () => window.removeEventListener("click", handleOutsideClick);
+  // }, [isOpen]);
+
+
   console.log("POPUP STATE", isOpen);
   // const getData = usePublicProduct();
   const getData = usePublicProduct();
@@ -114,7 +118,7 @@ const Admin: NextPage = () => {
               color: "#002b6b",
             }}
           >
-            Waiting for Approval
+            Waiting for Approval 
           </h1>
           {test?.data.map((item: any, index: any) => {
             console.log(item);
@@ -200,7 +204,7 @@ const Admin: NextPage = () => {
                                   className="reject-button"
                                   onClick={() => togglePopup(index)}
                                 >
-                                  Decline
+                                  {isOpen[index]?"Cancel":"Decline"}
                                 </button>
                                 {isOpen[index] && (
                                   <Popup
