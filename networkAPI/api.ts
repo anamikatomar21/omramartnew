@@ -128,7 +128,7 @@ export const updateProduct = (
 // )
 
 // export const getProductsBycategory = () => axios.get<any>("/api/getByCategory");
-export const getProductsBycategory = (category:string) => axios.get<any>("/api/getByCategory?category="+category);
+export const getProductsBycategory = (category:string) => axios.get<any>("/api/getByCategory?category="+encodeURIComponent(category));
 
 export const getProducts = () => axios.get<any>("/api/user/get_products");
 export const getCompnyProfile = () =>

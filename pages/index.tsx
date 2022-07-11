@@ -43,12 +43,12 @@ const CategoryProduct: NextPage = () => {
   const { data:booksProduct, status :status1} = useProductsByCategory("Laundry Machine & Equipment");
   const { data:booksProduct1, status :status2} = useProductsByCategory("Dryclean Machine & Equipment")
   const { data:booksProduct2, status :status3} = useProductsByCategory("Chemical & Detergent")
-  const { data:booksProduct3, status :status4} = useProductsByCategory("Laundry Machine & Equipment");
-  const { data:booksProduct4, status :status5} = useProductsByCategory("Dryclean Machine & Equipment")
-  const { data:booksProduct5, status :status6} = useProductsByCategory("Chemical & Detergent")
-  console.log(booksProduct?.data)
-  // console.log(booksProduct1)
-  // console.log(booksProduct2)
+  const { data:booksProduct3, status :status4} = useProductsByCategory("Laundry bags");
+  const { data:booksProduct4, status :status5} = useProductsByCategory("Hanger")
+  const { data:booksProduct5, status :status6} = useProductsByCategory("QR code printer")
+  console.log(booksProduct)
+  console.log(booksProduct1)
+  console.log(booksProduct2)
 
   const data2 = useGetCategory();
   const category_data = data2.data;
@@ -311,13 +311,13 @@ const CategoryProduct: NextPage = () => {
             <ProductCard title='Chemical & Detergent' data={booksProduct2}/>
           </div>
           <div className={styles.productdiv}>
-            <ProductCard title='Laundry bags' data={booksProduct2}/>
+            <ProductCard title='Laundry bags' data={booksProduct3}/>
           </div>
           <div className={styles.productdiv}>
-            <ProductCard title='Hanger' data={booksProduct2}/>
+            <ProductCard title='Hanger' data={booksProduct4}/>
           </div>
           <div className={styles.productdiv}>
-            <ProductCard title='QR code printer' data={booksProduct2}/>
+            <ProductCard title='QR code printer' data={booksProduct5}/>
           </div>
 
           <div>
