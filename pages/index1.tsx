@@ -1,4 +1,5 @@
 import {
+  useCallback,
   useEffect,
   useState,
 } from 'react';
@@ -9,7 +10,6 @@ import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
 import toast, { Toaster } from 'react-hot-toast';
 
-import UserLayout from '../components/User/Layout';
 import { useGetCompanyProfile } from '../networkAPI/queries';
 import { handleLoginState } from '../redux/actions/auth';
 import {
@@ -76,6 +76,12 @@ const Home: NextPage = () => {
         // router.push(`/onboarding/profile`)
       
     }, [error, user, isAuthenticated]);
+
+    const [showPassword, setshowPassword] = useState(false)
+
+  const showPasswordHandler=useCallback(()=>{
+setshowPassword(!showPassword)
+  },[showPassword])
   
     return (
       <div className="">
@@ -104,16 +110,51 @@ const Home: NextPage = () => {
             <div >
               <span>Password</span> 
               <input className={styles.InputBox} type="password" name=""
+             
               onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+            {/* <div>
+                <span>Password</span>
+                <div className={styles.passwordbox}>
+                  <input
+                    className={styles.InputBox}
+                    type={showPassword?'text':"password"}
+                    name=""
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <div  className={` ${styles.passwordshowicon} ${styles.passwordshow} `}>
+               
+                  </div>
+                  <div onClick={showPasswordHandler} className={` ${styles.passwordhideicon} ${styles.passwordshow} `}>
+                    {
+                      showPassword ?   <Image
+                      src="/eye-slash-solid.svg"
+                      width={20}
+                      height={20}
+                      className={styles.passwordhideiconn}
+                    ></Image>
+                      :<Image
+                      src="/eye-solid.svg"
+                      width={20}
+                      height={20}
+                      className={styles.passwordshowiconn}
+                    ></Image>
+                     
+                    }
+                 
+
+
+                  </div>
+                </div>
+              </div>
         
   
             <div >
   
               <input type="submit" value="Login" name="" className ={styles.buttonsection} onClick={()=>{alert("Login")}}/>
             </div>
-   
+    */}
             <div>
               <p>Do not  have an account?<Link href="/sign_up">Sign up</Link></p>
               {/* <p><Link  href="/sign_up"><a>Register?</a></Link></p> */}

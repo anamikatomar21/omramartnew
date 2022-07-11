@@ -16,6 +16,11 @@ body {
   max-width: 1320px;
 } */
 
+a , button,span , ul ,li{
+
+  cursor: pointer;
+}
+
 .row {
   display: -ms-flexbox;
   display: flex;
