@@ -1,16 +1,13 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
+import React, { useEffect, useState } from "react";
 
-import { NextPage } from 'next';
-import Image from 'next/image';
-import Router, { useRouter } from 'next/router';
+import { NextPage } from "next";
+import Image from "next/image";
+import Router, { useRouter } from "next/router";
 
-import DashboardLayout from '../../../../../components/Merchant/Layout';
-import { useProducts } from '../../../../../networkAPI/queries';
-import { useAppSelector } from '../../../../../redux/hooks';
-import styles from '../../../../../styles/Merchant/allproduct.module.scss';
+import DashboardLayout from "../../../../../components/Merchant/Layout";
+import { useProducts } from "../../../../../networkAPI/queries";
+import { useAppSelector } from "../../../../../redux/hooks";
+import styles from "../../../../../styles/Merchant/allproduct.module.scss";
 
 const fetchUsers = async () => {
   const res = await fetch("/api/user/upload_product");
@@ -18,7 +15,7 @@ const fetchUsers = async () => {
 };
 
 const AllProduct: NextPage = () => {
-  const router = useRouter()
+  const router = useRouter();
   const Data = [
     {
       name: "Amit",
@@ -88,24 +85,22 @@ const AllProduct: NextPage = () => {
     }
   }, [user, isAuthenticated, data]);
 
-
   return (
     <DashboardLayout>
       <div className={"styles.Flex_Container"}>
         {merchantGetData?.data.map((item: any, index: number) => {
           console.log(item);
           if (user._id == item.auther_Id) {
-            console.log(item)
+            console.log(item);
             return (
-              <div
-                key={index}
-                className={styles.Flex_Container}
-              >
-                <ul style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: "30px",
-                }}>
+              <div key={index} className={styles.Flex_Container}>
+                <ul
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    gap: "30px",
+                  }}
+                >
                   <div className={styles.Image_Section}>
                     <Image
                       src={item.product_image1[0]}
@@ -128,8 +123,7 @@ const AllProduct: NextPage = () => {
                         </tr>
                         <tr>
                           <td>Bussiness Type</td>
-                          <td>{item.TypesOf_Bussiness
-}</td>
+                          <td>{item.TypesOf_Bussiness}</td>
                         </tr>
                         <tr>
                           <td>Category</td>
@@ -165,13 +159,15 @@ const AllProduct: NextPage = () => {
                      
                     </Link> */}
                     <button
-                     
-                      onClick={() => router.push(`/onboarding/dashboard/product/Upload_Product/edit?id=${item._id}`)}
+                      onClick={() =>
+                        router.push(
+                          `/onboarding/dashboard/product/Upload_Product/edit?id=${item._id}`
+                        )
+                      }
                       className={styles.EmailbuttonSection}
                       // style={{background:"blue",width:"50px"}}
                     >
-                      EDIT 
-                     
+                      EDIT
                     </button>
                   </div>
                 </ul>
