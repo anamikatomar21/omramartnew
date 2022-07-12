@@ -27,19 +27,23 @@
     border-radius: 10px 10px 10px 10px;
     height: 255px;
     width: 272px;
-    box-shadow:2px 2px 7px rgb(0 0 0 / 16%);
+    box-shadow: 2px 2px 7px rgb(0 0 0 / 16%);
     background-repeat: no-repeat;
     margin-bottom: 20px;
     color: #3D898D;
     font-weight: bold;
     font-size: 17px;
     background-size: cover;
-
-
-
-
-
+    padding: 0.5rem 1rem;
+    background-size: 346px ,348px !important;
+    background-position: center;
 }
+
+
+
+
+
+
 
 .img_box1{
     background-image: url(/omratrade/newcat.jpeg);
