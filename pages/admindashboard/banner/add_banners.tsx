@@ -34,8 +34,8 @@ const Upload_Banner: NextPage = () => {
   const [banner_image3, setBanner_image3] = useState<any>("");
   const [banner_image4, setBanner_image4] = useState<any>("");
 
-    console.log({"bananner name":banner_name})
-    console.log({"bannner images":banner_image1})
+    console.log({"bananner name":banner_image1})
+    console.log({"bannner images":banner_image2})
     console.log(banner_image2)
 
   // const [product_name,setProduct_name] =useState<string>("")

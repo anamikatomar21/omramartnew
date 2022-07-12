@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import AdminLayout from '../../components/Admin/AdminLayout';
 import Popup from '../../components/popup';
 import {
+  useDeclinedProduct,
   usePublicProduct,
   useUpdateProduct,
 } from '../../networkAPI/queries';
@@ -18,6 +19,8 @@ import styles from '../../styles/Merchant/dashcode.module.scss';
 
 const Admin: NextPage = () => {
   const [isApproved, setisApproved] = useState<boolean>(false);
+  const [isDeclined,setIsDeclined] = useState<boolean>(false);
+  const [status, setStatus] = useState<string>("")
 
   const router = useRouter();
 
@@ -58,6 +61,8 @@ const Admin: NextPage = () => {
   // console.log(data?.data.length);
   const { error, isLoading, data, mutate, isSuccess } = useUpdateProduct();
 
+  const { error:err, isLoading:Loading, data:data1, mutate:mutate1, isSuccess:isSuccess1 } = useDeclinedProduct();
+
 
   useEffect(()=>{
 
@@ -88,6 +93,27 @@ const Admin: NextPage = () => {
     });
     router.reload();
   };
+  const handleDeclined = (item: any) => {
+    mutate1({
+      id: item._id,
+
+      isDeclined: true,
+      status
+   
+    });
+    router.reload();
+  };
+
+  useEffect(()=>{
+    if(isOpen){
+      setIsDeclined(true)
+
+    }
+   
+    setStatus(select)
+  },[isOpen,select])
+  console.log("teststtst",isOpen)
+  console.log("teststtst222",select)
 
   console.log(isApproved);
   useEffect(() => {
@@ -211,7 +237,7 @@ const Admin: NextPage = () => {
                                     content={
                                       <>
                                         <div className={styles.FormButton}>
-                                          <form>
+                                          <form onSubmit={()=>handleDeclined(item)}>
                                             {/* <label htmlFor="" className={styles.CancelButton}>Reason of Rejection</label> */}
                                             {/* <textarea cols={50} rows={4} /> */}
 

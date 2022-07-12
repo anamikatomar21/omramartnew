@@ -23,6 +23,8 @@ const Test3: NextPage = () => {
   const [email,setEmail] = useState<string>("")
   const [phoneNumber,setPhoneNumber] = useState<string>("")
 
+  const [image,setImage] = useState("");
+
 
 
 
@@ -79,7 +81,28 @@ const Test3: NextPage = () => {
                 <div className={styles.col}>
                   <div className={styles.slider}>
                     <div className={styles.product}>
-                      <Image
+                      {
+                        [1,2,3,4,5].map((index)=>{
+                          if (!item[`product_image${index}`][0]) return null;
+                          return (
+                            <>
+                            <Image
+                        src={
+                          item[`product_image${index}`][0]
+                            ? item[`product_image${index}`][0]
+                            : "/ omratrade/chair1.png"
+                        }
+                        width={150}
+                        height={150}
+                        alt=""
+                        onClick={() =>setImage(item[`product_image${index}`][0]
+                        ? item[`product_image${index}`][0]
+                        : "/ omratrade/chair1.png")}
+                      /></>
+                          )
+                        })
+                      }
+                      {/* <Image
                         src={
                           item.product_image1[0]
                             ? item.product_image1[0]
@@ -88,6 +111,9 @@ const Test3: NextPage = () => {
                         width={150}
                         height={150}
                         alt=""
+                        onClick={() =>setImage(item.product_image1[0]
+                          ? item.product_image1[0]
+                          : "/ omratrade/chair1.png")}
                       />
                       <Image
                         src={
@@ -98,6 +124,9 @@ const Test3: NextPage = () => {
                         width={150}
                         height={150}
                         alt=""
+                          onClick={() =>setImage(item.product_image2[0]
+                            ? item.product_image2[0]
+                            : "/ omratrade/chair1.png")}
                       />
                       <Image
                         src={
@@ -108,6 +137,9 @@ const Test3: NextPage = () => {
                         width={150}
                         height={150}
                         alt=""
+                        onClick={() =>setImage(item.product_image3[0]
+                          ? item.product_image3[0]
+                          : "/ omratrade/chair1.png")}
                       />
                       <Image
                         src={
@@ -118,12 +150,12 @@ const Test3: NextPage = () => {
                         width={150}
                         height={150}
                         alt=""
-                      />
+                      /> */}
                     </div>
                     <div className={styles.preview}>
                       <Image
                         src={
-                          item.product_image1[0]
+                          image? image :item.product_image1[0]
                             ? item.product_image1[0]
                             : "/ omratrade/chair1.png"
                         }

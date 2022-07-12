@@ -49,7 +49,7 @@ const Admin: NextPage = () => {
         <>
           <AdminLayout>
             <div className={"styles.Flex_Container"} style={{marginLeft:"400px"}}>
-              <h1>All Category List</h1>
+              <h1>All Banner List</h1>
               {data?.data.map((item: any, index: any) => {
                 console.log(item.banner_image1[0]);
                 return (

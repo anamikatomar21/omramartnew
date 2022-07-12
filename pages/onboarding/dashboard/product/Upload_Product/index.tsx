@@ -250,6 +250,10 @@ const Upload_Product: NextPage = () => {
       const objectUrl5 = URL.createObjectURL(product_image5);
       setProduct_image5Preview(objectUrl5);
     }
+
+    console.log({"PRODUCT IMAGE 1":product_image1})
+    console.log("PRODUCT IMAGE 2",product_image2)
+    
     // return () => {URL.revokeObjectURL(objectUrl);
     //   URL.revokeObjectURL(objectUrl2);}
   }, [product_image1, product_image2,product_image3, product_image4,product_image5]);
@@ -339,28 +343,28 @@ const Upload_Product: NextPage = () => {
                   <input
                     type="file" 
                     name="product_image2"
-                    onChange={(e: any) => setProduct_image2((e.target.files[0]))}
+                    onChange={(e: any) => setProduct_image2((e.target.files[0] ))}
                   />
                 </div>
                 <div className="col-md-4">
                   <input
                     type="file" 
                     name="product_image3"
-                    onChange={(e: any) => setProduct_image3((e.target.files[0]))}
+                    onChange={(e: any) => setProduct_image3((e.target.files[0] ))}
                   />
                 </div>
                 <div className="col-md-4">
                   <input
                     type="file" 
                     name="product_image4"
-                    onChange={(e: any) => setProduct_image4((e.target.files[0]))}
+                    onChange={(e: any) => setProduct_image4((e.target.files[0] ))}
                   />
                 </div>
                 <div className="col-md-4">
                   <input
                     type="file" 
                     name="product_image5"
-                    onChange={(e: any) => setProduct_image5((e.target.files[0]))}
+                    onChange={(e: any) => setProduct_image5((e.target.files[0] ))}
                   />
                 </div>
 
@@ -400,12 +404,20 @@ const Upload_Product: NextPage = () => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
+                <option value="">
+                  Select Category
+                </option>
                 {category_data?.data.map((item: any, index: any) => {
                   console.log(category);
                   return (
-                    <option key={index} value={item.category_name}>
+                    
+                    
+                      
+                    <option  key={index} value={item.category_name}>
+                      
                       {item.category_name}
                     </option>
+            
                   );
                 })}
               </select>

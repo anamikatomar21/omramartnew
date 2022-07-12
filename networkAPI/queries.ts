@@ -23,6 +23,8 @@ import {
   sellProduct,
   sendEmail,
   updateBannerImage,
+  updateCategory,
+  updateDeclineProduct,
   updateProduct,
   UserDetails,
 } from './api';
@@ -32,8 +34,10 @@ import {
   Login,
   productCategory,
   Register,
+  updateCategoryType,
   UserDetail,
   UserProduct,
+  userProductForDeclined,
   userProductForUpdate,
   userProfile,
 } from './types';
@@ -120,6 +124,12 @@ export const useUpdateProduct = () => useMutation(
   updateProduct(isApproved,id)
 );
 
+export const useDeclinedProduct = () => useMutation(
+  ({ isDeclined,status ,id}:userProductForDeclined): Promise<Object> =>
+  updateDeclineProduct(isDeclined,status,id)
+);
+
+
 
 export const useCategory = () => useMutation(
   ({
@@ -130,6 +140,18 @@ export const useCategory = () => useMutation(
   category_name,
   category_image
 ))
+
+export const useUpdateCategory = () => useMutation(
+  ({ 
+    category_name,
+    category_image ,
+    id
+  }:updateCategoryType): Promise<Object> =>
+  updateCategory(
+    category_name,
+    category_image ,
+    id)
+);
 
 export const useBanner = () => useMutation(
   ({

@@ -6,15 +6,17 @@ import React, {
 
 import { NextPage } from 'next';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import AdminLayout from '../../components/Admin/AdminLayout';
 import { useGetCategory } from '../../networkAPI/queries';
 import styles from '../../styles/Merchant/dashcode.module.scss';
 
-const Admin: NextPage = () => {
+const AllCategory: NextPage = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [select, setSelect] = useState<string>("");
     const dropdownRef = useRef<any>("");
+    const router=useRouter()
   
     const togglePopup = () => {
       setIsOpen(!isOpen);
@@ -49,6 +51,7 @@ const Admin: NextPage = () => {
           <div className={"styles.Flex_Container"} style={{marginLeft:"400px"}}>
             <h1>All Category List</h1>
             {data?.data.map((item: any, index: any) => {
+              console.log(item)
               console.log(item.category_image);
               return (
                 <div key={index} >
@@ -75,9 +78,16 @@ const Admin: NextPage = () => {
                         </tbody>
                         
                       </table>
-  
+                      <button > Delete</button>
+                      <div>
+                          <button onClick={() => router.push(`/admindashboard/banner/edit?_Id=${item._id}`)}>Update</button>
+                      </div>
+                    
+
+                      
                       
                     </div>
+                    
                   </div>
                   </div>
                 </div>
@@ -89,5 +99,5 @@ const Admin: NextPage = () => {
     );
   };
   
-  export default Admin;
+  export default AllCategory;
   

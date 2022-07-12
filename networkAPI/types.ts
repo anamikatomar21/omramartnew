@@ -64,9 +64,25 @@ export type userProductForUpdate={
     id:string
 }
 
+export type userProductForDeclined={
+    isDeclined:boolean;
+    status:String
+   
+    id:string
+}
+
 export type productCategory={
     category_name:string,
     category_image:Blob
+   
+
+
+}
+export type updateCategoryType={
+    category_name:string,
+    category_image:Blob,
+    id:string
+   
 
 
 }

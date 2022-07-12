@@ -4,6 +4,7 @@ import {
   bannerImages,
   UserDetail,
   UserProduct,
+  userProductForDeclined,
   userProductForUpdate,
   userProfile,
 } from './types';
@@ -119,6 +120,20 @@ export const updateProduct = (
       isApproved,
     })
     .then((response) => response.data);
+    //================================== for declined
+
+  export const updateDeclineProduct = (
+    isDeclined:boolean,
+    status:String,
+   
+    id:string
+    ): Promise<Object> =>
+      axios
+        .patch<userProductForDeclined>(`/api/user/update_product/${id}`, {
+          isDeclined,
+          status
+        })
+        .then((response) => response.data);
 
 // axios.get<UserProduct>("/api/user/upload_product",{
 
@@ -164,6 +179,25 @@ export const Category = (
     .post<UserProduct>("/api/category/upload", formData)
     .then((response) => response.data);
 };
+
+
+export const updateCategory = (
+  category_name: string,
+
+  category_image: Blob,
+  id: string
+): Promise<Object> =>{
+
+const formData = new FormData();
+
+formData.append("category_name", category_name);
+
+  formData.append("category_image", category_image);
+
+  return axios
+    .patch<UserProduct>(`/api/category/update_category${id}`, formData)
+    .then((response) => response.data);
+  }
 
 export const getCategory = () => axios.get<any>("/api/category/get_category");
 export const getHomeCategory = () =>
