@@ -103,7 +103,7 @@ const Header: NextPage = () => {
 
       <div className={styles.flex_section}>
         <h1 className={styles.heading_section}>
-          India First Laundry/Dry Cleaning Marketplace
+          India First Laundry & Dry Clean Market Place
         </h1>
       </div>
      
