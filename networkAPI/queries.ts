@@ -10,6 +10,7 @@ import {
   getApprovalProduct,
   getBannerImages,
   getBussinessDetails,
+  getbussinessDetaisById,
   getCategory,
   getCompnyProfile,
   getHomeCategory,
@@ -195,6 +196,9 @@ export const useGetCategory = () => useQuery("category",getCategory)
 export const useGetHomeCategory = () => useQuery("category",getHomeCategory)
 export const useGetProductById= (id:string) =>
   useQuery("myself", (): Promise<any> => getProductById(id));
+
+  export const useGetBussinessById= (id:string) =>
+  useQuery("myself1", (): Promise<any> => getbussinessDetaisById(id));
 
 export const useGetBanner = () =>useQuery('banner',getBannerImages)
 

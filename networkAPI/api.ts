@@ -150,6 +150,7 @@ export const getCompnyProfile = () =>
   axios.get<any>("/api/user/companyprofile");
 export const getBussinessDetails = () => axios.get<any>("/api/user/details");
 
+
 export const getMerchantCredentials = () =>
   axios.get<any>("/api/user/userDetails");
 
@@ -164,6 +165,14 @@ export const getProductById = (id: string): Promise<any> =>
     .catch((error) => {
       throw error;
     });
+
+    export const getbussinessDetaisById = (id: string): Promise<any> =>
+    axios
+      .get<any>(`api/user/details/${id}`)
+      .then((response) => response.data)
+      .catch((error) => {
+        throw error;
+      });
 
 export const Category = (
   category_name: string,

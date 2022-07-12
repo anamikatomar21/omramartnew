@@ -37,6 +37,8 @@ const Test3: NextPage = () => {
     setIsOpen(!isOpen);
   };
   const { data, status } = usePublicProduct();
+  // const {data:data1,status:status1}= useGetBussinessById(id as string)
+  // console.log(data1)
   const {data:dataMail,mutate} = useSendEmail();
   console.log(data);
   //   {data,error,isLoading} = useGetProductById(id)
@@ -637,3 +639,7 @@ const Test3: NextPage = () => {
 };
 
 export default Test3;
+function id(id: any): { data: any; status: any; } {
+  throw new Error('Function not implemented.');
+}
+
