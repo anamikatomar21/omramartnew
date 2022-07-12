@@ -1,33 +1,25 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { useEffect, useRef, useState } from "react";
 
-import type { NextPage } from 'next';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
+import type { NextPage } from "next";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
-import {
-  usePublicProduct,
-  useSendEmail,
-} from '../networkAPI/queries';
-import styles from '../styles/Merchant/productpreview.module.scss';
+import { usePublicProduct, useSendEmail } from "../networkAPI/queries";
+import styles from "../styles/Merchant/productpreview.module.scss";
+import React from "react";
+
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const Test3: NextPage = () => {
   const router = useRouter();
 
   const [isOpen, setIsOpen] = useState(false);
   const [select, setSelect] = useState<string>("");
-  const [description,setDescription] = useState<string>("")
-  const [email,setEmail] = useState<string>("")
-  const [phoneNumber,setPhoneNumber] = useState<string>("")
+  const [description, setDescription] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
 
-  const [image,setImage] = useState("");
-
-
-
-
+  const [image, setImage] = useState("");
 
   const dropdownRef = useRef<any>("");
   const [related_product_merchant, setRelated_product_merchant] =
@@ -37,16 +29,26 @@ const Test3: NextPage = () => {
     setIsOpen(!isOpen);
   };
   const { data, status } = usePublicProduct();
-  const {data:dataMail,mutate} = useSendEmail();
+  const { data: dataMail, mutate } = useSendEmail();
   console.log(data);
   //   {data,error,isLoading} = useGetProductById(id)
 
   const mailData = dataMail as any;
 
-  const handleEmailSend = () =>{
-    const merchant =data?.data.find((item:any)=>item._id == Product_id)
-    mutate({merchantId:merchant.auther_Id,email,phoneNumber,description})
-  }
+  const achorRef=React.useRef<HTMLAnchorElement>(null)
+
+  const handleEmailSend = () => {
+    // For Close MOdel
+    const achorElm=achorRef.current
+    const merchant = data?.data.find((item: any) => item._id == Product_id);
+    mutate({ merchantId: merchant.auther_Id, email, phoneNumber, description });
+    delay(200).then(() => {
+      if(achorElm){
+        achorElm.href='#'
+        achorElm.click()
+      }
+    });
+  };
 
   useEffect(() => {
     if (!isOpen) return;
@@ -81,27 +83,30 @@ const Test3: NextPage = () => {
                 <div className={styles.col}>
                   <div className={styles.slider}>
                     <div className={styles.product}>
-                      {
-                        [1,2,3,4,5].map((index)=>{
-                          if (!item[`product_image${index}`][0]) return null;
-                          return (
-                            <>
+                      {[1, 2, 3, 4, 5].map((index) => {
+                        if (!item[`product_image${index}`][0]) return null;
+                        return (
+                          <>
                             <Image
-                        src={
-                          item[`product_image${index}`][0]
-                            ? item[`product_image${index}`][0]
-                            : "/ omratrade/chair1.png"
-                        }
-                        width={150}
-                        height={150}
-                        alt=""
-                        onClick={() =>setImage(item[`product_image${index}`][0]
-                        ? item[`product_image${index}`][0]
-                        : "/ omratrade/chair1.png")}
-                      /></>
-                          )
-                        })
-                      }
+                              src={
+                                item[`product_image${index}`][0]
+                                  ? item[`product_image${index}`][0]
+                                  : "/ omratrade/chair1.png"
+                              }
+                              width={150}
+                              height={150}
+                              alt=""
+                              onClick={() =>
+                                setImage(
+                                  item[`product_image${index}`][0]
+                                    ? item[`product_image${index}`][0]
+                                    : "/ omratrade/chair1.png"
+                                )
+                              }
+                            />
+                          </>
+                        );
+                      })}
                       {/* <Image
                         src={
                           item.product_image1[0]
@@ -155,12 +160,14 @@ const Test3: NextPage = () => {
                     <div className={styles.preview}>
                       <Image
                         src={
-                          image? image :item.product_image1[0]
+                          image
+                            ? image
+                            : item.product_image1[0]
                             ? item.product_image1[0]
                             : "/ omratrade/chair1.png"
                         }
-                        width={1400}
-                        height={1500}
+                        width={1000}
+                        height={1200}
                         priority
                         id="imagebox"
                         alt=""
@@ -267,13 +274,20 @@ const Test3: NextPage = () => {
                       {item.product_description}
                       <a href="#">Read more..</a>
                     </p>
+
+                    <h3>COMPANY INFORMATION</h3>
+                    <p>
+                      {item.product_description}
+                      <a href="#">Read more..</a>
+                    </p>
+
+
                   </div>
                 </div>
 
                 <div className={styles.col}>
                   <div className={styles.content}>
-                    <h2>Check delivery options ?</h2>
-                    <div className={styles.pincodestyle}>
+                    {/* <div className={styles.pincodestyle}>
                       <div>
                         <input
                           type="text"
@@ -286,9 +300,9 @@ const Test3: NextPage = () => {
                           Check
                         </a>
                       </div>
-                    </div>
+                    </div> */}
 
-                    <p>Shipping charge applicable as per serviceability</p>
+                    {/* <p>Shipping charge applicable as per serviceability</p> */}
 
                     <h3>
                       <a href="#">Victor Imports</a>
@@ -323,38 +337,43 @@ const Test3: NextPage = () => {
               </div>
             </div>
           </div>
-          <div style={{ display: "flex" }}>
+
+          {/* // */}
+          <div className="reouterproduct">
             {data?.data.map((item2: any) => {
               if (item2.category == related_product_merchant) {
                 console.log(item2);
                 return (
-                  <div className=" ">
+                  <div className="relproduct">
                     <div className={styles.columns}>
-                      <div className={styles.items}>
-                       
-                        <Image
-                          src={
-                            item2.product_image1[0]
-                              ? item2.product_image1[0]
-                              : "/omratrade/chair2.png"
-                          }
-                          width={250}
-                          height={250}
-                          priority
-                          alt=""
-                        />
-                         <h2>{item2.product_name}</h2>
-                        <div className={styles.details}>
-                          <p className={styles.product_desc}>{item2.product_description} </p>
-                          <div className={styles.rating}>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-star-half-o"></i>
-                          </div>
+                      <div className={styles.left_product_section}>
+                        <div className={styles.items}>
+                          <Image
+                            src={
+                              item2.product_image1[0]
+                                ? item2.product_image1[0]
+                                : "/omratrade/chair2.png"
+                            }
+                            width={250}
+                            height={250}
+                            priority
+                            alt=""
+                          />
+                          <h2>{item2.product_name}</h2>
+                          <div className={styles.details}>
+                            <p className={styles.product_desc}>
+                              {item2.product_description}{" "}
+                            </p>
+                            <div className={styles.rating}>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star"></i>
+                              <i className="fa fa-star-half-o"></i>
+                            </div>
 
-                          {/* <p>USD $120.00</p> */}
+                            {/* <p>USD $120.00</p> */}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -363,7 +382,6 @@ const Test3: NextPage = () => {
               }
             })}
 
-            
             {/* <div className={styles.columns}>
               <div className={styles.items}>
                 <Image
@@ -383,7 +401,7 @@ const Test3: NextPage = () => {
                   </div>
 
                   {/* <p>USD $110.00</p> */}
-                {/* </div>
+            {/* </div>
               </div>
             </div>
             <div className={styles.columns}>
@@ -407,7 +425,7 @@ const Test3: NextPage = () => {
                 
                 </div>
               </div>
-            </div> */} 
+            </div> */}
           </div>
         </div>
       </div>
@@ -418,12 +436,11 @@ const Test3: NextPage = () => {
         <div id="popup1" className={styles.overlay}>
           <div className={styles.popup}>
             {/* <h2>Info box</h2> */}
-            <a className={styles.close} href="#">
+            <a className={styles.close} ref={achorRef} href="#">
               &times;
             </a>
             <div className={styles.content1}>
               <p className={styles.Font}>Tell us about your requirement</p>
-
               <form className={styles.FormWidth}>
                 <ul>
                   <li>
@@ -431,7 +448,7 @@ const Test3: NextPage = () => {
                       className={styles.TextareaSection}
                       rows={3}
                       cols={70}
-                      onChange={(e)=> setDescription(e.target.value)}
+                      onChange={(e) => setDescription(e.target.value)}
                       value={description}
                       placeholder="Please include product name, order quantity, usage, special requests if any in your inquiry."
                     />
@@ -458,7 +475,7 @@ const Test3: NextPage = () => {
                       <input
                         type="email"
                         className={styles.Input}
-                        onChange={(e)=> setEmail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                         value={email}
                         placeholder="EMAIL ID "
                       />
@@ -509,10 +526,14 @@ const Test3: NextPage = () => {
 
 
                                        </li> */}
-<li>{mailData?.message}</li>
+                  <li>{mailData?.message}</li>
                   <li>
-                    <button type="button" className="submit_button_box" onClick={handleEmailSend} >
-                      <a >SEND INQUIRY</a>
+                    <button
+                      type="button"
+                      className="submit_button_box"
+                      onClick={handleEmailSend}
+                    >
+                      <a>SEND INQUIRY</a>
                     </button>
                   </li>
                 </ul>
@@ -632,7 +653,7 @@ const Test3: NextPage = () => {
                        </div>
                    </div> */}
       </div>
-      </div>
+    </div>
   );
 };
 
