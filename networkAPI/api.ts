@@ -204,7 +204,7 @@ formData.append("category_name", category_name);
   formData.append("category_image", category_image);
 
   return axios
-    .patch<UserProduct>(`/api/category/update_category${id}`, formData)
+    .patch<UserProduct>(`/api/category/update_category/${id}`, formData)
     .then((response) => response.data);
   }
 

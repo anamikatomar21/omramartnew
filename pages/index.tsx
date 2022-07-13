@@ -110,9 +110,13 @@ const CategoryProduct: NextPage = () => {
               {bannerData
                 ?.filter((item: any) => item.type == "advertize")
                 .map((item: any, index: any) => {
+                  console.log(item.banner_image1[0].length)
                   return (
                     <Carousel key={index}>
                       <div>
+                      {item.banner_image1[0].length > 0 && (
+   
+ 
                         <Image
                           src={
                             item.banner_image1[0]
@@ -122,15 +126,18 @@ const CategoryProduct: NextPage = () => {
                           className={styles.imagestyle}
                           width={1450}
                           height={550}
-                          alt="image1"
+                          alt={"advertize"}
                         />
+                        )}
                         {/* <p className="legend">Image 1</p> */}
                       </div>
 
                       <div>
+                      {item.banner_image2[0].length > 0 && (
+   
                         <Image
                           src={
-                            item.banner_image1[0]
+                            item.banner_image2[0]
                               ? item.banner_image2[0]
                               : "/omratrade/homebanner.png"
                           }
@@ -139,13 +146,15 @@ const CategoryProduct: NextPage = () => {
                           height={550}
                           alt="image1"
                         />
+                        )}
                         {/* <p className="legend">Image 2</p> */}
                       </div>
 
                       <div>
+                      {item.banner_image3[0].length > 0 && (
                         <Image
                           src={
-                            item.banner_image1[0]
+                            item.banner_image3[0]
                               ? item.banner_image3[0]
                               : "/omratrade/homebanner.png"
                           }
@@ -154,14 +163,16 @@ const CategoryProduct: NextPage = () => {
                           height={550}
                           alt="image1"
                         />
+                        )}
 
                         {/* <p className="legend">Image 3</p> */}
                       </div>
 
                       <div>
+                      {item.banner_image4[0].length > 0 && (
                         <Image
                           src={
-                            item.banner_image1[0]
+                            item.banner_image4[0]
                               ? item.banner_image4[0]
                               : "/omratrade/homebanner.png"
                           }
@@ -170,21 +181,24 @@ const CategoryProduct: NextPage = () => {
                           height={550}
                           alt="image1"
                         />
+                        )}
 
                         {/* <p className="legend">Image 4</p> */}
                       </div>
 
                       <div>
+                      {/* {item.banner_image5[0].length > 0 && (
                         <Image
                           src={
-                            item.banner_image1[0]
-                              ? item.banner_image4[0]
+                            item.banner_image5[0]
+                              ? item.banner_image5[0]
                               : "/omratrade/homebanner.png"
                           }
                           width={1450}
                           height={550}
                           alt="image1"
                         />
+                        )} */}
                       </div>
                     </Carousel>
                   );
@@ -203,12 +217,13 @@ const CategoryProduct: NextPage = () => {
           <div className={styles.right}>
             <div>
               {bannerData?.map((item: any, index: any) => {
-                console.log(item);
+                console.log(item?.banner_image1[0]);
                 const isAdvwdvwetize = item.type == "advertize";
                 if (item.type == "advertize")
                   return (
                     <Carousel key={index}>
                       <div>
+                           {item.banner_image1[0].length > 0 && ( 
                         <Image
                           src={
                             item.banner_image1[0]
@@ -220,10 +235,12 @@ const CategoryProduct: NextPage = () => {
                           height={450}
                           alt="image1"
                         />
+                        )}
                         {/* <p className="legend">Image 1</p> */}
                       </div>
 
                       <div>
+                      {item.banner_image2[0].length > 0 && ( 
                         <Image
                           src={
                             item.banner_image2[0]
@@ -235,10 +252,12 @@ const CategoryProduct: NextPage = () => {
                           height={450}
                           alt="image1"
                         />
+                        )}
                         {/* <p className="legend">Image 2</p> */}
                       </div>
 
                       <div>
+                      {item.banner_image3[0].length > 0 && ( 
                         <Image
                           src={
                             item.banner_image3[0]
@@ -248,16 +267,19 @@ const CategoryProduct: NextPage = () => {
                           className={styles.imagestyle}
                           width={1450}
                           height={450}
-                          alt="image1"
+                          alt="image44"
                         />
+                        )}
 
                         {/* <p className="legend">Image 3</p> */}
                       </div>
 
                       <div>
+                      {item.banner_image4[0].length > 0 && ( 
+                      
                         <Image
                           src={
-                            item.banner_image4[0]
+                            item?.banner_image4[0]
                               ? item.banner_image4[0]
                               : "/omratrade/homebanner.png"
                           }
@@ -266,17 +288,20 @@ const CategoryProduct: NextPage = () => {
                           height={450}
                           alt="image1"
                         />
+                        )}
 
                         {/* <p className="legend">Image 4</p> */}
                       </div>
 
                       <div>
+                      {/* {item.banner_image3[0].length > 0 && ( 
                         <Image
                           src="/omratrade/homebanner.png"
                           width={1450}
                           height={450}
                           alt="image1"
                         />
+                        )} */}
                       </div>
                     </Carousel>
                   );
@@ -290,7 +315,7 @@ const CategoryProduct: NextPage = () => {
 
         
 
-        <div className={styles.marginarea}></div>
+        {/* <div className={styles.marginarea}></div> */}
        
 
           

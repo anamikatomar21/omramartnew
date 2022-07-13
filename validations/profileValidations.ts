@@ -54,7 +54,7 @@ export const messageMe1Validations = Yup.object().shape({
     )
     .min(10, "PAN must be  10 Alpha Numneric value")
     .max(10, "PAN must be 10 Alpha Numneric value")
-    .required("Required"),
+    
 
    
 

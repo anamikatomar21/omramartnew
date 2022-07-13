@@ -187,7 +187,7 @@ const Test3: NextPage = () => {
                 <div className={styles.col}>
                   <div className={styles.content}>
                     <p className={styles.brand}>
-                      Merchant: {item.SubTypeOf_bussiness}
+                      Business Name: {" "+item.SubTypeOf_bussiness}
                     </p>
                     <h2>{item.product_name}</h2>
                     <div className={styles.ratingnew}>
@@ -237,21 +237,35 @@ const Test3: NextPage = () => {
                           <td> Capacity</td>
                           <td> {item.capacity}</td>
                         </tr>
+                        {item.product_Specification ?
                         <tr>
                           <td> Dimension</td>
 
                           <td> {item.product_Specification} </td>
                         </tr>
-                        <tr>
+                        :""
+          }
+          {
+            item.manufacturer_address?
+            <tr>
                           <td>manufacturer_address</td>
 
                           <td> {item.manufacturer_address}</td>
-                        </tr>
-                        <tr>
+                        </tr> :""
+          }
+                        
+                        {
+                          item.manufacturer_phone_no?
+                          <tr>
                           <td>manufacturer_phone_no</td>
 
                           <td> {item.manufacturer_phone_no}</td>
                         </tr>
+                        :
+                        ""
+
+                        }
+                        
 
                         <tr>
                           <td>model_no</td>
@@ -318,7 +332,7 @@ const Test3: NextPage = () => {
                     </h3>
                     <p>{item.Merchant_Address}</p>
 
-                    <p>GST- 27AAMFV3839L1ZF</p>
+                    {/* <p>GST- 27AAMFV3839L1ZF</p> */}
 
                     <p>Want to buy even more quantity?</p>
                     {/* <button type='submit'  > */}
@@ -615,7 +629,7 @@ const Test3: NextPage = () => {
           <div id="popup3" className={styles.overlay}>
             <div className={styles.popup}>
               {/* <h2>Info box</h2> */}
-              <a className={styles.close} href="#">
+              <a className={styles.close} href="">
                 &times;
               </a>
               <div className={styles.content1}>

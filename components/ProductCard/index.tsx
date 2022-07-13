@@ -9,15 +9,15 @@ import Carousel from 'react-multi-carousel';
 import styles from 'styles/Merchant/updatedproductcard.module.scss';
 
 // function ProductCard({title,data}) {
-  interface Props {
-    title:string,
-    data:any
-  }
-  function ProductCard({title,data}:Props) {
-    console.log({"helloo tsra":data?.data})
-    
+interface Props {
+  title: string;
+  data: any;
+}
+function ProductCard({ title, data }: Props) {
+  console.log({ "helloo tsra": data?.data });
+
   const router = useRouter();
-  
+
   const data2 = useGetCategory();
   const category_data = data2.data;
   console.log(data2.data);
@@ -51,72 +51,76 @@ import styles from 'styles/Merchant/updatedproductcard.module.scss';
   return (
     <div>
       <div key={""}>
-        <h1 className={styles.heading_section} >{title}</h1>
-        {data?.data &&
-        <Carousel responsive={responsive} >
-          {/* <div className="flex-box"> */}
+        <h1 className={styles.heading_section}>{title}</h1>
+        {data?.data && (
+          <Carousel responsive={responsive}>
+            {/* <div className="flex-box"> */}
             {/* <div className={styles.container}> */}
-              {data?.data
-                .filter((item: any) => item.isApproved == true)
-                .map((item: any, index: any) => {
-               
-                    // <div
-                    //   className={styles.productcard}
-                    //   onClick={() => router.push(`/Product?id=${item._id}`)}
-                    //   key={index}
-                    // >
-                    //   <div className={styles.backg}>
-                    //     <div
-                    //       className={styles.imgone}
-                    //       style={{
-                    //         backgroundImage: `url(${item.product_image1[0]})`,
-                    //       }}
-                    //     >
-                    //       <div className={styles.productimg}></div>
-                    //     </div>
-                    //   </div>
-                    //   <div className={styles.producttext}>
-                    //     <h3>{item.product_name}</h3>
-                    //     <p>Merchant Name:{item.vendors_name}</p>
-                    //   </div>
-                    //   <div className={styles.productcart}>
-                    //     <button
-                    //       type="submit"
-                    //       onClick={() => router.push(`/Product?id=${item._id}`)}
-                    //     >
-                    //       View More
-                    //     </button>
-                    //   </div>
-                    // </div>
-                    return (
-        <div className={styles.cardproduct} key={index}>
-        <div className={styles.productimg}>
-          <Image src={item.product_image1[0]?item.product_image1[0]:""} height={200} width={200} alt="productr image" className={styles.productimagesrc}/>
-        </div>
-        <div className={styles.productcontent}>
-        <h4>{item.product_name}</h4>
-        <p>{item.vendors_name}</p>
-        </div>
-        <div className={styles.productcartbtn}>
-        <button
-                          type="submit"
-                          onClick={() => router.push(`/Product?id=${item._id}`)}
-                        >
-                          View More
-                        </button>
-        </div>
-        </div>
-
-                    
-                  );
-                })}
+            {data?.data
+              .filter((item: any) => item.isApproved == true)
+              .map((item: any, index: any) => {
+                // <div
+                //   className={styles.productcard}
+                //   onClick={() => router.push(`/Product?id=${item._id}`)}
+                //   key={index}
+                // >
+                //   <div className={styles.backg}>
+                //     <div
+                //       className={styles.imgone}
+                //       style={{
+                //         backgroundImage: `url(${item.product_image1[0]})`,
+                //       }}
+                //     >
+                //       <div className={styles.productimg}></div>
+                //     </div>
+                //   </div>
+                //   <div className={styles.producttext}>
+                //     <h3>{item.product_name}</h3>
+                //     <p>Merchant Name:{item.vendors_name}</p>
+                //   </div>
+                //   <div className={styles.productcart}>
+                //     <button
+                //       type="submit"
+                //       onClick={() => router.push(`/Product?id=${item._id}`)}
+                //     >
+                //       View More
+                //     </button>
+                //   </div>
+                // </div>
+                return (
+                  <div className={styles.cardproduct} key={index}>
+                    <div className={styles.productimg}>
+                      <Image
+                        src={
+                          item.product_image1[0]
+                            ? item.product_image1[0]
+                            : "/omratrade/homebanner.png"
+                        }
+                        height={200}
+                        width={200}
+                        alt="productr image"
+                        className={styles.productimagesrc}
+                      />
+                    </div>
+                    <div className={styles.productcontent}>
+                      <h4>{item.product_name}</h4>
+                      <p>{item.vendors_name}</p>
+                    </div>
+                    <div className={styles.productcartbtn}>
+                      <button
+                        type="submit"
+                        onClick={() => router.push(`/Product?id=${item._id}`)}
+                      >
+                        View More
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
             {/* </div> */}
-          {/* </div> */}
-         
-          
-        </Carousel>
-  }
-       
+            {/* </div> */}
+          </Carousel>
+        )}
       </div>
     </div>
   );

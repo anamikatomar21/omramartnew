@@ -179,6 +179,10 @@ const Admin: NextPage = () => {
                                 <td>{item.product_name}</td>
                               </tr>
                               <tr>
+                                <td>Product Category</td>
+                                <td>{item.category}</td>
+                              </tr>
+                              <tr>
                                 <td>Product Price(per/unit)</td>
                                 <td>{item.price}</td>
                               </tr>
