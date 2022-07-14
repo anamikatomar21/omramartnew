@@ -1,9 +1,11 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { NextPage } from "next";
-import { useOnClickOutside } from "usehooks-ts";
-import styles from "../../styles/Merchant/Header.module.scss";
+import React from 'react';
+
+import { NextPage } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useOnClickOutside } from 'usehooks-ts';
+
+import styles from '../../styles/Merchant/Header.module.scss';
 
 interface SearchProps {
   citySearch: string;
@@ -151,7 +153,7 @@ const Header: NextPage = () => {
 
       <div className={styles.flex_section}>
         <h1 className={styles.heading_section}>
-          India First Laundry/Dry Cleaning Marketplace
+        India First laundry & Dry Clean Market Place
         </h1>
       </div>
 

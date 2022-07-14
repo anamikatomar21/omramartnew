@@ -26,10 +26,10 @@ const AdminSidebar: NextPage = () => {
               <li><Link href="/admindashboard/banner/add_banners">Add Banner</Link></li>
               <li><Link href="/admindashboard/banner">All Banner</Link></li>
               <li><Link href="/admindashboard/approved_listing">Seller Products</Link></li>
-              <li><Link href="/admindashboard/index">Approved Listing</Link></li>
+              <li><Link href="/admindashboard/approved_product">Approved Listing</Link></li>
               <li><Link href="">Edit Listing</Link></li>
               <li><Link href="">Deleted Listing</Link></li>
-              <li><Link href="">Reject Listing</Link></li>
+              <li><Link href="/admindashboard/rejected_listing">Reject Listing</Link></li>
               <li><Link href="">Block User</Link></li>
        
 

@@ -352,7 +352,7 @@ const Test3: NextPage = () => {
           }
         })}
 
-        <div className="related">
+        <div className="related containerr ">
           <div className="container">
             <div className="row">
               <div className="marg">
@@ -368,9 +368,9 @@ const Test3: NextPage = () => {
                 console.log(item2);
                 return (
                   <div className="relproduct">
-                    <div className={styles.columns}>
-                      <div className={styles.left_product_section}>
-                        <div className={styles.items}>
+                    <div className="columns">
+                      <div className="left_product_section">
+                        <div className="items">
                           <Image
                             src={
                               item2.product_image1[0]
@@ -383,9 +383,9 @@ const Test3: NextPage = () => {
                             alt=""
                           />
                           <h2>{item2.product_name}</h2>
-                          <div className={styles.details}>
-                            <p className={styles.product_desc}>
-                              {item2.product_description}{" "}
+                          <div className="details">
+                            <p className="product_desc">
+                              {item2.product_description} 
                             </p>
                             <div className={styles.rating}>
                               <i className="fa fa-star"></i>

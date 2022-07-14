@@ -6,7 +6,8 @@ import React, {
 
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
+import { useAppSelector } from 'redux/hooks';
 
 import AdminLayout from '../../../components/Admin/AdminLayout';
 import { useGetBanner } from '../../../networkAPI/queries';
@@ -17,6 +18,23 @@ const Admin: NextPage = () => {
       const [isOpen, setIsOpen] = useState(false);
       const [select, setSelect] = useState<string>("");
       const dropdownRef = useRef<any>("");
+
+
+      const { error, user, isAuthenticated } = useAppSelector(
+        (state) => state.user
+      );
+    
+      useEffect(() => {
+        if (isAuthenticated) {
+          if (user.role === "SuperAdmin") {
+            return;
+          } else {
+            Router.push(`/`);
+          }
+        } else {
+          Router.push(`/`);
+        }
+      }, [user, isAuthenticated]);
     
       const togglePopup = () => {
         setIsOpen(!isOpen);

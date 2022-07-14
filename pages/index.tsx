@@ -40,6 +40,7 @@ const CategoryProduct: NextPage = () => {
     setIsOpen(!isOpen);
   };
   const { data, status } = usePublicProduct();
+  console.log("hekhvhdshds",data)
   const { data:booksProduct, status :status1} = useProductsByCategory(" Laundry Machine & Equipment ");
   const { data:booksProduct1, status :status2} = useProductsByCategory("Dryclean Machine & Equipment ")
   const { data:booksProduct2, status :status3} = useProductsByCategory("Chemical & Detergent ")

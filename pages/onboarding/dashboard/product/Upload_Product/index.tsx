@@ -6,7 +6,7 @@ import React, {
 import { AxiosError } from 'axios';
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 import {
   Col,
@@ -20,6 +20,7 @@ import {
   useGetCategory,
   userProduct,
 } from '../../../../../networkAPI/queries';
+import { useAppSelector } from '../../../../../redux/hooks';
 import styles from '../../../../../styles/Merchant/uploadproduct.module.scss';
 
 // interface Person {
@@ -35,11 +36,38 @@ import styles from '../../../../../styles/Merchant/uploadproduct.module.scss';
 // }
 interface SpecificationsBox {
   atribute: string;
-  Values: number;
+  Values: string;
 }
 
 const Upload_Product: NextPage = () => {
-  const [inputList, setInputList] = useState<any>([
+
+
+  const { error:err,user, isAuthenticated} = useAppSelector((state) => state.user);
+
+  useEffect(()=> {
+
+
+      if(isAuthenticated){
+          if(user.role==="Admin"){
+              return
+
+          }
+          // else{
+          //     Router.push(`/`)
+
+          // }
+          
+      }else{
+          Router.push(`/`)
+
+      }
+
+
+
+  },[user, isAuthenticated])
+
+
+  const [additionalSpecification, setadditionalSpecification] = useState<any>([
     {
       atribute: "",
       Values: "",
@@ -105,22 +133,25 @@ const Upload_Product: NextPage = () => {
   const handleInputChange = (e: any, index: any) => {
     e.preventDefault();
     const { name, value } = e.target;
-    const list = [...inputList];
+    const list = [...additionalSpecification];
     list[index][name] = value;
-    setInputList(list);
+    setadditionalSpecification(list);
+    console.log({"additionalSpecification":list})
   };
+  console.log(additionalSpecification)
+  
 
   const handleRemoveClick = (e: any, index: any) => {
     e.preventDefault();
 
-    const list = [...inputList];
+    const list = [...additionalSpecification];
     list.splice(index, 1);
-    setInputList(list);
+    setadditionalSpecification(list);
   };
 
   const handleAddClick = (e: any) => {
     e.preventDefault();
-    setInputList([...inputList, { atribute: "", Values: "" }]);
+    setadditionalSpecification([...additionalSpecification, { atribute: "", Values: "" }]);
   };
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
@@ -154,7 +185,7 @@ const Upload_Product: NextPage = () => {
       sub_category,
 
       price,
-      inputList,
+      additionalSpecification,
 
       product_Specification,
 
@@ -208,7 +239,7 @@ const Upload_Product: NextPage = () => {
 
   // ];
 
-  console.log(inputList);
+  console.log(additionalSpecification);
 
   const options1 = [
     { value: "Wholesaler", label: "Wholesaler" },
@@ -685,19 +716,20 @@ const Upload_Product: NextPage = () => {
             </li>
 
             <h4> Additional Specifications</h4>
-            {inputList.map((y: any, i: any) => {
+            {additionalSpecification.map((y: any, i: any) => {
+              console.log({"attr":y.atribute,"values":y.Values})
               return (
                 // eslint-disable-next-line react/jsx-key
                 <div style={{ display: "flex" }}>
                   <Row key={i}>
                     <Col md="4">
                       <FormGroup>
-                        {/* <label
+                        <label
                           className="form-control-label"
                           htmlFor="atribute"
                         >
                           Atribute:
-                        </label> */}
+                        </label>
                         <Input
                           className="inputValuesAttibute"
                           id="atribute"
@@ -711,12 +743,12 @@ const Upload_Product: NextPage = () => {
                     </Col>
                     <Col md="4">
                       <FormGroup>
-                        {/* <label
+                        <label
                           className="form-control-label"
                           htmlFor="Values"
                         >
                           Number:
-                        </label> */}
+                        </label>
                         <Input
                           className="inputValuesForm"
                           id="Values"
@@ -727,12 +759,13 @@ const Upload_Product: NextPage = () => {
                           value={y.Values}
                           onChange={(e) => handleInputChange(e, i)}
                         />
+                        
                       </FormGroup>
                     </Col>
 
                     <Col md="4">
                       <div className="btn-box mt-4">
-                        {inputList.length !== 1 && (
+                        {additionalSpecification.length !== 1 && (
                           <a
                             href=""
                             className="inputValueCancel"
@@ -741,7 +774,7 @@ const Upload_Product: NextPage = () => {
                             X
                           </a>
                         )}
-                        {inputList.length - 1 === i && (
+                        {additionalSpecification.length - 1 === i && (
                           <a
                             href=""
                             className="btn btn-warning mt-2"

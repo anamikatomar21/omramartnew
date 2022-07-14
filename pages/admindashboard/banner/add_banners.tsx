@@ -5,8 +5,9 @@ import React, {
 
 import { AxiosError } from 'axios';
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
+import { useAppSelector } from 'redux/hooks';
 
 import AdminLayout from '../../../components/Admin/AdminLayout';
 import { useBanner } from '../../../networkAPI/queries';
@@ -26,6 +27,10 @@ const Upload_Banner: NextPage = () => {
     count: 12,
   };
   const router = useRouter();
+  const { error:err, user, isAuthenticated } = useAppSelector(
+    (state) => state.user
+  );
+
 
   const [banner_name, setBanner_name] = useState<string>("");
   const [type ,setType] = useState<string>("")
@@ -95,6 +100,17 @@ const Upload_Banner: NextPage = () => {
   function handleChange() {
     return "helo";
   }
+  useEffect(() => {
+    if (isAuthenticated) {
+      if (user.role === "SuperAdmin") {
+        return;
+      } else {
+        Router.push(`/`);
+      }
+    } else {
+      Router.push(`/`);
+    }
+  }, [user, isAuthenticated]);
   return (
     <AdminLayout>
       <div className={styles.mov}>

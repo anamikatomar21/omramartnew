@@ -6,7 +6,7 @@ import React, {
 import { AxiosError } from 'axios';
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 import {
   Col,
@@ -18,8 +18,9 @@ import {
 import DashboardLayout from '../../../../../components/Merchant/Layout';
 import {
   useGetCategory,
-  userProduct,
+  useUpdateMerchantProduct,
 } from '../../../../../networkAPI/queries';
+import { useAppSelector } from '../../../../../redux/hooks';
 import styles from '../../../../../styles/Merchant/uploadproduct.module.scss';
 
 // interface Person {
@@ -35,16 +36,58 @@ import styles from '../../../../../styles/Merchant/uploadproduct.module.scss';
 // }
 interface SpecificationsBox {
   atribute: string;
-  Values: number;
+  Values: string;
 }
 
 const Upload_Product: NextPage = () => {
-  const [inputList, setInputList] = useState<any>([
-    {
+
+
+  const { error:err,user, isAuthenticated} = useAppSelector((state) => state.user);
+
+  useEffect(()=> {
+
+
+      if(isAuthenticated){
+          if(user.role==="Admin"){
+              return
+
+          }
+          // else{
+          //     Router.push(`/`)
+
+          // }
+          
+      }else{
+          Router.push(`/`)
+
+      }
+
+
+
+  },[user, isAuthenticated])
+
+
+
+
+
+
+
+
+
+
+  //==========================================================================
+  const [additionalSpecification, setAdditionalSpecification] = useState<any>(
+    [ {
       atribute: "",
       Values: "",
-    },
-  ]);
+    },]
+ 
+  );
+
+  // {
+  //   atribute: "",
+  //   Values: "",
+  // },
 
   const [Vendor_Id, setVendor_Id] = useState<string>("");
   const [isApproved, setisApproved] = useState<boolean>(false);
@@ -94,33 +137,59 @@ const Upload_Product: NextPage = () => {
 
   // const [product_name,setProduct_name] =useState<string>("")
   const router = useRouter();
+  const _Id = router.query.id
+  console.log({"hellooo India":_Id})
 
-  const { error, isLoading, data, mutate } = userProduct();
-  console.log(data);
+  const { error, isLoading, data, mutate } = useUpdateMerchantProduct();
+  console.log(data)
 
   const field_color = {
     color: "red",
   };
 
+ 
+
+ 
+
+  // const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+
+  //   mutate({
+      
+
+  //     category_name,
+
+  //     category_image,
+  //     id:_Id as string
+
+      
+     
+  //   });
+  // };
+
   const handleInputChange = (e: any, index: any) => {
     e.preventDefault();
     const { name, value } = e.target;
-    const list = [...inputList];
+    const list = [...additionalSpecification];
     list[index][name] = value;
-    setInputList(list);
+    setAdditionalSpecification(list);
+    console.log("nanandhgvggfd",list)
   };
 
   const handleRemoveClick = (e: any, index: any) => {
     e.preventDefault();
 
-    const list = [...inputList];
+
+
+
+    const list = [...additionalSpecification];
     list.splice(index, 1);
-    setInputList(list);
+    setAdditionalSpecification(list);
   };
 
   const handleAddClick = (e: any) => {
     e.preventDefault();
-    setInputList([...inputList, { atribute: "", Values: "" }]);
+    setAdditionalSpecification([...additionalSpecification, { atribute: "", Values: "" }]);
   };
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
@@ -154,7 +223,7 @@ const Upload_Product: NextPage = () => {
       sub_category,
 
       price,
-      inputList,
+      additionalSpecification,
 
       product_Specification,
 
@@ -165,6 +234,7 @@ const Upload_Product: NextPage = () => {
       model_no,
 
       videos,
+      id:_Id as string
     });
   };
 
@@ -208,7 +278,7 @@ const Upload_Product: NextPage = () => {
 
   // ];
 
-  console.log(inputList);
+  console.log(additionalSpecification);
 
   const options1 = [
     { value: "Wholesaler", label: "Wholesaler" },
@@ -240,16 +310,20 @@ const Upload_Product: NextPage = () => {
     }
     if (product_image3) {
       const objectUrl3 = URL.createObjectURL(product_image3);
-      setProduct_image2Preview(objectUrl3);
+      setProduct_image3Preview(objectUrl3);
     }
     if (product_image4) {
       const objectUrl4 = URL.createObjectURL(product_image4);
-      setProduct_image2Preview(objectUrl4);
+      setProduct_image4Preview(objectUrl4);
     }
     if (product_image5) {
       const objectUrl5 = URL.createObjectURL(product_image5);
-      setProduct_image2Preview(objectUrl5);
+      setProduct_image5Preview(objectUrl5);
     }
+
+    console.log({"PRODUCT IMAGE 1":product_image1})
+    console.log("PRODUCT IMAGE 2",product_image2)
+    
     // return () => {URL.revokeObjectURL(objectUrl);
     //   URL.revokeObjectURL(objectUrl2);}
   }, [product_image1, product_image2,product_image3, product_image4,product_image5]);
@@ -273,7 +347,7 @@ const Upload_Product: NextPage = () => {
                   />
                 )}
               </div>
-              {/* <div>
+              <div>
                 {product_image2Preview && (
                   <Image
                     src={product_image2Preview}
@@ -283,7 +357,40 @@ const Upload_Product: NextPage = () => {
                     alt=""
                   />
                 )}
-              </div> */}
+              </div>
+              <div>
+                {product_image3Preview && (
+                  <Image
+                    src={product_image3Preview}
+                    className={styles.imagestyle2}
+                    width={200}
+                    height={200}
+                    alt=""
+                  />
+                )}
+              </div>
+              <div>
+                {product_image4Preview && (
+                  <Image
+                    src={product_image4Preview}
+                    className={styles.imagestyle2}
+                    width={200}
+                    height={200}
+                    alt=""
+                  />
+                )}
+              </div>
+              <div>
+                {product_image5Preview && (
+                  <Image
+                    src={product_image5Preview}
+                    className={styles.imagestyle2}
+                    width={200}
+                    height={200}
+                    alt=""
+                  />
+                )}
+              </div>
             </div>
           </li>
 
@@ -298,15 +405,36 @@ const Upload_Product: NextPage = () => {
                   <input
                     type="file"
                     name="product_image"
-                    onChange={(e: any) => setProduct_image1(e.target.files[0])}
+                    onChange={(e: any) => setProduct_image1((e.target.files[0]))}
                   />
                 </div>
 
                 <div className="col-md-4">
                   <input
-                    type="file" multiple
+                    type="file" 
                     name="product_image2"
-                    // onChange={(e: any) => setProduct_image2(URL.createObjectURL(e.target.files[0]))}
+                    onChange={(e: any) => setProduct_image2((e.target.files[0] ))}
+                  />
+                </div>
+                <div className="col-md-4">
+                  <input
+                    type="file" 
+                    name="product_image3"
+                    onChange={(e: any) => setProduct_image3((e.target.files[0] ))}
+                  />
+                </div>
+                <div className="col-md-4">
+                  <input
+                    type="file" 
+                    name="product_image4"
+                    onChange={(e: any) => setProduct_image4((e.target.files[0] ))}
+                  />
+                </div>
+                <div className="col-md-4">
+                  <input
+                    type="file" 
+                    name="product_image5"
+                    onChange={(e: any) => setProduct_image5((e.target.files[0] ))}
                   />
                 </div>
 
@@ -346,12 +474,20 @@ const Upload_Product: NextPage = () => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
+                <option value="">
+                  Select Category
+                </option>
                 {category_data?.data.map((item: any, index: any) => {
                   console.log(category);
                   return (
-                    <option key={index} value={item.category_name}>
+                    
+                    
+                      
+                    <option  key={index} value={item.category_name}>
+                      
                       {item.category_name}
                     </option>
+            
                   );
                 })}
               </select>
@@ -619,19 +755,19 @@ const Upload_Product: NextPage = () => {
             </li>
 
             <h4> Additional Specifications</h4>
-            {inputList.map((y: any, i: any) => {
+            {additionalSpecification.map((y: any, i: any) => {
               return (
                 // eslint-disable-next-line react/jsx-key
                 <div style={{ display: "flex" }}>
                   <Row key={i}>
                     <Col md="4">
                       <FormGroup>
-                        {/* <label
+                        <label
                           className="form-control-label"
                           htmlFor="atribute"
                         >
                           Atribute:
-                        </label> */}
+                        </label>
                         <Input
                           className="inputValuesAttibute"
                           id="atribute"
@@ -645,12 +781,12 @@ const Upload_Product: NextPage = () => {
                     </Col>
                     <Col md="4">
                       <FormGroup>
-                        {/* <label
+                        <label
                           className="form-control-label"
                           htmlFor="Values"
                         >
                           Number:
-                        </label> */}
+                        </label>
                         <Input
                           className="inputValuesForm"
                           id="Values"
@@ -666,7 +802,7 @@ const Upload_Product: NextPage = () => {
 
                     <Col md="4">
                       <div className="btn-box mt-4">
-                        {inputList.length !== 1 && (
+                        {additionalSpecification.length !== 1 && (
                           <a
                             href=""
                             className="inputValueCancel"
@@ -675,7 +811,7 @@ const Upload_Product: NextPage = () => {
                             X
                           </a>
                         )}
-                        {inputList.length - 1 === i && (
+                        {additionalSpecification.length - 1 === i && (
                           <a
                             href=""
                             className="btn btn-warning mt-2"

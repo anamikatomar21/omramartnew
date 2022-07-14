@@ -5,6 +5,8 @@ import React, {
 } from 'react';
 
 import { NextPage } from 'next';
+import Router from 'next/router';
+import { useAppSelector } from 'redux/hooks';
 
 import AdminLayout from '../../../components/Admin/AdminLayout';
 import { useGetCategory } from '../../../networkAPI/queries';
@@ -17,6 +19,7 @@ const Admin: NextPage = () => {
       const togglePopup = () => {
         setIsOpen(!isOpen);
       };
+      const {error:err,user,isAuthenticated} = useAppSelector((state)=> state.user)
       const { data, status } = useGetCategory();
   
   //     const allData=data?.data
@@ -40,6 +43,18 @@ const Admin: NextPage = () => {
         window.addEventListener("click", handleOutsideClick);
         return () => window.removeEventListener("click", handleOutsideClick);
       }, [isOpen]);
+
+      useEffect(() => {
+        if (isAuthenticated) {
+          if (user.role === "SuperAdmin") {
+            return;
+          } else {
+            Router.push(`/`);
+          }
+        } else {
+          Router.push(`/`);
+        }
+      }, [user, isAuthenticated]);
     
       return (
         <>

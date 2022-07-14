@@ -42,7 +42,7 @@ export type UserProduct = {
     manufacturer_phone_no:string;
     manufacturer_address:string;
     brand:string;
-    inputList:any;
+    additionalSpecification:any;
     isApproved:boolean;
     
     product_image1:Blob;
@@ -58,6 +58,36 @@ export type UserProduct = {
     capacity:string;
     model_no:string;
     videos:string;
+};
+
+export type UserProductType = {
+    Vendor_Id: string;
+    auther_Id: string;
+    vendors_name:string;
+   
+    
+    product_name:string;
+    TypesOf_Bussiness:string;
+    manufacturer_phone_no:string;
+    manufacturer_address:string;
+    brand:string;
+    additionalSpecification:Blob;
+    isApproved:boolean;
+    
+    product_image1:Blob;
+    product_image2:Blob;
+    product_image3:Blob;
+    product_image4:Blob;
+    product_image5:Blob;
+    category:string;
+    sub_category:string;
+    price:string;
+    product_Specification:string;
+    product_description:string;
+    capacity:string;
+    model_no:string;
+    videos:string;
+    id:string;
 };
 export type userProductForUpdate={
     isApproved:boolean;
