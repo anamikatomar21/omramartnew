@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     );
   }, []);
 
-  console.log({store:store.getState()});
+  // console.log({store:store.getState()});
 
   return (
 

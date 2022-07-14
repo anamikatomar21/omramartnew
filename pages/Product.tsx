@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
+import React, { Component } from "react";
 
 import type { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
-
+import Carousel from "react-multi-carousel";
 import { usePublicProduct, useSendEmail } from "../networkAPI/queries";
 import styles from "../styles/Merchant/productpreview.module.scss";
-import React from "react";
-
+// import React from "react";
+import "react-multi-carousel/lib/styles.css";
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const Test3: NextPage = () => {
@@ -35,17 +36,17 @@ const Test3: NextPage = () => {
 
   const mailData = dataMail as any;
 
-  const achorRef=React.useRef<HTMLAnchorElement>(null)
+  const achorRef = React.useRef<HTMLAnchorElement>(null);
 
   const handleEmailSend = () => {
     // For Close MOdel
-    const achorElm=achorRef.current
+    const achorElm = achorRef.current;
     const merchant = data?.data.find((item: any) => item._id == Product_id);
     mutate({ merchantId: merchant.auther_Id, email, phoneNumber, description });
     delay(200).then(() => {
-      if(achorElm){
-        achorElm.href='#'
-        achorElm.click()
+      if (achorElm) {
+        achorElm.href = "#";
+        achorElm.click();
       }
     });
   };
@@ -71,6 +72,32 @@ const Test3: NextPage = () => {
     });
   }, [Product_id, data]);
   console.log(related_product_merchant);
+
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+
+      items: 5,
+    },
+
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+
+      items: 5,
+    },
+
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+
+      items: 3,
+    },
+
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+
+      items: 1,
+    },
+  };
 
   return (
     <div>
@@ -107,55 +134,7 @@ const Test3: NextPage = () => {
                           </>
                         );
                       })}
-                      {/* <Image
-                        src={
-                          item.product_image1[0]
-                            ? item.product_image1[0]
-                            : "/ omratrade/chair1.png"
-                        }
-                        width={150}
-                        height={150}
-                        alt=""
-                        onClick={() =>setImage(item.product_image1[0]
-                          ? item.product_image1[0]
-                          : "/ omratrade/chair1.png")}
-                      />
-                      <Image
-                        src={
-                          item.product_image2[0]
-                            ? item.product_image2[0]
-                            : "/ omratrade/chair1.png"
-                        }
-                        width={150}
-                        height={150}
-                        alt=""
-                          onClick={() =>setImage(item.product_image2[0]
-                            ? item.product_image2[0]
-                            : "/ omratrade/chair1.png")}
-                      />
-                      <Image
-                        src={
-                          item.product_image3[0]
-                            ? item.product_image3[0]
-                            : "/ omratrade/chair1.png"
-                        }
-                        width={150}
-                        height={150}
-                        alt=""
-                        onClick={() =>setImage(item.product_image3[0]
-                          ? item.product_image3[0]
-                          : "/ omratrade/chair1.png")}
-                      />
-                      <Image
-                        src={
-                          item.product_image4[0]
-                            ? item.product_image4[0]
-                            : "/ omratrade/chair1.png"
-                        }
-                        width={150}
-                        height={150}
-                        alt=""
-                      /> */}
+               
                     </div>
                     <div className={styles.preview}>
                       <Image
@@ -200,26 +179,7 @@ const Test3: NextPage = () => {
                           <td> Brand</td>
                           <td> {item.brand} </td>
                         </tr>
-                        {/* <tr>
-
-                                       <td > Brand</td>
-                                       <td > Mezonite </td>
-                                   </tr>
-                                   <tr>
-
-                                       <td > Brand</td>
-                                       <td > Mezonite </td>
-                                   </tr> */}
-                        {/* <tr>
-
-                                       <td > Brand</td>
-                                       <td > Mezonite </td>
-                                   </tr> */}
-                        {/* <tr>
-
-                                       <td > Brand</td>
-                                       <td > Mezonite </td>
-                                   </tr> */}
+                     
                         <tr>
                           <td> Usage/Application </td>
                           <td> {item.category} </td>
@@ -280,8 +240,6 @@ const Test3: NextPage = () => {
                       {item.product_description}
                       <a href="#">Read more..</a>
                     </p>
-
-
                   </div>
                 </div>
 
@@ -329,7 +287,7 @@ const Test3: NextPage = () => {
           }
         })}
 
-        <div className="related">
+        <div className="related containerr">
           <div className="container">
             <div className="row">
               <div className="marg">
@@ -339,94 +297,54 @@ const Test3: NextPage = () => {
           </div>
 
           {/* // */}
-          <div className="reouterproduct">
-            {data?.data.map((item2: any) => {
-              if (item2.category == related_product_merchant) {
-                console.log(item2);
-                return (
-                  <div className="relproduct">
-                    <div className={styles.columns}>
-                      <div className={styles.left_product_section}>
-                        <div className={styles.items}>
-                          <Image
-                            src={
-                              item2.product_image1[0]
-                                ? item2.product_image1[0]
-                                : "/omratrade/chair2.png"
-                            }
-                            width={250}
-                            height={250}
-                            priority
-                            alt=""
-                          />
-                          <h2>{item2.product_name}</h2>
-                          <div className={styles.details}>
-                            <p className={styles.product_desc}>
-                              {item2.product_description}{" "}
-                            </p>
-                            <div className={styles.rating}>
-                              <i className="fa fa-star"></i>
-                              <i className="fa fa-star"></i>
-                              <i className="fa fa-star"></i>
-                              <i className="fa fa-star"></i>
-                              <i className="fa fa-star-half-o"></i>
-                            </div>
 
-                            {/* <p>USD $120.00</p> */}
+          <Carousel responsive={responsive}>
+            <div className="reouterproduct">
+              {data?.data.map((item2: any) => {
+                if (item2.category == related_product_merchant) {
+                  console.log(item2);
+                  return (
+                       
+                    <div className="relproduct">
+                      <div className={styles.columns}>
+                        <div className={styles.left_product_section}>
+                          <div className={styles.items}>
+                            <Image
+                              src={
+                                item2.product_image1[0]
+                                  ? item2.product_image1[0]
+                                  : "/omratrade/chair2.png"
+                              }
+                              width={250}
+                              height={250}
+                              priority
+                              alt=""
+                            />
+                            <h2>{item2.product_name}</h2>
+                            <div className={styles.details}>
+                              <p className={styles.product_desc}>
+                                {item2.product_description}{" "}
+                              </p>
+                              <div className={styles.rating}>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star-half-o"></i>
+                              </div>
+
+                              {/* <p>USD $120.00</p> */}
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                );
-              }
-            })}
-
-            {/* <div className={styles.columns}>
-              <div className={styles.items}>
-                <Image
-                  src="/omratrade/chair2.png"
-                  width={500}
-                  height={500}
-                  alt=""
-                />
-                <div className={styles.details}>
-                  <p>Lorem ipsum dolor ipsum </p>
-                  <div className={styles.rating}>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star-o"></i>
-                  </div>
-
-                  {/* <p>USD $110.00</p> */}
-            {/* </div>
-              </div>
+                    
+                  );
+                }
+              })}
             </div>
-            <div className={styles.columns}>
-              <div className={styles.items}>
-                <Image
-                  src="/omratrade/chair2.png"
-                  width={500}
-                  height={500}
-                  alt=""
-                />
-                <div className={styles.details}>
-                  <p>Printed Straight Kurta</p>
-                  <div className={styles.rating}>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star-half-o"></i>
-                    <i className="fa fa-star-o"></i>
-                  </div>
-
-                
-                </div>
-              </div>
-            </div> */}
-          </div>
+          </Carousel> ; 
         </div>
       </div>
 
