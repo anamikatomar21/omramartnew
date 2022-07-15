@@ -5,12 +5,17 @@ import React, {
 } from 'react';
 
 import { NextPage } from 'next';
+import Router from 'next/router';
+import { useAppSelector } from 'redux/hooks';
 
 import AdminLayout from '../../components/Admin/AdminLayout';
 import { useProducts } from '../../networkAPI/queries';
 import styles from '../../styles/Merchant/dashcode.module.scss';
 
 const All_merchant: NextPage = () =>{
+  const { error:err, user, isAuthenticated } = useAppSelector(
+    (state) => state.user
+  );
 
     const [isOpen, setIsOpen] = useState(false);
     const [select, setSelect] = useState<string>("");
@@ -33,6 +38,18 @@ const All_merchant: NextPage = () =>{
       window.addEventListener("click", handleOutsideClick);
       return () => window.removeEventListener("click", handleOutsideClick);
     }, [isOpen]);
+
+    useEffect(() => {
+      if (isAuthenticated) {
+        if (user.role === "SuperAdmin") {
+          return;
+        } else {
+          Router.push(`/`);
+        }
+      } else {
+        Router.push(`/`);
+      }
+    }, [user, isAuthenticated]);
   return (
     <div>
            <AdminLayout>

@@ -5,8 +5,9 @@ import React, {
 
 import { AxiosError } from 'axios';
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
+import { useAppSelector } from 'redux/hooks';
 
 import AdminLayout from '../../../components/Admin/AdminLayout';
 import { useUpdateBanner } from '../../../networkAPI/queries';
@@ -25,6 +26,21 @@ interface Person {
       age: 25,
       count: 12,
     };
+    const { error:err, user, isAuthenticated } = useAppSelector(
+      (state) => state.user
+    );
+  
+    useEffect(() => {
+      if (isAuthenticated) {
+        if (user.role === "SuperAdmin") {
+          return;
+        } else {
+          Router.push(`/`);
+        }
+      } else {
+        Router.push(`/`);
+      }
+    }, [user, isAuthenticated]);
     const router = useRouter();
     const _Id =router.query._Id
     console.log(_Id)

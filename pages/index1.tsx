@@ -95,7 +95,7 @@ setshowPassword(!showPassword)
   
           <section className={styles.SectionBox}>
       <div className={styles.imgBx}>
-        <img src="/omratrade/omra.png" width={200} height={200}  alt="girl"/>
+        <img src="/omratrade/el.png" width={100} height={100}  alt="girl"/>
       </div>
   
       <div className={styles.contentBx}>

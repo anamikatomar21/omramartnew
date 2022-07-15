@@ -5,12 +5,11 @@ import React, {
 
 import { AxiosError } from 'axios';
 import { NextPage } from 'next';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
-import { useAppSelector } from 'redux/hooks';
 
 import AdminLayout from '../../../components/Admin/AdminLayout';
-import { useCategory } from '../../../networkAPI/queries';
+import { useUpdateCategory } from '../../../networkAPI/queries';
 import styles from '../../../styles/Merchant/addcategory.module.scss';
 
 interface Person {
@@ -20,17 +19,15 @@ interface Person {
     "gift-wrap": "hello";
   }
   
-  const Upload_Category: NextPage = () => {
+  const Update_Category: NextPage = () => {
     const formData = {
       name: "Amit",
       age: 25,
       count: 12,
     };
-    const router= useRouter()
-    const { error:err, user, isAuthenticated } = useAppSelector(
-      (state) => state.user
-    );
-  
+    const router = useRouter();
+    const _Id =router.query._Id
+    console.log(_Id)
   
   
     
@@ -49,7 +46,7 @@ interface Person {
   
     // const [product_name,setProduct_name] =useState<string>("")
   
-    const { error, isLoading, data, mutate } = useCategory();
+    const { error, isLoading, data, mutate } = useUpdateCategory();
     console.log(data)
   
     const field_color = {
@@ -69,6 +66,7 @@ interface Person {
         category_name,
   
         category_image,
+        id:_Id as string
   
         
        
@@ -82,8 +80,9 @@ interface Person {
   
       if (data) {
         toast.success("upload Successfull");
-        router.replace('/admindashboard/all_category')
+        router.replace('/admindashboard/category')
       }
+      // router.reload()
     }, [error, data,router]);
     
   
@@ -110,18 +109,6 @@ interface Person {
     function handleChange() {
       return "helo";
     }
-
-    useEffect(() => {
-      if (isAuthenticated) {
-        if (user.role === "SuperAdmin") {
-          return;
-        } else {
-          Router.push(`/`);
-        }
-      } else {
-        Router.push(`/`);
-      }
-    }, [user, isAuthenticated]);
     return (
       <AdminLayout>
         <div className={styles.mov}>
@@ -137,6 +124,7 @@ interface Person {
   
           <div className="box3">
           <form action="" onSubmit={handleLogin}  >
+            <h1>{_Id}</h1>
             <ul className="box345">
             
              
@@ -161,7 +149,7 @@ interface Person {
               <li style={{display:"flex",gap:"20px",marginTop:"20px"}}>
                 {/* <input type="submit" className='Upload-Button' /> */}
   
-                <button className={styles.Add_Button}>Add Category</button>
+                <button className={styles.Add_Button}>Update Category</button>
                 {/* <button className="Upload-Button">Submit</button> */}
               
               </li>
@@ -174,5 +162,5 @@ interface Person {
       </AdminLayout>
     );
   };
-  export default Upload_Category;
+  export default Update_Category;
   
