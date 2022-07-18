@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://use.fontawesome.com/releases/v5.15.4/css/all.css');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css");
 
 html,
 body {
@@ -7,8 +7,7 @@ body {
   margin: 0;
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif,; */
-
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /* --------------------------------------------------------------------------- */
@@ -109,7 +108,6 @@ body {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
-
 }
 
 .justify-content-center {
@@ -126,19 +124,16 @@ body {
     margin-left: auto;
 } */
 
-
 /* --------------------------------------------------------------------------- */
-
-
 
 body::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 body::-webkit-scrollbar {
   width: 10px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 body::-webkit-scrollbar-thumb {
@@ -159,13 +154,10 @@ a {
   list-style: none;
 }
 
-
-
 .fa,
 .fas {
   font-weight: 900;
 }
-
 
 #container {
   position: absolute;
@@ -250,14 +242,20 @@ label {
   margin: 0 auto;
   text-align: center;
   background-color: aquamarine;
-
 }
 
 .mov {
   /* background-color: antiquewhite; */
   padding-top: 30px;
 
-  background: linear-gradient(to right, #a6c2c2, #9ebad7, #9ebad7, #9ebad7, #c0bbc2)
+  background: linear-gradient(
+    to right,
+    #a6c2c2,
+    #9ebad7,
+    #9ebad7,
+    #9ebad7,
+    #c0bbc2
+  );
 }
 
 .box3 ul {
@@ -267,7 +265,6 @@ label {
 .box3 ul li input ::placeholder {
   place-items: 10px;
 }
-
 
 /* .form ul{
   display: flex !important;
@@ -279,7 +276,6 @@ label {
   background-color: transparent !important;
   color: #000;
   font-size: 16px;
-
 }
 
 .Upload-Button {
@@ -321,11 +317,11 @@ ul.formstyle li label {
   left: 0;
 }
 
-#email:focus~label[for="email"] {
+#email:focus ~ label[for="email"] {
   margin: -76px 70px;
 }
 
-#password:focus~label[for="password"] {
+#password:focus ~ label[for="password"] {
   margin: -76px 70px;
 }
 
@@ -375,7 +371,6 @@ ul.formstyle li label {
 }
 
 @media (max-width: 1250px) {
-
   #container {
     width: 600px;
     display: block;
@@ -392,11 +387,9 @@ ul.formstyle li label {
     background-position: center;
     box-shadow: var(--box-shadow);
   }
-
 }
 
 @media (max-height: 850px) {
-
   #container {
     width: 1000px;
     height: 600px;
@@ -414,9 +407,7 @@ ul.formstyle li label {
   #lorem {
     font-size: 15px;
   }
-
 }
-
 
 /* .bluebgbtn {
   background-color: #0052cc;
@@ -440,7 +431,7 @@ ul.formstyle li label {
   font-weight: 500;
   font-size: 16px;
   line-height: 16px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   margin-right: 97px;
   width: 110px;
   border: none;
@@ -452,7 +443,7 @@ footer.footersection {
   margin-bottom: 0px;
 }
 
-footer.footersection .row>ul {
+footer.footersection .row > ul {
   margin: 0;
   padding: 0;
   display: flex;
@@ -460,8 +451,8 @@ footer.footersection .row>ul {
   list-style: none;
 }
 
-footer.footersection .row>ul li {
-  width: calc(100%/3 - 10px);
+footer.footersection .row > ul li {
+  width: calc(100% / 3 - 10px);
 }
 
 .bottomfooter {
@@ -477,7 +468,6 @@ footer.footersection .row>ul li {
 }
 
 .product-section {
-
   height: 209px;
   width: 700px;
   border: 2px solid grey;
@@ -488,16 +478,12 @@ footer.footersection .row>ul li {
   line-height: 21px;
   border: none;
   border-radius: 1px;
-
-
 }
-
 
 .container {
   display: flex;
 
   border: 2px solid transparent;
-
 }
 
 .section-container {
@@ -510,8 +496,6 @@ footer.footersection .row>ul li {
   width: 87px;
   margin-right: 38px;
 }
-
-
 
 .search-button1 {
   height: 52px;
@@ -536,7 +520,6 @@ footer.footersection .row>ul li {
   margin-left: 300px;
 } */
 
-
 .box-input-section {
   margin: 0px 3px;
   padding: 21px -1px;
@@ -544,16 +527,12 @@ footer.footersection .row>ul li {
 
 .box-input-textarea {
   display: block;
-
 }
-
-
 
 box-input-textarea input::placeholder {
   color: #0052cc;
   font-size: 20px;
 }
-
 
 /* .dashcode_dashcodemain__Xv6QD .dashcode_layoutDrawer__hVAgH .dashcode_layoutDrawer_nav__MjaE_ {
   position: relative;
@@ -571,13 +550,10 @@ box-input-textarea input::placeholder {
   background-color: #e6e1e1;
 }
 
-
 .admin-section {
-
   text-align: center;
 }
 
- 
 .facemask {
   height: 200px;
   width: 200px;
@@ -594,7 +570,6 @@ box-input-textarea input::placeholder {
   margin-top: 2px;
 }
 
-
 .reject-button {
   height: 35px;
   width: 90px;
@@ -604,17 +579,13 @@ box-input-textarea input::placeholder {
   border: none;
   margin-left: 5px;
   top: 1px;
-    position: relative;
+  position: relative;
 }
 
-
-
 .bell-icon {
-
   color: rgb(0, 0, 0);
   height: 10px;
   width: 3px;
-
 }
 
 .fa-bell:before {
@@ -633,8 +604,6 @@ box-input-textarea input::placeholder {
   padding-bottom: 0px !important;
   padding-top: 0px !important;
 }
-
-
 
 ul.box345 {
   margin: 0 auto !important;
@@ -672,10 +641,10 @@ ul.box345 textarea {
   height: 100px;
   resize: none;
   font-size: 16px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
-ul.box345 li>.row {
+ul.box345 li > .row {
   margin: 0px;
 }
 
@@ -693,18 +662,15 @@ ul.box345 li input.Upload-Button {
   font-size: 16px;
 }
 
-
-
 ul.box345 textarea:placeholder,
 ul.box345 input:placeholder {
   font-size: 16px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 li.qtyproduct .col-md-6 {
   position: relative;
 }
-
 
 ul.box345 li .row {
   margin-left: -15px;
@@ -738,16 +704,12 @@ li.qtyproduct .col-md-6:last-child input.box-input-section {
 
 /* PRODUCT Page CSS */
 
-
 .product-flex-box {
-
   /* box-shadow: 20px 20px 50px grey; */
   display: flex;
-
 }
 
 .gallery {
-
   /* border:1px solid black; */
   margin: 18px;
   width: 193px;
@@ -773,8 +735,6 @@ div.desc {
 }
 
 .section-flex-box {
-
-
   margin-left: 16px;
   /* border: 1px solid black; */
   margin-right: 21px;
@@ -784,7 +744,6 @@ div.desc {
 .side-image {
   display: flex;
   flex-direction: column;
-
 }
 
 .sidebarsize {
@@ -800,13 +759,11 @@ div.desc {
   margin-top: -1px;
 }
 
-
 .product-flex-box2 {
   /* box-shadow: 20px 20px 50px grey; */
   display: flex;
   justify-content: space-evenly;
 }
-
 
 .gallery2 {
   /* border: 1px solid black; */
@@ -817,17 +774,15 @@ div.desc {
   /* background-color: #9055ff; */
 }
 .gallery2:hover {
- transform: scale(1.1);
+  transform: scale(1.1);
 }
 .gallery-heading {
-
   margin-left: 20px;
   margin-bottom: 10px;
   /* margin-top: 40px; */
 }
 
 .gallery-heading2 {
-
   margin-left: 27px;
   margin-bottom: 10px;
   margin-top: 40px;
@@ -843,7 +798,6 @@ div.desc {
 }
 
 .banner-background-style {
-
   width: 205%;
   margin-top: 65px;
 }
@@ -867,9 +821,8 @@ div.desc {
 
 /* button dropdown */
 
-
 .dropbtn {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -898,25 +851,18 @@ div.desc {
 }
 
 .texta {
-
   display: none;
 }
-
 
 /* carousal */
 
 .carousel .thumbs-wrapper {
-
   margin: 20px;
 
   overflow: hidden;
-
- 
-
 }
 
 .carousel .carousel-status {
-
   position: absolute;
 
   top: 0;
@@ -932,29 +878,21 @@ div.desc {
   color: #fff;
 
   display: none;
-
 }
 
 .carousel.carousel-slider .control-arrow:hover {
   background: transparent !important;
-
-
-
 }
 
 .carousel .control-next.control-arrow:before {
   color: black;
   border-left: 8px solid #000 !important;
-
-
 }
 
 .carousel .control-prev.control-arrow:before {
   color: black;
   border-right: 8px solid #000 !important;
 }
-
-
 
 /* enquiry button */
 
@@ -970,11 +908,7 @@ div.desc {
   margin-top: 22px;
   border-radius: 6px;
   line-height: 3px;
-
-
 }
-
-
 
 .emailbutton {
   height: 59px;
@@ -1028,7 +962,6 @@ div.desc {
   font-weight: 500;
 }
 
-
 button:hover {
   background-color: #ebebeb;
   color: #002b6b;
@@ -1049,23 +982,17 @@ button:hover {
   border-radius: 6px;
   position: absolute;
   margin-left: 173px;
-
-
 }
 
 .whatsapp-icon {
-
   height: 35px;
   width: 35px;
- 
 }
 
 .price {
   color: #0052cc;
   font-weight: 500;
 }
-
- 
 
 .buttongreen-section {
   background: #002b6b;
@@ -1089,27 +1016,23 @@ button:hover {
   width: 20%;
 } */
 
-
-
 /* table  */
 table {
   border-collapse: collapse;
   width: 100%;
   border: 1px solid #dee2e6;
-  border-bottom:  1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
   max-width: 500px;
-  color: #6C768C;
+  color: #6c768c;
   font-size: 15px;
-
 }
- 
+
 tr {
   border-bottom: 1px solid;
 }
 
- 
-
-.table td, .table th {
+.table td,
+.table th {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
@@ -1121,7 +1044,7 @@ table td:last-child {
 table tr:last-child td {
   border: 1px solid #dee2e6;
 }
- 
+
 .buttonmodel {
   max-width: 300px;
   margin-top: 30px !important;
@@ -1132,7 +1055,7 @@ table tr:last-child td {
   flex-wrap: wrap;
 }
 
-.buttonmodel  button {
+.buttonmodel button {
   margin: 0;
 }
 .marg {
@@ -1153,35 +1076,27 @@ table tr:last-child td {
 }
 
 react-multiple-carousel__arrow--left {
-
   left: calc(0% + 1px) !important;
-
 }
 
-
-
-
 .react-multiple-carousel__arrow--right {
-
-    right: calc(0% + 1px) !important;
-
+  right: calc(0% + 1px) !important;
 }
 
 .react-multiple-carousel__arrow {
-
   position: absolute;
 
   outline: 0;
 
-  transition: all .5s;
+  transition: all 0.5s;
 
-   border-radius: 0px !important;
+  border-radius: 0px !important;
 
   z-index: 1000;
 
   border: 0;
 
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 
   min-width: 16px !important;
 
@@ -1190,11 +1105,9 @@ react-multiple-carousel__arrow--left {
   opacity: 1;
 
   cursor: pointer;
-
 }
 
 .react-multi-carousel-item {
-
   transform-style: preserve-3d;
 
   -webkit-backface-visibility: hidden;
@@ -1204,7 +1117,6 @@ react-multiple-carousel__arrow--left {
   flex: inherit !important;
 
   width: inherit !important;
-
 }
 
 .ButtonSection {
@@ -1227,7 +1139,7 @@ react-multiple-carousel__arrow--left {
   line-height: 48px;
   right: 68px;
   position: relative;
-  box-shadow: 3px 1px 8px 8px #ebebeb
+  box-shadow: 3px 1px 8px 8px #ebebeb;
 }
 .emailbutton-section {
   height: 42px;
@@ -1277,7 +1189,6 @@ react-multiple-carousel__arrow--left {
 }
 
 .check_button_box {
- 
   height: 45px;
   width: 78%;
   /* margin-left: 98px; */
@@ -1294,36 +1205,31 @@ react-multiple-carousel__arrow--left {
   display: inline;
   padding: 0px 4px;
   font-size: 14px;
-
 }
 
 .marg {
   margin-left: 3em !important;
   white-space: nowrap;
 }
-textarea{
-
+textarea {
   resize: none;
   border-color: #170202;
   border-radius: 4px;
 }
-.div-flex-box{
+.div-flex-box {
   background: white;
-    margin-left: 20px;
-    margin-right: 20px;
-
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .gallery-heading1 {
-
   margin-left: 20px;
   margin-bottom: 10px;
-   margin-top: 0px; 
+  margin-top: 0px;
 }
 span.validation-error {
-  
   font-size: 12px;
   color: red;
-   display: inline;
+  display: inline;
 }
 
 .continuebutton {
@@ -1336,7 +1242,7 @@ span.validation-error {
   font-weight: 500;
   font-size: 16px;
   line-height: 16px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   /* margin-right: 97px; */
   width: 110px;
   border: none;
@@ -1361,35 +1267,31 @@ span.validation-error {
   line-height: 32px !important;
 }
 
-
- .inputValuesForm {
-   color: black !important;
-    /* background: #1df1de !important;  */
-    width: 450px!important;
-    margin-left: -29px !important;
+.inputValuesForm {
+  color: black !important;
+  /* background: #1df1de !important;  */
+  width: 450px !important;
+  margin-left: -29px !important;
 }
 
-.inputValueCancel{
-
+.inputValueCancel {
   position: relative !important;
   left: 200px !important;
-
 }
 
-
-.inputValueAddMore{
-font-weight: 700;
-    color: #002b6b;
-    position: relative;
-    left: 236px;
-    top: 30px;
+.inputValueAddMore {
+  font-weight: 700;
+  color: #002b6b;
+  position: relative;
+  left: 236px;
+  top: 30px;
 }
 
-.inputValuesAttibute{
+.inputValuesAttibute {
   /* color: red !important;
     background: #1df1de !important; */
-    width: 180px!important;
-    margin-left: -9px !important;
+  width: 180px !important;
+  margin-left: -9px !important;
 }
 ::-webkit-scrollbar {
   width: 1px;
@@ -1397,21 +1299,20 @@ font-weight: 700;
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #dadada; 
+  background: #dadada;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #002b6b; 
+  background: #002b6b;
 }
-
 
 @media only screen and (max-width: 600px) {
   .row {
@@ -1419,33 +1320,31 @@ font-weight: 700;
 
     margin: auto !important;
     display: flex !important;
- 
+
     justify-content: space-between !important;
-    gap:20px !important;
+    gap: 20px !important;
     margin-top: 21px !important;
     flex-wrap: wrap !important;
-}
-.productpreview_content__P8ef_ {
-  position: relative !important;
-  margin-top: 306px!important;
-  margin-left: 80px !important;
-  width: 100% !important;
-}
+  }
+  .productpreview_content__P8ef_ {
+    position: relative !important;
+    margin-top: 306px !important;
+    margin-left: 80px !important;
+    width: 100% !important;
+  }
 
-
-.productpreview_botton5__IYG6G {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
+  .productpreview_botton5__IYG6G {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
 }
-}
-
 
 .carousel .control-dots .dot {
-  transition: opacity .5s ease-in;
-  opacity: .3;
+  transition: opacity 0.5s ease-in;
+  opacity: 0.3;
   filter: alpha(opacity=30);
-  box-shadow: 1px 1px 2pxrgba(0,0,0,0.9);
+  box-shadow: 1px 1px 2pxrgba (0, 0, 0, 0.9);
   background: #000 !important;
   border-radius: 50%;
   width: 8px;
@@ -1458,25 +1357,27 @@ font-weight: 700;
 .react-multiple-carousel__arrow {
   position: absolute;
   outline: 0;
-  transition: all .5s;
+  transition: all 0.5s;
   border-radius: 35px;
   z-index: 1000;
   border: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   min-width: 43px;
   min-height: 43px;
   opacity: 1;
   cursor: pointer;
-  margin-right:65px !important;
+  margin-right: 65px !important;
 }
 
-.marginarea{margin-top: 300px;}
+.marginarea {
+  margin-top: 300px;
+}
 
-
-.carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:before {
+.carousel .control-arrow:before,
+.carousel.carousel-slider .control-arrow:before {
   margin: 0 79px !important;
   display: inline-block;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  content: '';
+  content: "";
 }
