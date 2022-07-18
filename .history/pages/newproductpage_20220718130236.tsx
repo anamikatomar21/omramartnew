@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-// import "react-multi-carousel/lib/styles.css";
-// import Carousel from "react-multi-carousel";
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
-import React, { Component } from "react";
-import Slider from "react-slick";
+import "react-multi-carousel/lib/styles.css";
+import Carousel from "react-multi-carousel";
 import type { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,19 +11,36 @@ import TopHeader from "./topheader";
 // import TopHeader from '../components/Admin/TopHeader';
 import {} from "./";
 const NewProductPage: NextPage = () => {
- 
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 1
-    };
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+
+      items: 5,
+    },
+
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+
+      items: 5,
+    },
+
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+
+      items: 3,
+    },
+
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+
+      items: 1,
+    },
+  };
 
   return (
     <div>
       <TopHeader />
-     
+
       <div className={styles.container_width}>
         <div>
           <div className={styles.flex_box}>
@@ -365,10 +378,6 @@ const NewProductPage: NextPage = () => {
         <div className={styles.background_section}>
           <h1>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
           <div className={styles.flex_container}>
-          <Slider {...settings}>
-          
-         
-           
             <div className={styles.cardproduct}>
               
               <div className={styles.productimg}>
@@ -385,13 +394,11 @@ const NewProductPage: NextPage = () => {
                 <h4>hhhh</h4>
                 <p>hhhhhhhhhhhhhh</p>
               </div>
-
+              
               <div className={styles.productcartbtn}>
                 <button type="submit">View More</button>
               </div>
             </div>
-
-
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
@@ -411,7 +418,6 @@ const NewProductPage: NextPage = () => {
               </div>
             </div>
 
-
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
@@ -430,8 +436,6 @@ const NewProductPage: NextPage = () => {
                 <button type="submit">View More</button>
               </div>
             </div>
-
-
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
@@ -450,8 +454,6 @@ const NewProductPage: NextPage = () => {
                 <button type="submit">View More</button>
               </div>
             </div>
-
-
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
@@ -470,20 +472,13 @@ const NewProductPage: NextPage = () => {
                 <button type="submit">View More</button>
               </div>
             </div>
-            </Slider>
-
           </div>
         </div>
 
         <div className={styles.background_section}>
-          <h1>OTHER PRODUCT WITH SAME MERCHANTS</h1>
+          <h1>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
           <div className={styles.flex_container}>
-          <Slider {...settings}>
-          
-         
-           
             <div className={styles.cardproduct}>
-              
               <div className={styles.productimg}>
                 <Image
                   src={"/omratrade/homebanner.png"}
@@ -493,18 +488,14 @@ const NewProductPage: NextPage = () => {
                   className={styles.productimagesrc}
                 />
               </div>
-
               <div className={styles.productcontent}>
                 <h4>hhhh</h4>
                 <p>hhhhhhhhhhhhhh</p>
               </div>
-
               <div className={styles.productcartbtn}>
                 <button type="submit">View More</button>
               </div>
             </div>
-
-
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
@@ -524,7 +515,6 @@ const NewProductPage: NextPage = () => {
               </div>
             </div>
 
-
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
@@ -543,8 +533,6 @@ const NewProductPage: NextPage = () => {
                 <button type="submit">View More</button>
               </div>
             </div>
-
-
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
@@ -563,8 +551,6 @@ const NewProductPage: NextPage = () => {
                 <button type="submit">View More</button>
               </div>
             </div>
-
-
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
@@ -583,8 +569,6 @@ const NewProductPage: NextPage = () => {
                 <button type="submit">View More</button>
               </div>
             </div>
-            </Slider>
-
           </div>
         </div>
       </div>

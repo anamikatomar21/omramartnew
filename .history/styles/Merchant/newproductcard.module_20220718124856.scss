@@ -36,11 +36,12 @@
     justify-content: space-between;
   }
   
-  // .cardproduct:hover,
-  // .cardproduct:active {
-  //   box-shadow: .2em .5em .5em rgba(0, 0, 0, 0.4);
-  //   transform: scale(1.1);
-  // }
+  .            <div className={styles.cardproduct}>
+:hover,
+  .productcard:active {
+    box-shadow: .2em .5em .5em rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+  }
   
   .productimg {
     border-radius: 10px 10px 0px 0px;

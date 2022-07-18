@@ -476,7 +476,7 @@ const NewProductPage: NextPage = () => {
         </div>
 
         <div className={styles.background_section}>
-          <h1>OTHER PRODUCT WITH SAME MERCHANTS</h1>
+          <h1>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
           <div className={styles.flex_container}>
           <Slider {...settings}>
           

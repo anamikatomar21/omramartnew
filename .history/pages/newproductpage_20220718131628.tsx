@@ -20,14 +20,33 @@ const NewProductPage: NextPage = () => {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 4,
+      slidesToShow: 1,
       slidesToScroll: 1
     };
 
   return (
     <div>
       <TopHeader />
-     
+      <Slider {...settings}>
+          <div>
+            <h3>1</h3>
+          </div>
+          <div>
+            <h3>2</h3>
+          </div>
+          <div>
+            <h3>3</h3>
+          </div>
+          <div>
+            <h3>4</h3>
+          </div>
+          <div>
+            <h3>5</h3>
+          </div>
+          <div>
+            <h3>6</h3>
+          </div>
+        </Slider>
       <div className={styles.container_width}>
         <div>
           <div className={styles.flex_box}>
@@ -365,9 +384,7 @@ const NewProductPage: NextPage = () => {
         <div className={styles.background_section}>
           <h1>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
           <div className={styles.flex_container}>
-          <Slider {...settings}>
-          
-         
+           
            
             <div className={styles.cardproduct}>
               
@@ -470,20 +487,15 @@ const NewProductPage: NextPage = () => {
                 <button type="submit">View More</button>
               </div>
             </div>
-            </Slider>
+
 
           </div>
         </div>
 
         <div className={styles.background_section}>
-          <h1>OTHER PRODUCT WITH SAME MERCHANTS</h1>
+          <h1>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
           <div className={styles.flex_container}>
-          <Slider {...settings}>
-          
-         
-           
             <div className={styles.cardproduct}>
-              
               <div className={styles.productimg}>
                 <Image
                   src={"/omratrade/homebanner.png"}
@@ -493,17 +505,14 @@ const NewProductPage: NextPage = () => {
                   className={styles.productimagesrc}
                 />
               </div>
-
               <div className={styles.productcontent}>
                 <h4>hhhh</h4>
                 <p>hhhhhhhhhhhhhh</p>
               </div>
-
               <div className={styles.productcartbtn}>
                 <button type="submit">View More</button>
               </div>
             </div>
-
 
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
@@ -544,7 +553,6 @@ const NewProductPage: NextPage = () => {
               </div>
             </div>
 
-
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
@@ -564,7 +572,6 @@ const NewProductPage: NextPage = () => {
               </div>
             </div>
 
-
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
@@ -583,8 +590,6 @@ const NewProductPage: NextPage = () => {
                 <button type="submit">View More</button>
               </div>
             </div>
-            </Slider>
-
           </div>
         </div>
       </div>
