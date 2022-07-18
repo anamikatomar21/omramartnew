@@ -674,16 +674,7 @@ const Test3: NextPage = () => {
                       <td> Country of origin</td>
                       <td> India</td>
                     </tr> */}
-                    <tr>
-                      <td> Installation Type</td>
-
-                      <td> Do It Yourself </td>
-                    </tr>
-                    <tr>
-                      <td>Leatherette</td>
-
-                      <td> Dimensions LxWxH</td>
-                    </tr>
+                    
                   </tbody>
                 </table>
               </div>
