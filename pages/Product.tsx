@@ -1,19 +1,15 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
-import type { NextPage } from 'next';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
+import type { NextPage } from "next";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 import {
   useGetBussinessDetails,
   usePublicProduct,
   useSendEmail,
-} from '../networkAPI/queries';
-import styles from '../styles/Merchant/productpreview.module.scss';
+} from "../networkAPI/queries";
+import styles from "../styles/Merchant/productpreview.module.scss";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -38,22 +34,26 @@ const Test3: NextPage = () => {
   const { data, status } = usePublicProduct();
   const { data: dataMail, mutate } = useSendEmail();
   console.log(data);
-  const  {data:bussinessData,error:err,isLoading:loading} = useGetBussinessDetails()
-  console.log(bussinessData)
+  const {
+    data: bussinessData,
+    error: err,
+    isLoading: loading,
+  } = useGetBussinessDetails();
+  console.log(bussinessData);
 
   const mailData = dataMail as any;
 
-  const achorRef=React.useRef<HTMLAnchorElement>(null)
+  const achorRef = React.useRef<HTMLAnchorElement>(null);
 
   const handleEmailSend = () => {
     // For Close MOdel
-    const achorElm=achorRef.current
+    const achorElm = achorRef.current;
     const merchant = data?.data.find((item: any) => item._id == Product_id);
     mutate({ merchantId: merchant.auther_Id, email, phoneNumber, description });
     delay(200).then(() => {
-      if(achorElm){
-        achorElm.href='#'
-        achorElm.click()
+      if (achorElm) {
+        achorElm.href = "#";
+        achorElm.click();
       }
     });
   };
@@ -86,7 +86,7 @@ const Test3: NextPage = () => {
         {data?.data.map((item: any) => {
           console.log(item.product_name == Product_id);
           if (item._id == Product_id) {
-            console.log(item)
+            console.log(item);
             return (
               <div className={styles.row}>
                 <div className={styles.col}>
@@ -116,55 +116,6 @@ const Test3: NextPage = () => {
                           </>
                         );
                       })}
-                      {/* <Image
-                        src={
-                          item.product_image1[0]
-                            ? item.product_image1[0]
-                            : "/ omratrade/chair1.png"
-                        }
-                        width={150}
-                        height={150}
-                        alt=""
-                        onClick={() =>setImage(item.product_image1[0]
-                          ? item.product_image1[0]
-                          : "/ omratrade/chair1.png")}
-                      />
-                      <Image
-                        src={
-                          item.product_image2[0]
-                            ? item.product_image2[0]
-                            : "/ omratrade/chair1.png"
-                        }
-                        width={150}
-                        height={150}
-                        alt=""
-                          onClick={() =>setImage(item.product_image2[0]
-                            ? item.product_image2[0]
-                            : "/ omratrade/chair1.png")}
-                      />
-                      <Image
-                        src={
-                          item.product_image3[0]
-                            ? item.product_image3[0]
-                            : "/ omratrade/chair1.png"
-                        }
-                        width={150}
-                        height={150}
-                        alt=""
-                        onClick={() =>setImage(item.product_image3[0]
-                          ? item.product_image3[0]
-                          : "/ omratrade/chair1.png")}
-                      />
-                      <Image
-                        src={
-                          item.product_image4[0]
-                            ? item.product_image4[0]
-                            : "/ omratrade/chair1.png"
-                        }
-                        width={150}
-                        height={150}
-                        alt=""
-                      /> */}
                     </div>
                     <div className={styles.preview}>
                       <Image
@@ -187,7 +138,7 @@ const Test3: NextPage = () => {
                 <div className={styles.col}>
                   <div className={styles.content}>
                     <p className={styles.brand}>
-                      Business Name: {" "+item.SubTypeOf_bussiness}
+                      Business Name: {" " + item.SubTypeOf_bussiness}
                     </p>
                     <h2>{item.product_name}</h2>
                     <div className={styles.ratingnew}>
@@ -209,26 +160,7 @@ const Test3: NextPage = () => {
                           <td> Brand</td>
                           <td> {item.brand} </td>
                         </tr>
-                        {/* <tr>
 
-                                       <td > Brand</td>
-                                       <td > Mezonite </td>
-                                   </tr>
-                                   <tr>
-
-                                       <td > Brand</td>
-                                       <td > Mezonite </td>
-                                   </tr> */}
-                        {/* <tr>
-
-                                       <td > Brand</td>
-                                       <td > Mezonite </td>
-                                   </tr> */}
-                        {/* <tr>
-
-                                       <td > Brand</td>
-                                       <td > Mezonite </td>
-                                   </tr> */}
                         <tr>
                           <td> Usage/Application </td>
                           <td> {item.category} </td>
@@ -237,36 +169,52 @@ const Test3: NextPage = () => {
                           <td> Capacity</td>
                           <td> {item.capacity}</td>
                         </tr>
-                        {item.product_Specification ?
-                        <tr>
-                          <td> Dimension</td>
-
-                          <td> {item.product_Specification} </td>
-                          
-                        </tr>
-                        :""
-          }
-          {
-            item.manufacturer_address?
-            <tr>
-                          <td>manufacturer_address</td>
-
-                          <td> {item.manufacturer_address}</td>
-                        </tr> :""
-          }
-                        
-                        {
-                          item.manufacturer_phone_no?
+                        {item.product_Specification ? (
                           <tr>
-                          <td>manufacturer_phone_no</td>
+                            <td> Dimension</td>
 
-                          <td> {item.manufacturer_phone_no}</td>
-                        </tr>
-                        :
-                        ""
+                            <td> {item.product_Specification} </td>
+                          </tr>
+                        ) : (
+                          ""
+                        )}
+                        {item.manufacturer_address ? (
+                          <tr>
+                            <td>manufacturer_address</td>
 
-                        }
-                        
+                            <td> {item.manufacturer_address}</td>
+                          </tr>
+                        ) : (
+                          ""
+                        )}
+
+                        {item.manufacturer_phone_no ? (
+                          <tr>
+                            <td> Dimension</td>
+                            <td> {item.product_Specification} </td>
+                          </tr>
+                        ) : (
+                          ""
+                        )}
+                        {item.manufacturer_address ? (
+                          <tr>
+                            <td>manufacturer_address</td>
+
+                            <td> {item.manufacturer_address}</td>
+                          </tr>
+                        ) : (
+                          ""
+                        )}
+
+                        {item.manufacturer_phone_no ? (
+                          <tr>
+                            <td>manufacturer_phone_no</td>
+
+                            <td> {item.manufacturer_phone_no}</td>
+                          </tr>
+                        ) : (
+                          ""
+                        )}
 
                         <tr>
                           <td>model_no</td>
@@ -275,7 +223,7 @@ const Test3: NextPage = () => {
                         </tr>
                         <tr>
                           <td>Mobile:</td>
-                        <td>{item.mobile}</td>
+                          <td>{item.mobile}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -308,46 +256,21 @@ const Test3: NextPage = () => {
                       {item.product_description}
                       <a href="#">Read more..</a>
                     </p>
-
-
                   </div>
                 </div>
 
                 <div className={styles.col}>
                   <div className={styles.content}>
-                    {/* <div className={styles.pincodestyle}>
-                      <div>
-                        <input
-                          type="text"
-                          className={styles.pincodeinput}
-                          placeholder="Your Pincode"
-                        />
-                      </div>
-                      <div>
-                        <a href="" className={styles.check_button_box2}>
-                          Check
-                        </a>
-                      </div>
-                    </div> */}
-
-                    {/* <p>Shipping charge applicable as per serviceability</p> */}
-
                     <h3>
                       <a href="#">{item.SubTypeOf_bussiness}</a>
                     </h3>
                     <p>{item.Merchant_Address}</p>
 
-                    {/* <p>GST- 27AAMFV3839L1ZF</p> */}
-
                     <p>Want to buy even more quantity?</p>
-                    {/* <button type='submit'  > */}
+
                     <a className="emailbutton3" href="#popup1">
                       Get Bulk Quote
                     </a>
-                    {/* </button> */}
-                    {/* <button type='submit' className='emailbutton1'><a href="#">CALL BACK REQUEST</a></button> */}
-
-                    {/* </div> */}
 
                     <a href="#C4"> View More Sellers</a>
                   </div>
@@ -390,7 +313,7 @@ const Test3: NextPage = () => {
                           <h2>{item2.product_name}</h2>
                           <div className="details">
                             <p className="product_desc">
-                              {item2.product_description} 
+                              {item2.product_description}
                             </p>
                             <div className={styles.rating}>
                               <i className="fa fa-star"></i>
@@ -409,51 +332,6 @@ const Test3: NextPage = () => {
                 );
               }
             })}
-
-            {/* <div className={styles.columns}>
-              <div className={styles.items}>
-                <Image
-                  src="/omratrade/chair2.png"
-                  width={500}
-                  height={500}
-                  alt=""
-                />
-                <div className={styles.details}>
-                  <p>Lorem ipsum dolor ipsum </p>
-                  <div className={styles.rating}>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star-o"></i>
-                  </div>
-
-                  {/* <p>USD $110.00</p> */}
-            {/* </div>
-              </div>
-            </div>
-            <div className={styles.columns}>
-              <div className={styles.items}>
-                <Image
-                  src="/omratrade/chair2.png"
-                  width={500}
-                  height={500}
-                  alt=""
-                />
-                <div className={styles.details}>
-                  <p>Printed Straight Kurta</p>
-                  <div className={styles.rating}>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star"></i>
-                    <i className="fa fa-star-half-o"></i>
-                    <i className="fa fa-star-o"></i>
-                  </div>
-
-                
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
@@ -638,33 +516,29 @@ const Test3: NextPage = () => {
                 &times;
               </a>
               <div className={styles.content1}>
-                <h3>PRODUCT SPECIFICATIONS</h3>
+                <h3>PRODUCT SPECIFICATIONS </h3>
                 <table className={` table fulltable ${styles.Table_Width}`}>
                   <tbody>
-                  {data?.data.map((item: any) => {
-          console.log(item.product_name == Product_id);
-          if (item._id == Product_id) {
-            console.log(item.additionalSpecification)
-            return (
-              <div>
-              {
-                item.additionalSpecification.map((item:any,i:any)=>{
-               
-
-                 return(
-                    <tr key={i}>
-                      <td> {item.atribute}</td>
-                      <td>{item.Values} </td>
-                    </tr>
-                    )
-
-
-                })
-              }
-                    </div>
-                    );
-          }
-        })}
+                    {data?.data.map((item: any) => {
+                      console.log(item.product_name == Product_id);
+                      if (item._id == Product_id) {
+                        console.log(item.additionalSpecification);
+                        return (
+                          <div>
+                            {item.additionalSpecification.map(
+                              (item: any, i: any) => {
+                                return (
+                                  <tr key={i}>
+                                    <td> {item.atribute}</td>
+                                    <td>{item.Values} </td>
+                                  </tr>
+                                );
+                              }
+                            )}
+                          </div>
+                        );
+                      }
+                    })}
 
                     {/* <tr>
                       <td> Usage/Application </td>
@@ -681,22 +555,12 @@ const Test3: NextPage = () => {
             </div>
           </div>
         </div>
-
-        {/* <div id="popup2" className={styles.overlay}>
-                       <a className={styles.cancel} href="#"></a>
-                       <div className={styles.popup}>
-                           <h2>What the what?</h2>
-                           <div className={styles.content1}>
-                               <p>Click outside the popup to close.</p>
-                           </div>
-                       </div>
-                   </div> */}
       </div>
     </div>
   );
 };
 
 export default Test3;
-function id(id: any): { data: any; status: any; } {
-  throw new Error('Function not implemented.');
+function id(id: any): { data: any; status: any } {
+  throw new Error("Function not implemented.");
 }

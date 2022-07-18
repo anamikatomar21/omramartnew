@@ -1,0 +1,30 @@
+.flex_box {
+  gap: 28px;
+  display: flex;
+  height: 800px;
+}
+
+.flex_box1 {
+  flex: 0.5;
+}
+.flex_box2 {
+  flex: 0.5;
+}
+
+.flex_box3 {
+  border: 1px solid black;
+  height: 398px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.smallimage {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.productimagesrc {
+  border: 5px solid black !important;
+}
