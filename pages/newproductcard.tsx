@@ -1,11 +1,5 @@
-import Link from "next/link";
-import React, { Component } from "react";
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import React from "react";
 import type { NextPage } from "next";
-import { useRouter } from "next/router";
-import UserLayout from "../components/User/Layout";
-import { useLogin } from "../networkAPI/queries";
 import styles from "../styles/Merchant/newproductcard.module.scss";
 
 const NewProductCard: NextPage = () => {
