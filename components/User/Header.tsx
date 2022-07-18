@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { NextPage } from 'next';
 import Image from 'next/image';
@@ -79,13 +79,13 @@ const Header: NextPage = () => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       dispatch(actions.onFilterCity(e.target.value));
     },
-    [state.citySearch]
+    [actions]
   );
   const onSelectCity = React.useCallback(
     (value: string) => {
       dispatch(actions.onFilterCity(value));
     },
-    [state.citySearch]
+    [actions]
   );
 
   const uniqArray = Array.from(
@@ -102,23 +102,53 @@ const Header: NextPage = () => {
   // For Product and Merchant input
   const openProductDropDownHandler = React.useCallback(() => {
     setProductsDropDown(true);
-  }, [productsDropDown]);
+  }, []);
 
   const onFilterProduct = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      dispatch(actions.onFilterProduct(e.target.value));
+      dispatch(actions.onFilterProduct(e.target.value))
     },
-    [state.productSearch]
+    [actions]
   );
+
+  // const onFilterProduct = debounce(_onFilterProduct, 2000)
+
   const onSelectProuct = React.useCallback(
     (value: string) => {
       dispatch(actions.onFilterProduct(value));
     },
-    [state.productSearch]
+    [actions]
   );
 
-  
 
+
+
+  const [productName,setProductName]=useState([])
+
+  // https://merchantapi.elaundry.co.in/api/search/mouse
+
+  const endpoint = `https://merchantapi.elaundry.co.in/api/search/${state.productSearch}`
+  // async / await 
+
+
+
+  React.useEffect(() => {
+    
+    const getProductNameAndVendorName = async () => {
+
+    try {
+      const res = await fetch(endpoint)
+      const data = await res.json()
+      setProductName(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+    getProductNameAndVendorName()
+  }, [endpoint, onFilterProduct])
+
+
+  console.log(productName)
   return (
     // <div className={styles.navbarheader}>
     <div>
@@ -153,7 +183,7 @@ const Header: NextPage = () => {
 
       <div className={styles.flex_section}>
         <h1 className={styles.heading_section}>
-        India First laundry & Dry Clean Market Place
+          India First laundry & Dry Clean Market Place
         </h1>
       </div>
 
@@ -195,15 +225,13 @@ const Header: NextPage = () => {
           />
           {productsDropDown ? (
             <ul className={styles.productSearchList}>
-              {uniqArray.length <= 0 ? (
-                <li>Not Found</li>
-              ) : (
-                uniqArray.map((data, index) => (
-                  <li key={index} onClick={() => onSelectProuct(data.text)}>
-                    {data.text}
+              {
+                productName?.sort((a:any,b:any)=>a?.product_name?.localeCompare(b.product_name))?.slice(0,10)?.map((data:any, index) => (
+                  <li key={index} onClick={() => onSelectProuct(data.product_name)}>
+                    {data.product_name}
                   </li>
                 ))
-              )}
+              }
             </ul>
           ) : null}
           <button type="submit" className={styles.input_section1r}>
@@ -217,6 +245,9 @@ const Header: NextPage = () => {
   );
 };
 export default Header;
+
+
+// const xx=''.localeCompare
 
 const suggestionArray = [
   {

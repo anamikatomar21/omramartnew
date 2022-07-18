@@ -40,49 +40,36 @@ interface SpecificationsBox {
 }
 
 const Upload_Product: NextPage = () => {
+  const {
+    error: err,
+    user,
+    isAuthenticated,
+  } = useAppSelector((state) => state.user);
 
-
-  const { error:err,user, isAuthenticated} = useAppSelector((state) => state.user);
-
-  useEffect(()=> {
-
-
-      if(isAuthenticated){
-          if(user.role==="Admin"){
-              return
-
-          }
-          // else{
-          //     Router.push(`/`)
-
-          // }
-          
-      }else{
-          Router.push(`/`)
-
+  useEffect(() => {
+    if (isAuthenticated) {
+      if (user.role === "Admin") {
+        return;
       }
+      // else{
+      //     Router.push(`/`)
 
-
-
-  },[user, isAuthenticated])
-
-
-
-
-
-
-
-
-
+      // }
+    } else {
+      Router.push(`/`);
+    }
+  }, [user, isAuthenticated]);
 
   //==========================================================================
-  const [additionalSpecification, setAdditionalSpecification] = useState<any>(
-    [ {
+  const [additionalSpecification, setAdditionalSpecification] = useState<any>([
+    {
       atribute: "",
       Values: "",
-    },]
- 
-  );
+    },
+  ]);
+  console.log(additionalSpecification
+    )
+
 
   // {
   //   atribute: "",
@@ -103,9 +90,9 @@ const Upload_Product: NextPage = () => {
   const [product_image3, setProduct_image3] = useState<any>("");
   const [product_image4, setProduct_image4] = useState<any>("");
   const [product_image5, setProduct_image5] = useState<any>("");
- 
+
   const [category, setCategory] = useState<string>("");
-  const [sub_category, setSub_Categoery] = useState<string>("")
+  const [sub_category, setSub_Categoery] = useState<string>("");
 
   const [price, setPrice] = useState<string>("0");
 
@@ -128,7 +115,7 @@ const Upload_Product: NextPage = () => {
   const [capacity, setCapacity] = useState<string>("");
 
   const [model_no, setModel_no] = useState<string>("");
-  
+
   const [product_image1Preview, setProduct_image1Preview] = useState<any>("");
   const [product_image2Preview, setProduct_image2Preview] = useState<any>("");
   const [product_image3Preview, setProduct_image3Preview] = useState<any>("");
@@ -137,33 +124,26 @@ const Upload_Product: NextPage = () => {
 
   // const [product_name,setProduct_name] =useState<string>("")
   const router = useRouter();
-  const _Id = router.query.id
-  console.log({"hellooo India":_Id})
+  const _Id = router.query.id;
+  console.log({ "hellooo India": _Id });
 
   const { error, isLoading, data, mutate } = useUpdateMerchantProduct();
-  console.log(data)
+  console.log(data);
 
   const field_color = {
     color: "red",
   };
 
- 
-
- 
-
   // const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
   //   e.preventDefault();
 
   //   mutate({
-      
 
   //     category_name,
 
   //     category_image,
   //     id:_Id as string
 
-      
-     
   //   });
   // };
 
@@ -173,14 +153,11 @@ const Upload_Product: NextPage = () => {
     const list = [...additionalSpecification];
     list[index][name] = value;
     setAdditionalSpecification(list);
-    console.log("nanandhgvggfd",list)
+    console.log("nanandhgvggfd", list);
   };
 
   const handleRemoveClick = (e: any, index: any) => {
     e.preventDefault();
-
-
-
 
     const list = [...additionalSpecification];
     list.splice(index, 1);
@@ -189,7 +166,10 @@ const Upload_Product: NextPage = () => {
 
   const handleAddClick = (e: any) => {
     e.preventDefault();
-    setAdditionalSpecification([...additionalSpecification, { atribute: "", Values: "" }]);
+    setAdditionalSpecification([
+      ...additionalSpecification,
+      { atribute: "", Values: "" },
+    ]);
   };
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
@@ -234,10 +214,10 @@ const Upload_Product: NextPage = () => {
       model_no,
 
       videos,
-      id:_Id as string
+      id: _Id as string,
     });
   };
-
+console.log(JSON.stringify(additionalSpecification))
   const data2 = useGetCategory();
   console.log(data2);
   const category_data = data2.data;
@@ -321,12 +301,18 @@ const Upload_Product: NextPage = () => {
       setProduct_image5Preview(objectUrl5);
     }
 
-    console.log({"PRODUCT IMAGE 1":product_image1})
-    console.log("PRODUCT IMAGE 2",product_image2)
-    
+    console.log({ "PRODUCT IMAGE 1": product_image1 });
+    console.log("PRODUCT IMAGE 2", product_image2);
+
     // return () => {URL.revokeObjectURL(objectUrl);
     //   URL.revokeObjectURL(objectUrl2);}
-  }, [product_image1, product_image2,product_image3, product_image4,product_image5]);
+  }, [
+    product_image1,
+    product_image2,
+    product_image3,
+    product_image4,
+    product_image5,
+  ]);
 
   return (
     <DashboardLayout>
@@ -405,36 +391,36 @@ const Upload_Product: NextPage = () => {
                   <input
                     type="file"
                     name="product_image"
-                    onChange={(e: any) => setProduct_image1((e.target.files[0]))}
+                    onChange={(e: any) => setProduct_image1(e.target.files[0])}
                   />
                 </div>
 
                 <div className="col-md-4">
                   <input
-                    type="file" 
+                    type="file"
                     name="product_image2"
-                    onChange={(e: any) => setProduct_image2((e.target.files[0] ))}
+                    onChange={(e: any) => setProduct_image2(e.target.files[0])}
                   />
                 </div>
                 <div className="col-md-4">
                   <input
-                    type="file" 
+                    type="file"
                     name="product_image3"
-                    onChange={(e: any) => setProduct_image3((e.target.files[0] ))}
+                    onChange={(e: any) => setProduct_image3(e.target.files[0])}
                   />
                 </div>
                 <div className="col-md-4">
                   <input
-                    type="file" 
+                    type="file"
                     name="product_image4"
-                    onChange={(e: any) => setProduct_image4((e.target.files[0] ))}
+                    onChange={(e: any) => setProduct_image4(e.target.files[0])}
                   />
                 </div>
                 <div className="col-md-4">
                   <input
-                    type="file" 
+                    type="file"
                     name="product_image5"
-                    onChange={(e: any) => setProduct_image5((e.target.files[0] ))}
+                    onChange={(e: any) => setProduct_image5(e.target.files[0])}
                   />
                 </div>
 
@@ -474,20 +460,13 @@ const Upload_Product: NextPage = () => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option value="">
-                  Select Category
-                </option>
+                <option value="">Select Category</option>
                 {category_data?.data.map((item: any, index: any) => {
                   console.log(category);
                   return (
-                    
-                    
-                      
-                    <option  key={index} value={item.category_name}>
-                      
+                    <option key={index} value={item.category_name}>
                       {item.category_name}
                     </option>
-            
                   );
                 })}
               </select>
@@ -762,12 +741,12 @@ const Upload_Product: NextPage = () => {
                   <Row key={i}>
                     <Col md="4">
                       <FormGroup>
-                        <label
+                        {/* <label
                           className="form-control-label"
                           htmlFor="atribute"
                         >
                           Atribute:
-                        </label>
+                        </label> */}
                         <Input
                           className="inputValuesAttibute"
                           id="atribute"
@@ -781,10 +760,7 @@ const Upload_Product: NextPage = () => {
                     </Col>
                     <Col md="4">
                       <FormGroup>
-                        <label
-                          className="form-control-label"
-                          htmlFor="Values"
-                        >
+                        <label className="form-control-label" htmlFor="Values">
                           Number:
                         </label>
                         <Input

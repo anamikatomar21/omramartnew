@@ -22,7 +22,9 @@ const AdminSidebar: NextPage = () => {
               <li><Link href="/admindashboard/users">Merchants Credentials</Link></li>
               <li><Link href="/admindashboard/category/add_category">Add Category</Link></li>
               <li><Link href="/admindashboard/category">All Category</Link></li>
-              <li><Link href="/admindashboard/category/edit_category">Edit Category</Link></li>
+              <li><Link href="/admindashboard/SubCategory/add_subCategory">Add SubCategory</Link></li>
+              <li><Link href="/admindashboard/SubCategory">All SubCategory</Link></li>
+              {/* <li><Link href="/admindashboard/category/edit_category">Edit Category</Link></li> */}
               <li><Link href="/admindashboard/banner/add_banners">Add Banner</Link></li>
               <li><Link href="/admindashboard/banner">All Banner</Link></li>
               <li><Link href="/admindashboard/approved_listing">Seller Products</Link></li>

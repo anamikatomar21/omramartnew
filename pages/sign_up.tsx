@@ -77,7 +77,7 @@ const SignUp: NextPage = () => {
 
         <section className={styles.SectionBox}>
           <div className={styles.imgBx}>
-            <img src="/omratrade/omra.png"  className={styles.img_signup} alt="girl" />
+            <img src="/omratrade/el.png"  className={styles.img_signup} alt="girl" />
           </div>
 
           <div className={styles.contentBx}>

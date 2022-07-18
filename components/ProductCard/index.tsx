@@ -1,11 +1,11 @@
 import 'react-multi-carousel/lib/styles.css';
-
+import Carousel from 'react-multi-carousel';
 import React from 'react';
 
 import { useGetCategory } from 'networkAPI/queries';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Carousel from 'react-multi-carousel';
+
 import styles from 'styles/Merchant/updatedproductcard.module.scss';
 
 // function ProductCard({title,data}) {
@@ -97,7 +97,7 @@ function ProductCard({ title, data }: Props) {
                             : "/omratrade/homebanner.png"
                         }
                         height={200}
-                        width={200}
+                        width={300}
                         alt="productr image"
                         className={styles.productimagesrc}
                       />

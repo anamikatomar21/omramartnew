@@ -34,17 +34,6 @@ const Upload_Category: NextPage = () => {
 
 
   
-  useEffect(() => {
-    if (isAuthenticated) {
-      if (user.role === "SuperAdmin") {
-        return;
-      } else {
-        Router.push(`/`);
-      }
-    } else {
-      Router.push(`/`);
-    }
-  }, [user, isAuthenticated]);
 
 
 
