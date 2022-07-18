@@ -254,8 +254,9 @@ const NewProductPage: NextPage = () => {
               </div>
 
               <div className={styles.grey_box}>
-                <div><span><Image src= {"/omratrade/india.png"} height={20} width={20} /> Genuine Products</span> </div>
-                <div> <Image src= {"/omratrade/india.png"} height={20} width={20} />Made in India</div>
+                <div><span><Image src="/omratrade/india.png"  height={120}
+                  width={120}/></span> Genuine Products</div>
+                <div>Made in India</div>
               </div>
 
               <div className={styles.table_box}>
