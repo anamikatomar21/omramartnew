@@ -1,0 +1,16 @@
+.flex_box{
+
+ display: flex;
+ height: 400px;
+}
+
+.flex_box1{
+
+    background-color: red;
+    flex: .5;
+}
+.flex_box2{
+
+    background-color: blue;
+    flex: .5;
+}
