@@ -61,7 +61,7 @@ const NewProductPage: NextPage = () => {
                   height={120}
                   width={120}
                   alt="productr image"
-                  className={styles.productimagesrc1}
+                  className={styles.productimagesrc}
                 />
               </div>
               <div>

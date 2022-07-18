@@ -169,26 +169,27 @@ const Test3: NextPage = () => {
                           <td> Capacity</td>
                           <td> {item.capacity}</td>
                         </tr>
-                        {item.product_Specification ? (
-                          <tr>
-                            <td> Dimension</td>
+                        {item.product_Specification ?
+                        <tr>
+                          <td> Dimension</td>
 
-                            <td> {item.product_Specification} </td>
-                          </tr>
-                        ) : (
-                          ""
-                        )}
-                        {item.manufacturer_address ? (
-                          <tr>
-                            <td>manufacturer_address</td>
+                          <td> {item.product_Specification} </td>
+                          
+                        </tr>
+                        :""
+          }
+          {
+            item.manufacturer_address?
+            <tr>
+                          <td>manufacturer_address</td>
 
-                            <td> {item.manufacturer_address}</td>
-                          </tr>
-                        ) : (
-                          ""
-                        )}
-
-                        {item.manufacturer_phone_no ? (
+                          <td> {item.manufacturer_address}</td>
+                        </tr> :""
+          }
+                        
+                        {
+                          item.manufacturer_phone_no
+                          ?
                           <tr>
                             <td> Dimension</td>
                             <td> {item.product_Specification} </td>
@@ -223,7 +224,7 @@ const Test3: NextPage = () => {
                         </tr>
                         <tr>
                           <td>Mobile:</td>
-                          <td>{item.mobile}</td>
+                        <td>{item.mobile}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -519,26 +520,30 @@ const Test3: NextPage = () => {
                 <h3>PRODUCT SPECIFICATIONS </h3>
                 <table className={` table fulltable ${styles.Table_Width}`}>
                   <tbody>
-                    {data?.data.map((item: any) => {
-                      console.log(item.product_name == Product_id);
-                      if (item._id == Product_id) {
-                        console.log(item.additionalSpecification);
-                        return (
-                          <div>
-                            {item.additionalSpecification.map(
-                              (item: any, i: any) => {
-                                return (
-                                  <tr key={i}>
-                                    <td> {item.atribute}</td>
-                                    <td>{item.Values} </td>
-                                  </tr>
-                                );
-                              }
-                            )}
-                          </div>
-                        );
-                      }
-                    })}
+                  {data?.data.map((item: any) => {
+          console.log(item.product_name == Product_id);
+          if (item._id == Product_id) {
+            console.log(item.additionalSpecification)
+            return (
+              <div>
+              {
+                item.additionalSpecification.map((item:any,i:any)=>{
+               
+
+                 return(
+                    <tr key={i}>
+                      <td> {item.atribute}</td>
+                      <td>{item.Values} </td>
+                    </tr>
+                    )
+
+
+                })
+              }
+                    </div>
+                    );
+          }
+        })}
 
                     {/* <tr>
                       <td> Usage/Application </td>

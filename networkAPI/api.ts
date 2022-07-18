@@ -2,6 +2,8 @@ import axios from './axios';
 import {
   Authentication,
   bannerImages,
+  productSubCategory,
+  productUpdateSubCategoryType,
   UserDetail,
   UserProduct,
   userProductForDeclined,
@@ -153,7 +155,7 @@ export const updateSellerProduct = (
   formData.append("sub_category", sub_category);
   formData.append("price", price);
   formData.append("product_Specification", product_Specification);
-  formData.append("additionalSpecification", additionalSpecification);
+  formData.append("additionalSpecification", JSON.stringify(additionalSpecification));
   formData.append("product_description", product_description);
   formData.append("capacity", capacity);
   formData.append("model_no", model_no);
@@ -268,6 +270,60 @@ export const getCategory = () => axios.get<any>("/api/category/get_category");
 export const getHomeCategory = () =>
   axios.get<any>("/api/category/get_home_cat");
 
+
+  // Sub CAtegory Api caling ====================================
+
+export const subCategory = (
+  category_Id:string,
+  category_name:string,
+ 
+  sub_category_name: string,
+  sub_category_image:Blob
+): Promise<Object> => {
+  const formData = new FormData();
+  formData.append("category_Id", category_Id);
+
+  formData.append("category_name", category_name);
+  formData.append("sub_category_name", sub_category_name);
+
+  formData.append("sub_category_image", sub_category_image);
+
+  return axios
+    .post<productSubCategory>("/api/category/add_subcategory", formData)
+    .then((response) => response.data);
+};
+
+
+export const updatesubCategory = (
+  category_Id:string,
+  category_name:string,
+ 
+  sub_category_name: string,
+  sub_category_image:Blob,
+  id: string
+): Promise<Object> =>{
+
+const formData = new FormData();
+
+formData.append("category_Id", category_Id);
+
+formData.append("category_name", category_name);
+formData.append("sub_category_name", sub_category_name);
+
+formData.append("sub_category_image", sub_category_image);
+
+  return axios
+    .patch<productUpdateSubCategoryType>(`/api/category/update_sub_category/${id}`, formData)
+    .then((response) => response.data);
+  }
+
+
+
+export const getSubCategory = () => axios.get<any>("/api/category/get_subcategory");
+export const getHomeSubCategory = () =>
+  axios.get<any>("/api/category/get_home_Subcat");
+
+// Banners Images calling api 
 export const bannersImages = (
   banner_name: string,
   type: string,

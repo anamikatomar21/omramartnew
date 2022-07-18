@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 import AdminLayout from '../../../components/Admin/AdminLayout';
 import { useUpdateCategory } from '../../../networkAPI/queries';
 import styles from '../../../styles/Merchant/addcategory.module.scss';
+import { useAppSelector } from 'redux/hooks';
 
 interface Person {
     name: string;
@@ -28,6 +29,8 @@ interface Person {
     const router = useRouter();
     const _Id =router.query._Id
     console.log(_Id)
+
+
   
   
     

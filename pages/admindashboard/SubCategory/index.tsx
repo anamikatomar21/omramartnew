@@ -5,11 +5,13 @@ import React, {
 } from 'react';
 
 import { NextPage } from 'next';
+import Image from 'next/image';
 import Router from 'next/router';
 import { useAppSelector } from 'redux/hooks';
 
 import AdminLayout from '../../../components/Admin/AdminLayout';
-import { useGetCategory } from '../../../networkAPI/queries';
+import { useGetSubCategory } from '../../../networkAPI/queries';
+import styles from '../../../styles/Merchant/dashcode.module.scss';
 
 const Admin: NextPage = () => {
       const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +22,7 @@ const Admin: NextPage = () => {
         setIsOpen(!isOpen);
       };
       const {error:err,user,isAuthenticated} = useAppSelector((state)=> state.user)
-      const { data, status } = useGetCategory();
+      const { data, status } = useGetSubCategory();
   
   //     const allData=data?.data
   //     console.log(allData)
@@ -66,14 +68,14 @@ const Admin: NextPage = () => {
                 return (
                   <div key={index} >
                     <div style={{display:"flex",gap:"50px",marginTop:"30px"}}>
-                    {/* <div className={styles.Image_Section}>
+                   <div className={styles.Image_Section}>
                       <Image
-                        src={item.category_image[0]?item.category_image[0]:""}
+                        src={item.sub_category_image[0]?item.sub_category_image[0]:"/omratrade/homebanner.png"}
                         alt=""
                         width="300px"
                         height="200px"
                       />
-                    </div> */}
+                    </div> 
                     <div>
                       <div className="reporttable">
                       <table className="table">
@@ -82,6 +84,16 @@ const Admin: NextPage = () => {
                               <td>{index+1}.</td>
                               
                               <td>{item.category_name}</td>
+                              <tr>
+                                <th>Name:</th>
+                                
+                              </tr>
+                              <tr>
+                                
+                                <td>{item.sub_category_name}</td>
+                               
+                               
+                              </tr>
                             </tr>
                             
                            

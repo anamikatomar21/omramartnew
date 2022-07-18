@@ -4,17 +4,19 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/Merchant/newproductpage.module.scss";
+import ProductCard from "../components/ProductCard";
 import CompanyDescription from "../components/CompanyDescription";
-import Footer from "components/Footer/footer";
+import Footer from "../components/Footer/footer";
 import TopHeader from "./topheader";
 // import TopHeader from '../components/Admin/TopHeader';
-import {} from "./";
+import {} from 
 const NewProductPage: NextPage = () => {
   return (
-    <div >
-      <TopHeader />
+    <div className={styles.container_width}>
 
-      <div className={styles.container_width}>
+<TopHeader/>
+
+      <div>
         <div>
           <div className={styles.flex_box}>
             <div className={styles.flex_box1}>
@@ -33,35 +35,35 @@ const NewProductPage: NextPage = () => {
                   height={120}
                   width={120}
                   alt="productr image"
-                  className={styles.productimagesrc1}
+                  className={styles.productimagesrc}
                 />
                 <Image
                   src={"/omratrade/homebanner.png"}
                   height={120}
                   width={120}
                   alt="productr image"
-                  className={styles.productimagesrc1}
+                  className={styles.productimagesrc}
                 />
                 <Image
                   src={"/omratrade/homebanner.png"}
                   height={120}
                   width={120}
                   alt="productr image"
-                  className={styles.productimagesrc1}
+                  className={styles.productimagesrc}
                 />
                 <Image
                   src={"/omratrade/homebanner.png"}
                   height={120}
                   width={120}
                   alt="productr image"
-                  className={styles.productimagesrc1}
+                  className={styles.productimagesrc}
                 />
                 <Image
                   src={"/omratrade/homebanner.png"}
                   height={120}
                   width={120}
                   alt="productr image"
-                  className={styles.productimagesrc1}
+                  className={styles.productimagesrc}
                 />
               </div>
               <div>
@@ -189,49 +191,51 @@ const NewProductPage: NextPage = () => {
                       </li>
                     </ul>
 
-                    <div className="buttonmodel"></div>
+                    <div className="buttonmodel">
+                     
+                    </div>
                   </form>
                 </div>
               </div>
             </div>
             <div id="popup2" className={styles.overlay}>
-              <div className={styles.popup2}>
-                {/* <h2>Info box</h2> */}
-                <a className={styles.close} href="#">
-                  &times;
-                </a>
-                <div className={styles.content1}>
-                  <p className={styles.Font}>View Number</p>
+            <div className={styles.popup2}>
+              {/* <h2>Info box</h2> */}
+              <a className={styles.close} href="#">
+                &times;
+              </a>
+              <div className={styles.content1}>
+                <p className={styles.Font}>View Number</p>
 
-                  <form className={styles.FormWidth}>
-                    <ul>
-                      <div className={styles.DisplayFlex}>
-                        <li>
-                          <input type="checkbox" />
-                          <span>I want to Buy</span>
-                        </li>
+                <form className={styles.FormWidth}>
+                  <ul>
+                    <div className={styles.DisplayFlex}>
+                      <li>
+                        <input type="checkbox" />
+                        <span>I want to Buy</span>
+                      </li>
 
-                        {/* <li>
+                      {/* <li>
                         <input type="radio" name="radio" />
                         <span>I want to Sell</span>
                       </li> */}
-                      </div>
+                    </div>
 
-                      <li>
-                        <p> Mobile No. *</p>
-                        <input type="text" className={styles.NumberInput} />
-                      </li>
+                    <li>
+                      <p> Mobile No. *</p>
+                      <input type="text" className={styles.NumberInput} />
+                    </li>
 
-                      <li>
-                        <button type="submit" className={styles.NumberButton}>
-                          <a href="#">View Number Now</a>
-                        </button>
-                      </li>
-                    </ul>
-                  </form>
-                </div>
+                    <li>
+                      <button type="submit" className={styles.NumberButton}>
+                        <a href="#">View Number Now</a>
+                      </button>
+                    </li>
+                  </ul>
+                </form>
               </div>
             </div>
+          </div>
 
             {/* Right section starts */}
             <div className={styles.flex_box2}>
@@ -252,92 +256,55 @@ const NewProductPage: NextPage = () => {
               </div> */}
 
               <div className={styles.grey_box}>
-                <div>
-                  <span>
-                    <Image
-                      src={"/omratrade/quality.png"}
-                      height={20}
-                      width={20}
-                      alt=" india"
-                    />{" "}
-                    Genuine Products
-                  </span>{" "}
-                </div>
-                <div>
-                  {" "}
-                  <Image
-                    src={"/omratrade/india.png"}
-                    height={20}
-                    width={20}
-                    alt=" india"
-                  />
-                  Made in India
-                </div>
+                <div><span><Image src= {"/omratrade/quality.png"} height={20} width={20} alt=" india" /> Genuine Products</span> </div>
+                <div> <Image src= {"/omratrade/india.png"} height={20} width={20} alt=" india"  />Made in India</div>
               </div>
 
               <div className={styles.table_box}>
                 <hr />
                 <h1 className={styles.span_box}>Product Specifications</h1>
                 <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Special Features</div>
-                  <div>
-                    High Ambient Operation upto 50c, Good sleep off timer,pm2.5
-                    filter, dust,filter, self diagonis, air purifications
-                    filter, dehumidifier, fast cooling
-                  </div>
-                </div>
+                <div>Genuine Products</div>
+                <div>Made in India</div>
+              </div>
+              <div className={styles.div_box}>
+                <div>Genuine Products</div>
+                <div>Made in India</div>
+              </div>
+              <div className={styles.div_box}>
+                <div>Genuine Products</div>
+                <div>Made in India</div>
+              </div>
+              <div className={styles.div_box}>
+                <div>Genuine Products</div>
+                <div>Made in India</div>
+              </div>
+              <div className={styles.div_box}>
+                <div>Genuine Products</div>
+                <div>Made in India</div>
+              </div>
+              <div className={styles.div_box}>
+                <div>Genuine Products</div>
+                <div>Made in India</div>
+              </div>
+              <div className={styles.div_box}>
+                <div>Genuine Products</div>
+                <div>Made in India</div>
+              </div>
+              <div className={styles.div_box}>
+                <div>Genuine Products</div>
+                <div>Made in India</div>
+              </div>
+              <div className={styles.div_box}>
+                <div>Genuine Products</div>
+                <div>Made in India</div>
+              </div>
+              <div className={styles.div_box}>
+                <div>Special Features</div>
+                <div>High Ambient Operation upto 50c, Good sleep off timer,pm2.5 filter, dust,filter, self diagonis, air purifications filter, dehumidifier, fast cooling</div>
+              </div>
+
+
               </div>
             </div>
 
@@ -638,7 +605,9 @@ const NewProductPage: NextPage = () => {
         <CompanyDescription />
       </div>
       <Footer />
+
     </div>
+    
   );
 };
 

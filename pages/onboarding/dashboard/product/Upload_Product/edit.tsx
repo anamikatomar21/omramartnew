@@ -1,19 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 
-import { AxiosError } from "axios";
-import { NextPage } from "next";
-import Image from "next/image";
-import Router, { useRouter } from "next/router";
-import toast from "react-hot-toast";
-import { Col, FormGroup, Input, Row } from "reactstrap";
+import { AxiosError } from 'axios';
+import { NextPage } from 'next';
+import Image from 'next/image';
+import Router, { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
+import {
+  Col,
+  FormGroup,
+  Input,
+  Row,
+} from 'reactstrap';
 
-import DashboardLayout from "../../../../../components/Merchant/Layout";
+import DashboardLayout from '../../../../../components/Merchant/Layout';
 import {
   useGetCategory,
   useUpdateMerchantProduct,
-} from "../../../../../networkAPI/queries";
-import { useAppSelector } from "../../../../../redux/hooks";
-import styles from "../../../../../styles/Merchant/uploadproduct.module.scss";
+} from '../../../../../networkAPI/queries';
+import { useAppSelector } from '../../../../../redux/hooks';
+import styles from '../../../../../styles/Merchant/uploadproduct.module.scss';
 
 // interface Person {
 
@@ -59,6 +67,9 @@ const Upload_Product: NextPage = () => {
       Values: "",
     },
   ]);
+  console.log(additionalSpecification
+    )
+
 
   // {
   //   atribute: "",
@@ -206,7 +217,7 @@ const Upload_Product: NextPage = () => {
       id: _Id as string,
     });
   };
-
+console.log(JSON.stringify(additionalSpecification))
   const data2 = useGetCategory();
   console.log(data2);
   const category_data = data2.data;
@@ -730,12 +741,12 @@ const Upload_Product: NextPage = () => {
                   <Row key={i}>
                     <Col md="4">
                       <FormGroup>
-                        <label
+                        {/* <label
                           className="form-control-label"
                           htmlFor="atribute"
                         >
                           Atribute:
-                        </label>
+                        </label> */}
                         <Input
                           className="inputValuesAttibute"
                           id="atribute"

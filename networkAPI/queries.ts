@@ -19,15 +19,18 @@ import {
   getProducts,
   getProductsBycategory,
   getPublicProduct,
+  getSubCategory,
   login,
   register,
   sellProduct,
   sendEmail,
+  subCategory,
   updateBannerImage,
   updateCategory,
   updateDeclineProduct,
   updateProduct,
   updateSellerProduct,
+  updatesubCategory,
   UserDetails,
 } from './api';
 import {
@@ -35,6 +38,8 @@ import {
   bannerImagesUpdate,
   Login,
   productCategory,
+  productSubCategory,
+  productUpdateSubCategoryType,
   Register,
   updateCategoryType,
   UserDetail,
@@ -213,6 +218,44 @@ export const useUpdateCategory = () => useMutation(
     id)
 );
 
+// SubCategory ============================
+export const useSubCategory = () => useMutation(
+  ({
+    category_Id,
+    category_name,
+   
+    sub_category_name,
+    sub_category_image,
+  }:productSubCategory):Promise<Object> => 
+  subCategory(
+    category_Id ,
+    category_name ,
+   
+    sub_category_name ,
+    sub_category_image 
+  ))
+
+
+  export const useUpdateSubCategory = () => useMutation(
+    ({ 
+      category_Id ,
+    category_name ,
+   
+    sub_category_name ,
+    sub_category_image ,
+    id
+    }:productUpdateSubCategoryType): Promise<Object> =>
+    updatesubCategory(
+      category_Id ,
+      category_name ,
+     
+      sub_category_name ,
+      sub_category_image ,
+      id
+  ));
+
+
+
 export const useBanner = () => useMutation(
   ({
     banner_name,
@@ -252,6 +295,7 @@ export const useGetMerchantDetails  = () => useQuery("getUser", getMerchantCrede
 export const usePublicProduct = () => useQuery("product",getPublicProduct)
 export const useProductForApproval = () => useQuery("product",getApprovalProduct)
 export const useGetCategory = () => useQuery("category",getCategory)
+export const useGetSubCategory = () => useQuery("subcategory",getSubCategory)
 export const useGetHomeCategory = () => useQuery("category",getHomeCategory)
 export const useGetProductById= (id:string) =>
   useQuery("myself", (): Promise<any> => getProductById(id));

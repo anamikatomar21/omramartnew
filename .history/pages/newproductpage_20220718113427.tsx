@@ -11,10 +11,10 @@ import TopHeader from "./topheader";
 import {} from "./";
 const NewProductPage: NextPage = () => {
   return (
-    <div >
+    <div className={styles.container_width}>
       <TopHeader />
 
-      <div className={styles.container_width}>
+      <div>
         <div>
           <div className={styles.flex_box}>
             <div className={styles.flex_box1}>
@@ -33,35 +33,35 @@ const NewProductPage: NextPage = () => {
                   height={120}
                   width={120}
                   alt="productr image"
-                  className={styles.productimagesrc1}
+                  className={styles.productimagesrc}
                 />
                 <Image
                   src={"/omratrade/homebanner.png"}
                   height={120}
                   width={120}
                   alt="productr image"
-                  className={styles.productimagesrc1}
+                  className={styles.productimagesrc}
                 />
                 <Image
                   src={"/omratrade/homebanner.png"}
                   height={120}
                   width={120}
                   alt="productr image"
-                  className={styles.productimagesrc1}
+                  className={styles.productimagesrc}
                 />
                 <Image
                   src={"/omratrade/homebanner.png"}
                   height={120}
                   width={120}
                   alt="productr image"
-                  className={styles.productimagesrc1}
+                  className={styles.productimagesrc}
                 />
                 <Image
                   src={"/omratrade/homebanner.png"}
                   height={120}
                   width={120}
                   alt="productr image"
-                  className={styles.productimagesrc1}
+                  className={styles.productimagesrc}
                 />
               </div>
               <div>
@@ -278,22 +278,6 @@ const NewProductPage: NextPage = () => {
               <div className={styles.table_box}>
                 <hr />
                 <h1 className={styles.span_box}>Product Specifications</h1>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
                 <div className={styles.div_box}>
                   <div>Genuine Products</div>
                   <div>Made in India</div>

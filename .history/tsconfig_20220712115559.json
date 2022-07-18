@@ -14,8 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-  
+    "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/onboarding/dashboard/Upload_Product", "components/Category", "components/ProductCard", "components/SmallBanner"],
   "exclude": ["node_modules"]
