@@ -47,7 +47,7 @@
 .smallimage {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 23px;
 }
 
 // .productimagesrc {
@@ -155,7 +155,7 @@
   flex-wrap: wrap;
   border-radius: 10px;
   overflow: hidden;
-  margin: 20px 17px 20px 16px;
+  margin: 0px 17px 8px 16px;
   max-width: 270px;
 
   .productimg {
@@ -223,9 +223,9 @@
   height: 477px;
 }
 
-// .flex_container {
-//   display: flex;
-// }
+.flex_container {
+  display: flex;
+}
 
 .columns {
   h2 {
