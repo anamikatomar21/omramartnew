@@ -1,0 +1,245 @@
+.dashcodemain {
+    position: relative;
+
+   
+
+    .layoutDrawer {
+        padding-top: 0px;
+        position: relative;
+        display: flex;
+    
+        .layoutDrawer_nav {
+            position: relative;
+            width: 279px;
+            background: #fff;
+            height: auto;
+            z-index: 1038;
+            overflow-y: overlay;
+            background: #f6f6f6;
+
+          
+
+        }
+        // .sidebar {
+        //     position: relative;
+
+        //     ul {
+        //         position: relative;
+        //         display: flex;
+        //         flex-wrap: wrap;
+        //         list-style: none;
+        //         padding: 0;
+        //         margin: 0;
+        //         max-height: 100vh;
+
+        //         li {
+        //             position: relative;
+        //             width: 100%;
+        //             padding: 15px 20px;
+        //             border-top: 1px solid #ebeaea;
+
+        //             a {
+        //                 font-size: 16px;
+        //             }
+
+        //         }
+
+
+        //     }
+
+
+        // }
+
+        .sidebar ul a{
+            color: #31344b;
+            text-decoration: none;
+            display: flex;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 400;
+            padding : 10px 25px;
+            border-radius: 6px;
+            box-shadow: -3px -3px 7px #ffffff,
+            3px 3px 5px #9b9ba2;
+            position: relative;
+            transition: all 0.2s ease;
+            margin-left: 0px;
+    margin-right: 30px;
+    justify-content: space-between;
+          }
+  
+          .sidebar ul a:hover:before
+          {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: inset -3px -3px 7px #ffffff,
+                        inset 3px 3px 5px #ceced1;
+          }
+          .sidebar ul a:hover:before{
+            border-radius: 6px;
+          }
+         
+        //   .sidebar ul a:hover{
+        //     color: #3498db;
+        //   }
+          
+        .layoutDrawer_nav::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #F5F5F5;
+        }
+
+        .layoutDrawer_nav::-webkit-scrollbar {
+            width: 10px;
+            background-color: #F5F5F5;
+        }
+
+        .layoutDrawer_nav::-webkit-scrollbar-thumb {
+            background-color: #000000;
+            border: 2px solid #555555;
+        }
+    }
+
+    .layoutDrawer_content {
+        position: relative;
+        padding-left: 279px;
+        margin-left: 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 0;
+        flex-grow: 1;
+        min-height: calc(100vh - 4.5rem);
+        margin-left: -279px;
+
+        main {
+            padding: 30px;
+        }
+
+        .mainsection {
+            position: relative;
+        }
+    }
+
+}
+
+.footer {
+    width: 100%;
+    background-color: #002b6b;
+    color: white;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-family: sans-serif;
+    line-height: 1.6em;
+}
+
+.back-section {
+
+    background-image: url('/omratrade/banner.jpg');
+
+
+}
+
+.product-section {
+    height: 200px;
+    width: 300px;
+    border: 2px solid black;
+    background-color: white;
+    margin: 10px 10px;
+}
+
+.container {
+
+
+    display: flex;
+    height: 900px;
+    width: 900px;
+    border: 2px solid black;
+}
+
+.section-container {
+    border: 2px solid red;
+    height: 400px;
+}
+.AprovalStyle{
+    display: flex;
+    gap: 3px;
+    width: 70%;
+    margin-top: 17px;
+    justify-content: right;
+    margin-right:-77px;
+    margin-bottom: 74px;
+}
+
+.AdminContainer{
+    section{
+        width: 100%;
+        background:white;
+        margin-top: 88px;
+        margin-left: 40px;
+    
+    }
+    
+
+}
+
+.CheckboxButton {
+    height: 24px;
+    width: 60px;
+    color: white;
+    background-color: #0052cc;
+    border-radius: 3px;
+    border: none;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+.FormButton{
+  
+    margin-top: -5px;
+    padding: 10px;
+    // background-color: #dadada;
+    width: max-content;
+   
+}
+
+
+
+.CancelButton{
+    margin-left: 3px;
+    margin-top: -36px;
+  
+    font-size: 16px;
+ 
+}
+.Flex_Container
+{
+ display: flex;
+}
+.Image_Section{
+
+    margin-top: 50px;
+}
+
+
+.TableBox1{  
+    border: 1px solid red;
+    text-align: left;
+  }
+  
+  .TableBox {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid red;
+    text-align: left;
+  }
+  
+//   th, td {
+//     padding: 15px;
+//   }

@@ -789,7 +789,7 @@ const Upload_Product: NextPage = () => {
             })}
 
             <li className={styles.bottonstyle}>
-              <div className={styles.bottonstyle1}>
+              {/* <div className={styles.bottonstyle1}>
                 {" "}
                 <input
                   type="submit"
@@ -797,7 +797,7 @@ const Upload_Product: NextPage = () => {
                   value="Add Product"
                   onClick={(e) => alert("uploaded")}
                 />
-              </div>
+              </div> */}
 
               <div className={styles.bottonstyle1}>
                 {" "}

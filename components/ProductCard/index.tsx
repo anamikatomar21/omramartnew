@@ -79,7 +79,7 @@ function ProductCard({ title, data }: Props) {
                     <div className={styles.productcartbtn}>
                       <button
                         type="submit"
-                        onClick={() => router.push(`/newproductpage?id=${item._id}`)}
+                        onClick={() => router.push(`/product?id=${item._id}`)}
                       >
                         View More
                       </button>
