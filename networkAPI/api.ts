@@ -2,6 +2,7 @@ import axios from './axios';
 import {
   Authentication,
   bannerImages,
+  CustomerQueryType,
   productSubCategory,
   productUpdateSubCategoryType,
   UserDetail,
@@ -101,7 +102,7 @@ export const sellProduct = (
   formData.append("sub_category", sub_category);
   formData.append("price", price);
   formData.append("product_Specification", product_Specification);
-  formData.append("additionalSpecification", additionalSpecification);
+  formData.append("additionalSpecification", JSON.stringify(additionalSpecification));
   formData.append("product_description", product_description);
   formData.append("capacity", capacity);
   formData.append("model_no", model_no);
@@ -271,6 +272,8 @@ export const getHomeCategory = () =>
   axios.get<any>("/api/category/get_home_cat");
 
 
+
+
   // Sub CAtegory Api caling ====================================
 
 export const subCategory = (
@@ -322,6 +325,22 @@ formData.append("sub_category_image", sub_category_image);
 export const getSubCategory = () => axios.get<any>("/api/category/get_subcategory");
 export const getHomeSubCategory = () =>
   axios.get<any>("/api/category/get_home_Subcat");
+
+///   Customer Query
+export const CustomerQuery = (
+  product_Id: string,
+
+  customer_mob:string
+): Promise<Object> => {
+  const formData = new FormData();
+  formData.append("product_Id", product_Id);
+
+  formData.append("customer_mob", customer_mob);
+
+  return axios
+    .post<CustomerQueryType>("/api/category/connect_to_buy", formData)
+    .then((response) => response.data);
+};
 
 // Banners Images calling api 
 export const bannersImages = (

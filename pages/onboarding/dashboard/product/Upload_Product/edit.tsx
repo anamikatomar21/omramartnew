@@ -438,6 +438,7 @@ console.log(JSON.stringify(additionalSpecification))
                 type="text"
                 name="productname"
                 id="productname"
+                required
                 onChange={(e) => setProduct_name(e.target.value)}
               />
             </li>
@@ -458,6 +459,7 @@ console.log(JSON.stringify(additionalSpecification))
                 name="category"
                 className={styles.dropdown}
                 value={category}
+                required
                 onChange={(e) => setCategory(e.target.value)}
               >
                 <option value="">Select Category</option>

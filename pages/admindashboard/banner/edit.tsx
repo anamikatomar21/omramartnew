@@ -13,19 +13,8 @@ import AdminLayout from '../../../components/Admin/AdminLayout';
 import { useUpdateBanner } from '../../../networkAPI/queries';
 import styles from '../../../styles/Merchant/addcategory.module.scss';
 
-interface Person {
-    name: string;
-    age: number;
-    count: number;
-    "gift-wrap": "hello";
-  }
-  
-  const Upload_Banner: NextPage = () => {
-    const formData = {
-      name: "Amit",
-      age: 25,
-      count: 12,
-    };
+const Upload_Banner: NextPage = () => {
+
     const { error:err, user, isAuthenticated } = useAppSelector(
       (state) => state.user
     );
@@ -43,6 +32,7 @@ interface Person {
     }, [user, isAuthenticated]);
     const router = useRouter();
     const _Id =router.query._Id
+    const type=router.query.type
     console.log(_Id)
   
     // const [banner_name, setBanner_name] = useState<string>("");
@@ -92,29 +82,6 @@ interface Person {
       }
     }, [error, data, router]);
   
-    // const options = [
-    //   { value: "Drugs & Pharma", label: "Drugs & Pharma" },
-    //   { value: "Hospital & Diagnostics", label: "Hospital & Diagnostics" },
-    //   { value: "Food & Agriculture", label: "Food & Agriculture" },
-    //   { value: "Industrial Machinery", label: "Industrial Machinery" },
-    //   { value: "Industrial Supplies", label: "Industrial Supplies" },
-    //   { value: "Electronics & Electrical", label: "Electronics & Electrical" },
-    //   { value: "Building & Construction", label: "Building & Construction" }
-    // ];
-  
-    const options1 = [
-      { value: "Wholesaler", label: "Wholesaler" },
-      { value: "Manufacturer", label: "Manufacturer" },
-      { value: "Retailer", label: "Retailer" },
-    ];
-  
-    function handleSubmit() {
-      return "hello";
-    }
-  
-    function handleChange() {
-      return "helo";
-    }
     return (
       <AdminLayout>
         <div className={styles.mov}>
@@ -131,17 +98,12 @@ interface Person {
           <div className="box3">
             <form action="" onSubmit={handleLogin}>
               <ul className="box345">
-                {/* <li>
+                <li>
                   <label htmlFor="banner_name" className="omra-lael">
-                    Banner Name
+                    Banner Type
                   </label>
-                  <input
-                    type="text"
-                    name="banner_name"
-                    id="banner_name"
-                    onChange={(e) => setBanner_name(e.target.value)}
-                  />
-                </li> */}
+                  <h2>{type}</h2>
+                </li>
                 {/* <li>
                   <label htmlFor="banner_type" className="omra-lael">
                     Banner Type
@@ -203,7 +165,7 @@ interface Person {
                 <li style={{ display: "flex", gap: "20px", marginTop: "20px" }}>
                   {/* <input type="submit" className='Upload-Button' /> */}
   
-                  <button className={styles.Add_Button}>update Banners</button>
+                  <button className={styles.Add_Button}>Update Banner</button>
                   {/* <button className="Upload-Button">Submit</button> */}
                 </li>
               </ul>

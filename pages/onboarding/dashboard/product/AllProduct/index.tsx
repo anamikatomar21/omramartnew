@@ -55,7 +55,7 @@ const AllProduct: NextPage = () => {
       <div className={"styles.Flex_Container"}>
         {merchantGetData?.data.map((item: any, index: number) => {
          
-          if (user._id == item.auther_Id) {
+          if (user._id == item.auther_Id && item.isApproved==false) {
             console.log(item);
             return (
               <div key={index} className={styles.Flex_Container}>
