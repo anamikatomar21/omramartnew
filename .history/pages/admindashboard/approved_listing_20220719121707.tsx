@@ -38,7 +38,7 @@ const Admin: NextPage = () => {
   console.log(getData);
   console.log(getData.data?.data);
   const test = getData.data;
-
+ 
   const { error, isLoading, data, mutate, isSuccess } = useUpdateProduct();
 
   const {
@@ -54,6 +54,7 @@ const Admin: NextPage = () => {
       setIsOpen([...isOpen, false]);
     }
   }, [test]);
+
 
   const handleLogin = (item: any) => {
     mutate({
@@ -85,6 +86,7 @@ const Admin: NextPage = () => {
     setisApproved(true);
   }, []);
 
+
   return (
     <>
       <AdminLayout>
@@ -101,6 +103,7 @@ const Admin: NextPage = () => {
             Waiting for Approval
           </h1>
           {test?.data.map((item: any, index: any) => {
+           
             if (item.isApproved == false) {
               return (
                 <div>
@@ -139,17 +142,19 @@ const Admin: NextPage = () => {
                               </tr>
                               <tr>
                                 <td>Product Specifications</td>
-
+                            
                                 <td>{item.product_Specification}</td>
                               </tr>
-
+                             
                               <tr>
                                 <td>Product Description</td>
                                 <td>
                                   <p>{item.product_description}</p>
                                 </td>
+                              
                               </tr>
                             </tbody>
+                          
                           </table>
 
                           <div className={styles.AprovalStyle}>
@@ -189,6 +194,18 @@ const Admin: NextPage = () => {
                                               handleDeclined(item)
                                             }
                                           >
+                                            {/* <label htmlFor="" className={styles.CancelButton}>Reason of Rejection</label> */}
+                                            {/* <textarea cols={50} rows={4} /> */}
+
+                                            {/* <select >
+                          <option value="domain" >Reason of Rejection</option>
+                            <option value="domain" >Mismatch Domain Details</option>
+                            <option value="domain" >Picture quality mismatch</option>
+                            <option value="domain">Wrong Specification</option>
+                            <option value="domain">Mislabelling of Products</option>
+                            <option value="domain" onClick={decline}><a href="#">Others</a></option>
+                          </select> */}
+
                                             <select
                                               name="cars"
                                               id="cars"

@@ -24,14 +24,14 @@
 }
 
 .flex_box3 {
-  border: 1px solid rgb(152, 170, 195);
-  height: 442px;
-  width: 94%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 47px 17px 64px 26px;
-  margin-top: 52px;
+border: 1px solid rgb(152, 170, 195);
+    height: 442px;
+    width: 94%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 47px 17px 64px 26px;
+    margin-top: 52px;
 }
 
 .flex_box2 h3 {
@@ -602,9 +602,8 @@ button .fa {
 
 .botton5 {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
-
+  justify-content: space-around;
+  align-items: center;
 }
 .popup2 {
   margin: 130px auto;
@@ -796,8 +795,8 @@ button .fa {
 }
 .seemorestyles {
   position: relative;
-  margin-left: 322px;
-  // bottom: -7px;
+  left: 340px;
+  bottom: -7px;
   color: #002b6b;
   font-weight: 700;
 }

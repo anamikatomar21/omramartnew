@@ -54,12 +54,12 @@ const Header: NextPage = () => {
               <i className="fas fa-user"></i>
               <a href="#">Buyer</a>
             </li>
-            <select name="" id="">
+            <select name="" id="">Profile
 
-              <option value="">Company ID</option>
-              <option value="">Edit Company Details</option>
-              <option value="">Business Details</option>
-          
+              <option value=""></option>
+              <option value=""></option>
+              <option value=""></option>
+              <option value=""></option>
             </select>
             <li>
               <i className="fas fa-user"></i> <span>Profile</span>

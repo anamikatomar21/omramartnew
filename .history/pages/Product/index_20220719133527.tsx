@@ -264,7 +264,7 @@ const NewProductPage: NextPage = () => {
                 </div>
               </div>
             </div>
-           
+
             {/* Right section starts */}
             <div className={styles.flex_box2}>
               <h1>
@@ -325,9 +325,9 @@ const NewProductPage: NextPage = () => {
                   <div>Made in India</div>
                 </div>
               </div>
-              <div className={styles.seemorestyles}>
+              {/* <div className={styles.seemorestyles}>
                       <a href="#popup3">View more</a>
-                    </div>
+                    </div> */}
               <span className={styles.botton5}>
                 <div>
                   <a

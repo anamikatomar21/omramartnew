@@ -32,13 +32,26 @@ const Admin: NextPage = () => {
 
   console.log({ isOpen });
 
-  console.log("POPUP STATE", isOpen);
+  // useEffect(() => {
+  //   if (!isOpen) return;
 
+  //   function handleOutsideClick(event: any) {
+  //     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  //       setIsOpen([false]);
+  //       setSelect("");
+  //     }
+  //   }
+  //   window.addEventListener("click", handleOutsideClick);
+  //   return () => window.removeEventListener("click", handleOutsideClick);
+  // }, [isOpen]);
+
+  console.log("POPUP STATE", isOpen);
+  // const getData = usePublicProduct();
   const getData = usePublicProduct();
   console.log(getData);
   console.log(getData.data?.data);
   const test = getData.data;
-
+  // console.log(data?.data.length);
   const { error, isLoading, data, mutate, isSuccess } = useUpdateProduct();
 
   const {
@@ -54,6 +67,19 @@ const Admin: NextPage = () => {
       setIsOpen([...isOpen, false]);
     }
   }, [test]);
+
+  // useEffect(() => {
+  //   if (!isOpen) return;
+  //   function handleOutsideClick(event: any) {
+  //     if (!dropdownRef.current && dropdownRef.current.contains(event.target)) {
+  //       return
+  //     }
+  //     setSelect("");
+  //     setIsOpen(false);
+  //   }
+  //   window.addEventListener("mousedown", handleOutsideClick);
+  //   return () => window.removeEventListener("mousedown", handleOutsideClick);
+  // }, [isOpen]);
 
   const handleLogin = (item: any) => {
     mutate({
@@ -85,6 +111,17 @@ const Admin: NextPage = () => {
     setisApproved(true);
   }, []);
 
+  // useEffect(() => {
+  //   if (error instanceof AxiosError) {
+  //     toast.error(error?.response?.data?.message || error.message);
+  //   }
+
+  //   if (isSuccess==true) {
+  //     toast.success("update Successfull");
+  //     router.reload()
+  //   }
+  // }, [error, data,router,isSuccess]);
+
   return (
     <>
       <AdminLayout>
@@ -101,6 +138,7 @@ const Admin: NextPage = () => {
             Waiting for Approval
           </h1>
           {test?.data.map((item: any, index: any) => {
+            // console.log(item);
             if (item.isApproved == false) {
               return (
                 <div>
@@ -139,17 +177,19 @@ const Admin: NextPage = () => {
                               </tr>
                               <tr>
                                 <td>Product Specifications</td>
-
+                                {/* <td>Thickness in microns</td> */}
                                 <td>{item.product_Specification}</td>
                               </tr>
-
+                             
                               <tr>
                                 <td>Product Description</td>
                                 <td>
                                   <p>{item.product_description}</p>
                                 </td>
+                              
                               </tr>
                             </tbody>
+                          
                           </table>
 
                           <div className={styles.AprovalStyle}>
@@ -189,6 +229,18 @@ const Admin: NextPage = () => {
                                               handleDeclined(item)
                                             }
                                           >
+                                            {/* <label htmlFor="" className={styles.CancelButton}>Reason of Rejection</label> */}
+                                            {/* <textarea cols={50} rows={4} /> */}
+
+                                            {/* <select >
+                          <option value="domain" >Reason of Rejection</option>
+                            <option value="domain" >Mismatch Domain Details</option>
+                            <option value="domain" >Picture quality mismatch</option>
+                            <option value="domain">Wrong Specification</option>
+                            <option value="domain">Mislabelling of Products</option>
+                            <option value="domain" onClick={decline}><a href="#">Others</a></option>
+                          </select> */}
+
                                             <select
                                               name="cars"
                                               id="cars"

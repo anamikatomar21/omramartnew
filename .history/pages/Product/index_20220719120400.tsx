@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import "slick-carousel/slick/slick-theme.css";
+
 import React, { Component } from "react";
 import Slider from "react-slick";
 import type { NextPage } from "next";
@@ -108,14 +108,14 @@ const NewProductPage: NextPage = () => {
               <div>
                 <h1>Company Information</h1>
                 <p>
-                  <b>Split AC with non-inverter compressor:</b>E-Laundry “A
-                  Product of Omra Solutions.” The Perfect fit for any kind of
-                  Laundry and Dry-Clean Business.
+                  <b>Split AC with non-inverter compressor:</b> 100% Copper
+                  Condenser with extended lifespan to ensure that the air
+                  conditioner is protected in all weather conditions
                 </p>
                 <p>
-                  <b>Split AC with non-inverter compressor:</b> E-Laundry “A
-                  Product of Omra Solutions.” The Perfect fit for any kind of
-                  Laundry and Dry-Clean Business.
+                  <b>Split AC with non-inverter compressor:</b> 100% Copper
+                  Condenser with extended lifespan to ensure that the air
+                  conditioner
                 </p>
                 <p>
                   <b>Split AC with non-inverter compressor:</b> 100% Copper
@@ -133,7 +133,7 @@ const NewProductPage: NextPage = () => {
                 </p>
               </div>
 
-              {/* <span className={styles.botton5}>
+              <span className={styles.botton5}>
                 <div>
                   <a
                     className={styles.ButtonSection1}
@@ -148,7 +148,7 @@ const NewProductPage: NextPage = () => {
                     For Enquiry
                   </a>
                 </div>
-              </span> */}
+              </span>
             </div>
             <div id="popup1" className={styles.overlay}>
               <div className={styles.popup}>
@@ -264,7 +264,7 @@ const NewProductPage: NextPage = () => {
                 </div>
               </div>
             </div>
-           
+
             {/* Right section starts */}
             <div className={styles.flex_box2}>
               <h1>
@@ -324,32 +324,53 @@ const NewProductPage: NextPage = () => {
                   <div>Genuine Products</div>
                   <div>Made in India</div>
                 </div>
+                <div className={styles.div_box}>
+                  <div>Genuine Products</div>
+                  <div>Made in India</div>
+                </div>
+                <div className={styles.div_box}>
+                  <div>Genuine Products</div>
+                  <div>Made in India</div>
+                </div>
+                <div className={styles.div_box}>
+                  <div>Genuine Products</div>
+                  <div>Made in India</div>
+                </div>
+                <div className={styles.div_box}>
+                  <div>Genuine Products</div>
+                  <div>Made in India</div>
+                </div>
+                <div className={styles.div_box}>
+                  <div>Genuine Products</div>
+                  <div>Made in India</div>
+                </div>
+                <div className={styles.div_box}>
+                  <div>Genuine Products</div>
+                  <div>Made in India</div>
+                </div>
+                <div className={styles.div_box}>
+                  <div>Genuine Products</div>
+                  <div>Made in India</div>
+                </div>
+                <div className={styles.div_box}>
+                  <div>Genuine Products</div>
+                  <div>Made in India</div>
+                </div>
+                <div className={styles.div_box}>
+                  <div>Special Features</div>
+                  <div>
+                    High Ambient Operation upto 50c, Good sleep off timer,pm2.5
+                    filter, dust,filter, self diagonis, air purifications
+                    filter, dehumidifier, fast cooling
+                  </div>
+                </div>
               </div>
-              <div className={styles.seemorestyles}>
-                      <a href="#popup3">View more</a>
-                    </div>
-              <span className={styles.botton5}>
-                <div>
-                  <a
-                    className={styles.ButtonSection1}
-                    href="#popup2"
-                    // href="tel:9015756558"
-                  >
-                    Call to Connect
-                  </a>
-                </div>
-                <div>
-                  <a className={styles.ButtonSection2} href="#popup1">
-                    For Enquiry
-                  </a>
-                </div>
-              </span>
             </div>
 
             {/* Right section ends */}
           </div>
         </div>
-        {/* <div className={styles.background_section}>
+        <div className={styles.background_section}>
           <h1>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
           <div className={styles.flex_container}>
             <Slider {...settings}>
@@ -555,7 +576,7 @@ const NewProductPage: NextPage = () => {
               </div>
             </Slider>
           </div>
-        </div> */}
+        </div>
       </div>
 
       <div>

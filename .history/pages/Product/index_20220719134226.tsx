@@ -264,7 +264,60 @@ const NewProductPage: NextPage = () => {
                 </div>
               </div>
             </div>
-           
+            <div id="popup3" className={styles.overlay}>
+            <div className={styles.popup}>
+              {/* <h2>Info box</h2> */}
+              <a className={styles.close} href="">
+                &times;
+              </a>
+              <div className={styles.content1}>
+                <h3>PRODUCT SPECIFICATIONS </h3>
+                <table className={` table fulltable ${styles.Table_Width}`}>
+                  <tbody>
+                    {data?.data.map((item: any) => {
+                      console.log(item.product_name == Product_id);
+                      if (item._id == Product_id) {
+                        console.log(item.additionalSpecification);
+                        return (
+                          <div>
+                            {item.additionalSpecification.map(
+                              (item: any, i: any) => {
+                                return (
+                                  <tr key={i}>
+                                    <td> {item.atribute}</td>
+                                    <td>{item.Values} </td>
+                                  </tr>
+                                );
+                              }
+                            )}
+                          </div>
+                        );
+                      }
+                    })}
+
+                    {/* <tr>
+                      <td> Usage/Application </td>
+                      <td> Industrial </td>
+                    </tr>
+                    <tr>
+                      <td> Country of origin</td>
+                      <td> India</td>
+                    </tr> */}
+                    <tr>
+                      <td> Installation Type</td>
+
+                      <td> Do It Yourself </td>
+                    </tr>
+                    <tr>
+                      <td>Leatherette</td>
+
+                      <td> Dimensions LxWxH</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
             {/* Right section starts */}
             <div className={styles.flex_box2}>
               <h1>

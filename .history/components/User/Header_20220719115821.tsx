@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { NextPage } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { useOnClickOutside } from "usehooks-ts";
-import styles from "styles/Merchant/Header.module.scss";
-import { useRouter } from "next/router";
+import React, { useState } from 'react';
+import { NextPage } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useOnClickOutside } from 'usehooks-ts';
+import styles from 'styles/Merchant/Header.module.scss';
+import { useRouter } from 'next/router';
 
 interface SearchProps {
   citySearch: string;
@@ -105,50 +105,58 @@ const Header: NextPage = () => {
 
   const onFilterProduct = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      dispatch(actions.onFilterProduct(e.target.value));
+      dispatch(actions.onFilterProduct(e.target.value))
     },
     [actions]
   );
 
-  const [productID, setproductID] = useState("");
+
+  
+const [productID, setproductID] = useState('')
   // const onFilterProduct = debounce(_onFilterProduct, 2000)
 
   const onSelectProuct = React.useCallback(
     (data: any) => {
       // console.log(data._id)
-      setproductID(data._id);
+      setproductID(data._id)
       dispatch(actions.onFilterProduct(data.product_name));
     },
     [actions]
   );
 
-  const [productName, setProductName] = useState([]);
+
+
+
+  const [productName,setProductName]=useState([])
 
   // https://merchantapi.elaundry.co.in/api/search/mouse
 
-  const endpoint = `https://merchantapi.elaundry.co.in/api/search/${state.productSearch}`;
-  // async / await
+  const endpoint = `https://merchantapi.elaundry.co.in/api/search/${state.productSearch}`
+  // async / await 
+
+
 
   React.useEffect(() => {
+    
     const getProductNameAndVendorName = async () => {
-      try {
-        const res = await fetch(endpoint);
-        const data = await res.json();
-        setProductName(data);
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getProductNameAndVendorName();
-  }, [endpoint]);
+    try {
+      const res = await fetch(endpoint)
+      const data = await res.json()
+      setProductName(data)
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+    getProductNameAndVendorName()
+  }, [endpoint])
 
-  const router = useRouter();
+const router=useRouter()
 
-  const onSubmit = () => {
+  const onSubmit=()=>{
     // router.push(`Product?id=${productID}`)
-    router.push(`product?id=${productID}`);
-  };
+    router.push(`product?id=${productID}`)
+  }
   return (
     // <div className={styles.navbarheader}>
     <div>
@@ -225,23 +233,16 @@ const Header: NextPage = () => {
           />
           {productsDropDown ? (
             <ul className={styles.productSearchList}>
-              {productName
-                ?.sort((a: any, b: any) =>
-                  a?.product_name?.localeCompare(b.product_name)
-                )
-                ?.slice(0, 10)
-                ?.map((data: any, index) => (
+              {
+                productName?.sort((a:any,b:any)=>a?.product_name?.localeCompare(b.product_name))?.slice(0,10)?.map((data:any, index) => (
                   <li key={index} onClick={() => onSelectProuct(data)}>
                     {data.product_name}
                   </li>
-                ))}
+                ))
+              }
             </ul>
           ) : null}
-          <button
-            onClick={onSubmit}
-            type="submit"
-            className={styles.input_section1r}
-          >
+          <button onClick={onSubmit} type="submit" className={styles.input_section1r}>
             <i className="fa fa-search"></i>Search
           </button>
         </div>
@@ -252,6 +253,7 @@ const Header: NextPage = () => {
   );
 };
 export default Header;
+
 
 // const xx=''.localeCompare
 

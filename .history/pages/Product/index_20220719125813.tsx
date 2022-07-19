@@ -108,14 +108,14 @@ const NewProductPage: NextPage = () => {
               <div>
                 <h1>Company Information</h1>
                 <p>
-                  <b>Split AC with non-inverter compressor:</b>E-Laundry “A
-                  Product of Omra Solutions.” The Perfect fit for any kind of
-                  Laundry and Dry-Clean Business.
+                  <b>Split AC with non-inverter compressor:</b>E-Laundry “A Product of Omra Solutions.” The Perfect fit for any kind of Laundry and Dry-Clean Business.
+
+
                 </p>
                 <p>
-                  <b>Split AC with non-inverter compressor:</b> E-Laundry “A
-                  Product of Omra Solutions.” The Perfect fit for any kind of
-                  Laundry and Dry-Clean Business.
+                  <b>Split AC with non-inverter compressor:</b> 100% Copper
+                  Condenser with extended lifespan to ensure that the air
+                  conditioner
                 </p>
                 <p>
                   <b>Split AC with non-inverter compressor:</b> 100% Copper
@@ -264,7 +264,7 @@ const NewProductPage: NextPage = () => {
                 </div>
               </div>
             </div>
-           
+
             {/* Right section starts */}
             <div className={styles.flex_box2}>
               <h1>
@@ -324,10 +324,8 @@ const NewProductPage: NextPage = () => {
                   <div>Genuine Products</div>
                   <div>Made in India</div>
                 </div>
+               
               </div>
-              <div className={styles.seemorestyles}>
-                      <a href="#popup3">View more</a>
-                    </div>
               <span className={styles.botton5}>
                 <div>
                   <a
@@ -345,7 +343,7 @@ const NewProductPage: NextPage = () => {
                 </div>
               </span>
             </div>
-
+           
             {/* Right section ends */}
           </div>
         </div>

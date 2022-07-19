@@ -34,6 +34,7 @@ const Header: NextPage = () => {
           />
         </div>
       </div>
+
       <div className={styles.searchbox}>
         <div className={styles.searchinnerbox}>
           <input
@@ -41,6 +42,7 @@ const Header: NextPage = () => {
             placeholder="Search.."
             className={styles.searchinput}
           />
+
           <button type="submit" className={styles.searchinput1}>
             <i className="fa fa-search"></i>
           </button>
@@ -50,19 +52,13 @@ const Header: NextPage = () => {
         <div className={styles.rightnav}>
           <ul className={styles.navlinks}>
             <li></li>
+
             <li>
               <i className="fas fa-user"></i>
               <a href="#">Buyer</a>
             </li>
-            <select name="" id="">
-
-              <option value="">Company ID</option>
-              <option value="">Edit Company Details</option>
-              <option value="">Business Details</option>
-          
-            </select>
             <li>
-              <i className="fas fa-user"></i> <span>Profile</span>
+              <i className="fas fa-user"></i> <div>Profile</div>
             </li>
 
             <li>

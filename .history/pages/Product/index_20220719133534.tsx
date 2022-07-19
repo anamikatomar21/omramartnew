@@ -264,7 +264,7 @@ const NewProductPage: NextPage = () => {
                 </div>
               </div>
             </div>
-           
+
             {/* Right section starts */}
             <div className={styles.flex_box2}>
               <h1>
