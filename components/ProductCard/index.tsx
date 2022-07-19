@@ -1,12 +1,12 @@
-import "react-multi-carousel/lib/styles.css";
-import Carousel from "react-multi-carousel";
-import React from "react";
+import 'react-multi-carousel/lib/styles.css';
 
-import { useGetCategory } from "networkAPI/queries";
-import Image from "next/image";
-import { useRouter } from "next/router";
+import React from 'react';
 
-import styles from "styles/Merchant/updatedproductcard.module.scss";
+import { useGetCategory } from 'networkAPI/queries';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Carousel from 'react-multi-carousel';
+import styles from 'styles/Merchant/updatedproductcard.module.scss';
 
 // function ProductCard({title,data}) {
 interface Props {
@@ -79,7 +79,7 @@ function ProductCard({ title, data }: Props) {
                     <div className={styles.productcartbtn}>
                       <button
                         type="submit"
-                        onClick={() => router.push(`/Product?id=${item._id}`)}
+                        onClick={() => router.push(`/newproductpage?id=${item._id}`)}
                       >
                         View More
                       </button>

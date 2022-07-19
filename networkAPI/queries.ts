@@ -7,6 +7,7 @@ import {
   bannersImages,
   Category,
   companyProfle,
+  CustomerQuery,
   getApprovalProduct,
   getBannerImages,
   getBussinessDetails,
@@ -36,6 +37,7 @@ import {
 import {
   bannerImages,
   bannerImagesUpdate,
+  CustomerQueryType,
   Login,
   productCategory,
   productSubCategory,
@@ -287,6 +289,21 @@ export const useUpdateBanner = () => useMutation(
     banner_image4,
     id)
 );
+
+
+//  customer Query
+
+export const useCustomerQuery = () => useMutation(
+  ({
+    product_Id,
+    customer_mob,
+   
+    
+  }:CustomerQueryType):Promise<Object> => 
+  CustomerQuery(
+    product_Id,
+    customer_mob,
+  ))
 export const useProductsByCategory = (category:string) => useQuery(["products",category],()=>getProductsBycategory(category));
 export const useProducts = () => useQuery("products",getProducts);
 export const useGetCompanyProfile =() => useQuery("companyprofile",getCompnyProfile)

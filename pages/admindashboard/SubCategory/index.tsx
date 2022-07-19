@@ -10,12 +10,15 @@ import Router from 'next/router';
 import { useAppSelector } from 'redux/hooks';
 
 import AdminLayout from '../../../components/Admin/AdminLayout';
-import { useGetSubCategory } from '../../../networkAPI/queries';
-import styles from '../../../styles/Merchant/dashcode.module.scss';
+import {
+  useGetCategory,
+  useGetSubCategory,
+} from '../../../networkAPI/queries';
 
 const Admin: NextPage = () => {
       const [isOpen, setIsOpen] = useState(false);
       const [select, setSelect] = useState<string>("");
+      const [category_id, setCategory_id]= useState<string>("")
       const dropdownRef = useRef<any>("");
     
       const togglePopup = () => {
@@ -23,6 +26,7 @@ const Admin: NextPage = () => {
       };
       const {error:err,user,isAuthenticated} = useAppSelector((state)=> state.user)
       const { data, status } = useGetSubCategory();
+      const {data: category_data,status:status1} =useGetCategory()
   
   //     const allData=data?.data
   //     console.log(allData)
@@ -32,7 +36,7 @@ const Admin: NextPage = () => {
   // }
   
   // console.log(arr1)
-      console.log(data);
+     
     
       useEffect(() => {
         if (!isOpen) return;
@@ -57,44 +61,88 @@ const Admin: NextPage = () => {
           Router.push(`/`);
         }
       }, [user, isAuthenticated]);
+
+      useEffect(()=>{
+        category_data?.data.map((item:any)=>{
+          
+          setCategory_id(item.category_name)
+        })
+
+      },[category_data,category_id])
+    
     
       return (
         <>
           <AdminLayout>
             <div className={"styles.Flex_Container"} style={{marginLeft:"400px"}}>
               <h1>All Category List</h1>
-              {data?.data.map((item: any, index: any) => {
-                console.log(item.category_image);
-                return (
-                  <div key={index} >
+            
+               
+                  <div  >
                     <div style={{display:"flex",gap:"50px",marginTop:"30px"}}>
-                   <div className={styles.Image_Section}>
+                   {/* <div className={styles.Image_Section}>
                       <Image
                         src={item.sub_category_image[0]?item.sub_category_image[0]:"/omratrade/homebanner.png"}
                         alt=""
                         width="300px"
                         height="200px"
                       />
-                    </div> 
+                    </div>  */}
                     <div>
                       <div className="reporttable">
                       <table className="table">
+                        <tr>
+                          <th>Sr No:</th>
+                          <th>category Name:</th>
+                         
+                        </tr>
                           <tbody>
-                            <tr>
-                              <td>{index+1}.</td>
-                              
+                          {category_data?.data.map((item: any, index: any) => {
+                          
+
+return (
+                            <tr key={index}>
+                              <td>{index}.</td>
                               <td>{item.category_name}</td>
                               <tr>
-                                <th>Name:</th>
+                            <th>Sr No:</th>
+                            <th>Suncategory Name</th>
+                            <th>Image</th>
+                          </tr>
+                              {data?.data.filter((item3:any)=>item._id==item3.category_Id).map((item2:any,i:any)=>
+
+
+                              {
+                                console.log(item2)
+                                console.log(item)
                                 
-                              </tr>
-                              <tr>
                                 
-                                <td>{item.sub_category_name}</td>
-                               
-                               
+                                return(
+
+                              
+
+                           
+                              <tr key={i}>
+                                <td>{i}.</td>
+                                <td>{item2.sub_category_name}</td>
+                                <td>{item2.sub_category_image}
+                                <div >
+                      <Image
+                        src={item2.sub_category_image[0]?item2.sub_category_image[0]:"/omratrade/homebanner.png"}
+                        alt=""
+                        width="300px"
+                        height="200px"
+                      />
+                    </div>  </td>
+
                               </tr>
+                                )
+                              })}
+                                 
+                              
                             </tr>
+                               );
+                              })}
                             
                            
                             
@@ -107,8 +155,7 @@ const Admin: NextPage = () => {
                     </div>
                     </div>
                   </div>
-                );
-              })}
+             
             </div>
           </AdminLayout>
         </>
@@ -116,4 +163,3 @@ const Admin: NextPage = () => {
     };
     
     export default Admin;
-    

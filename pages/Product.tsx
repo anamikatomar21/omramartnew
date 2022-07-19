@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 import {
+  useCustomerQuery,
   useGetBussinessDetails,
   usePublicProduct,
   useSendEmail,
@@ -19,12 +20,15 @@ const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const Test3: NextPage = () => {
   const router = useRouter();
+  const Product_id = router.query.id;
 
   const [isOpen, setIsOpen] = useState(false);
   const [select, setSelect] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [product_Id ,setProduct_Id] = useState<string>('')
+  const [customer_mob ,setCustomer_mob] = useState<string>('')
 
   const [image, setImage] = useState("");
 
@@ -44,6 +48,7 @@ const Test3: NextPage = () => {
     isLoading: loading,
   } = useGetBussinessDetails();
   console.log(bussinessData);
+  const {data:customerData,status:status3,mutate:customer_mutate}  = useCustomerQuery()
 
   const mailData = dataMail as any;
 
@@ -62,6 +67,15 @@ const Test3: NextPage = () => {
     });
   };
 
+  const handleConnectToBuy = () => {
+    // For Close MOdel
+    const achorElm = achorRef.current;
+    const merchant = data?.data.find((item: any) => item._id == Product_id);
+    customer_mutate({ product_Id, customer_mob, });
+   
+    
+  };
+
   useEffect(() => {
     if (!isOpen) return;
     function handleOutsideClick(event: any) {
@@ -73,7 +87,7 @@ const Test3: NextPage = () => {
     window.addEventListener("click", handleOutsideClick);
     return () => window.removeEventListener("click", handleOutsideClick);
   }, [isOpen]);
-  const Product_id = router.query.id;
+ 
   console.log(Product_id);
   useEffect(() => {
     data?.data.map((item: any) => {

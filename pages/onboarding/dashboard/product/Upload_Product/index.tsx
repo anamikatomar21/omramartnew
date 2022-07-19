@@ -1,16 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 
-import { AxiosError } from "axios";
-import { NextPage } from "next";
-import Image from "next/image";
-import Router, { useRouter } from "next/router";
-import toast from "react-hot-toast";
-import { Col, FormGroup, Input, Row } from "reactstrap";
+import { AxiosError } from 'axios';
+import { NextPage } from 'next';
+import Image from 'next/image';
+import Router, { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
+import {
+  Col,
+  FormGroup,
+  Input,
+  Row,
+} from 'reactstrap';
 
-import DashboardLayout from "../../../../../components/Merchant/Layout";
-import { useGetCategory, userProduct } from "../../../../../networkAPI/queries";
-import { useAppSelector } from "../../../../../redux/hooks";
-import styles from "../../../../../styles/Merchant/uploadproduct.module.scss";
+import DashboardLayout from '../../../../../components/Merchant/Layout';
+import {
+  useGetCategory,
+  userProduct,
+} from '../../../../../networkAPI/queries';
+import { useAppSelector } from '../../../../../redux/hooks';
+import styles from '../../../../../styles/Merchant/uploadproduct.module.scss';
 
 // interface Person {
 
@@ -403,6 +414,7 @@ const Upload_Product: NextPage = () => {
                 type="text"
                 name="productname"
                 id="productname"
+                required
                 onChange={(e) => setProduct_name(e.target.value)}
               />
             </li>
@@ -427,6 +439,7 @@ const Upload_Product: NextPage = () => {
                 className={styles.dropdown}
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+                required
               >
                 <option value="">Select Category</option>
                 {category_data?.data.map((item: any, index: any) => {
@@ -436,18 +449,7 @@ const Upload_Product: NextPage = () => {
                       <option key={index} value={item.category_name}>
                         {item.category_name}
                       </option>
-                      <option key={index} value={item.category_name}>
-                        {item.category_name}
-                      </option>
-                      <option key={index} value={item.category_name}>
-                        {item.category_name}
-                      </option>
-                      <option key={index} value={item.category_name}>
-                        {item.category_name}
-                      </option>
-                      <option key={index} value={item.category_name}>
-                        {item.category_name}
-                      </option>
+                     
                     </>
                   );
                 })}

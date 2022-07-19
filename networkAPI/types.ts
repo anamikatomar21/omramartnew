@@ -143,3 +143,8 @@ export type bannerImagesUpdate = {
   banner_image3: Blob;
   banner_image4: Blob;
 };
+
+export type CustomerQueryType ={
+    product_Id:string,
+    customer_mob:string
+}

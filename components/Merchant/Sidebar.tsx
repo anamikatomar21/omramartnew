@@ -21,6 +21,7 @@ const MerchantSidebar: NextPage = () => {
               <ul>
                 <li><Link href="/onboarding/dashboard/product/Upload_Product">Upload Product</Link></li>
                 <li><Link href="/onboarding/dashboard/product/AllProduct">All Product</Link></li>
+                <li> <Link  href="/onboarding/dashboard/product/AllProduct/approved">Approved Product</Link></li>
                
 
                 {/* <li><a href="">Overview</a></li>

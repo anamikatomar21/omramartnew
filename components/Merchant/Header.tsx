@@ -65,9 +65,9 @@ const Header: NextPage = () => {
               <li>
                 <i className="fas fa-user"></i><a href="#">Buyer</a>
               </li>
-              {/* <li>
+              <li>
                 <i className="fas fa-user"></i> <div >Profile</div>
-              </li> */}
+              </li>
               {/* <li>
                 <i className="fas fa-address-book"></i> <a href="#">Contact Us</a>
               </li> */}

@@ -112,7 +112,7 @@ const Admin: NextPage = () => {
                           
                         </table>
                         <div>
-                          <button onClick={() => router.push(`/admindashboard/banner/edit?_Id=${item._id}`)}>Update</button>
+                          <button onClick={() => router.push(`/admindashboard/banner/edit?_Id=${item._id}&type=${item.type}`)}>Update</button>
                         </div>
     
                         

@@ -13,19 +13,8 @@ import AdminLayout from '../../../components/Admin/AdminLayout';
 import { useBanner } from '../../../networkAPI/queries';
 import styles from '../../../styles/Merchant/addcategory.module.scss';
 
-interface Person {
-  name: string;
-  age: number;
-  count: number;
-  "gift-wrap": "hello";
-}
-
 const Upload_Banner: NextPage = () => {
-  const formData = {
-    name: "Amit",
-    age: 25,
-    count: 12,
-  };
+
   const router = useRouter();
   const { error:err, user, isAuthenticated } = useAppSelector(
     (state) => state.user
@@ -39,18 +28,14 @@ const Upload_Banner: NextPage = () => {
   const [banner_image3, setBanner_image3] = useState<any>("");
   const [banner_image4, setBanner_image4] = useState<any>("");
 
-    console.log({"bananner name":banner_image1})
-    console.log({"bannner images":banner_image2})
-    console.log(banner_image2)
+   
 
   // const [product_name,setProduct_name] =useState<string>("")
 
   const { error, isLoading, data, mutate } = useBanner();
   console.log(data);
 
-  const field_color = {
-    color: "red",
-  };
+
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -77,29 +62,23 @@ const Upload_Banner: NextPage = () => {
     }
   }, [error, data, router]);
 
-  // const options = [
-  //   { value: "Drugs & Pharma", label: "Drugs & Pharma" },
-  //   { value: "Hospital & Diagnostics", label: "Hospital & Diagnostics" },
-  //   { value: "Food & Agriculture", label: "Food & Agriculture" },
-  //   { value: "Industrial Machinery", label: "Industrial Machinery" },
-  //   { value: "Industrial Supplies", label: "Industrial Supplies" },
-  //   { value: "Electronics & Electrical", label: "Electronics & Electrical" },
-  //   { value: "Building & Construction", label: "Building & Construction" }
-  // ];
-
-  const options1 = [
-    { value: "Wholesaler", label: "Wholesaler" },
-    { value: "Manufacturer", label: "Manufacturer" },
-    { value: "Retailer", label: "Retailer" },
+  const options = [
+    { value: "advertize",  label: "advertize" },
+    { value: "advertize2", label: "advertize2" },
+    { value: "advertize3", label: "advertize3" },
+    { value: "advertize4", label: "advertize4" },
+    { value: "advertize5", label: "advertize5" },
+    { value: "advertize6", label: "advertize6" },
+    { value: "advertize7", label: "advertize7" }
   ];
+
+
 
   function handleSubmit() {
     return "hello";
   }
 
-  function handleChange() {
-    return "helo";
-  }
+
   useEffect(() => {
     if (isAuthenticated) {
       if (user.role === "SuperAdmin") {
@@ -142,12 +121,35 @@ const Upload_Banner: NextPage = () => {
                 <label htmlFor="banner_type" className="omra-lael">
                   Banner Type
                 </label>
-                <input
+                {/* <input
                   type="text"
                   name="banner_type"
                   id="banner_type"
                   onChange={(e) => setType(e.target.value)}
-                />
+                /> */}
+                  <select
+                style={{
+                  maxHeight: "100px",
+                }}
+                name="type"
+                className={styles.dropdown}
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+                required
+              >
+                <option value="">Select Category</option>
+                {options.map((item: any, index: any) => {
+                  console.log(type);
+                  return (
+                    <>
+                      <option key={index} value={item.value}>
+                        {item.label}
+                      </option>
+                     
+                    </>
+                  );
+                })}
+              </select>
               </li>
 
               <li>
