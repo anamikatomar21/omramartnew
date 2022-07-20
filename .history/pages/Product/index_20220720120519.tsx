@@ -1,16 +1,16 @@
-import 'slick-carousel/slick/slick-theme.css';
+import "slick-carousel/slick/slick-theme.css";
+import React, { useState } from "react";
+import Link from "next/link";
+import Footer from "components/Footer/footer";
+import { usePublicProduct } from "networkAPI/queries";
+import type { NextPage } from "next";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import Slider from "react-slick";
+import styles from "styles/Merchant/newproductpage.module.scss";
 
-import React, { useState } from 'react';
-
-import Footer from 'components/Footer/footer';
-import { usePublicProduct } from 'networkAPI/queries';
-import type { NextPage } from 'next';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import styles from 'styles/Merchant/newproductpage.module.scss';
-
-import CompanyDescription from '../../components/CompanyDescription';
-import TopHeader from '../topheader';
+import CompanyDescription from "../../components/CompanyDescription";
+import TopHeader from "../topheader";
 
 const NewProductPage: NextPage = () => {
   const router = useRouter();
@@ -441,7 +441,7 @@ const NewProductPage: NextPage = () => {
       <div className={styles.background_section}>
         <h1>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
         <div className={styles.flex_container}>
-         
+          <Slider {...settings}>
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
@@ -538,14 +538,14 @@ const NewProductPage: NextPage = () => {
                 <button type="submit">View More</button>
               </div>
             </div>
-         
+          </Slider>
         </div>
       </div>
 
       <div className={styles.background_section}>
         <h1>OTHER PRODUCT WITH SAME MERCHANTS</h1>
         <div className={styles.flex_container}>
-         
+          <Slider {...settings}>
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
@@ -642,13 +642,13 @@ const NewProductPage: NextPage = () => {
                 <button type="submit">View More</button>
               </div>
             </div>
-        
+          </Slider>
         </div>
       </div>
       <div className={styles.background_section}>
         <h1>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
         <div className={styles.flex_container}>
-       
+          <Slider {...settings}>
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
@@ -745,7 +745,7 @@ const NewProductPage: NextPage = () => {
                 <button type="submit">View More</button>
               </div>
             </div>
-         
+          </Slider>
         </div>
       </div>
       {/* Similar Product Slider Ends  */}
