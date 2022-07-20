@@ -173,7 +173,7 @@ export const updateProduct = (
   id: string
 ): Promise<Object> =>
   axios
-    .patch<userProductForUpdate>(`/api/user/update_product/${id}`, {
+    .patch<userProductForUpdate>(`/api/user/approved_product/${id}`, {
       isApproved,
     })
     .then((response) => response.data);
@@ -186,7 +186,7 @@ export const updateProduct = (
     id:string
     ): Promise<Object> =>
       axios
-        .patch<userProductForDeclined>(`/api/user/update_product/${id}`, {
+        .patch<userProductForDeclined>(`/api/user/declined_product/${id}`, {
           isDeclined,
           status
         })

@@ -516,7 +516,7 @@ const NewProductPage: NextPage = () => {
           </div>
         </div>
         {/* Similar Product Slider Ends  */}
-        <div className={styles.company_table}>
+        <div className={styles.table}>
           <div className={styles.tableflex_box}>
             <div className={styles.displaytable1}>
               <h1 id="C1">

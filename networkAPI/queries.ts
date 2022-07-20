@@ -206,7 +206,7 @@ export const useUpdateMerchantProduct = () =>
       )
   );
 /// for Product Approval
-export const useUpdateProduct = () =>
+export const useApprovedProduct = () =>
   useMutation(
     ({ isApproved, id }: userProductForUpdate): Promise<Object> =>
       updateProduct(isApproved, id)

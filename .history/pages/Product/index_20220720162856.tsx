@@ -516,81 +516,80 @@ const NewProductPage: NextPage = () => {
           </div>
         </div>
         {/* Similar Product Slider Ends  */}
-        <div className={styles.company_table}>
-          <div className={styles.tableflex_box}>
-            <div className={styles.displaytable1}>
-              <h1 id="C1">
-                {" "}
-                <span className={styles.span_box1}>Technical Details</span>
-              </h1>
-              <table className={styles.Table_Width}>
-                <tbody>
-                  {currentProduct?.additionalSpecification.map(
-                    (item: any, index: any) => {
-                      return (
-                        <tr key={index}>
-                          <td>{item.atribute} </td>
-                          <td>{item.Values}</td>
-                        </tr>
-                      );
-                    }
-                  )}
-                </tbody>
-              </table>
-            </div>
-            <div className={styles.displaytable2}>
-              <h1 className={styles.span_box2}>Additional Information</h1>
-              <table className={styles.Table_Width}>
-                <tbody>
-                  <tr>
-                    <td>Product Dimensions </td>
-                    <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
-                  </tr>
-                  <tr>
-                    <td>Manufacturer </td>
-                    <td> Building A1, Red Box Creative Park</td>
-                  </tr>
-                  <tr>
-                    <td>Models</td>
-                    <td>Bassbuds Pixel</td>
-                  </tr>
-                  <tr>
-                    <td>Product Dimensions </td>
-                    <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
-                  </tr>
-                  <tr>
-                    <td>Manufacturer </td>
-                    <td> Building A1, Red Box Creative Park</td>
-                  </tr>
-                  <tr>
-                    <td>Models</td>
-                    <td>Bassbuds Pixel</td>
-                  </tr>
-                  <tr>
-                    <td>Manufacturer </td>
-                    <td> Building A1, Red Box Creative Park</td>
-                  </tr>
-                  <tr>
-                    <td>Models</td>
-                    <td>Bassbuds Pixel</td>
-                  </tr>
-                  <tr>
-                    <td>Manufacturer </td>
-                    <td> Building A1, Red Box Creative Park</td>
-                  </tr>
-                  <tr>
-                    <td>Models</td>
-                    <td>Bassbuds Pixel</td>
-                  </tr>
-                  <tr>
-                    <td>Product Dimensions </td>
-                    <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        <div className={styles.company_info}>
+        <div className={styles.tableflex_box}>
+          <div className={styles.displaytable1}>
+            <h1 id="C1">
+              {" "}
+              <span className={styles.span_box1}>Technical Details</span>
+            </h1>
+            <table className={styles.Table_Width}>
+              <tbody>
+                {currentProduct?.additionalSpecification.map(
+                  (item: any, index: any) => {
+                    return (
+                      <tr key={index}>
+                        <td>{item.atribute} </td>
+                        <td>{item.Values}</td>
+                      </tr>
+                    );
+                  }
+                )}
+              </tbody>
+            </table>
           </div>
-        </div>
+          <div className={styles.displaytable2}>
+            <h1 className={styles.span_box2}>Additional Information</h1>
+            <table className={styles.Table_Width}>
+              <tbody>
+                <tr>
+                  <td>Product Dimensions </td>
+                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Product Dimensions </td>
+                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Product Dimensions </td>
+                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div></div>
       </div>
 
       <Footer />

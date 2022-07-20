@@ -6,20 +6,20 @@ import React, {
 
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
+import { useAppSelector } from 'redux/hooks';
 
 import AdminLayout from '../../components/Admin/AdminLayout';
-import {
-  useDeclinedProduct,
-  usePublicProduct,
-  useUpdateProduct,
-} from '../../networkAPI/queries';
+import { usePublicProduct } from '../../networkAPI/queries';
 import styles from '../../styles/Merchant/dashcode.module.scss';
 
 const Approved_Product: NextPage = () => {
   const [isApproved, setisApproved] = useState<boolean>(false);
   const [isDeclined, setIsDeclined] = useState<boolean>(false);
   const [status, setStatus] = useState<string>("");
+  const { error:err, user, isAuthenticated } = useAppSelector(
+    (state) => state.user
+  );
 
   const router = useRouter();
 
@@ -35,18 +35,7 @@ const Approved_Product: NextPage = () => {
 
   console.log({ isOpen });
 
-  // useEffect(() => {
-  //   if (!isOpen) return;
-
-  //   function handleOutsideClick(event: any) {
-  //     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-  //       setIsOpen([false]);
-  //       setSelect("");
-  //     }
-  //   }
-  //   window.addEventListener("click", handleOutsideClick);
-  //   return () => window.removeEventListener("click", handleOutsideClick);
-  // }, [isOpen]);
+  
 
   console.log("POPUP STATE", isOpen);
   // const getData = usePublicProduct();
@@ -57,78 +46,33 @@ const Approved_Product: NextPage = () => {
   const test = getData.data;
   console.log(test)
   // console.log(data?.data.length);
-  const { error, isLoading, data, mutate, isSuccess } = useUpdateProduct();
+  const { error, isLoading, data, isSuccess } = usePublicProduct();
 
-  const {
-    error: err,
-    isLoading: Loading,
-    data: data1,
-    mutate: mutate1,
-    isSuccess: isSuccess1,
-  } = useDeclinedProduct();
+  console.log(data)
 
   useEffect(() => {
-    for (let i = 0; i <= test?.data.length; i++) {
-      setIsOpen([...isOpen, false]);
+    if (isAuthenticated) {
+      if (user.role === "SuperAdmin") {
+        return;
+      } else {
+        Router.push(`/`);
+      }
+    } else {
+      Router.push(`/`);
     }
-  }, [test]);
+  }, [user, isAuthenticated]);
 
-  // useEffect(() => {
-  //   if (!isOpen) return;
-  //   function handleOutsideClick(event: any) {
-  //     if (!dropdownRef.current && dropdownRef.current.contains(event.target)) {
-  //       return
-  //     }
-  //     setSelect("");
-  //     setIsOpen(false);
-  //   }
-  //   window.addEventListener("mousedown", handleOutsideClick);
-  //   return () => window.removeEventListener("mousedown", handleOutsideClick);
-  // }, [isOpen]);
 
-  const handleLogin = (item: any) => {
-    mutate({
-      id: item._id,
 
-      isApproved: true,
-    });
-    router.reload();
-  };
-  const handleDeclined = (item: any) => {
-    mutate1({
-      id: item._id,
 
-      isDeclined: true,
-      status,
-    });
-    router.reload();
-  };
 
-  useEffect(() => {
-    if (isOpen) {
-      setIsDeclined(true);
-    }
 
-    setStatus(select);
-  }, [isOpen, select]);
-  console.log("teststtst", isOpen);
-  console.log("teststtst222", select);
+  
+  
 
-  console.log(isApproved);
-  useEffect(() => {
-    setisApproved(true);
-  }, []);
+  
 
-  // useEffect(() => {
-  //   if (error instanceof AxiosError) {
-  //     toast.error(error?.response?.data?.message || error.message);
-  //   }
-
-  //   if (isSuccess==true) {
-  //     toast.success("update Successfull");
-  //     router.reload()
-  //   }
-  // }, [error, data,router,isSuccess]);
+ 
 
   return (
     <>
@@ -145,9 +89,9 @@ const Approved_Product: NextPage = () => {
           >
          Approved Product List
           </h1>
-          {test?.data.map((item: any, index: any) => {
+          {data?.data.map((item: any, index: any) => {
             console.log(item);
-            if (item.isApproved == true) {
+            if (item.isApproved === true) {
               console.log(item);
 
               return (

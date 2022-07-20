@@ -9,9 +9,9 @@ import { useRouter } from 'next/router';
 
 import AdminLayout from '../../components/Admin/AdminLayout';
 import {
+  useApprovedProduct,
   useDeclinedProduct,
   usePublicProduct,
-  useUpdateProduct,
 } from '../../networkAPI/queries';
 import styles from '../../styles/Merchant/dashcode.module.scss';
 
@@ -56,7 +56,7 @@ const Rejected_Product: NextPage = () => {
   const test = getData
   console.log(test)
   // console.log(data?.data.length);
-  const { error, isLoading, data, mutate, isSuccess } = useUpdateProduct();
+  const { error, isLoading, data, mutate, isSuccess } = useApprovedProduct();
 
   const {
     error: err,
