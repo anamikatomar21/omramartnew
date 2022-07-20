@@ -62,7 +62,7 @@ const Header: NextPage = () => {
           
             </select>
             <li>
-              {/* <i className="fas fa-user"></i>  */}
+              <i className="fas fa-user"></i> 
               <span>Profile</span>
             </li>
 

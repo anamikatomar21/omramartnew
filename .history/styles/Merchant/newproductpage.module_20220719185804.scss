@@ -6,7 +6,7 @@
 .flex_box {
   //   gap: 28px;
   display: flex;
-  height: 677px;
+  height: 800px;
   padding: 1.5rem 0.6rem;
   // margin-bottom: 341px;
 }
@@ -30,7 +30,7 @@
   justify-content: center;
   align-items: center;
   padding: 47px 17px 64px 26px;
-  margin-top: 113px;
+  margin-top: 52px;
 }
 
 .flex_box2 h3 {
@@ -47,7 +47,7 @@
 .smallimage {
   display: flex;
   flex-direction: row;
-  gap: 24px;
+  gap: 10px;
 }
 
 // .productimagesrc {
@@ -991,8 +991,8 @@ button .fa {
 }
 .flex_box1 {
   display: flex;
-  // justify-content: space-around;
-  gap: 9px;
+  justify-content: space-around;
+  gap: 22px;
   margin-top: -93px;
 }
 
@@ -1184,7 +1184,7 @@ button .fa {
 
   tr td {
     border: 1px solid #dee4ec;
-    padding:7px 10px;
+    padding: 8px 8px;
   }
 }
 .tableflex_box {

@@ -72,7 +72,7 @@ const NewProductPage: NextPage = () => {
                     onImageSelect(currentProduct?.product_image1[0])
                   }
                 />
-                <Image
+  <Image
                   src={currentProduct?.product_image1[0] || "/"}
                   height={120}
                   width={120}
@@ -331,10 +331,7 @@ const NewProductPage: NextPage = () => {
 
         <div className={styles.tableflex_box}>
           <div className={styles.displaytable1}>
-            <h1 id="C1">
-              {" "}
-              <span className={styles.span_box1}>Technical Details</span>
-            </h1>
+           <h1 id="C1"> <span className={styles.span_box1}>Technical Details</span></h1>
             <table className={styles.Table_Width}>
               <tbody>
                 <tr>

@@ -72,16 +72,7 @@ const NewProductPage: NextPage = () => {
                     onImageSelect(currentProduct?.product_image1[0])
                   }
                 />
-                <Image
-                  src={currentProduct?.product_image1[0] || "/"}
-                  height={120}
-                  width={120}
-                  alt="productr image"
-                  className={styles.productimagesrc1}
-                  onClick={() =>
-                    onImageSelect(currentProduct?.product_image1[0])
-                  }
-                />
+
                 <Image
                   src={currentProduct?.product_image2[0] || "/"}
                   height={120}
@@ -292,7 +283,7 @@ const NewProductPage: NextPage = () => {
                 </div>
               </div>
               <div className={styles.seemorestyles}>
-                <a href="#C1">View more</a>
+                <a href="#popup3">View more</a>
               </div>
               <span className={styles.botton5}>
                 <div>
@@ -324,17 +315,14 @@ const NewProductPage: NextPage = () => {
             pariatur expedita sequi odit minus architecto ducimus quod voluptate
             dignissimos optio quia dolorem numquam!Lorem Lorem ipsum dolor sit
             amet consectetur adipisicing elit.
-            <a href="#"> See More Sellers</a>
+           <a href="#C1"> See More Sellers</a>
           </p>
         </div>
         {/* Product Specification starts*/}
 
         <div className={styles.tableflex_box}>
           <div className={styles.displaytable1}>
-            <h1 id="C1">
-              {" "}
-              <span className={styles.span_box1}>Technical Details</span>
-            </h1>
+            <h1  id="C1">Technical Details</h1>
             <table className={styles.Table_Width}>
               <tbody>
                 <tr>
@@ -387,7 +375,7 @@ const NewProductPage: NextPage = () => {
           <div className={styles.displaytable2}>
             <h1 className={styles.span_box1}>Additional Information</h1>
             <table className={styles.Table_Width}>
-              <tbody>
+            <tbody>
                 <tr>
                   <td>Product Dimensions </td>
                   <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
