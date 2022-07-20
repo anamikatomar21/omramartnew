@@ -1,16 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 
-import { AxiosError } from "axios";
-import { NextPage } from "next";
-import Image from "next/image";
-import Router, { useRouter } from "next/router";
-import toast from "react-hot-toast";
-import { Col, FormGroup, Input, Row } from "reactstrap";
-
-import DashboardLayout from "components/Merchant/Layout";
-import { useGetCategory, useUpdateMerchantProduct } from "networkAPI/queries";
-import { useAppSelector } from "redux/hooks";
-import styles from "styles/Merchant/uploadproduct.module.scss";
+import { AxiosError } from 'axios';
+import DashboardLayout from 'components/Merchant/Layout';
+import {
+  useGetCategory,
+  useUpdateMerchantProduct,
+} from 'networkAPI/queries';
+import { NextPage } from 'next';
+import Image from 'next/image';
+import Router, { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
+import {
+  Col,
+  FormGroup,
+  Input,
+  Row,
+} from 'reactstrap';
+import { useAppSelector } from 'redux/hooks';
+import styles from 'styles/Merchant/uploadproduct.module.scss';
 
 // interface Person {
 
@@ -754,9 +764,7 @@ const Upload_Product: NextPage = () => {
                     </Col>
                     <Col md="4">
                       <FormGroup>
-                        <label className="form-control-label" htmlFor="Values">
-                          Number:
-                        </label>
+                        
                         <Input
                           className="inputValuesForm"
                           id="Values"
