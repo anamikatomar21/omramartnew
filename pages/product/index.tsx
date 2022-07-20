@@ -31,7 +31,7 @@ const NewProductPage: NextPage = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    //speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
   };
@@ -209,7 +209,15 @@ const NewProductPage: NextPage = () => {
                           <span>I want to Buy</span>
                         </li>
                       </div>
-
+                      <div style={{display:'flex' ,gap:"20px"}}>
+                      <li>
+                        <p> Email*:</p>
+                        <input
+                          onChange={onChangeNumber}
+                          type="email"
+                          className={styles.NumberInput}
+                        />
+                      </li>
                       <li>
                         <p> Mobile No. *</p>
                         <input
@@ -218,6 +226,11 @@ const NewProductPage: NextPage = () => {
                           className={styles.NumberInput}
                         />
                       </li>
+                      
+
+                      </div>
+
+                      
 
                       <li>
                         <button type="submit" className={styles.NumberButton}>
@@ -271,24 +284,21 @@ const NewProductPage: NextPage = () => {
                 <h1 className={styles.span_box1}>Product Specifications</h1>
                 <div className={styles.div_box}>
                   <div>Brand</div>
-                  <div>Daikin</div>
+                  <div>{currentProduct?.brand}</div>
                 </div>
                 <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
+                  <div>Capacity</div>
+                  <div>{currentProduct?.capacity}</div>
                 </div>
                 <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
+                  <div>Model No:</div>
+                  <div>{currentProduct?.model_no}</div>
                 </div>
                 <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
+                  <div>Specification</div>
+                  <div>{currentProduct?.product_Specification}</div>
                 </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
+                
               </div>
               <div className={styles.seemorestyles}>
                 <a href="#C1">View more</a>
@@ -328,124 +338,23 @@ const NewProductPage: NextPage = () => {
         </div>
         {/* Product Specification starts*/}
 
-        <div className={styles.tableflex_box}>
-          <div className={styles.displaytable1}>
-            <h1 id="C1">
-              {" "}
-              <span className={styles.span_box1}>Technical Details</span>
-            </h1>
-            <table className={styles.Table_Width}>
-              <tbody>
-                <tr>
-                  <td>Product Dimensions </td>
-                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
-                </tr>
-                <tr>
-                  <td>Manufacturer </td>
-                  <td> Building A1, Red Box Creative Park</td>
-                </tr>
-                <tr>
-                  <td>Models</td>
-                  <td>Bassbuds Pixel</td>
-                </tr>
-                <tr>
-                  <td>Product Dimensions </td>
-                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
-                </tr>
-                <tr>
-                  <td>Manufacturer </td>
-                  <td> Building A1, Red Box Creative Park</td>
-                </tr>
-                <tr>
-                  <td>Models</td>
-                  <td>Bassbuds Pixel</td>
-                </tr>
-                <tr>
-                  <td>Manufacturer </td>
-                  <td> Building A1, Red Box Creative Park</td>
-                </tr>
-                <tr>
-                  <td>Models</td>
-                  <td>Bassbuds Pixel</td>
-                </tr>
-                <tr>
-                  <td>Manufacturer </td>
-                  <td> Building A1, Red Box Creative Park</td>
-                </tr>
-                <tr>
-                  <td>Models</td>
-                  <td>Bassbuds Pixel</td>
-                </tr>
-                <tr>
-                  <td>Product Dimensions </td>
-                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className={styles.displaytable2}>
-            <h1 className={styles.span_box1}>Additional Information</h1>
-            <table className={styles.Table_Width}>
-              <tbody>
-                <tr>
-                  <td>Product Dimensions </td>
-                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
-                </tr>
-                <tr>
-                  <td>Manufacturer </td>
-                  <td> Building A1, Red Box Creative Park</td>
-                </tr>
-                <tr>
-                  <td>Models</td>
-                  <td>Bassbuds Pixel</td>
-                </tr>
-                <tr>
-                  <td>Product Dimensions </td>
-                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
-                </tr>
-                <tr>
-                  <td>Manufacturer </td>
-                  <td> Building A1, Red Box Creative Park</td>
-                </tr>
-                <tr>
-                  <td>Models</td>
-                  <td>Bassbuds Pixel</td>
-                </tr>
-                <tr>
-                  <td>Manufacturer </td>
-                  <td> Building A1, Red Box Creative Park</td>
-                </tr>
-                <tr>
-                  <td>Models</td>
-                  <td>Bassbuds Pixel</td>
-                </tr>
-                <tr>
-                  <td>Manufacturer </td>
-                  <td> Building A1, Red Box Creative Park</td>
-                </tr>
-                <tr>
-                  <td>Models</td>
-                  <td>Bassbuds Pixel</td>
-                </tr>
-                <tr>
-                  <td>Product Dimensions </td>
-                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+        
       {/* Similar Product Slider Starts  */}
 
       <div className={styles.background_section}>
         <h1>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
         <div className={styles.flex_container}>
+      
+          {data?.data.map((item:any,index:any)=>{
+            if(item.category===router.query.category ){
+              return(
+
+             
          
-            <div className={styles.cardproduct}>
+            <div className={styles.cardproduct} key={index}>
               <div className={styles.productimg}>
                 <Image
-                  src={"/omratrade/homebanner.png"}
+                  src={item.product_image1[0]?item.product_image1[0]:"/"}
                   height={250}
                   width={300}
                   alt="productr image"
@@ -454,8 +363,8 @@ const NewProductPage: NextPage = () => {
               </div>
 
               <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
+                <h4>Product Name:</h4>
+                <p>{item.product_name}</p>
               </div>
 
               <div className={styles.productcartbtn}>
@@ -463,81 +372,18 @@ const NewProductPage: NextPage = () => {
               </div>
             </div>
 
-            <div className={styles.cardproduct}>
-              <div className={styles.productimg}>
-                <Image
-                  src={"/omratrade/homebanner.png"}
-                  height={250}
-                  width={300}
-                  alt="productr image"
-                  className={styles.productimagesrc}
-                />
-              </div>
-              <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
-              </div>
-              <div className={styles.productcartbtn}>
-                <button type="submit">View More</button>
-              </div>
-            </div>
+             )
+            }
+         
+             })}
+            
 
-            <div className={styles.cardproduct}>
-              <div className={styles.productimg}>
-                <Image
-                  src={"/omratrade/homebanner.png"}
-                  height={250}
-                  width={300}
-                  alt="productr image"
-                  className={styles.productimagesrc}
-                />
-              </div>
-              <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
-              </div>
-              <div className={styles.productcartbtn}>
-                <button type="submit">View More</button>
-              </div>
-            </div>
+           
 
-            <div className={styles.cardproduct}>
-              <div className={styles.productimg}>
-                <Image
-                  src={"/omratrade/homebanner.png"}
-                  height={250}
-                  width={300}
-                  alt="productr image"
-                  className={styles.productimagesrc}
-                />
-              </div>
-              <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
-              </div>
-              <div className={styles.productcartbtn}>
-                <button type="submit">View More</button>
-              </div>
-            </div>
+            
+            
 
-            <div className={styles.cardproduct}>
-              <div className={styles.productimg}>
-                <Image
-                  src={"/omratrade/homebanner.png"}
-                  height={250}
-                  width={300}
-                  alt="productr image"
-                  className={styles.productimagesrc}
-                />
-              </div>
-              <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
-              </div>
-              <div className={styles.productcartbtn}>
-                <button type="submit">View More</button>
-              </div>
-            </div>
+            
          
         </div>
       </div>
@@ -545,11 +391,16 @@ const NewProductPage: NextPage = () => {
       <div className={styles.background_section}>
         <h1>OTHER PRODUCT WITH SAME MERCHANTS</h1>
         <div className={styles.flex_container}>
-         
+
+          {data?.data.map((item:any,index:any)=>{
+            if(item.auther_Id==router.query.merchant && index<15){
+              return(
+
+           
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
                 <Image
-                  src={"/omratrade/homebanner.png"}
+                  src={item.product_image1[0]?item.product_image1[0]:"/"}
                   height={250}
                   width={300}
                   alt="productr image"
@@ -558,8 +409,8 @@ const NewProductPage: NextPage = () => {
               </div>
 
               <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
+                <h4>product Name:</h4>
+                <p>{item.product_name}</p>
               </div>
 
               <div className={styles.productcartbtn}>
@@ -567,81 +418,18 @@ const NewProductPage: NextPage = () => {
               </div>
             </div>
 
-            <div className={styles.cardproduct}>
-              <div className={styles.productimg}>
-                <Image
-                  src={"/omratrade/homebanner.png"}
-                  height={250}
-                  width={300}
-                  alt="productr image"
-                  className={styles.productimagesrc}
-                />
-              </div>
-              <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
-              </div>
-              <div className={styles.productcartbtn}>
-                <button type="submit">View More</button>
-              </div>
-            </div>
+)
+}
+})}
 
-            <div className={styles.cardproduct}>
-              <div className={styles.productimg}>
-                <Image
-                  src={"/omratrade/homebanner.png"}
-                  height={250}
-                  width={300}
-                  alt="productr image"
-                  className={styles.productimagesrc}
-                />
-              </div>
-              <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
-              </div>
-              <div className={styles.productcartbtn}>
-                <button type="submit">View More</button>
-              </div>
-            </div>
 
-            <div className={styles.cardproduct}>
-              <div className={styles.productimg}>
-                <Image
-                  src={"/omratrade/homebanner.png"}
-                  height={250}
-                  width={300}
-                  alt="productr image"
-                  className={styles.productimagesrc}
-                />
-              </div>
-              <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
-              </div>
-              <div className={styles.productcartbtn}>
-                <button type="submit">View More</button>
-              </div>
-            </div>
+            
 
-            <div className={styles.cardproduct}>
-              <div className={styles.productimg}>
-                <Image
-                  src={"/omratrade/homebanner.png"}
-                  height={250}
-                  width={300}
-                  alt="productr image"
-                  className={styles.productimagesrc}
-                />
-              </div>
-              <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
-              </div>
-              <div className={styles.productcartbtn}>
-                <button type="submit">View More</button>
-              </div>
-            </div>
+            
+
+            
+
+            
         
         </div>
       </div>
@@ -749,6 +537,88 @@ const NewProductPage: NextPage = () => {
         </div>
       </div>
       {/* Similar Product Slider Ends  */}
+
+      <div className={styles.tableflex_box}>
+          <div className={styles.displaytable1}>
+            <h1 id="C1">
+              {" "}
+              <span className={styles.span_box1}>Technical Details</span>
+            </h1>
+            <table className={styles.Table_Width}>
+              <tbody>
+                {currentProduct?.additionalSpecification.map((item:any,index:any)=>
+                {
+                  return(
+
+               
+                <tr key={index}>
+                  <td>{item.atribute} </td>
+                  <td>{item.Values}</td>
+                </tr>
+                   )
+                  })}
+                
+                
+               
+                
+                
+                
+              </tbody>
+            </table>
+          </div>
+          <div className={styles.displaytable2}>
+            <h1 className={styles.span_box1}>Additional Information</h1>
+            <table className={styles.Table_Width}>
+              <tbody>
+                <tr>
+                  <td>Product Dimensions </td>
+                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Product Dimensions </td>
+                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Product Dimensions </td>
+                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
       <div>
         <CompanyDescription />
       </div>

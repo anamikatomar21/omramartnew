@@ -13,9 +13,9 @@ import toast from 'react-hot-toast';
 import AdminLayout from '../../components/Admin/AdminLayout';
 import Popup from '../../components/popup';
 import {
+  useApprovedProduct,
   useDeclinedProduct,
   usePublicProduct,
-  useUpdateProduct,
 } from '../../networkAPI/queries';
 import styles from '../../styles/Merchant/dashcode.module.scss';
 
@@ -45,7 +45,9 @@ const Admin: NextPage = () => {
   console.log(getData.data?.data);
   const test = getData.data;
 
-  const { error, isLoading, data, mutate, isSuccess } = useUpdateProduct();
+  const refetch = getData.refetch;
+
+  const { error, isLoading, data, mutate, isSuccess } = useApprovedProduct();
 
   const {
     error: err,
@@ -81,18 +83,20 @@ const Admin: NextPage = () => {
 
       isApproved:true
     });
-    router.reload()
+   
   };
   console.log("testttttting",isApproved)
   console.log("trsees",data)
-  const handleDeclined = (item: any) => {
+  const handleDeclined = (e:any,item: any) => {
+    e.preventDefault()
 
     mutate1({
       id: item._id,
 
       isDeclined: true,
-      status,
+      status:select,
     });
+    
     
   };
 
@@ -101,8 +105,8 @@ const Admin: NextPage = () => {
       setIsDeclined(true);
     }
 
-    setStatus(select);
-  }, [isOpen, select]);
+  
+  }, [isOpen]);
 
   useEffect(() => {
     setisApproved(true);
@@ -114,10 +118,11 @@ const Admin: NextPage = () => {
     }
 
     if (isSuccess==true) {
-      setisApproved(true)
+      
       toast.success("product Approved successfully");
-      router.reload()
+      refetch()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error, data,router,isSuccess]);
 
 /// for declined
@@ -128,7 +133,7 @@ const Admin: NextPage = () => {
 
     if (isSuccess1==true) {
       toast.success("Declined  Successfull");
-      router.reload()
+      refetch()
     }
   }, [err, data1,router,isSuccess1]);
 
@@ -148,7 +153,7 @@ const Admin: NextPage = () => {
             Waiting for Approval
           </h1>
           {test?.data.map((item: any, index: any) => {
-            if (item.isApproved == false) {
+            if (item.isApproved == false && item.isDeclined== false) {
               return (
                 <div>
                   <div
@@ -232,8 +237,8 @@ const Admin: NextPage = () => {
                                       <>
                                         <div className={styles.FormButton}>
                                           <form
-                                            onSubmit={() =>
-                                              handleDeclined(item)
+                                            onSubmit={(e) =>
+                                              handleDeclined(e,item)
                                             }
                                           >
                                             <select
