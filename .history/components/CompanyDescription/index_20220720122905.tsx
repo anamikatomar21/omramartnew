@@ -35,7 +35,14 @@ const CompanyDescription: NextPage = () => {
         amet consectetur adipisicing elit. 
       </p>
     
-      
+      <h3>  Lorem ipsum dolor sit amet consectetur </h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+        praesentium dolores, accusamus laborum error perspiciatis iure
+        pariatur expedita sequi odit minus architecto ducimus quod voluptate
+        dignissimos optio quia dolorem numquam!Lorem Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. 
+      </p>
     </div>
   </div>
   );

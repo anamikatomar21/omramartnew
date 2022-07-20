@@ -24,9 +24,7 @@ const CompanyDescription: NextPage = () => {
         amet consectetur adipisicing elit. 
       </p>
     
-    </div>
-    <div>
-    <h3>  Lorem ipsum dolor sit amet consectetur </h3>
+      <h3>  Lorem ipsum dolor sit amet consectetur </h3>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
         praesentium dolores, accusamus laborum error perspiciatis iure
@@ -34,9 +32,8 @@ const CompanyDescription: NextPage = () => {
         dignissimos optio quia dolorem numquam!Lorem Lorem ipsum dolor sit
         amet consectetur adipisicing elit. 
       </p>
-    
-      
     </div>
+    
   </div>
   );
 };
