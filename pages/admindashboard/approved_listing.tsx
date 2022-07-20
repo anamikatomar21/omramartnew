@@ -38,26 +38,13 @@ const Admin: NextPage = () => {
 
   console.log({ isOpen });
 
-  // useEffect(() => {
-  //   if (!isOpen) return;
-
-  //   function handleOutsideClick(event: any) {
-  //     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-  //       setIsOpen([false]);
-  //       setSelect("");
-  //     }
-  //   }
-  //   window.addEventListener("click", handleOutsideClick);
-  //   return () => window.removeEventListener("click", handleOutsideClick);
-  // }, [isOpen]);
-
   console.log("POPUP STATE", isOpen);
-  // const getData = usePublicProduct();
+
   const getData = usePublicProduct();
   console.log(getData);
   console.log(getData.data?.data);
   const test = getData.data;
-  // console.log(data?.data.length);
+
   const { error, isLoading, data, mutate, isSuccess } = useUpdateProduct();
 
   const {
@@ -127,6 +114,7 @@ const Admin: NextPage = () => {
     }
 
     if (isSuccess==true) {
+      setisApproved(true)
       toast.success("product Approved successfully");
       router.reload()
     }
@@ -160,7 +148,6 @@ const Admin: NextPage = () => {
             Waiting for Approval
           </h1>
           {test?.data.map((item: any, index: any) => {
-            // console.log(item);
             if (item.isApproved == false) {
               return (
                 <div>
@@ -199,29 +186,17 @@ const Admin: NextPage = () => {
                               </tr>
                               <tr>
                                 <td>Product Specifications</td>
-                                {/* <td>Thickness in microns</td> */}
+
                                 <td>{item.product_Specification}</td>
                               </tr>
-                              {/* <tr>
-                  <td>Product Image</td>
-                  <td>
-                    <img
-                      src="https://m.media-amazon.com/images/I/61+ilDgVVwS._UL1500_.jpg"
-                      alt="facemask"
-                      className="facemask"
-                    />
-                  </td>
-                </tr> */}
+
                               <tr>
                                 <td>Product Description</td>
                                 <td>
                                   <p>{item.product_description}</p>
                                 </td>
-                                {/* <td>UK</td> */}
                               </tr>
                             </tbody>
-                            {/* <tr><button type="button" className='approve-button'>Approve</button>  
-                <button type="button" className='reject-button'>Decline</button></tr> */}
                           </table>
 
                           <div className={styles.AprovalStyle}>
@@ -261,18 +236,6 @@ const Admin: NextPage = () => {
                                               handleDeclined(item)
                                             }
                                           >
-                                            {/* <label htmlFor="" className={styles.CancelButton}>Reason of Rejection</label> */}
-                                            {/* <textarea cols={50} rows={4} /> */}
-
-                                            {/* <select >
-                          <option value="domain" >Reason of Rejection</option>
-                            <option value="domain" >Mismatch Domain Details</option>
-                            <option value="domain" >Picture quality mismatch</option>
-                            <option value="domain">Wrong Specification</option>
-                            <option value="domain">Mislabelling of Products</option>
-                            <option value="domain" onClick={decline}><a href="#">Others</a></option>
-                          </select> */}
-
                                             <select
                                               name="cars"
                                               id="cars"

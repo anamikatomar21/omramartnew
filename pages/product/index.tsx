@@ -89,7 +89,16 @@ const NewProductPage: NextPage = () => {
                     onImageSelect(currentProduct?.product_image1[0])
                   }
                 />
-
+                <Image
+                  src={currentProduct?.product_image1[0] || "/"}
+                  height={120}
+                  width={120}
+                  alt="productr image"
+                  className={styles.productimagesrc1}
+                  onClick={() =>
+                    onImageSelect(currentProduct?.product_image1[0])
+                  }
+                />
                 <Image
                   src={currentProduct?.product_image2[0] || "/"}
                   height={120}
@@ -123,50 +132,6 @@ const NewProductPage: NextPage = () => {
                   }
                 />
               </div>
-              <div>
-                <h1>Company Information</h1>
-                <p>
-                  <b>Split AC with non-inverter compressor:</b> 100% Copper
-                  Condenser with extended lifespan to ensure that the air
-                  conditioner is protected in all weather conditions
-                </p>
-                <p>
-                  <b>Split AC with non-inverter compressor:</b> 100% Copper
-                  Condenser with extended lifespan to ensure that the air
-                  conditioner
-                </p>
-                <p>
-                  <b>Split AC with non-inverter compressor:</b> 100% Copper
-                  Condenser with extended lifespan
-                </p>
-                <p>
-                  <b>Split AC with non-inverter compressor:</b> 100% Copper
-                  Condenser with extended lifespan to ensure that the air
-                  conditioner is protected in all weather conditions
-                </p>
-                <p>
-                  <b>Split AC with non-inverter compressor:</b> 100% Copper
-                  Condenser with extended lifespan to ensure that the air
-                  conditioner is protected in all weather conditions
-                </p>
-              </div>
-
-              <span className={styles.botton5}>
-                <div>
-                  <a
-                    className={styles.ButtonSection1}
-                    href="#popup2"
-                    // href="tel:9015756558"
-                  >
-                    Call to Connect
-                  </a>
-                </div>
-                <div>
-                  <a className={styles.ButtonSection2} href="#popup1">
-                    For Enquiry
-                  </a>
-                </div>
-              </span>
             </div>
             <div id="popup1" className={styles.overlay}>
               <div className={styles.popup}>
@@ -321,7 +286,7 @@ const NewProductPage: NextPage = () => {
 
               <div className={styles.table_box}>
                 <hr />
-                <h1 className={styles.span_box}>Product Specifications</h1>
+                <h1 className={styles.span_box1}>Product Specifications</h1>
                 <div className={styles.div_box}>
                   <div>Brand:</div>
                   <div>{currentProduct?.brand}</div>
@@ -335,184 +300,153 @@ const NewProductPage: NextPage = () => {
                   <div>{currentProduct?.capacity}</div>
                 </div>
                 <div className={styles.div_box}>
-                  <div>Model No:</div>
-                  <div>{currentProduct?.model_no}</div>
-                </div>
-                {currentProduct?.additionalSpecification.map(
-                  (item: any, index: any) => {
-                    console.log(currentProduct);
-                    return (
-                      <div className={styles.div_box} key={index}>
-                        <div>{item.atribute}</div>
-                        <div>{item.Values}</div>
-                      </div>
-                    );
-                  }
-                )}
-
-                <div className={styles.div_box}>
-                  <div>Special Features</div>
-                  <div>
-                    High Ambient Operation upto 50c, Good sleep off timer,pm2.5
-                    filter, dust,filter, self diagonis, air purifications
-                    filter, dehumidifier, fast cooling
-                  </div>
+                  <div>Genuine Products</div>
+                  <div>Made in India</div>
                 </div>
               </div>
+              <div className={styles.seemorestyles}>
+                <a href="#C1">View more</a>
+              </div>
+              <span className={styles.botton5}>
+                <div>
+                  <a
+                    className={styles.ButtonSection1}
+                    href="#popup2"
+                    // href="tel:9015756558"
+                  >
+                    Call to Connect
+                  </a>
+                </div>
+                <div>
+                  <a className={styles.ButtonSection2} href="#popup1">
+                    For Enquiry
+                  </a>
+                </div>
+              </span>
             </div>
 
             {/* Right section ends */}
           </div>
         </div>
-        <div className={styles.background_section}>
-          <h1>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
-          <div className={styles.flex_container}>
-            {data?.data.map((item: any, index: any) => {
-              console.log(item);
 
-              if (item?.category === router?.query?.category   && index < 7) {
-                console.log("hellobababb", item);
-
-                return (
-                  <div className={styles.cardproduct} key={index}>
-                    <div className={styles.productimg}>
-                      <Image
-                        src={item?.product_image1[0] || "/"}
-                        height={250}
-                        width={300}
-                        alt="productr image"
-                        className={styles.productimagesrc}
-                      />
-                    </div>
-
-                    <div className={styles.productcontent}>
-                      <h4>Product Name:{item?.product_name}</h4>
-                      <p>Merchant Name:{item?.vendors_name}</p>
-                    </div>
-
-                    <div className={styles.productcartbtn}>
-                      <button type="submit">View More</button>
-                    </div>
-                  </div>
-                );
-              }
-            })}
-
-            
-
-           
-
-            
-
-            
-          </div>
+        <div className={styles.company_info}>
+          <h1 className={styles.span_box1}>Company Information</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+            praesentium dolores, accusamus laborum error perspiciatis iure
+            pariatur expedita sequi odit minus architecto ducimus quod voluptate
+            dignissimos optio quia dolorem numquam!Lorem Lorem ipsum dolor sit
+            amet consectetur adipisicing elit.
+            <a href="#"> See More Sellers</a>
+          </p>
         </div>
+        {/* Product Specification starts*/}
 
-        <div className={styles.background_section}>
-          <h1>OTHER PRODUCT WITH SAME MERCHANTS</h1>
-          <div className={styles.flex_container}>
-            {data?.data.map((item: any, index: any) => {
-              console.log(item);
-
-              if (item?.auther_Id === router?.query?.merchant && index < 7) {
-                console.log("hellobababb", item);
-
-                return (
-                  <div className={styles.cardproduct} key={index}>
-                    <div className={styles.productimg}>
-                      <Image
-                        src={item.product_image1[0] || "/"}
-                        height={250}
-                        width={300}
-                        alt="productr image"
-                        className={styles.productimagesrc}
-                      />
-                    </div>
-
-                    <div className={styles.productcontent}>
-                      <h4>Product Name:{item.product_name}</h4>
-                      <p>merchant Name:{item.vendors_name}</p>
-                    </div>
-
-                    <div className={styles.productcartbtn}>
-                      <button type="submit">View More</button>
-                    </div>
-                  </div>
-                );
-              }
-            })}
+        <div className={styles.tableflex_box}>
+          <div className={styles.displaytable1}>
+            <h1 id="C1">
+              {" "}
+              <span className={styles.span_box1}>Technical Details</span>
+            </h1>
+            <table className={styles.Table_Width}>
+              <tbody>
+                <tr>
+                  <td>Product Dimensions </td>
+                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Product Dimensions </td>
+                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Product Dimensions </td>
+                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </div>
-
-        <div className={styles.background_section}>
-          <h1>OTHER PRODUCT WITH SAME MERCHANTS</h1>
-          <div className={styles.flex_container}>
-            {data?.data.map((item: any, index: any) => {
-              console.log(item);
-
-              if (item?.auther_Id === router?.query?.merchant && index < 7) {
-                console.log("hellobababb", item);
-
-                return (
-                  <div className={styles.cardproduct} key={index}>
-                    <div className={styles.productimg}>
-                      <Image
-                        src={item.product_image1[0] || "/"}
-                        height={250}
-                        width={300}
-                        alt="productr image"
-                        className={styles.productimagesrc}
-                      />
-                    </div>
-
-                    <div className={styles.productcontent}>
-                      <h4>Product Name:{item.product_name}</h4>
-                      <p>merchant Name:{item.vendors_name}</p>
-                    </div>
-
-                    <div className={styles.productcartbtn}>
-                      <button type="submit">View More</button>
-                    </div>
-                  </div>
-                );
-              }
-            })}
-          </div>
-        </div>
-
-        <div className={styles.background_section}>
-          <h1>OTHER PRODUCT WITH SAME MERCHANTS</h1>
-          <div className={styles.flex_container}>
-            {data?.data.map((item: any, index: any) => {
-              console.log(item);
-
-              if (item?.auther_Id === router?.query?.merchant && index < 7) {
-                console.log("hellobababb", item);
-
-                return (
-                  <div className={styles.cardproduct} key={index}>
-                    <div className={styles.productimg}>
-                      <Image
-                        src={item.product_image1[0] || "/"}
-                        height={250}
-                        width={300}
-                        alt="productr image"
-                        className={styles.productimagesrc}
-                      />
-                    </div>
-
-                    <div className={styles.productcontent}>
-                      <h4>Product Name:{item.product_name}</h4>
-                      <p>merchant Name:{item.vendors_name}</p>
-                    </div>
-
-                    <div className={styles.productcartbtn}>
-                      <button type="submit">View More</button>
-                    </div>
-                  </div>
-                );
-              }
-            })}
+          <div className={styles.displaytable2}>
+            <h1 className={styles.span_box1}>Additional Information</h1>
+            <table className={styles.Table_Width}>
+              <tbody>
+                <tr>
+                  <td>Product Dimensions </td>
+                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Product Dimensions </td>
+                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Manufacturer </td>
+                  <td> Building A1, Red Box Creative Park</td>
+                </tr>
+                <tr>
+                  <td>Models</td>
+                  <td>Bassbuds Pixel</td>
+                </tr>
+                <tr>
+                  <td>Product Dimensions </td>
+                  <td>5.9 x 4.4 x 2 cm; 40 Grams</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

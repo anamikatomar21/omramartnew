@@ -1,5 +1,4 @@
-.container_width{
-
+.container_width {
   max-width: 1500px;
   margin: 0px auto;
 }
@@ -7,9 +6,9 @@
 .flex_box {
   //   gap: 28px;
   display: flex;
-  height: 800px;
+  height: 677px;
   padding: 1.5rem 0.6rem;
-  margin-bottom: 341px;
+  // margin-bottom: 341px;
 }
 
 .flex_box1 {
@@ -24,13 +23,14 @@
 }
 
 .flex_box3 {
-  border: 1px solid rgb(152,170,195);
-  height: 404px;
+  border: 1px solid rgb(152, 170, 195);
+  height: 442px;
   width: 94%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 55px 17px 64px 26px;
+  padding: 47px 17px 64px 26px;
+  margin-top: 113px;
 }
 
 .flex_box2 h3 {
@@ -47,14 +47,14 @@
 .smallimage {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 24px;
 }
 
 // .productimagesrc {
 //   border: 1px solid black !important;
 // }
 .productimagesrc1 {
-  border: 1px solid rgb(152,170,195) !important;
+  border: 1px solid rgb(152, 170, 195) !important;
 }
 .rating {
   display: flex;
@@ -96,7 +96,6 @@
 .ButtonSection2 {
   height: 56px !important;
   width: 100%;
-  
 
   border-radius: 46px;
   cursor: pointer !important;
@@ -118,27 +117,6 @@
 
   align-items: center;
   gap: 21px;
-}
-
-.table_box td {
-  // background-color:#ECEEF0;
-  padding: 10px;
-  width: 50%;
-}
-
-.table_box table {
-  background-color: #eceef0;
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
-  max-width: 756px;
-  color: #6c768c;
-  font-size: 15px;
-}
-
-.table_box tr:nth-child(even) {
-  background-color: white;
 }
 
 .span_box {
@@ -250,10 +228,10 @@
 }
 
 .cardproduct:hover,
-  .cardproduct:active {
-    box-shadow: .2em .5em .5em rgba(0, 0, 0, 0.4);
-    transform: scale(1.1);
-  }
+.cardproduct:active {
+  box-shadow: 0.2em 0.5em 0.5em rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+}
 .Section_Box {
   width: 100%;
 }
@@ -381,7 +359,6 @@ button .fa {
   border-radius: 15px;
   background-clip: padding-box;
   text-align: center;
-
 }
 
 .buttonSection {
@@ -601,8 +578,8 @@ button .fa {
 
 .botton5 {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 .popup2 {
   margin: 130px auto;
@@ -674,7 +651,7 @@ button .fa {
 .ButtonSection1 {
   height: 56px !important;
   width: 100%;
- 
+
   border-radius: 46px;
   cursor: pointer !important;
   background: #002b6b;
@@ -794,8 +771,8 @@ button .fa {
 }
 .seemorestyles {
   position: relative;
-  left: 340px;
-  bottom: -7px;
+  margin-left: 322px;
+  // bottom: -7px;
   color: #002b6b;
   font-weight: 700;
 }
@@ -832,17 +809,6 @@ button .fa {
     margin-left: 101px !important;
     width: 100% !important;
   }
-}
-
-.Table_Width {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
-  max-width: 500px;
-  color: #6c768c;
-  font-size: 15px;
-  margin-left: 61px;
 }
 
 .left_product_section {
@@ -1025,9 +991,9 @@ button .fa {
 }
 .flex_box1 {
   display: flex;
-  justify-content: space-around;
-  gap: 22px;
-  margin-top: 300px;
+  // justify-content: space-around;
+  gap: 9px;
+  margin-top: -93px;
 }
 
 .heading_section {
@@ -1193,9 +1159,51 @@ button .fa {
 
 .div_box {
   display: flex;
-  background-color: #DEE4EC;
+  background-color: #dee4ec;
   justify-content: space-between;
-  padding:9px 25px 10px 23px;
-margin:10px 0px;
-  
+  padding: 9px 25px 10px 23px;
+  margin: 10px 0px;
+}
+
+.company_info {
+  border-top: 1px solid rgb(152, 170, 195);
+  border-bottom: 1px solid rgb(152, 170, 195);
+}
+.colcolor {
+  background-color: greenyellow;
+}
+
+.Table_Width {
+  width: 100%;
+  border: 1px solid #dee2e6;
+  border-collapse: collapse;
+  max-width: 700px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+
+  tr td {
+    border: 1px solid #dee4ec;
+    padding:7px 10px;
+  }
+}
+.tableflex_box {
+  display: flex;
+}
+
+.displaytable1 {
+  flex: 0.5;
+}
+
+.displaytable2 {
+  flex: 0.5;
+}
+
+.Table_Width tbody tr td:first-child {
+  background: #dee4ec;
+}
+
+.span_box1 {
+  font-weight: 400;
+  color: #002b6b;
 }
