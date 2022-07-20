@@ -444,6 +444,8 @@ const Test3: NextPage = () => {
                     <li>
                       <p> Mobile No. *</p>
                       <input type="text" className={styles.NumberInput} />
+                      <p> Mobile No. *</p>
+                      <input type="text" className={styles.NumberInput} />
                     </li>
 
                     <li>

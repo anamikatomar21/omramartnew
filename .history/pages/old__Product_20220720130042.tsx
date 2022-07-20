@@ -1,15 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
-import type { NextPage } from "next";
-import Image from "next/image";
-import { useRouter } from "next/router";
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import {
   useGetBussinessDetails,
   usePublicProduct,
   useSendEmail,
-} from "../networkAPI/queries";
-import styles from "../styles/Merchant/productpreview.module.scss";
+} from '../networkAPI/queries';
+import styles from '../styles/Merchant/productpreview.module.scss';
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -371,6 +375,7 @@ const Test3: NextPage = () => {
                   </li>
 
                   <li className={styles.ModalSection}>
+                  
                     <div>
                       <input
                         type="email"
@@ -391,6 +396,8 @@ const Test3: NextPage = () => {
                       />
                     </div>
                   </li>
+
+                 
 
                   <li className={styles.checkboxstyle}>
                     <div>
@@ -417,7 +424,9 @@ const Test3: NextPage = () => {
                     </button>
                   </li>
                 </ul>
-                <div className="buttonmodel"></div>
+                <div className="buttonmodel">
+                 
+                </div>
               </form>
             </div>
           </div>
@@ -439,6 +448,7 @@ const Test3: NextPage = () => {
                         <input type="checkbox" />
                         <span>I want to Buy</span>
                       </li>
+
                     </div>
 
                     <li>

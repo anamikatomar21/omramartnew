@@ -325,7 +325,7 @@ const NewProductPage: NextPage = () => {
         </div>
 
         <div className={styles.company_info}>
-          <h1 className={styles.span_box3}>Company Information</h1>
+          <h1 className={styles.span_box2}>Company Information</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
             praesentium dolores, accusamus laborum error perspiciatis iure
@@ -705,7 +705,7 @@ const NewProductPage: NextPage = () => {
             </table>
           </div>
           <div className={styles.displaytable2}>
-            <h1 className={styles.span_box2}>Additional Information</h1>
+            <h1 className={styles.span_box1}>Additional Information</h1>
             <table className={styles.Table_Width}>
               <tbody>
                 <tr>

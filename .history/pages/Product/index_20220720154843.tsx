@@ -1,5 +1,4 @@
 import "slick-carousel/slick/slick-theme.css";
-
 import React, { useState } from "react";
 
 import Footer from "components/Footer/footer";
@@ -277,7 +276,7 @@ const NewProductPage: NextPage = () => {
 
               <div className={styles.table_box}>
                 <hr />
-                <h1 className={styles.span_box2}>Product Specifications</h1>
+                <h1 className={styles.span_box1}>Product Specifications</h1>
                 <div className={styles.div_box}>
                   <div>Brand</div>
                   <div>Daikin</div>
@@ -325,7 +324,7 @@ const NewProductPage: NextPage = () => {
         </div>
 
         <div className={styles.company_info}>
-          <h1 className={styles.span_box3}>Company Information</h1>
+          <h1 className={styles.span_box1}>Company Information</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
             praesentium dolores, accusamus laborum error perspiciatis iure
@@ -339,7 +338,9 @@ const NewProductPage: NextPage = () => {
       {/* Similar Product Slider Starts  */}
 
       <div className={styles.background_section}>
-        <h1 className={styles.span_box2}>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
+        <h1 className={styles.span_box1}>
+          SIMILAR PRODUCT WITH OTHER MERCHANTS
+        </h1>
         <div className={styles.flex_container}>
           <div className={styles.cardproduct}>
             <div className={styles.productimg}>
@@ -441,7 +442,7 @@ const NewProductPage: NextPage = () => {
       </div>
 
       <div className={styles.background_section}>
-        <h1 className={styles.span_box2}>OTHER PRODUCT WITH SAME MERCHANTS</h1>
+        <h1 className={styles.span_box1}>OTHER PRODUCT WITH SAME MERCHANTS</h1>
         <div className={styles.flex_container}>
           <div className={styles.cardproduct}>
             <div className={styles.productimg}>
@@ -542,108 +543,109 @@ const NewProductPage: NextPage = () => {
         </div>
       </div>
       <div className={styles.background_section}>
-        <h1 className={styles.span_box2}>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
-        
-        <div className={styles.flex_container}>
+        <h1 className={styles.span_box1}>
+          SIMILAR PRODUCT WITH OTHER MERCHANTS
+        </h1>
+        <Slider {...settings}>
+          <div className={styles.flex_container}>
+            <div className={styles.cardproduct}>
+              <div className={styles.productimg}>
+                <Image
+                  src={"/omratrade/homebanner.png"}
+                  height={250}
+                  width={300}
+                  alt="productr image"
+                  className={styles.productimagesrc}
+                />
+              </div>
 
-       
-          <div className={styles.cardproduct}>
-            <div className={styles.productimg}>
-              <Image
-                src={"/omratrade/homebanner.png"}
-                height={250}
-                width={300}
-                alt="productr image"
-                className={styles.productimagesrc}
-              />
+              <div className={styles.productcontent}>
+                <h4>hhhh</h4>
+                <p>hhhhhhhhhhhhhh</p>
+              </div>
+
+              <div className={styles.productcartbtn}>
+                <button type="submit">View More</button>
+              </div>
             </div>
 
-            <div className={styles.productcontent}>
-              <h4>hhhh</h4>
-              <p>hhhhhhhhhhhhhh</p>
+            <div className={styles.cardproduct}>
+              <div className={styles.productimg}>
+                <Image
+                  src={"/omratrade/homebanner.png"}
+                  height={250}
+                  width={300}
+                  alt="productr image"
+                  className={styles.productimagesrc}
+                />
+              </div>
+              <div className={styles.productcontent}>
+                <h4>hhhh</h4>
+                <p>hhhhhhhhhhhhhh</p>
+              </div>
+              <div className={styles.productcartbtn}>
+                <button type="submit">View More</button>
+              </div>
             </div>
 
-            <div className={styles.productcartbtn}>
-              <button type="submit">View More</button>
+            <div className={styles.cardproduct}>
+              <div className={styles.productimg}>
+                <Image
+                  src={"/omratrade/homebanner.png"}
+                  height={250}
+                  width={300}
+                  alt="productr image"
+                  className={styles.productimagesrc}
+                />
+              </div>
+              <div className={styles.productcontent}>
+                <h4>hhhh</h4>
+                <p>hhhhhhhhhhhhhh</p>
+              </div>
+              <div className={styles.productcartbtn}>
+                <button type="submit">View More</button>
+              </div>
+            </div>
+
+            <div className={styles.cardproduct}>
+              <div className={styles.productimg}>
+                <Image
+                  src={"/omratrade/homebanner.png"}
+                  height={250}
+                  width={300}
+                  alt="productr image"
+                  className={styles.productimagesrc}
+                />
+              </div>
+              <div className={styles.productcontent}>
+                <h4>hhhh</h4>
+                <p>hhhhhhhhhhhhhh</p>
+              </div>
+              <div className={styles.productcartbtn}>
+                <button type="submit">View More</button>
+              </div>
+            </div>
+
+            <div className={styles.cardproduct}>
+              <div className={styles.productimg}>
+                <Image
+                  src={"/omratrade/homebanner.png"}
+                  height={250}
+                  width={300}
+                  alt="productr image"
+                  className={styles.productimagesrc}
+                />
+              </div>
+              <div className={styles.productcontent}>
+                <h4>hhhh</h4>
+                <p>hhhhhhhhhhhhhh</p>
+              </div>
+              <div className={styles.productcartbtn}>
+                <button type="submit">View More</button>
+              </div>
             </div>
           </div>
-
-          <div className={styles.cardproduct}>
-            <div className={styles.productimg}>
-              <Image
-                src={"/omratrade/homebanner.png"}
-                height={250}
-                width={300}
-                alt="productr image"
-                className={styles.productimagesrc}
-              />
-            </div>
-            <div className={styles.productcontent}>
-              <h4>hhhh</h4>
-              <p>hhhhhhhhhhhhhh</p>
-            </div>
-            <div className={styles.productcartbtn}>
-              <button type="submit">View More</button>
-            </div>
-          </div>
-
-          <div className={styles.cardproduct}>
-            <div className={styles.productimg}>
-              <Image
-                src={"/omratrade/homebanner.png"}
-                height={250}
-                width={300}
-                alt="productr image"
-                className={styles.productimagesrc}
-              />
-            </div>
-            <div className={styles.productcontent}>
-              <h4>hhhh</h4>
-              <p>hhhhhhhhhhhhhh</p>
-            </div>
-            <div className={styles.productcartbtn}>
-              <button type="submit">View More</button>
-            </div>
-          </div>
-
-          <div className={styles.cardproduct}>
-            <div className={styles.productimg}>
-              <Image
-                src={"/omratrade/homebanner.png"}
-                height={250}
-                width={300}
-                alt="productr image"
-                className={styles.productimagesrc}
-              />
-            </div>
-            <div className={styles.productcontent}>
-              <h4>hhhh</h4>
-              <p>hhhhhhhhhhhhhh</p>
-            </div>
-            <div className={styles.productcartbtn}>
-              <button type="submit">View More</button>
-            </div>
-          </div>
-
-          <div className={styles.cardproduct}>
-            <div className={styles.productimg}>
-              <Image
-                src={"/omratrade/homebanner.png"}
-                height={250}
-                width={300}
-                alt="productr image"
-                className={styles.productimagesrc}
-              />
-            </div>
-            <div className={styles.productcontent}>
-              <h4>hhhh</h4>
-              <p>hhhhhhhhhhhhhh</p>
-            </div>
-            <div className={styles.productcartbtn}>
-              <button type="submit">View More</button>
-            </div>
-          </div>
-        </div>
+        </Slider>
       </div>
       {/* Similar Product Slider Ends  */}
 
@@ -653,7 +655,7 @@ const NewProductPage: NextPage = () => {
           <div className={styles.displaytable1}>
             <h1 id="C1">
               {" "}
-              <span className={styles.span_box2}>Technical Details</span>
+              <span className={styles.span_box1}>Technical Details</span>
             </h1>
             <table className={styles.Table_Width}>
               <tbody>
@@ -705,7 +707,7 @@ const NewProductPage: NextPage = () => {
             </table>
           </div>
           <div className={styles.displaytable2}>
-            <h1 className={styles.span_box2}>Additional Information</h1>
+            <h1 className={styles.span_box1}>Additional Information</h1>
             <table className={styles.Table_Width}>
               <tbody>
                 <tr>
@@ -757,9 +759,9 @@ const NewProductPage: NextPage = () => {
           </div>
         </div>
       </div>
-      {/* <div>
+      <div>
         <CompanyDescription />
-      </div> */}
+      </div>
       <Footer />
     </div>
   );

@@ -168,7 +168,6 @@
   display: flex;
   justify-content: center;
   gap: 793px;
-  margin-top: 14px;
 }
 .flex_box1 {
   display: flex;
@@ -246,7 +245,7 @@
     border: solid 1px #a6b1c4;
     border-radius: 32px 0 0 32px;
     margin-left: -1px;
-    height: 55px;
+    height: 62px;
     display: flex;
     z-index: 1;
     position: relative;
@@ -271,13 +270,12 @@
   // Search Bar Style
   .searchbox input {
     padding: 0;
-    height: 55px;
+    height: 62px;
     text-indent: 1px;
-    border: 1px solid #ACABAB;
   }
 
   button {
-    height: 55px  !important;
+    height: 65px !important;
     width: 160px;
     border-radius: 82px 82px 82px 82px !important;
     background-color: #002b6b !important;

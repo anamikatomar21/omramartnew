@@ -1,15 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
-import type { NextPage } from "next";
-import Image from "next/image";
-import { useRouter } from "next/router";
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import {
   useGetBussinessDetails,
   usePublicProduct,
   useSendEmail,
-} from "../networkAPI/queries";
-import styles from "../styles/Merchant/productpreview.module.scss";
+} from '../networkAPI/queries';
+import styles from '../styles/Merchant/productpreview.module.scss';
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -371,6 +375,10 @@ const Test3: NextPage = () => {
                   </li>
 
                   <li className={styles.ModalSection}>
+                    {/* <label htmlFor="category" className={styles.FontHeight}>
+
+                                           EMAIL ID
+                                       </label> */}
                     <div>
                       <input
                         type="email"
@@ -392,6 +400,18 @@ const Test3: NextPage = () => {
                     </div>
                   </li>
 
+                  {/* <li> */}
+
+                  {/* <label htmlFor="category" className={styles.FontHeight} >
+
+                                               Phone number
+
+                                               </label> */}
+                  {/* 
+                                               <input type="text" className={styles.Input} placeholder="Phone number " /> */}
+
+                  {/* </li>  */}
+
                   <li className={styles.checkboxstyle}>
                     <div>
                       <input type="checkbox" className={styles.check} />
@@ -406,6 +426,14 @@ const Test3: NextPage = () => {
                     </div>
                   </li>
 
+                  {/* <li>
+                                           <input type="checkbox" />
+
+                                           <span className={styles.SpanClass}>I agree to <a href="#" className={styles.TermsColor}>terms and conditions</a></span>
+
+
+
+                                       </li> */}
                   <li>{mailData?.message}</li>
                   <li>
                     <button
@@ -417,7 +445,18 @@ const Test3: NextPage = () => {
                     </button>
                   </li>
                 </ul>
-                <div className="buttonmodel"></div>
+                <div className="buttonmodel">
+                  {/* <button type='submit' className='emailbutton-section'> EMAIL </button>  */}
+                  {/* 
+
+                                       <button type='submit' className='call_back_button'><a href="#">CALL BACK REQUEST</a></button>
+                                       <a href="whatsapp://send?text=Hello World!&phone=+917017342584" className='whatsapp-icon'>
+
+                                           <Image src="/omratrade/whatsapp.png" width={500} height={500} alt="" className='whatsapp-icon' /></a>
+                                       <a href="whatsapp://send?text=Hello World!&phone=+917017342584" className='whatsapp-icon'>
+
+                                           <Image src="/omratrade/email.png" width={500} height={500} alt="" className='whatsapp-icon' /></a> */}
+                </div>
               </form>
             </div>
           </div>
@@ -439,6 +478,7 @@ const Test3: NextPage = () => {
                         <input type="checkbox" />
                         <span>I want to Buy</span>
                       </li>
+
                     </div>
 
                     <li>
