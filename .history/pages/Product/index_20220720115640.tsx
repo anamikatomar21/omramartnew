@@ -1,4 +1,7 @@
 import "slick-carousel/slick/slick-theme.css";
+
+import React, { Component } from "react";
+
 import React, { useState } from "react";
 import Link from "next/link";
 import Footer from "components/Footer/footer";
@@ -645,109 +648,7 @@ const NewProductPage: NextPage = () => {
           </Slider>
         </div>
       </div>
-      <div className={styles.background_section}>
-        <h1>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
-        <div className={styles.flex_container}>
-          <Slider {...settings}>
-            <div className={styles.cardproduct}>
-              <div className={styles.productimg}>
-                <Image
-                  src={"/omratrade/homebanner.png"}
-                  height={250}
-                  width={300}
-                  alt="productr image"
-                  className={styles.productimagesrc}
-                />
-              </div>
 
-              <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
-              </div>
-
-              <div className={styles.productcartbtn}>
-                <button type="submit">View More</button>
-              </div>
-            </div>
-
-            <div className={styles.cardproduct}>
-              <div className={styles.productimg}>
-                <Image
-                  src={"/omratrade/homebanner.png"}
-                  height={250}
-                  width={300}
-                  alt="productr image"
-                  className={styles.productimagesrc}
-                />
-              </div>
-              <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
-              </div>
-              <div className={styles.productcartbtn}>
-                <button type="submit">View More</button>
-              </div>
-            </div>
-
-            <div className={styles.cardproduct}>
-              <div className={styles.productimg}>
-                <Image
-                  src={"/omratrade/homebanner.png"}
-                  height={250}
-                  width={300}
-                  alt="productr image"
-                  className={styles.productimagesrc}
-                />
-              </div>
-              <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
-              </div>
-              <div className={styles.productcartbtn}>
-                <button type="submit">View More</button>
-              </div>
-            </div>
-
-            <div className={styles.cardproduct}>
-              <div className={styles.productimg}>
-                <Image
-                  src={"/omratrade/homebanner.png"}
-                  height={250}
-                  width={300}
-                  alt="productr image"
-                  className={styles.productimagesrc}
-                />
-              </div>
-              <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
-              </div>
-              <div className={styles.productcartbtn}>
-                <button type="submit">View More</button>
-              </div>
-            </div>
-
-            <div className={styles.cardproduct}>
-              <div className={styles.productimg}>
-                <Image
-                  src={"/omratrade/homebanner.png"}
-                  height={250}
-                  width={300}
-                  alt="productr image"
-                  className={styles.productimagesrc}
-                />
-              </div>
-              <div className={styles.productcontent}>
-                <h4>hhhh</h4>
-                <p>hhhhhhhhhhhhhh</p>
-              </div>
-              <div className={styles.productcartbtn}>
-                <button type="submit">View More</button>
-              </div>
-            </div>
-          </Slider>
-        </div>
-      </div>
       {/* Similar Product Slider Ends  */}
       <div>
         <CompanyDescription />
