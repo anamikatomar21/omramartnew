@@ -1,17 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
-import { NextPage } from "next";
-import Image from "next/image";
-import { useRouter } from "next/router";
+import { AxiosError } from 'axios';
+import { NextPage } from 'next';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
 
-import AdminLayout from "../../components/Admin/AdminLayout";
-import Popup from "../../components/popup";
+import AdminLayout from '../../components/Admin/AdminLayout';
+import Popup from '../../components/popup';
 import {
   useDeclinedProduct,
   usePublicProduct,
   useUpdateProduct,
-} from "../../networkAPI/queries";
-import styles from "../../styles/Merchant/dashcode.module.scss";
+} from '../../networkAPI/queries';
+import styles from '../../styles/Merchant/dashcode.module.scss';
 
 const Admin: NextPage = () => {
   const [isApproved, setisApproved] = useState<boolean>(false);
@@ -81,22 +87,26 @@ const Admin: NextPage = () => {
   //   return () => window.removeEventListener("mousedown", handleOutsideClick);
   // }, [isOpen]);
 
-  const handleLogin = (item: any) => {
+  const handleApproved = (item: any) => {
+    console.log(item)
     mutate({
       id: item._id,
 
-      isApproved: true,
+      isApproved:true
     });
-    router.reload();
+    router.reload()
   };
+  console.log("testttttting",isApproved)
+  console.log("trsees",data)
   const handleDeclined = (item: any) => {
+
     mutate1({
       id: item._id,
 
       isDeclined: true,
       status,
     });
-    router.reload();
+    
   };
 
   useEffect(() => {
@@ -111,16 +121,28 @@ const Admin: NextPage = () => {
     setisApproved(true);
   }, []);
 
-  // useEffect(() => {
-  //   if (error instanceof AxiosError) {
-  //     toast.error(error?.response?.data?.message || error.message);
-  //   }
+  useEffect(() => {
+    if (error instanceof AxiosError) {
+      toast.error(error?.response?.data?.message || error.message);
+    }
 
-  //   if (isSuccess==true) {
-  //     toast.success("update Successfull");
-  //     router.reload()
-  //   }
-  // }, [error, data,router,isSuccess]);
+    if (isSuccess==true) {
+      toast.success("product Approved successfully");
+      router.reload()
+    }
+  }, [error, data,router,isSuccess]);
+
+/// for declined
+  useEffect(() => {
+    if (err instanceof AxiosError) {
+      toast.error(err?.response?.data?.message || err.message);
+    }
+
+    if (isSuccess1==true) {
+      toast.success("Declined  Successfull");
+      router.reload()
+    }
+  }, [err, data1,router,isSuccess1]);
 
   return (
     <>
@@ -149,7 +171,7 @@ const Admin: NextPage = () => {
                     <div style={{ display: "flex", gap: "50px" }}>
                       <div className={styles.Image_Section}>
                         <Image
-                          src={item.product_image1[0]}
+                          src={item?.product_image1[0]|| "/"}
                           alt=""
                           width="300px"
                           height="100px"
@@ -207,7 +229,7 @@ const Admin: NextPage = () => {
                               <button
                                 type="button"
                                 className="approve-button"
-                                onClick={() => handleLogin(item)}
+                                onClick={() => handleApproved(item)}
                               >
                                 Approve
                               </button>

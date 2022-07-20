@@ -762,9 +762,7 @@ console.log(JSON.stringify(additionalSpecification))
                     </Col>
                     <Col md="4">
                       <FormGroup>
-                        <label className="form-control-label" htmlFor="Values">
-                          Number:
-                        </label>
+                        
                         <Input
                           className="inputValuesForm"
                           id="Values"

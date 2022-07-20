@@ -3,11 +3,13 @@ import 'slick-carousel/slick/slick-theme.css';
 import React, { useState } from 'react';
 
 import Footer from 'components/Footer/footer';
-import { usePublicProduct } from 'networkAPI/queries';
+import {
+  useGetCategory,
+  usePublicProduct,
+} from 'networkAPI/queries';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Slider from 'react-slick';
 import styles from 'styles/Merchant/newproductpage.module.scss';
 
 import CompanyDescription from '../../components/CompanyDescription';
@@ -17,12 +19,27 @@ const NewProductPage: NextPage = () => {
   const router = useRouter();
   const { data, status } = usePublicProduct();
 
+  const { data: category_data, status: status1 } = useGetCategory();
+
+  console.log(
+    category_data?.data.map((item: any) => {
+      item.category_name;
+    })
+  );
+
   const currentProduct = data?.data.find(
     (d: any) => d?._id === router?.query?.id
   );
+  const currentCategory = data?.data.find(
+    (currentData: any) => currentData?.category === router?.query?.category
+  );
+  const currentMerchant = data?.data.find(
+    (currentData: any) => currentData?.auther_Id === router?.query?.merchant
+  );
+  console.log(currentCategory);
 
   const [ProductImage, setProductImage] = useState(
-    currentProduct?.product_image1[0] || "/"
+    currentProduct ? currentProduct.product_image1[0] : "/" || "/"
   );
 
   const onImageSelect = (source: string | undefined) => {
@@ -54,7 +71,7 @@ const NewProductPage: NextPage = () => {
             <div className={styles.flex_box1}>
               <div className={styles.flex_box3}>
                 <Image
-                  src={ProductImage||currentProduct?.product_image1[0] || "/"}
+                  src={ProductImage || currentProduct?.product_image1[0] || "/"}
                   height={300}
                   width={400}
                   alt="productr image"
@@ -306,57 +323,33 @@ const NewProductPage: NextPage = () => {
                 <hr />
                 <h1 className={styles.span_box}>Product Specifications</h1>
                 <div className={styles.div_box}>
-                  <div>Brand</div>
-                  <div>Daikin</div>
+                  <div>Brand:</div>
+                  <div>{currentProduct?.brand}</div>
                 </div>
                 <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
+                  <div>Specification:</div>
+                  <div>{currentProduct?.product_Specification}</div>
                 </div>
                 <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
+                  <div>Capacity:</div>
+                  <div>{currentProduct?.capacity}</div>
                 </div>
                 <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
+                  <div>Model No:</div>
+                  <div>{currentProduct?.model_no}</div>
                 </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
-                <div className={styles.div_box}>
-                  <div>Genuine Products</div>
-                  <div>Made in India</div>
-                </div>
+                {currentProduct?.additionalSpecification.map(
+                  (item: any, index: any) => {
+                    console.log(currentProduct);
+                    return (
+                      <div className={styles.div_box} key={index}>
+                        <div>{item.atribute}</div>
+                        <div>{item.Values}</div>
+                      </div>
+                    );
+                  }
+                )}
+
                 <div className={styles.div_box}>
                   <div>Special Features</div>
                   <div>
@@ -374,208 +367,152 @@ const NewProductPage: NextPage = () => {
         <div className={styles.background_section}>
           <h1>SIMILAR PRODUCT WITH OTHER MERCHANTS</h1>
           <div className={styles.flex_container}>
-            <Slider {...settings}>
-              <div className={styles.cardproduct}>
-                <div className={styles.productimg}>
-                  <Image
-                    src={"/omratrade/homebanner.png"}
-                    height={250}
-                    width={300}
-                    alt="productr image"
-                    className={styles.productimagesrc}
-                  />
-                </div>
+            {data?.data.map((item: any, index: any) => {
+              console.log(item);
 
-                <div className={styles.productcontent}>
-                  <h4>hhhh</h4>
-                  <p>hhhhhhhhhhhhhh</p>
-                </div>
+              if (item?.category === router?.query?.category   && index < 7) {
+                console.log("hellobababb", item);
 
-                <div className={styles.productcartbtn}>
-                  <button type="submit">View More</button>
-                </div>
-              </div>
+                return (
+                  <div className={styles.cardproduct} key={index}>
+                    <div className={styles.productimg}>
+                      <Image
+                        src={item?.product_image1[0] || "/"}
+                        height={250}
+                        width={300}
+                        alt="productr image"
+                        className={styles.productimagesrc}
+                      />
+                    </div>
 
-              <div className={styles.cardproduct}>
-                <div className={styles.productimg}>
-                  <Image
-                    src={"/omratrade/homebanner.png"}
-                    height={250}
-                    width={300}
-                    alt="productr image"
-                    className={styles.productimagesrc}
-                  />
-                </div>
-                <div className={styles.productcontent}>
-                  <h4>hhhh</h4>
-                  <p>hhhhhhhhhhhhhh</p>
-                </div>
-                <div className={styles.productcartbtn}>
-                  <button type="submit">View More</button>
-                </div>
-              </div>
+                    <div className={styles.productcontent}>
+                      <h4>Product Name:{item?.product_name}</h4>
+                      <p>Merchant Name:{item?.vendors_name}</p>
+                    </div>
 
-              <div className={styles.cardproduct}>
-                <div className={styles.productimg}>
-                  <Image
-                    src={"/omratrade/homebanner.png"}
-                    height={250}
-                    width={300}
-                    alt="productr image"
-                    className={styles.productimagesrc}
-                  />
-                </div>
-                <div className={styles.productcontent}>
-                  <h4>hhhh</h4>
-                  <p>hhhhhhhhhhhhhh</p>
-                </div>
-                <div className={styles.productcartbtn}>
-                  <button type="submit">View More</button>
-                </div>
-              </div>
+                    <div className={styles.productcartbtn}>
+                      <button type="submit">View More</button>
+                    </div>
+                  </div>
+                );
+              }
+            })}
 
-              <div className={styles.cardproduct}>
-                <div className={styles.productimg}>
-                  <Image
-                    src={"/omratrade/homebanner.png"}
-                    height={250}
-                    width={300}
-                    alt="productr image"
-                    className={styles.productimagesrc}
-                  />
-                </div>
-                <div className={styles.productcontent}>
-                  <h4>hhhh</h4>
-                  <p>hhhhhhhhhhhhhh</p>
-                </div>
-                <div className={styles.productcartbtn}>
-                  <button type="submit">View More</button>
-                </div>
-              </div>
+            
 
-              <div className={styles.cardproduct}>
-                <div className={styles.productimg}>
-                  <Image
-                    src={"/omratrade/homebanner.png"}
-                    height={250}
-                    width={300}
-                    alt="productr image"
-                    className={styles.productimagesrc}
-                  />
-                </div>
-                <div className={styles.productcontent}>
-                  <h4>hhhh</h4>
-                  <p>hhhhhhhhhhhhhh</p>
-                </div>
-                <div className={styles.productcartbtn}>
-                  <button type="submit">View More</button>
-                </div>
-              </div>
-            </Slider>
+           
+
+            
+
+            
           </div>
         </div>
 
         <div className={styles.background_section}>
           <h1>OTHER PRODUCT WITH SAME MERCHANTS</h1>
           <div className={styles.flex_container}>
-            <Slider {...settings}>
-              <div className={styles.cardproduct}>
-                <div className={styles.productimg}>
-                  <Image
-                    src={"/omratrade/homebanner.png"}
-                    height={250}
-                    width={300}
-                    alt="productr image"
-                    className={styles.productimagesrc}
-                  />
-                </div>
+            {data?.data.map((item: any, index: any) => {
+              console.log(item);
 
-                <div className={styles.productcontent}>
-                  <h4>hhhh</h4>
-                  <p>hhhhhhhhhhhhhh</p>
-                </div>
+              if (item?.auther_Id === router?.query?.merchant && index < 7) {
+                console.log("hellobababb", item);
 
-                <div className={styles.productcartbtn}>
-                  <button type="submit">View More</button>
-                </div>
-              </div>
+                return (
+                  <div className={styles.cardproduct} key={index}>
+                    <div className={styles.productimg}>
+                      <Image
+                        src={item.product_image1[0] || "/"}
+                        height={250}
+                        width={300}
+                        alt="productr image"
+                        className={styles.productimagesrc}
+                      />
+                    </div>
 
-              <div className={styles.cardproduct}>
-                <div className={styles.productimg}>
-                  <Image
-                    src={"/omratrade/homebanner.png"}
-                    height={250}
-                    width={300}
-                    alt="productr image"
-                    className={styles.productimagesrc}
-                  />
-                </div>
-                <div className={styles.productcontent}>
-                  <h4>hhhh</h4>
-                  <p>hhhhhhhhhhhhhh</p>
-                </div>
-                <div className={styles.productcartbtn}>
-                  <button type="submit">View More</button>
-                </div>
-              </div>
+                    <div className={styles.productcontent}>
+                      <h4>Product Name:{item.product_name}</h4>
+                      <p>merchant Name:{item.vendors_name}</p>
+                    </div>
 
-              <div className={styles.cardproduct}>
-                <div className={styles.productimg}>
-                  <Image
-                    src={"/omratrade/homebanner.png"}
-                    height={250}
-                    width={300}
-                    alt="productr image"
-                    className={styles.productimagesrc}
-                  />
-                </div>
-                <div className={styles.productcontent}>
-                  <h4>hhhh</h4>
-                  <p>hhhhhhhhhhhhhh</p>
-                </div>
-                <div className={styles.productcartbtn}>
-                  <button type="submit">View More</button>
-                </div>
-              </div>
+                    <div className={styles.productcartbtn}>
+                      <button type="submit">View More</button>
+                    </div>
+                  </div>
+                );
+              }
+            })}
+          </div>
+        </div>
 
-              <div className={styles.cardproduct}>
-                <div className={styles.productimg}>
-                  <Image
-                    src={"/omratrade/homebanner.png"}
-                    height={250}
-                    width={300}
-                    alt="productr image"
-                    className={styles.productimagesrc}
-                  />
-                </div>
-                <div className={styles.productcontent}>
-                  <h4>hhhh</h4>
-                  <p>hhhhhhhhhhhhhh</p>
-                </div>
-                <div className={styles.productcartbtn}>
-                  <button type="submit">View More</button>
-                </div>
-              </div>
+        <div className={styles.background_section}>
+          <h1>OTHER PRODUCT WITH SAME MERCHANTS</h1>
+          <div className={styles.flex_container}>
+            {data?.data.map((item: any, index: any) => {
+              console.log(item);
 
-              <div className={styles.cardproduct}>
-                <div className={styles.productimg}>
-                  <Image
-                    src={"/omratrade/homebanner.png"}
-                    height={250}
-                    width={300}
-                    alt="productr image"
-                    className={styles.productimagesrc}
-                  />
-                </div>
-                <div className={styles.productcontent}>
-                  <h4>hhhh</h4>
-                  <p>hhhhhhhhhhhhhh</p>
-                </div>
-                <div className={styles.productcartbtn}>
-                  <button type="submit">View More</button>
-                </div>
-              </div>
-            </Slider>
+              if (item?.auther_Id === router?.query?.merchant && index < 7) {
+                console.log("hellobababb", item);
+
+                return (
+                  <div className={styles.cardproduct} key={index}>
+                    <div className={styles.productimg}>
+                      <Image
+                        src={item.product_image1[0] || "/"}
+                        height={250}
+                        width={300}
+                        alt="productr image"
+                        className={styles.productimagesrc}
+                      />
+                    </div>
+
+                    <div className={styles.productcontent}>
+                      <h4>Product Name:{item.product_name}</h4>
+                      <p>merchant Name:{item.vendors_name}</p>
+                    </div>
+
+                    <div className={styles.productcartbtn}>
+                      <button type="submit">View More</button>
+                    </div>
+                  </div>
+                );
+              }
+            })}
+          </div>
+        </div>
+
+        <div className={styles.background_section}>
+          <h1>OTHER PRODUCT WITH SAME MERCHANTS</h1>
+          <div className={styles.flex_container}>
+            {data?.data.map((item: any, index: any) => {
+              console.log(item);
+
+              if (item?.auther_Id === router?.query?.merchant && index < 7) {
+                console.log("hellobababb", item);
+
+                return (
+                  <div className={styles.cardproduct} key={index}>
+                    <div className={styles.productimg}>
+                      <Image
+                        src={item.product_image1[0] || "/"}
+                        height={250}
+                        width={300}
+                        alt="productr image"
+                        className={styles.productimagesrc}
+                      />
+                    </div>
+
+                    <div className={styles.productcontent}>
+                      <h4>Product Name:{item.product_name}</h4>
+                      <p>merchant Name:{item.vendors_name}</p>
+                    </div>
+
+                    <div className={styles.productcartbtn}>
+                      <button type="submit">View More</button>
+                    </div>
+                  </div>
+                );
+              }
+            })}
           </div>
         </div>
       </div>

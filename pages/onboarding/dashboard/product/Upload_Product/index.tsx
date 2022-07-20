@@ -726,12 +726,7 @@ const Upload_Product: NextPage = () => {
                   <Row key={i}>
                     <Col md="4">
                       <FormGroup>
-                        <label
-                          className="form-control-label"
-                          htmlFor="atribute"
-                        >
-                          Atribute:
-                        </label>
+                        
                         <Input
                           className="inputValuesAttibute"
                           id="atribute"
@@ -745,9 +740,7 @@ const Upload_Product: NextPage = () => {
                     </Col>
                     <Col md="4">
                       <FormGroup>
-                        <label className="form-control-label" htmlFor="Values">
-                          Number:
-                        </label>
+                        
                         <Input
                           className="inputValuesForm"
                           id="Values"
