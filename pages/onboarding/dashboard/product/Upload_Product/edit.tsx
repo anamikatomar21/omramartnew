@@ -4,6 +4,11 @@ import React, {
 } from 'react';
 
 import { AxiosError } from 'axios';
+import DashboardLayout from 'components/Merchant/Layout';
+import {
+  useGetCategory,
+  useUpdateMerchantProduct,
+} from 'networkAPI/queries';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import Router, { useRouter } from 'next/router';
@@ -14,14 +19,8 @@ import {
   Input,
   Row,
 } from 'reactstrap';
-
-import DashboardLayout from '../../../../../components/Merchant/Layout';
-import {
-  useGetCategory,
-  useUpdateMerchantProduct,
-} from '../../../../../networkAPI/queries';
-import { useAppSelector } from '../../../../../redux/hooks';
-import styles from '../../../../../styles/Merchant/uploadproduct.module.scss';
+import { useAppSelector } from 'redux/hooks';
+import styles from 'styles/Merchant/uploadproduct.module.scss';
 
 // interface Person {
 
@@ -67,9 +66,7 @@ const Upload_Product: NextPage = () => {
       Values: "",
     },
   ]);
-  console.log(additionalSpecification
-    )
-
+  console.log(additionalSpecification);
 
   // {
   //   atribute: "",
@@ -172,8 +169,12 @@ const Upload_Product: NextPage = () => {
     ]);
   };
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleUpdateProduct = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const isConfirm= window.confirm("Are you sure to update this product")
+
+    if(isConfirm){
+
 
     mutate({
       Vendor_Id,
@@ -216,8 +217,9 @@ const Upload_Product: NextPage = () => {
       videos,
       id: _Id as string,
     });
+  }
   };
-console.log(JSON.stringify(additionalSpecification))
+  console.log(JSON.stringify(additionalSpecification));
   const data2 = useGetCategory();
   console.log(data2);
   const category_data = data2.data;
@@ -380,7 +382,7 @@ console.log(JSON.stringify(additionalSpecification))
             </div>
           </li>
 
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleUpdateProduct}>
             <li>
               <label htmlFor="product_image" className={styles.Omra_Lael}>
                 Product Image
@@ -804,7 +806,7 @@ console.log(JSON.stringify(additionalSpecification))
             })}
 
             <li className={styles.bottonstyle}>
-              <div className={styles.bottonstyle1}>
+              {/* <div className={styles.bottonstyle1}>
                 {" "}
                 <input
                   type="submit"
@@ -812,14 +814,14 @@ console.log(JSON.stringify(additionalSpecification))
                   value="Add Product"
                   onClick={(e) => alert("uploaded")}
                 />
-              </div>
+              </div> */}
 
               <div className={styles.bottonstyle1}>
                 {" "}
                 <input
                   type="submit"
                   className={styles.UploadButton}
-                  onClick={(e) => alert("uploaded")}
+                
                 />
               </div>
             </li>

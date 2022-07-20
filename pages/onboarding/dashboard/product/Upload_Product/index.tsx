@@ -107,17 +107,16 @@ const Upload_Product: NextPage = () => {
 
   const [model_no, setModel_no] = useState<string>("");
 
-  const [product_image1Preview, setProduct_image1Preview] = useState<any>("");
-  const [product_image2Preview, setProduct_image2Preview] = useState<any>("");
-  const [product_image3Preview, setProduct_image3Preview] = useState<any>("");
-  const [product_image4Preview, setProduct_image4Preview] = useState<any>("");
-  const [product_image5Preview, setProduct_image5Preview] = useState<any>("");
+  const [product_image1Preview, setProduct_image1Preview] = useState<string>("");
+  const [product_image2Preview, setProduct_image2Preview] = useState<string>("");
+  const [product_image3Preview, setProduct_image3Preview] = useState<string>("");
+  const [product_image4Preview, setProduct_image4Preview] = useState<string>("");
+  const [product_image5Preview, setProduct_image5Preview] = useState<string>("");
 
   // const [product_name,setProduct_name] =useState<string>("")
   const router = useRouter();
 
   const { error, isLoading, data, mutate } = userProduct();
-  console.log(data);
 
   const field_color = {
     color: "red",
@@ -129,9 +128,7 @@ const Upload_Product: NextPage = () => {
     const list = [...additionalSpecification];
     list[index][name] = value;
     setadditionalSpecification(list);
-    console.log({ additionalSpecification: list });
   };
-  console.log(additionalSpecification);
 
   const handleRemoveClick = (e: any, index: any) => {
     e.preventDefault();
@@ -149,55 +146,41 @@ const Upload_Product: NextPage = () => {
     ]);
   };
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitProduct = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    const isConfirm= window.confirm("Are you sure to upload this product")
+    if(isConfirm && product_name && category){
     mutate({
       Vendor_Id,
-
       auther_Id,
-
       vendors_name,
-
       product_name,
       isApproved,
-
       TypesOf_Bussiness,
-
       manufacturer_phone_no,
-
       manufacturer_address,
-
       brand,
-
       product_image1,
       product_image2,
       product_image3,
       product_image4,
       product_image5,
-
       category,
       sub_category,
-
       price,
       additionalSpecification,
-
       product_Specification,
-
       product_description,
-
       capacity,
-
       model_no,
-
       videos,
     });
+  }
   };
 
   const data2 = useGetCategory();
-  console.log(data2);
+
   const category_data = data2.data;
-  console.log(data2.data);
 
   useEffect(() => {
     if (error instanceof AxiosError) {
@@ -210,31 +193,7 @@ const Upload_Product: NextPage = () => {
     }
   }, [error, data, router]);
 
-  // const [email, setEmail] = useState<string>("");
-
-  // const [password, setPassword] = useState<string>("");
-
-  // const { error, mutate, data, isLoading } = useLogin();
-
-  // const options = [
-
-  //   { value: "Drugs & Pharma", label: "Drugs & Pharma" },
-
-  //   { value: "Hospital & Diagnostics", label: "Hospital & Diagnostics" },
-
-  //   { value: "Food & Agriculture", label: "Food & Agriculture" },
-
-  //   { value: "Industrial Machinery", label: "Industrial Machinery" },
-
-  //   { value: "Industrial Supplies", label: "Industrial Supplies" },
-
-  //   { value: "Electronics & Electrical", label: "Electronics & Electrical" },
-
-  //   { value: "Building & Construction", label: "Building & Construction" }
-
-  // ];
-
-  console.log(additionalSpecification);
+ 
 
   const options1 = [
     { value: "Wholesaler", label: "Wholesaler" },
@@ -244,14 +203,7 @@ const Upload_Product: NextPage = () => {
     { value: "Retailer", label: "Retailer" },
   ];
 
-  function handleSubmit() {
-    return "hello";
-  }
-
-  function handleChange() {
-    return "helo";
-  }
-
+ 
   useEffect(() => {
     // create the preview
 
@@ -277,9 +229,6 @@ const Upload_Product: NextPage = () => {
       setProduct_image5Preview(objectUrl5);
     }
 
-    console.log({ "PRODUCT IMAGE 1": product_image1 });
-    console.log("PRODUCT IMAGE 2", product_image2);
-
     // return () => {URL.revokeObjectURL(objectUrl);
     //   URL.revokeObjectURL(objectUrl2);}
   }, [
@@ -290,6 +239,7 @@ const Upload_Product: NextPage = () => {
     product_image5,
   ]);
 
+ 
   return (
     <DashboardLayout>
       <div className={styles.mov}>
@@ -356,10 +306,10 @@ const Upload_Product: NextPage = () => {
             </div>
           </li>
 
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleSubmitProduct}>
             <li>
               <label htmlFor="product_image" className={styles.Omra_Lael}>
-                Product Image
+                Product Image 
               </label>
               <div className={styles.row}>
                 <div className="col-md-4">
@@ -407,7 +357,7 @@ const Upload_Product: NextPage = () => {
             </li>
             <li>
               <label htmlFor="productname" className={styles.Omra_Lael}>
-                Product Name
+                Product Name *
               </label>
 
               <input
@@ -421,7 +371,7 @@ const Upload_Product: NextPage = () => {
 
             <li>
               <label htmlFor="category" className={styles.Omra_Lael}>
-                Product Category
+                Product Category *
               </label>
 
               {/* <input
@@ -443,13 +393,11 @@ const Upload_Product: NextPage = () => {
               >
                 <option value="">Select Category</option>
                 {category_data?.data.map((item: any, index: any) => {
-                  console.log(category);
                   return (
                     <>
                       <option key={index} value={item.category_name}>
                         {item.category_name}
                       </option>
-                     
                     </>
                   );
                 })}
@@ -635,12 +583,7 @@ const Upload_Product: NextPage = () => {
               />
             </li>
 
-            {/* <li> */}
-
-            {/* <h4> Additional  Specifications</h4> */}
-            {/* <hr/> */}
-
-            {/* </li> */}
+       
 
             <li className="qtyproduct">
               <div className="row">
@@ -719,14 +662,18 @@ const Upload_Product: NextPage = () => {
 
             <h4> Additional Specifications</h4>
             {additionalSpecification.map((y: any, i: any) => {
-              console.log({ attr: y.atribute, values: y.Values });
               return (
                 // eslint-disable-next-line react/jsx-key
                 <div style={{ display: "flex" }}>
                   <Row key={i}>
                     <Col md="4">
                       <FormGroup>
-                        
+                        {/* <label
+                          className="form-control-label"
+                          htmlFor="atribute"
+                        >
+                          Atribute:
+                        </label> */}
                         <Input
                           className="inputValuesAttibute"
                           id="atribute"
@@ -740,7 +687,9 @@ const Upload_Product: NextPage = () => {
                     </Col>
                     <Col md="4">
                       <FormGroup>
-                        
+                        {/* <label className="form-control-label" htmlFor="Values">
+                          Number:
+                        </label> */}
                         <Input
                           className="inputValuesForm"
                           id="Values"
@@ -762,7 +711,7 @@ const Upload_Product: NextPage = () => {
                             className="inputValueCancel"
                             onClick={(e) => handleRemoveClick(e, i)}
                           >
-                            X
+                            ⨉
                           </a>
                         )}
                         {additionalSpecification.length - 1 === i && (
@@ -797,7 +746,7 @@ const Upload_Product: NextPage = () => {
                 <input
                   type="submit"
                   className={styles.UploadButton}
-                  onClick={(e) => alert("uploaded")}
+                  // onClick={confirmModel}
                 />
               </div>
             </li>
