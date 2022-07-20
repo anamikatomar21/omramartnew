@@ -1,20 +1,36 @@
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick-theme.css';
 
-import React, { useState } from "react";
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 
-import Footer from "components/Footer/footer";
-import { usePublicProduct } from "networkAPI/queries";
-import type { NextPage } from "next";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import styles from "styles/Merchant/newproductpage.module.scss";
+import { AxiosError } from 'axios';
+import Footer from 'components/Footer/footer';
+import {
+  useCustomerQuery,
+  usePublicProduct,
+} from 'networkAPI/queries';
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
+import styles from 'styles/Merchant/newproductpage.module.scss';
+import delay from 'utils/delay';
 
-import CompanyDescription from "../../components/CompanyDescription";
-import TopHeader from "../topheader";
+import TopHeader from '../topheader';
 
 const NewProductPage: NextPage = () => {
   const router = useRouter();
+
+  const [merchant_Id,setMerchant_Id] = useState<string>('')
+  const [product_Id, setProduct_Id] = useState<string>('');
+  const [buyer_Email, setBuyer_Email] = useState<string>('')
+  const [buyer_Mob, setBuyer_Mob]  = useState<string>('')
   const { data, status } = usePublicProduct();
+
+  
+
 
   const currentProduct = data?.data.find(
     (d: any) => d?._id === router?.query?.id
@@ -28,6 +44,41 @@ const NewProductPage: NextPage = () => {
     setProductImage(source);
   };
 
+  const {data:buyerQueryData,error:err,status:status2,mutate} = useCustomerQuery()
+
+  const merchant_query= currentProduct?.auther_Id as string
+  console.log(merchant_query)
+  const product_query = currentProduct?._id as string
+
+
+  console.log(merchant_Id) 
+  console.log(buyer_Email)
+  console.log(product_Id)
+  console.log(buyer_Mob)
+
+
+  const anchorRef=React.useRef<HTMLAnchorElement>(null)
+  const handleBuyerQuery = async (e: React.FormEvent<HTMLFormElement>) =>{
+    e.preventDefault()
+    console.log({buyer_Email,buyer_Mob,product_query,merchant_query})
+    mutate({
+      merchant_Id:merchant_query ,
+      product_Id:product_query ,
+      buyer_Email ,
+      buyer_Mob 
+    })
+    await delay(2000)
+    anchorRef.current?.click()
+  }
+
+  // useEffect(()=>{
+  //   setMerchant_Id(merchant_query)
+  //   setProduct_Id(product_query)
+  // },[merchant_query,product_query]
+  // )
+
+ 
+
   const settings = {
     dots: true,
     infinite: true,
@@ -36,13 +87,22 @@ const NewProductPage: NextPage = () => {
     slidesToScroll: 1,
   };
 
-  console.log(currentProduct);
+  console.log(buyerQueryData);
 
   const [userMobileNumber, setuserMobileNumber] = useState();
 
   const onChangeNumber = (e: any) => {
     setuserMobileNumber(e.target.value);
   };
+  useEffect(() => {
+    if (err instanceof AxiosError) {
+      toast.error(err?.response?.data?.message || err.message);
+    }
+
+    if (buyerQueryData) {
+      toast.success("Your Query has been successfully submitted")
+    }
+  }, [err, buyerQueryData,router]);
 
   return (
     <div>
@@ -120,10 +180,9 @@ const NewProductPage: NextPage = () => {
               </div>
               <div id="popup1" className={styles.overlay}>
                 <div className={styles.popup}>
-                  <a className={styles.close} href="#">
+                  <a className={styles.close} ref={anchorRef} href="#">
                     &times;
                   </a>
-
                   <div className={styles.content1}>
                     <p className={styles.Font}>
                       Tell us about your requirement
@@ -159,15 +218,18 @@ const NewProductPage: NextPage = () => {
                               type="email"
                               className={styles.Input}
                               placeholder="EMAIL ID "
+
+                              required
                             />
                           </div>
-
                           <div>
                             {" "}
                             <input
                               type="tel"
                               className={styles.Input}
                               placeholder="Phone number "
+                              required
+
                             />
                           </div>
                         </li>
@@ -198,7 +260,8 @@ const NewProductPage: NextPage = () => {
                   </div>
                 </div>
               </div>
-              <div id="popup2" className={styles.overlay}>
+              <div id="popup2" className={styles.overlay} >
+               
                 <div className={styles.popup2}>
                   <a className={styles.close} href="#">
                     &times;
@@ -206,7 +269,7 @@ const NewProductPage: NextPage = () => {
                   <div className={styles.content1}>
                     <p className={styles.Font}>View Number</p>
 
-                    <form className={styles.FormWidth}>
+                    <form className={styles.FormWidth} onSubmit={handleBuyerQuery}>
                       <ul>
                         <div className={styles.DisplayFlex}>
                           <li>
@@ -215,27 +278,36 @@ const NewProductPage: NextPage = () => {
                           </li>
                         </div>
                         <div className={styles.email_flex}>
-                          <li>
-                            <p> Mobile No. *</p>
-                            <input
-                              onChange={onChangeNumber}
-                              type="text"
-                              className={styles.NumberInput}
-                            />
-                          </li>
+                          
                           <li>
                             <p> Email ID *</p>
                             <input
-                              onChange={onChangeNumber}
+                             
                               type="email"
+                              value={buyer_Email}
                               className={styles.NumberInput}
+                              onChange={(e)=> setBuyer_Email(e.target.value)}
+                              required
+
+                            />
+                          </li>
+                          <li>
+                            <p> Mobile No. *</p>
+                            <input
+
+                             value={buyer_Mob}
+                              type="text"
+                              className={styles.NumberInput}
+                              onChange={(e)=>setBuyer_Mob(e.target.value)}
+                              required
+
                             />
                           </li>
                         </div>
 
                         <li>
                           <button type="submit" className={styles.NumberButton}>
-                            <a href="#">Submit </a>
+                           Submit 
                           </button>
                         </li>
                       </ul>

@@ -328,17 +328,16 @@ export const getHomeSubCategory = () =>
 
 ///   Customer Query
 export const CustomerQuery = (
+  merchant_Id:string,
   product_Id: string,
+  buyer_Email:string,
 
-  customer_mob:string
+  buyer_Mob:string
 ): Promise<Object> => {
-  const formData = new FormData();
-  formData.append("product_Id", product_Id);
-
-  formData.append("customer_mob", customer_mob);
+ 
 
   return axios
-    .post<CustomerQueryType>("/api/category/connect_to_buy", formData)
+    .post<CustomerQueryType>("/api/connect_to_buy", {merchant_Id,product_Id,buyer_Email,buyer_Mob})
     .then((response) => response.data);
 };
 

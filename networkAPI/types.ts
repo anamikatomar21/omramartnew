@@ -145,6 +145,8 @@ export type bannerImagesUpdate = {
 };
 
 export type CustomerQueryType ={
+    merchant_Id:string
     product_Id:string,
-    customer_mob:string
+    buyer_Email:string,
+    buyer_Mob:string
 }

@@ -311,14 +311,18 @@ export const useUpdateBanner = () => useMutation(
 
 export const useCustomerQuery = () => useMutation(
   ({
+    merchant_Id,
     product_Id,
-    customer_mob,
+    buyer_Email,
+    buyer_Mob
    
     
-  }:CustomerQueryType):Promise<Object> => 
+  }:CustomerQueryType):Promise<Object> =>  
   CustomerQuery(
+    merchant_Id,
     product_Id,
-    customer_mob,
+    buyer_Email,
+    buyer_Mob
   ))
 export const useProductsByCategory = (category:string) => useQuery(["products",category],()=>getProductsBycategory(category));
 export const useProducts = () => useQuery("products",getProducts);
