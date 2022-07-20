@@ -354,7 +354,7 @@ const NewProductPage: NextPage = () => {
 
                 <div className={styles.table_box}>
                   <hr />
-                  <h1 className={styles.span_box2}>Product Specifications</h1>
+                  <h1 className={styles.spanbox4}>Product Specifications</h1>
                   <div className={styles.div_box}>
                     <div>Brand</div>
                     <div>{currentProduct?.brand}</div>
