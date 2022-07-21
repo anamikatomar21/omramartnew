@@ -1,0 +1,466 @@
+// .navbarheader {
+//     position: relative;
+//     display: flex;
+//     justify-content: space-evenly;
+//     padding: 15px 30px;
+//     align-items: center;
+//     background: #002b6b;
+//     position: sticky;
+//     color: white;
+//     width: 100%;
+//     z-index: 99999;
+
+//     .brandlogo {
+//         position: relative;
+//         height: 40px;
+
+//         .logo {
+//             position: relative;
+//         }
+//     }
+// }
+
+// .navbarright {
+//     position: relative;
+
+//     .rightnav {
+//         position: relative;
+
+//         .navlinks {
+//             position: relative;
+//             display: flex;
+//             flex-wrap: nowrap;
+//             gap: 30px;
+//             list-style: none;
+
+//             li {
+//                 position: relative;
+
+//                 a {
+//                     position: relative;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// .searchbox {
+//     position: relative;
+// }
+// .searchinnerbox {
+//     position: relative;
+//     .searchinput {
+//         height: 50px;
+//         width: 500px;
+//         border-radius: 30px;
+//         border: 1px solid #002b6b;
+//         padding: 10px 77px 10px 10px;
+//         outline: 0;
+//         font-size: 16px;
+//     }
+//     .searchinput1 {
+//         position: absolute;
+//         top: 2px;
+//         right: 2px;
+//         height: 45px;
+//         padding: 1px 25px;
+//         border: 0px solid #000;
+//         border-radius: 0px 27px 27px 0px;
+//         cursor: pointer;
+//         .searchinput1 i {
+//             font-size: 20px;
+//         }
+//     }
+
+//     .searchinput1:hover {
+//         background: #002b6b;
+//     }
+
+//     .searchinput1:hover i {
+//         color: #fff;
+//     }
+// }
+
+.navbarheader {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px 30px;
+  align-items: center;
+  background: #002b6b;
+  position: sticky;
+  color: white;
+  width: 100%;
+  z-index: 99999;
+
+  .brandlogo {
+    position: relative;
+
+    .logo {
+      position: relative;
+    }
+  }
+}
+
+.navbarright {
+  position: relative;
+
+  .rightnav {
+    position: relative;
+
+    .navlinks {
+      position: relative;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 30px;
+      list-style: none;
+
+      li {
+        position: relative;
+
+        a {
+          position: relative;
+        }
+      }
+    }
+  }
+}
+
+.searchbox {
+  position: relative;
+}
+
+.button_box {
+  background-color: #00b0ee;
+  color: white;
+  padding: 10px 52px;
+  border-radius: 29px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 28px;
+  font-family: "Poppins";
+  /* margin-right: 97px; */
+  width: 186px;
+  border: none;
+  height: 50px;
+  margin: auto;
+}
+
+.button_box1 {
+  background-color: #002b6b;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 49px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  font-family: "Poppins";
+  /* margin-right: 97px; */
+  width: 186px;
+  border: none;
+  /* height: 52px; */
+  margin: auto;
+  display: flex;
+  gap: 11px;
+}
+
+.flex_box {
+  display: flex;
+  justify-content: center;
+  gap: 838px;
+  margin-top: 14px;
+}
+.flex_box1 {
+  display: flex;
+  justify-content: space-around;
+  gap: 22px;
+}
+
+.heading_section {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-family: Roboto-Light, sans-serif;
+}
+
+.searchinnerbox {
+  display: flex;
+  justify-content: center;
+}
+
+.input_section {
+  width: 600px;
+  height: 64px;
+  border-radius: 0px 2px 6px 2px;
+}
+
+.cityinput {
+  width: 129px;
+  height: 64px;
+  border-radius: 38px 0px 3px 38px;
+}
+
+.input_section1 {
+  height: 65px !important;
+  width: 160px;
+  border-radius: 82px 82px 82px 82px !important;
+  background-color: #002b6b !important;
+  color: white !important;
+  left: 1046px !important;
+  position: absolute !important;
+}
+
+.phone_icon {
+  transform: rotate(124deg);
+  top: -3px;
+  position: relative;
+}
+
+// ----------------------------------------------
+.searchbar {
+  display: flex;
+  justify-content: center;
+  margin: 28px auto;
+  max-width: 811px;
+  align-items: center;
+  /* border: solid 1px #a6b1c4; */
+  box-shadow: 2px 2px 9px 1px rgb(166 177 196 / 25%);
+  border-radius: 30px;
+
+  .citylist input[type="text"] {
+    width: 100%;
+    border: none;
+    margin: 0px 0px 0px 25px;
+    outline: none;
+    flex: 1;
+  }
+
+  .citylist ul.city_list {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    // display: none;
+  }
+
+  .citylist {
+    border: solid 1px #a6b1c4;
+    border-radius: 32px 0 0 32px;
+    margin-left: -1px;
+    height: 55px;
+    display: flex;
+    z-index: 1;
+    position: relative;
+    /* width: 190px; */
+    padding: 0px 5px 0px 30px;
+    border-right: 0px;
+  }
+
+  .citylist ul.city_list {
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    background: inherit;
+    width: 197px;
+    margin-top: 1px;
+    background-color: #002b6b;
+    border-radius: 0 0 20px 20px;
+    padding-bottom: 25px;
+  }
+
+  // Search Bar Style
+  .searchbox input {
+    padding: 0;
+    height: 55px;
+    text-indent: 1px;
+    border: 1px solid #acabab;
+  }
+
+  button {
+    height: 55px !important;
+    width: 160px;
+    border-radius: 82px 82px 82px 82px !important;
+    background-color: #002b6b !important;
+    color: white !important;
+  }
+
+  span.map_icon {
+    position: absolute;
+    top: 50%;
+    left: 35px;
+    transform: translate(-50%, -50%);
+  }
+
+  .searchbox {
+    position: relative;
+    flex: 1;
+  }
+
+  input {
+    width: 100%;
+    padding: 5px 10px !important;
+    flex: 1;
+    outline: none;
+    // border: solid 1px #a6b1c4;
+  }
+
+  button {
+    position: absolute;
+    right: -30px;
+    cursor: pointer;
+  }
+
+  .citylist ul.city_list li {
+    padding: 10px 32px 10px 49px;
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+// Product Merchant Search List
+
+.productSearchList {
+  display: block;
+  position: absolute;
+  margin-top: 1px;
+  background-color: #002b6b;
+  border-radius: 0 0 20px 20px;
+  padding-bottom: 25px;
+  left: 0;
+  width: 75%;
+  z-index: 10;
+  li {
+    padding: 10px 32px 10px 0;
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+// Dropdown Style
+
+.profile {
+  transition: all 100ms ease;
+}
+.dropdown {
+  position: absolute;
+  top: 25px;
+  background: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  padding: 4px;
+  min-width: 156px;
+  opacity: 0;
+  transition: all 200ms ease;
+
+  ul {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    li {
+      flex: 1;
+      padding: 4px;
+      border-radius: 6px;
+      font-size: small;
+      &:hover {
+        background: #545454;
+      }
+    }
+  }
+}
+
+.search_flexbox {
+  display: flex;
+  gap: 8px;
+  align-content: stretch;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+@media (max-width: 600px) {
+  .button_box {
+    background-color: #00b0ee;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 36px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    font-family: "Poppins";
+    width: 48px;
+    border: none;
+    height: 50px;
+  }
+
+  .phone_icon {
+    transform: rotate(124deg);
+    top: -3px;
+    position: relative;
+    left: 12px;
+  }
+
+ 
+  .button_box1 {
+    background-color: #002b6b;
+    color: white;
+    padding: 10px 22px;
+    border-radius: 49px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+    font-family: "Poppins";
+    /* margin-right: 97px; */
+    /* width: 186px; */
+    border: none;
+    /* height: 52px; */
+    margin: auto;
+    display: flex;
+    gap: 11px;
+}
+
+
+.flex_box1 {
+  .phone_none {
+    display: none;
+  }
+}
+.heading_section{
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-family: Roboto-Light, sans-serif;
+  font-size: x-large;
+}
+.flex_box {
+  display: flex;
+  justify-content: space-around;
+  gap: 48px;
+  margin-top: 14px;
+}
+
+
+.Header_searchbar__D5muM .Header_citylist___0KoH {
+  border: solid 1px #a6b1c4;
+  border-radius: 32px 0 0 32px;
+  margin-left: 38px;
+  height: 55px;
+  display: flex;
+  z-index: 1;
+  position: relative;
+  width: 134px;
+  padding: 0px 5px 0px 30px;
+  border-right: 0px;
+}
+.Header_searchbar__D5muM .Header_searchbox__Iaccc input {
+  padding: 0;
+  height: 55px;
+  text-indent: 1px;
+  border: 1px solid #acabab;
+  border-radius: 8px 90px 103px 0px;
+}
+}
+

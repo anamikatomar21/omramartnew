@@ -1,0 +1,24 @@
+.Flex_Section{
+
+    display: flex;
+    background-color: #F8F8F8;
+    gap: 123px;
+    padding: 12px 40px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 600px) {
+
+ 
+        .Flex_Section {
+        display: flex;
+        background-color: #F8F8F8;
+        /* gap: 123px; */
+        padding: 12px 36px;
+        margin-bottom: 30px;
+        max-width: 100%;
+        gap: 9px;
+        flex-direction: column;
+    }
+    
+    }}
