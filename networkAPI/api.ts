@@ -385,5 +385,6 @@ formData.append("banner_image4", banner_image4);
   }
 
 export const getBannerImages = () => axios.get<any>("/api/get_banner");
+export const getBuyerQuery = () => axios.get<any>("/api/getbuyerQuery");
 
 export const sendEmail = ({merchantId,email,phoneNumber,description}:any) => axios.post("/api/send-mail",{merchantId,email,phoneNumber,description})

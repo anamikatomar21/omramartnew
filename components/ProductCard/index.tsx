@@ -55,7 +55,7 @@ function ProductCard({ title, data }: Props) {
         {data?.data && (
           <Carousel responsive={responsive}>
             {data?.data
-              .filter((item: any) => item.isApproved == true)
+              .filter((item: any) => item.isApproved == true && item.isDeclined== false)
               .map((item: any, index: any) => {
                 return (
                   <div className={styles.cardproduct} key={index}>

@@ -7,6 +7,7 @@ import { AxiosError } from 'axios';
 import DashboardLayout from 'components/Merchant/Layout';
 import {
   useGetCategory,
+  usePublicProduct,
   useUpdateMerchantProduct,
 } from 'networkAPI/queries';
 import { NextPage } from 'next';
@@ -45,6 +46,9 @@ const Upload_Product: NextPage = () => {
     isAuthenticated,
   } = useAppSelector((state) => state.user);
 
+  const router = useRouter();
+  const _Id = router.query.id;
+
   useEffect(() => {
     if (isAuthenticated) {
       if (user.role === "Admin") {
@@ -59,6 +63,9 @@ const Upload_Product: NextPage = () => {
     }
   }, [user, isAuthenticated]);
 
+
+  const { error, isLoading, data, mutate } = useUpdateMerchantProduct();
+  const { error:err1,isLoading:Loading,data:ShowData} =usePublicProduct();
   //==========================================================================
   const [additionalSpecification, setAdditionalSpecification] = useState<any>([
     {
@@ -66,8 +73,14 @@ const Upload_Product: NextPage = () => {
       Values: "",
     },
   ]);
-  console.log(additionalSpecification);
 
+  
+    const pData=ShowData?.data.find((updateData:any)=>updateData._id==_Id)
+    // setPreviewBrand(pData.brand)
+    console.log(pData?.vendors_name)
+   
+
+  
   // {
   //   atribute: "",
   //   Values: "",
@@ -78,7 +91,7 @@ const Upload_Product: NextPage = () => {
 
   const [vendors_name, setVendors_name] = useState<string>("");
 
-  const [product_name, setProduct_name] = useState<string>("");
+  const [product_name, setProduct_name] = useState<string>(pData?.product_name);
 
   const [product_description, setProduct_description] = useState<string>("");
 
@@ -119,13 +132,22 @@ const Upload_Product: NextPage = () => {
   const [product_image4Preview, setProduct_image4Preview] = useState<any>("");
   const [product_image5Preview, setProduct_image5Preview] = useState<any>("");
 
-  // const [product_name,setProduct_name] =useState<string>("")
-  const router = useRouter();
-  const _Id = router.query.id;
-  console.log({ "hellooo India": _Id });
+  const [productData, setProductData] = useState([])
 
-  const { error, isLoading, data, mutate } = useUpdateMerchantProduct();
-  console.log(data);
+  
+
+  
+  // const [product_name,setProduct_name] =useState<string>("")
+ 
+  
+
+ 
+  
+ 
+ 
+ 
+
+  
 
   const field_color = {
     color: "red",
@@ -150,7 +172,7 @@ const Upload_Product: NextPage = () => {
     const list = [...additionalSpecification];
     list[index][name] = value;
     setAdditionalSpecification(list);
-    console.log("nanandhgvggfd", list);
+ 
   };
 
   const handleRemoveClick = (e: any, index: any) => {
@@ -219,11 +241,13 @@ const Upload_Product: NextPage = () => {
     });
   }
   };
-  console.log(JSON.stringify(additionalSpecification));
+ 
+  
   const data2 = useGetCategory();
-  console.log(data2);
+ 
+  
   const category_data = data2.data;
-  console.log(data2.data);
+
 
   useEffect(() => {
     if (error instanceof AxiosError) {
@@ -260,7 +284,8 @@ const Upload_Product: NextPage = () => {
 
   // ];
 
-  console.log(additionalSpecification);
+
+
 
   const options1 = [
     { value: "Wholesaler", label: "Wholesaler" },
@@ -303,8 +328,7 @@ const Upload_Product: NextPage = () => {
       setProduct_image5Preview(objectUrl5);
     }
 
-    console.log({ "PRODUCT IMAGE 1": product_image1 });
-    console.log("PRODUCT IMAGE 2", product_image2);
+   
 
     // return () => {URL.revokeObjectURL(objectUrl);
     //   URL.revokeObjectURL(objectUrl2);}
@@ -440,6 +464,7 @@ const Upload_Product: NextPage = () => {
                 type="text"
                 name="productname"
                 id="productname"
+                defaultValue={pData?.product_name}
                 required
                 onChange={(e) => setProduct_name(e.target.value)}
               />
@@ -462,11 +487,12 @@ const Upload_Product: NextPage = () => {
                 className={styles.dropdown}
                 value={category}
                 required
+                defaultValue={pData?.category}
                 onChange={(e) => setCategory(e.target.value)}
               >
                 <option value="">Select Category</option>
                 {category_data?.data.map((item: any, index: any) => {
-                  console.log(category);
+                 
                   return (
                     <option key={index} value={item.category_name}>
                       {item.category_name}
@@ -514,6 +540,8 @@ const Upload_Product: NextPage = () => {
                 type="text"
                 name="brand_name"
                 id="brand_name"
+                
+                defaultValue={pData?.brand}
                 placeholder=" "
                 onChange={(e) => setBrand(e.target.value)}
               />
@@ -563,6 +591,7 @@ const Upload_Product: NextPage = () => {
                     name="price"
                     id="price"
                     className="box-input-section"
+                    defaultValue={pData?.price}
                     onChange={(e) => setPrice(e.target.value)}
                   />
                 </div>
@@ -592,6 +621,7 @@ const Upload_Product: NextPage = () => {
                 id="description"
                 name="description"
                 placeholder="Other Product Specifications "
+                defaultValue={pData?.product_description}
                 onChange={(e) => setProduct_description(e.target.value)}
               />
             </li>
@@ -607,6 +637,7 @@ const Upload_Product: NextPage = () => {
                 id="specification"
                 name="specification"
                 placeholder="Other Product Specifications "
+                defaultValue={pData?.product_Specification}
                 onChange={(e) => setProduct_Specification(e.target.value)}
               />
             </li>
@@ -636,6 +667,7 @@ const Upload_Product: NextPage = () => {
                 id="capacity"
                 placeholder=""
                 className="box-input-textarea"
+                defaultValue={pData?.capacity}
                 onChange={(e) => setCapacity(e.target.value)}
               />
             </li>
@@ -651,6 +683,7 @@ const Upload_Product: NextPage = () => {
                 id="model_no"
                 placeholder=" "
                 className="box-input-textarea"
+                defaultValue={pData?.model_no}
                 onChange={(e) => setModel_no(e.target.value)}
               />
             </li>
@@ -742,6 +775,10 @@ const Upload_Product: NextPage = () => {
               return (
                 // eslint-disable-next-line react/jsx-key
                 <div style={{ display: "flex" }}>
+                  {pData?.additionalSpecification.map((PreviewData:any,index:any)=>{
+                    return(
+
+                 
                   <Row key={i}>
                     <Col md="4">
                       <FormGroup>
@@ -757,6 +794,7 @@ const Upload_Product: NextPage = () => {
                           placeholder="Add Atributes"
                           name="atribute"
                           type="text"
+                          defaultValue={PreviewData.atribute}
                           value={y.atribute}
                           onChange={(e) => handleInputChange(e, i)}
                         />
@@ -772,6 +810,7 @@ const Upload_Product: NextPage = () => {
                           type="text"
                           style={field_color}
                           name="Values"
+                          defaultValue={PreviewData.Values}
                           value={y.Values}
                           onChange={(e) => handleInputChange(e, i)}
                         />
@@ -801,6 +840,8 @@ const Upload_Product: NextPage = () => {
                       </div>
                     </Col>
                   </Row>
+                     )
+                    })}
                 </div>
               );
             })}

@@ -7,6 +7,7 @@ import React, {
 
 import { AxiosError } from 'axios';
 import Footer from 'components/Footer/footer';
+import axios from 'networkAPI/axios';
 import {
   useCustomerQuery,
   usePublicProduct,
@@ -20,7 +21,7 @@ import delay from 'utils/delay';
 
 import TopHeader from '../topheader';
 
-const NewProductPage: NextPage = () => {
+const NewProductPage: NextPage =  () => {
   const router = useRouter();
 
   const [merchant_Id,setMerchant_Id] = useState<string>('')
@@ -47,27 +48,36 @@ const NewProductPage: NextPage = () => {
   const {data:buyerQueryData,error:err,status:status2,mutate} = useCustomerQuery()
 
   const merchant_query= currentProduct?.auther_Id as string
-  console.log(merchant_query)
   const product_query = currentProduct?._id as string
 
 
-  console.log(merchant_Id) 
-  console.log(buyer_Email)
-  console.log(product_Id)
-  console.log(buyer_Mob)
+ 
 
 
   const anchorRef=React.useRef<HTMLAnchorElement>(null)
+
+
+  
   const handleBuyerQuery = async (e: React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault()
-    console.log({buyer_Email,buyer_Mob,product_query,merchant_query})
+   
+   
+
+  
     mutate({
       merchant_Id:merchant_query ,
       product_Id:product_query ,
       buyer_Email ,
       buyer_Mob 
     })
-    await delay(2000)
+    const calling= await axios.post(`http://www.apiconnecto.com/UniProUser/Click-2-Call-API.aspx?UserId=DIGIVOICE&pwd=pwd2020&AgentNum=8209239&CustomerNum=${buyer_Mob}&CampId=15823`)
+    console.log(calling)
+    const anchorForCall=document.createElement('a')
+    document.body.append(anchorForCall)
+    anchorForCall.href=`tel:+4733378901`
+    anchorForCall.click()
+    document.body.removeChild(anchorForCall)
+    await delay(2000) 
     anchorRef.current?.click()
   }
 
@@ -87,7 +97,6 @@ const NewProductPage: NextPage = () => {
     slidesToScroll: 1,
   };
 
-  console.log(buyerQueryData);
 
   const [userMobileNumber, setuserMobileNumber] = useState();
 

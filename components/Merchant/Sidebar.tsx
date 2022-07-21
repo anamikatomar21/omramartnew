@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { NextPage } from "next";
-import Link from "next/link";
+import { NextPage } from 'next';
+import Link from 'next/link';
 
 // import styles from '../../../styles/Merchant/dashcode.module.scss';
-import styles from "../../styles/Merchant/dashcode.module.scss";
+import styles from '../../styles/Merchant/dashcode.module.scss';
 
 // import styles from "../../styles/Merchant/layout.module.scss";
 
@@ -29,6 +29,18 @@ const MerchantSidebar: NextPage = () => {
                 {" "}
                 <Link href="/onboarding/dashboard/product/AllProduct/approved">
                   Approved Product
+                </Link>
+              </li>
+              <li>
+                {" "}
+                <Link href="/onboarding/dashboard/product/AllProduct/declined">
+                  Declined Products
+                </Link>
+              </li>
+              <li>
+                {" "}
+                <Link href="/onboarding/dashboard/product/AllProduct/leads">
+                  Leads
                 </Link>
               </li>
             </ul>

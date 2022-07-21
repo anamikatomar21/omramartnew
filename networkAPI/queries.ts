@@ -12,6 +12,7 @@ import {
   getBannerImages,
   getBussinessDetails,
   getbussinessDetaisById,
+  getBuyerQuery,
   getCategory,
   getCompnyProfile,
   getHomeCategory,
@@ -324,6 +325,8 @@ export const useCustomerQuery = () => useMutation(
     buyer_Email,
     buyer_Mob
   ))
+
+export const useBuyerQuery = () => useQuery("buyerQuery",getBuyerQuery)
 export const useProductsByCategory = (category:string) => useQuery(["products",category],()=>getProductsBycategory(category));
 export const useProducts = () => useQuery("products",getProducts);
 export const useGetCompanyProfile =() => useQuery("companyprofile",getCompnyProfile)
