@@ -1,7 +1,5 @@
 import "../styles/globals.scss";
-
 import { useEffect } from "react";
-
 import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -11,7 +9,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import axios from "../networkAPI/axios";
 import { persistor, store } from "../redux/store";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function RootApp({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -22,11 +20,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
 
   useEffect(() => {
-
-
     axios.interceptors.request.use((config: any) => {
-      const token=localStorage.getItem("token")
-      console.log("Token",token)
+      const token = localStorage.getItem("token");
+      console.log("Token", token);
       config.headers.Authorization = `Bearer ${token}`;
       return config;
     });
@@ -39,7 +35,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <PersistGate persistor={persistor}>
         <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
-
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </PersistGate>
@@ -47,16 +42,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
-
-// export default MyApp
-
-// function MyApp({ Component, pageProps }: AppProps) {
-//   return (
-//     <DashboardLayout>
-//       <Component {...pageProps} />
-//     </DashboardLayout>
-//   );
-// }
-
-// export default MyApp;
+export default RootApp;

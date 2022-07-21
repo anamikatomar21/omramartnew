@@ -1,27 +1,14 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
-
-import { AxiosError } from 'axios';
-import { NextPage } from 'next';
-import Image from 'next/image';
-import Router, { useRouter } from 'next/router';
-import toast from 'react-hot-toast';
-import {
-  Col,
-  FormGroup,
-  Input,
-  Row,
-} from 'reactstrap';
-
-import DashboardLayout from '../../../../../components/Merchant/Layout';
-import {
-  useGetCategory,
-  userProduct,
-} from '../../../../../networkAPI/queries';
-import { useAppSelector } from '../../../../../redux/hooks';
-import styles from '../../../../../styles/Merchant/uploadproduct.module.scss';
+import React, { useEffect, useState } from "react";
+import { AxiosError } from "axios";
+import { NextPage } from "next";
+import Image from "next/image";
+import Router, { useRouter } from "next/router";
+import toast from "react-hot-toast";
+import { Col, FormGroup, Input, Row } from "reactstrap";
+import DashboardLayout from "components/Merchant/Layout";
+import { useGetCategory, userProduct } from "networkAPI/queries";
+import { useAppSelector } from "redux/hooks";
+import styles from "styles/Merchant/uploadproduct.module.scss";
 
 // interface Person {
 
@@ -107,11 +94,16 @@ const Upload_Product: NextPage = () => {
 
   const [model_no, setModel_no] = useState<string>("");
 
-  const [product_image1Preview, setProduct_image1Preview] = useState<string>("");
-  const [product_image2Preview, setProduct_image2Preview] = useState<string>("");
-  const [product_image3Preview, setProduct_image3Preview] = useState<string>("");
-  const [product_image4Preview, setProduct_image4Preview] = useState<string>("");
-  const [product_image5Preview, setProduct_image5Preview] = useState<string>("");
+  const [product_image1Preview, setProduct_image1Preview] =
+    useState<string>("");
+  const [product_image2Preview, setProduct_image2Preview] =
+    useState<string>("");
+  const [product_image3Preview, setProduct_image3Preview] =
+    useState<string>("");
+  const [product_image4Preview, setProduct_image4Preview] =
+    useState<string>("");
+  const [product_image5Preview, setProduct_image5Preview] =
+    useState<string>("");
 
   // const [product_name,setProduct_name] =useState<string>("")
   const router = useRouter();
@@ -148,34 +140,34 @@ const Upload_Product: NextPage = () => {
 
   const handleSubmitProduct = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const isConfirm= window.confirm("Are you sure to upload this product")
-    if(isConfirm && product_name && category){
-    mutate({
-      Vendor_Id,
-      auther_Id,
-      vendors_name,
-      product_name,
-      isApproved,
-      TypesOf_Bussiness,
-      manufacturer_phone_no,
-      manufacturer_address,
-      brand,
-      product_image1,
-      product_image2,
-      product_image3,
-      product_image4,
-      product_image5,
-      category,
-      sub_category,
-      price,
-      additionalSpecification,
-      product_Specification,
-      product_description,
-      capacity,
-      model_no,
-      videos,
-    });
-  }
+    const isConfirm = window.confirm("Are you sure to upload this product");
+    if (isConfirm && product_name && category) {
+      mutate({
+        Vendor_Id,
+        auther_Id,
+        vendors_name,
+        product_name,
+        isApproved,
+        TypesOf_Bussiness,
+        manufacturer_phone_no,
+        manufacturer_address,
+        brand,
+        product_image1,
+        product_image2,
+        product_image3,
+        product_image4,
+        product_image5,
+        category,
+        sub_category,
+        price,
+        additionalSpecification,
+        product_Specification,
+        product_description,
+        capacity,
+        model_no,
+        videos,
+      });
+    }
   };
 
   const data2 = useGetCategory();
@@ -193,8 +185,6 @@ const Upload_Product: NextPage = () => {
     }
   }, [error, data, router]);
 
- 
-
   const options1 = [
     { value: "Wholesaler", label: "Wholesaler" },
 
@@ -203,7 +193,6 @@ const Upload_Product: NextPage = () => {
     { value: "Retailer", label: "Retailer" },
   ];
 
- 
   useEffect(() => {
     // create the preview
 
@@ -239,7 +228,6 @@ const Upload_Product: NextPage = () => {
     product_image5,
   ]);
 
- 
   return (
     <DashboardLayout>
       <div className={styles.mov}>
@@ -309,7 +297,7 @@ const Upload_Product: NextPage = () => {
           <form onSubmit={handleSubmitProduct}>
             <li>
               <label htmlFor="product_image" className={styles.Omra_Lael}>
-                Product Image 
+                Product Image
               </label>
               <div className={styles.row}>
                 <div className="col-md-4">
@@ -582,8 +570,6 @@ const Upload_Product: NextPage = () => {
                 onChange={(e) => setModel_no(e.target.value)}
               />
             </li>
-
-       
 
             <li className="qtyproduct">
               <div className="row">
