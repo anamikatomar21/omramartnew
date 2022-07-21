@@ -12,6 +12,7 @@ import {
   getBannerImages,
   getBussinessDetails,
   getbussinessDetaisById,
+  getBuyerQuery,
   getCategory,
   getCompnyProfile,
   getHomeCategory,
@@ -293,17 +294,17 @@ export const useBanner = () =>
   );
 
 export const useUpdateBanner = () => useMutation(
-  ({  banner_image1,
+  ({ banner_image1,
     banner_image2,
     banner_image3,
     banner_image4,
-    id}:bannerImagesUpdate): Promise<Object> =>
-  updateBannerImage(
-    banner_image1,
-    banner_image2,
-    banner_image3,
-    banner_image4,
-    id)
+    id }: bannerImagesUpdate): Promise<Object> =>
+    updateBannerImage(
+      banner_image1,
+      banner_image2,
+      banner_image3,
+      banner_image4,
+      id)
 );
 
 
@@ -311,26 +312,32 @@ export const useUpdateBanner = () => useMutation(
 
 export const useCustomerQuery = () => useMutation(
   ({
+    merchant_Id,
     product_Id,
-    customer_mob,
-   
-    
-  }:CustomerQueryType):Promise<Object> => 
-  CustomerQuery(
-    product_Id,
-    customer_mob,
-  ))
-export const useProductsByCategory = (category:string) => useQuery(["products",category],()=>getProductsBycategory(category));
-export const useProducts = () => useQuery("products",getProducts);
-export const useGetCompanyProfile =() => useQuery("companyprofile",getCompnyProfile)
+    buyer_Email,
+    buyer_Mob
+
+
+  }: CustomerQueryType): Promise<Object> =>
+    CustomerQuery(
+      merchant_Id,
+      product_Id,
+      buyer_Email,
+      buyer_Mob
+    ))
+
+export const useBuyerQuery = () => useQuery("buyerQuery", getBuyerQuery)
+export const useProductsByCategory = (category: string) => useQuery(["products", category], () => getProductsBycategory(category));
+export const useProducts = () => useQuery("products", getProducts);
+export const useGetCompanyProfile = () => useQuery("companyprofile", getCompnyProfile)
 export const useGetBussinessDetails = () => useQuery("getBussinessDetails", getBussinessDetails)
-export const useGetMerchantDetails  = () => useQuery("getUser", getMerchantCredentials)
-export const usePublicProduct = () => useQuery("product",getPublicProduct)
-export const useProductForApproval = () => useQuery("product",getApprovalProduct)
-export const useGetCategory = () => useQuery("category",getCategory)
-export const useGetSubCategory = () => useQuery("subcategory",getSubCategory)
-export const useGetHomeCategory = () => useQuery("category",getHomeCategory)
-export const useGetProductById= (id:string) =>
+export const useGetMerchantDetails = () => useQuery("getUser", getMerchantCredentials)
+export const usePublicProduct = () => useQuery("product", getPublicProduct)
+export const useProductForApproval = () => useQuery("product", getApprovalProduct)
+export const useGetCategory = () => useQuery("category", getCategory)
+export const useGetSubCategory = () => useQuery("subcategory", getSubCategory)
+export const useGetHomeCategory = () => useQuery("category", getHomeCategory)
+export const useGetProductById = (id: string) =>
   useQuery("myself", (): Promise<any> => getProductById(id));
 
 export const useGetBussinessById = (id: string) =>

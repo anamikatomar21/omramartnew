@@ -1,18 +1,27 @@
-// Import css files
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
+
+import { AxiosError } from "axios";
 import Footer from "components/Footer/footer";
-import { usePublicProduct } from "networkAPI/queries";
+import axios from "networkAPI/axios";
+import { useCustomerQuery, usePublicProduct } from "networkAPI/queries";
 import type { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import styles from "styles/Merchant/newproductpage.module.scss";
-import CompanyDescription from "../../components/CompanyDescription";
-import TopHeader from "../topheader";
+import TopHeader from "pages/topheader";
+import toast from "react-hot-toast";
 import Slider from "react-slick";
+import styles from "styles/Merchant/newproductpage.module.scss";
+import delay from "utils/delay";
+
 const NewProductPage: NextPage = () => {
   const router = useRouter();
+
+  const [merchant_Id, setMerchant_Id] = useState<string>("");
+  const [product_Id, setProduct_Id] = useState<string>("");
+  const [buyer_Email, setBuyer_Email] = useState<string>("");
+  const [buyer_Mob, setBuyer_Mob] = useState<string>("");
   const { data, status } = usePublicProduct();
 
   const currentProduct = data?.data.find(
@@ -27,6 +36,46 @@ const NewProductPage: NextPage = () => {
     setProductImage(source);
   };
 
+  const {
+    data: buyerQueryData,
+    error: err,
+    status: status2,
+    mutate,
+  } = useCustomerQuery();
+
+  const merchant_query = currentProduct?.auther_Id as string;
+  const product_query = currentProduct?._id as string;
+
+  const anchorRef = React.useRef<HTMLAnchorElement>(null);
+
+  const handleBuyerQuery = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    mutate({
+      merchant_Id: merchant_query,
+      product_Id: product_query,
+      buyer_Email,
+      buyer_Mob,
+    });
+    const calling = await axios.post(
+      `http://www.apiconnecto.com/UniProUser/Click-2-Call-API.aspx?UserId=DIGIVOICE&pwd=pwd2020&AgentNum=8209239&CustomerNum=${buyer_Mob}&CampId=15823`
+    );
+    console.log(calling);
+    const anchorForCall = document.createElement("a");
+    document.body.append(anchorForCall);
+    anchorForCall.href = `tel:+4733378901`;
+    anchorForCall.click();
+    document.body.removeChild(anchorForCall);
+    await delay(2000);
+    anchorRef.current?.click();
+  };
+
+  // useEffect(()=>{
+  //   setMerchant_Id(merchant_query)
+  //   setProduct_Id(product_query)
+  // },[merchant_query,product_query]
+  // )
+
   const settings = {
     dots: true,
     infinite: true,
@@ -35,13 +84,20 @@ const NewProductPage: NextPage = () => {
     slidesToScroll: 1,
   };
 
-  console.log(currentProduct);
-
   const [userMobileNumber, setuserMobileNumber] = useState();
 
   const onChangeNumber = (e: any) => {
     setuserMobileNumber(e.target.value);
   };
+  useEffect(() => {
+    if (err instanceof AxiosError) {
+      toast.error(err?.response?.data?.message || err.message);
+    }
+
+    if (buyerQueryData) {
+      toast.success("Your Query has been successfully submitted");
+    }
+  }, [err, buyerQueryData, router]);
 
   return (
     <div>
@@ -119,10 +175,9 @@ const NewProductPage: NextPage = () => {
               </div>
               <div id="popup1" className={styles.overlay}>
                 <div className={styles.popup}>
-                  <a className={styles.close} href="#">
+                  <a className={styles.close} ref={anchorRef} href="#">
                     &times;
                   </a>
-
                   <div className={styles.content1}>
                     <p className={styles.Font}>
                       Tell us about your requirement
@@ -158,15 +213,16 @@ const NewProductPage: NextPage = () => {
                               type="email"
                               className={styles.Input}
                               placeholder="EMAIL ID "
+                              required
                             />
                           </div>
-
                           <div>
                             {" "}
                             <input
                               type="tel"
                               className={styles.Input}
                               placeholder="Phone number "
+                              required
                             />
                           </div>
                         </li>
@@ -205,36 +261,37 @@ const NewProductPage: NextPage = () => {
                   <div className={styles.content1}>
                     <p className={styles.Font}>View Number</p>
 
-                    <form className={styles.FormWidth}>
+                    <form
+                      className={styles.FormWidth}
+                      onSubmit={handleBuyerQuery}
+                    >
                       <ul>
-                        <div className={styles.DisplayFlex}>
-                          <li>
-                            {/* <input type="checkbox" /> */}
-                            <span>I want to Buy</span>
-                          </li>
-                        </div>
                         <div className={styles.email_flex}>
-                          <li>
-                            <p> Mobile No. *</p>
-                            <input
-                              onChange={onChangeNumber}
-                              type="text"
-                              className={styles.NumberInput}
-                            />
-                          </li>
                           <li>
                             <p> Email ID *</p>
                             <input
-                              onChange={onChangeNumber}
                               type="email"
+                              value={buyer_Email}
                               className={styles.NumberInput}
+                              onChange={(e) => setBuyer_Email(e.target.value)}
+                              required
+                            />
+                          </li>
+                          <li>
+                            <p> Mobile No. *</p>
+                            <input
+                              value={buyer_Mob}
+                              type="text"
+                              className={styles.NumberInput}
+                              onChange={(e) => setBuyer_Mob(e.target.value)}
+                              required
                             />
                           </li>
                         </div>
 
                         <li>
                           <button type="submit" className={styles.NumberButton}>
-                            <a href="#">Submit </a>
+                            Submit
                           </button>
                         </li>
                       </ul>
@@ -346,51 +403,48 @@ const NewProductPage: NextPage = () => {
           </h1>
 
           <div className={styles.flex_container}>
-          <Slider {...settings}>
-            {data?.data.map((item: any, index: any) => {
-              if (item.category === router.query.category) {
-                return (
-                  <div className={styles.cardproduct} key={index}>
-                    <div className={styles.productimg}>
-                      <Image
-                        src={
-                          item.product_image1[0] ? item.product_image1[0] : "/"
-                        }
-                        height={250}
-                        width={300}
-                        alt="productr image"
-                        className={styles.productimagesrc}
-                      />
-                    </div>
+            <Slider {...settings}>
+              {data?.data.map((item: any, index: any) => {
+                if (item.category === router.query.category) {
+                  return (
+                    <div className={styles.cardproduct} key={index}>
+                      <div className={styles.productimg}>
+                        <Image
+                          src={
+                            item.product_image1[0]
+                              ? item.product_image1[0]
+                              : "/"
+                          }
+                          height={250}
+                          width={300}
+                          alt="productr image"
+                          className={styles.productimagesrc}
+                        />
+                      </div>
 
-                    <div className={styles.productcontent}>
-                      <h4>Product Name:</h4>
-                      <p>{item.product_name}</p>
-                    </div>
+                      <div className={styles.productcontent}>
+                        <h4>Product Name:</h4>
+                        <p>{item.product_name}</p>
+                      </div>
 
-                    <div className={styles.productcartbtn}>
-                      <button type="submit">View More</button>
+                      <div className={styles.productcartbtn}>
+                        <button type="submit">View More</button>
+                      </div>
                     </div>
-                  </div>
-                );
-              }
-            })}
+                  );
+                }
+              })}
             </Slider>
           </div>
         </div>
-
-
-       
 
         <div className={styles.background_section}>
           <h1 className={styles.span_box2}>
             OTHER PRODUCT WITH SAME MERCHANTS
           </h1>
-          <div className={styles.flex_container}>
-         
-          </div>
+          <div className={styles.flex_container}></div>
         </div>
- 
+
         {/* Similar Product Slider Ends  */}
 
         <div className={styles.company_table}>
