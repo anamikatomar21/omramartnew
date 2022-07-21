@@ -1,72 +1,108 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
+import React, { useEffect, useState } from "react";
 
-import { AxiosError } from 'axios';
-import DashboardLayout from 'components/Merchant/Layout';
+import { AxiosError } from "axios";
+import DashboardLayout from "components/Merchant/Layout";
 import {
   useGetCategory,
   usePublicProduct,
   useUpdateMerchantProduct,
-} from 'networkAPI/queries';
-import { NextPage } from 'next';
-import Image from 'next/image';
-import Router, { useRouter } from 'next/router';
-import toast from 'react-hot-toast';
-import {
-  Col,
-  FormGroup,
-  Input,
-  Row,
-} from 'reactstrap';
-import { useAppSelector } from 'redux/hooks';
-import styles from 'styles/Merchant/uploadproduct.module.scss';
-
-// interface Person {
-
-//   name: string;
-
-//   age: number;
-
-//   count: number;
-
-//   "gift-wrap": "hello";
-
-// }
-interface SpecificationsBox {
-  atribute: string;
-  Values: string;
-}
+} from "networkAPI/queries";
+import { NextPage } from "next";
+import Image from "next/image";
+import Router, { useRouter } from "next/router";
+import toast from "react-hot-toast";
+import { Col, FormGroup, Input, Row } from "reactstrap";
+import { useAppSelector } from "redux/hooks";
+import styles from "styles/Merchant/uploadproduct.module.scss";
+import { RootState } from "redux/store";
+import editSlice from "context/editslice";
 
 const Upload_Product: NextPage = () => {
-  const {
-    error: err,
-    user,
-    isAuthenticated,
-  } = useAppSelector((state) => state.user);
-
+  const _user = (state: RootState) => state.user;
+  const { user, isAuthenticated } = useAppSelector(_user);
   const router = useRouter();
   const _Id = router.query.id;
 
+  const { error, data, mutate } = useUpdateMerchantProduct();
+  const { data: ShowData } = usePublicProduct();
+
+  // CHECKING USER
   useEffect(() => {
     if (isAuthenticated) {
       if (user.role === "Admin") {
         return;
       }
-      // else{
-      //     Router.push(`/`)
-
-      // }
     } else {
       Router.push(`/`);
     }
   }, [user, isAuthenticated]);
 
+  const { actions, initialState, reducer } = editSlice;
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
-  const { error, isLoading, data, mutate } = useUpdateMerchantProduct();
-  const { error:err1,isLoading:Loading,data:ShowData} =usePublicProduct();
-  //==========================================================================
+  const [previousData, setpd] = useState<any>({});
+
+  React.useEffect(() => {
+    const previousData = ShowData?.data.find(
+      (updateData: any) => updateData._id === _Id
+    );
+    setpd(previousData);
+  }, [ShowData?.data, _Id]);
+
+  console.log({ previousData });
+  React.useEffect(() => {
+    dispatch(actions.TypesOf_Bussiness(previousData?.TypesOf_Bussiness));
+    dispatch(actions.SubTypeOf_bussiness(previousData?.SubTypeOf_bussiness));
+    dispatch(actions.Merchant_Address(previousData?.Merchant_Address));
+    dispatch(actions.product_name(previousData?.product_name));
+    dispatch(
+      actions.manufacturer_phone_no(previousData?.manufacturer_phone_no)
+    );
+    dispatch(actions.manufacturer_address(previousData?.manufacturer_address));
+    dispatch(actions.brand(previousData?.brand));
+    dispatch(actions.product_image(previousData?.product_image));
+    dispatch(actions.category(previousData?.category));
+    dispatch(actions.sub_category(previousData?.sub_category));
+    dispatch(actions.product_image1(previousData?.product_image1));
+    dispatch(actions.product_image2(previousData?.product_image2));
+    dispatch(actions.product_image3(previousData?.product_image3));
+    dispatch(actions.product_image4(previousData?.product_image4));
+    dispatch(actions.product_image5(previousData?.product_image5));
+    dispatch(actions.price(previousData?.price));
+    dispatch(
+      actions.product_Specification(previousData?.product_Specification)
+    );
+    dispatch(
+      actions.additionalSpecification(previousData?.additionalSpecification)
+    );
+    dispatch(actions.product_description(previousData?.product_description));
+    dispatch(actions.capacity(previousData?.capacity));
+    dispatch(actions.model_no(previousData?.model_no));
+  }, [
+    actions,
+    previousData?.Merchant_Address,
+    previousData?.SubTypeOf_bussiness,
+    previousData?.TypesOf_Bussiness,
+    previousData?.additionalSpecification,
+    previousData?.brand,
+    previousData?.capacity,
+    previousData?.category,
+    previousData?.manufacturer_address,
+    previousData?.manufacturer_phone_no,
+    previousData?.model_no,
+    previousData?.price,
+    previousData?.product_Specification,
+    previousData?.product_description,
+    previousData?.product_image,
+    previousData?.product_image1,
+    previousData?.product_image2,
+    previousData?.product_image3,
+    previousData?.product_image4,
+    previousData?.product_image5,
+    previousData?.product_name,
+    previousData?.sub_category,
+  ]);
+
   const [additionalSpecification, setAdditionalSpecification] = useState<any>([
     {
       atribute: "",
@@ -74,57 +110,29 @@ const Upload_Product: NextPage = () => {
     },
   ]);
 
-  
-    const pData=ShowData?.data.find((updateData:any)=>updateData._id==_Id)
-    // setPreviewBrand(pData.brand)
-    console.log(pData?.vendors_name)
-   
+  const {
+    Merchant_Address,
+    SubTypeOf_bussiness,
+    TypesOf_Bussiness,
+    brand,
+    capacity,
+    category,
+    manufacturer_address,
+    manufacturer_phone_no,
+    price,
+    product_image,
+    product_image1,
+    product_description,
+    product_image2,
+    product_image3,
+    product_image4,
+    product_image5,
+    product_Specification,
+    product_name,
+    sub_category,
+  } = state;
 
-  
-  // {
-  //   atribute: "",
-  //   Values: "",
-  // },
-
-  const [Vendor_Id, setVendor_Id] = useState<string>("");
-  const [isApproved, setisApproved] = useState<boolean>(false);
-
-  const [vendors_name, setVendors_name] = useState<string>("");
-
-  const [product_name, setProduct_name] = useState<string>(pData?.product_name);
-
-  const [product_description, setProduct_description] = useState<string>("");
-
-  const [product_image1, setProduct_image1] = useState<any>("");
-  const [product_image2, setProduct_image2] = useState<any>("");
-  const [product_image3, setProduct_image3] = useState<any>("");
-  const [product_image4, setProduct_image4] = useState<any>("");
-  const [product_image5, setProduct_image5] = useState<any>("");
-
-  const [category, setCategory] = useState<string>("");
-  const [sub_category, setSub_Categoery] = useState<string>("");
-
-  const [price, setPrice] = useState<string>("0");
-
-  const [product_Specification, setProduct_Specification] =
-    useState<string>("");
-
-  const [videos, setVideos] = useState<string>("");
-
-  const [auther_Id, setAuthorId] = useState<string>("");
-
-  const [TypesOf_Bussiness, setTypesOf_Bussiness] = useState<string>("");
-
-  const [manufacturer_phone_no, setManufacturer_phone_no] =
-    useState<string>("");
-
-  const [manufacturer_address, setManufacturer_address] = useState<string>("");
-
-  const [brand, setBrand] = useState<string>("");
-
-  const [capacity, setCapacity] = useState<string>("");
-
-  const [model_no, setModel_no] = useState<string>("");
+  const [model_no, setModel_no] = useState<string>(previousData?.model_no);
 
   const [product_image1Preview, setProduct_image1Preview] = useState<any>("");
   const [product_image2Preview, setProduct_image2Preview] = useState<any>("");
@@ -132,39 +140,9 @@ const Upload_Product: NextPage = () => {
   const [product_image4Preview, setProduct_image4Preview] = useState<any>("");
   const [product_image5Preview, setProduct_image5Preview] = useState<any>("");
 
-  const [productData, setProductData] = useState([])
-
-  
-
-  
-  // const [product_name,setProduct_name] =useState<string>("")
- 
-  
-
- 
-  
- 
- 
- 
-
-  
-
   const field_color = {
     color: "red",
   };
-
-  // const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-
-  //   mutate({
-
-  //     category_name,
-
-  //     category_image,
-  //     id:_Id as string
-
-  //   });
-  // };
 
   const handleInputChange = (e: any, index: any) => {
     e.preventDefault();
@@ -172,7 +150,6 @@ const Upload_Product: NextPage = () => {
     const list = [...additionalSpecification];
     list[index][name] = value;
     setAdditionalSpecification(list);
- 
   };
 
   const handleRemoveClick = (e: any, index: any) => {
@@ -193,62 +170,41 @@ const Upload_Product: NextPage = () => {
 
   const handleUpdateProduct = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const isConfirm= window.confirm("Are you sure to update this product")
+    const isConfirm = window.confirm("Are you sure to update this product");
+    if (isConfirm) {
+      mutate({
+        product_name,
 
-    if(isConfirm){
-
-
-    mutate({
-      Vendor_Id,
-
-      auther_Id,
-
-      vendors_name,
-
-      product_name,
-      isApproved,
-
-      TypesOf_Bussiness,
-
-      manufacturer_phone_no,
-
-      manufacturer_address,
-
-      brand,
-
-      product_image1,
-      product_image2,
-      product_image3,
-      product_image4,
-      product_image5,
-
-      category,
-      sub_category,
-
-      price,
-      additionalSpecification,
-
-      product_Specification,
-
-      product_description,
-
-      capacity,
-
-      model_no,
-
-      videos,
-      id: _Id as string,
-    });
-  }
+        TypesOf_Bussiness,
+        manufacturer_phone_no,
+        manufacturer_address,
+        brand,
+        product_image1,
+        product_image2,
+        product_image3,
+        product_image4,
+        product_image5,
+        category,
+        sub_category,
+        price,
+        additionalSpecification,
+        product_Specification,
+        product_description,
+        capacity,
+        model_no,
+        id: _Id as string,
+        // LATER
+        Vendor_Id: "",
+        auther_Id: "",
+        vendors_name: "",
+        isApproved: false,
+        videos: "",
+      });
+    }
   };
- 
-  
+
   const data2 = useGetCategory();
- 
-  
   const category_data = data2.data;
-
-
   useEffect(() => {
     if (error instanceof AxiosError) {
       toast.error(error?.response?.data?.message || error.message);
@@ -260,91 +216,42 @@ const Upload_Product: NextPage = () => {
     }
   }, [error, data, router]);
 
-  // const [email, setEmail] = useState<string>("");
+  // useEffect(() => {
+  //   // create the preview
 
-  // const [password, setPassword] = useState<string>("");
+  //   if (product_image1) {
+  //     const objectUrl = URL.createObjectURL(product_image1);
+  //     setProduct_image1Preview(objectUrl);
+  //   }
 
-  // const { error, mutate, data, isLoading } = useLogin();
-
-  // const options = [
-
-  //   { value: "Drugs & Pharma", label: "Drugs & Pharma" },
-
-  //   { value: "Hospital & Diagnostics", label: "Hospital & Diagnostics" },
-
-  //   { value: "Food & Agriculture", label: "Food & Agriculture" },
-
-  //   { value: "Industrial Machinery", label: "Industrial Machinery" },
-
-  //   { value: "Industrial Supplies", label: "Industrial Supplies" },
-
-  //   { value: "Electronics & Electrical", label: "Electronics & Electrical" },
-
-  //   { value: "Building & Construction", label: "Building & Construction" }
-
-  // ];
-
-
-
-
-  const options1 = [
-    { value: "Wholesaler", label: "Wholesaler" },
-
-    { value: "Manufacturer", label: "Manufacturer" },
-
-    { value: "Retailer", label: "Retailer" },
-  ];
-
-  function handleSubmit() {
-    return "hello";
-  }
-
-  function handleChange() {
-    return "helo";
-  }
-
-  useEffect(() => {
-    // create the preview
-
-    if (product_image1) {
-      const objectUrl = URL.createObjectURL(product_image1);
-      setProduct_image1Preview(objectUrl);
-    }
-
-    if (product_image2) {
-      const objectUrl2 = URL.createObjectURL(product_image2);
-      setProduct_image2Preview(objectUrl2);
-    }
-    if (product_image3) {
-      const objectUrl3 = URL.createObjectURL(product_image3);
-      setProduct_image3Preview(objectUrl3);
-    }
-    if (product_image4) {
-      const objectUrl4 = URL.createObjectURL(product_image4);
-      setProduct_image4Preview(objectUrl4);
-    }
-    if (product_image5) {
-      const objectUrl5 = URL.createObjectURL(product_image5);
-      setProduct_image5Preview(objectUrl5);
-    }
-
-   
-
-    // return () => {URL.revokeObjectURL(objectUrl);
-    //   URL.revokeObjectURL(objectUrl2);}
-  }, [
-    product_image1,
-    product_image2,
-    product_image3,
-    product_image4,
-    product_image5,
-  ]);
+  //   if (product_image2) {
+  //     const objectUrl2 = URL.createObjectURL(product_image2);
+  //     setProduct_image2Preview(objectUrl2);
+  //   }
+  //   if (product_image3) {
+  //     const objectUrl3 = URL.createObjectURL(product_image3);
+  //     setProduct_image3Preview(objectUrl3);
+  //   }
+  //   if (product_image4) {
+  //     const objectUrl4 = URL.createObjectURL(product_image4);
+  //     setProduct_image4Preview(objectUrl4);
+  //   }
+  //   if (product_image5) {
+  //     const objectUrl5 = URL.createObjectURL(product_image5);
+  //     setProduct_image5Preview(objectUrl5);
+  //   }
+  // }, [
+  //   product_image1,
+  //   product_image2,
+  //   product_image3,
+  //   product_image4,
+  //   product_image5,
+  // ]);
 
   return (
     <DashboardLayout>
       <div className={styles.mov}>
         <h1>Welcome to ABC PVT LTD </h1>
-
         <ul className={styles.box345}>
           <li>
             <div className={styles.prevpic}>
@@ -405,7 +312,6 @@ const Upload_Product: NextPage = () => {
               </div>
             </div>
           </li>
-
           <form onSubmit={handleUpdateProduct}>
             <li>
               <label htmlFor="product_image" className={styles.Omra_Lael}>
@@ -417,7 +323,9 @@ const Upload_Product: NextPage = () => {
                   <input
                     type="file"
                     name="product_image"
-                    onChange={(e: any) => setProduct_image1(e.target.files[0])}
+                    onChange={(e: any) =>
+                      actions.product_image1(e.target.files[0])
+                    }
                   />
                 </div>
 
@@ -425,74 +333,66 @@ const Upload_Product: NextPage = () => {
                   <input
                     type="file"
                     name="product_image2"
-                    onChange={(e: any) => setProduct_image2(e.target.files[0])}
+                    onChange={(e: any) =>
+                      actions.product_image2(e.target.files[0])
+                    }
                   />
                 </div>
                 <div className="col-md-4">
                   <input
                     type="file"
                     name="product_image3"
-                    onChange={(e: any) => setProduct_image3(e.target.files[0])}
+                    onChange={(e: any) =>
+                      actions.product_image3(e.target.files[0])
+                    }
                   />
                 </div>
                 <div className="col-md-4">
                   <input
                     type="file"
                     name="product_image4"
-                    onChange={(e: any) => setProduct_image4(e.target.files[0])}
+                    onChange={(e: any) =>
+                      actions.product_image4(e.target.files[0])
+                    }
                   />
                 </div>
                 <div className="col-md-4">
                   <input
                     type="file"
                     name="product_image5"
-                    onChange={(e: any) => setProduct_image5(e.target.files[0])}
+                    onChange={(e: any) =>
+                      actions.product_image5(e.target.files[0])
+                    }
                   />
                 </div>
-
                 <div className="col-md-4">
                   <input type="link" placeholder="Youtube Link" />
                 </div>
               </div>
             </li>
-            <li>
-              <label htmlFor="productname" className={styles.Omra_Lael}>
-                Product Name
-              </label>
-
-              <input
-                type="text"
-                name="productname"
-                id="productname"
-                defaultValue={pData?.product_name}
-                required
-                onChange={(e) => setProduct_name(e.target.value)}
-              />
-            </li>
-
+            <InputWithLabel
+              label="Product Name *"
+              type="text"
+              name="productname"
+              id="productname"
+              value={product_name}
+              required
+              onChange={(e) => actions.product_name(e.target.value)}
+            />
+            {/*  CATEGORY */}
             <li>
               <label htmlFor="category" className={styles.Omra_Lael}>
-                Product Category
+                Product Category *
               </label>
-
-              {/* <input
-                type="text"
-                name="category"
-                id="category"
-                onChange={(e) => setCategory(e.target.value)}
-              /> */}
-
               <select
                 name="category"
                 className={styles.dropdown}
                 value={category}
                 required
-                defaultValue={pData?.category}
-                onChange={(e) => setCategory(e.target.value)}
+                onChange={(e) => actions.category(e.target.value)}
               >
                 <option value="">Select Category</option>
                 {category_data?.data.map((item: any, index: any) => {
-                 
                   return (
                     <option key={index} value={item.category_name}>
                       {item.category_name}
@@ -501,85 +401,18 @@ const Upload_Product: NextPage = () => {
                 })}
               </select>
             </li>
-
-            {/* <li>
-              <label htmlFor="bussiness_type" className={styles.Omra_Lael}>
-                Business Type
-              </label>
-
-              <select
-                className={styles.dropdown}
-                name="bussiness_type"
-                value={TypesOf_Bussiness}
-                onChange={(e) => setTypesOf_Bussiness(e.target.value)}
-              >
-                {options1.map((option: any, index: any) => {
-                  return(
-                    <option key={index} value={option.value}>
-                    {option.label}
-                  </option>
-                  )
-                })}
-              </select>
-            </li> */}
-
-            {/* <li><label htmlFor="brand" className={styles.Omra_Lael} >
-
-              Brand
-
-            </label>
-
-              <input type="text" name="brand" id="brand" onChange={(e) => setCategory(e.target.value)} /></li> */}
-
-            <li>
-              <label htmlFor="brand_name" className={styles.Omra_Lael}>
-                Brand
-              </label>
-
-              <input
-                type="text"
-                name="brand_name"
-                id="brand_name"
-                
-                defaultValue={pData?.brand}
-                placeholder=" "
-                onChange={(e) => setBrand(e.target.value)}
-              />
-
-              {/* <input type="text" name="" id="" placeholder="Phone no" />
-
-              <input type="text" name="" id="" placeholder="Address " /> */}
-            </li>
-
-            {/* <li>
-
-                <label htmlFor="phone_no" className={styles.Omra_Lael} >
-
-                  Mobile no
-
-                </label>
-
-                <input type="tel" name="phone_no" id="phone_no" placeholder="Phone no. " onChange={(e) => setBrand(e.target.value)} /></li> */}
-
-            {/* <li>
-
-                <label htmlFor="address"  className={styles.Omra_Lael} >
-
-                  Manufacture Address
-
-                </label>
-
-                <input type="text" name="address" id="address" placeholder="Address " onChange={(e) => setManufacturer_address(e.target.value)} /></li> */}
-
-            {/* <li> <label htmlFor="image" className={styles.Omra_Lael} >
-
-                Product Image
-
-              </label>
-
-                <input type={"file"} name="image" onChange={(e: any) => setProduct_image1(e.target?.files[0])} /></li> */}
-
-            <li className="qtyproduct">
+            {/* BRAND NAME */}
+            <InputWithLabel
+              label="Brand"
+              type="text"
+              name="brand_name"
+              id="brand_name"
+              value={brand}
+              placeholder=" "
+              onChange={(e) => actions.brand(e.target.value)}
+            />
+            {/* PRICE */}
+            {/* <li className="qtyproduct">
               <div className="row">
                 <div className="col-md-6">
                   <label htmlFor="price" className={styles.Omra_Lael}>
@@ -591,7 +424,7 @@ const Upload_Product: NextPage = () => {
                     name="price"
                     id="price"
                     className="box-input-section"
-                    defaultValue={pData?.price}
+                    value={price}
                     onChange={(e) => setPrice(e.target.value)}
                   />
                 </div>
@@ -609,54 +442,56 @@ const Upload_Product: NextPage = () => {
                   />
                 </div>
               </div>
-            </li>
-
-            <li>
-              <label htmlFor="description" className={styles.Omra_Lael}>
-                Description
-              </label>
-              <textarea
-                rows={9}
-                cols={200}
-                id="description"
-                name="description"
-                placeholder="Other Product Specifications "
-                defaultValue={pData?.product_description}
-                onChange={(e) => setProduct_description(e.target.value)}
-              />
-            </li>
-
-            <h4> Product Specifications</h4>
-            <li>
-              <label htmlFor="specification" className={styles.Omra_Lael}>
-                Specification
-              </label>
-              <textarea
-                rows={9}
-                cols={200}
-                id="specification"
-                name="specification"
-                placeholder="Other Product Specifications "
-                defaultValue={pData?.product_Specification}
-                onChange={(e) => setProduct_Specification(e.target.value)}
-              />
-            </li>
-
-            {/* <li>
-              {" "}
-              <label htmlFor="" className={styles.Omra_Lael}>
-                Unit Size
-              </label>
-              <input
-                type="text"
-                name=""
-                id=""
-                placeholder=""
-                className="box-input-textarea"
-              />
             </li> */}
-
-            <li>
+            <InputWithLabel
+              label="Price"
+              type="number"
+              name="price"
+              id="price"
+              className="box-input-section"
+              value={price}
+              onChange={(e) => actions.price(e.target.value)}
+            />
+            <InputWithLabel
+              label="Quantity"
+              type="text"
+              name="brand_name"
+              id="brand_name"
+              value={brand}
+              placeholder=" "
+            />
+            <TextAreaWithLabel
+              label="Description"
+              rows={9}
+              cols={200}
+              id="description"
+              name="description"
+              placeholder="Other Product Specifications "
+              value={product_description}
+              onChange={(e) => actions.product_description(e.target.value)}
+            />
+            <h4> Product Specifications</h4>
+            <TextAreaWithLabel
+              label="Specifications"
+              rows={9}
+              cols={200}
+              id="specification"
+              name="specification"
+              placeholder="Other Product Specifications "
+              value={product_Specification}
+              onChange={(e) => actions.product_Specification(e.target.value)}
+            />
+            <InputWithLabel
+              label="Capacity"
+              type="text"
+              name="capacity"
+              id="capacity"
+              placeholder=""
+              className="box-input-textarea"
+              value={capacity}
+              onChange={(e) => actions.capacity(e.target.value)}
+            />
+            {/* <li>
               {" "}
               <label htmlFor="capacity" className={styles.Omra_Lael}>
                 Capacity
@@ -667,101 +502,59 @@ const Upload_Product: NextPage = () => {
                 id="capacity"
                 placeholder=""
                 className="box-input-textarea"
-                defaultValue={pData?.capacity}
+                value={capacity}
                 onChange={(e) => setCapacity(e.target.value)}
               />
-            </li>
+            </li> */}
+            <InputWithLabel
+              label=" Model No."
+              type="text"
+              name="model_no"
+              id="model_no"
+              placeholder=" "
+              className="box-input-textarea"
+              value={model_no}
+              onChange={(e) => setModel_no(e.target.value)}
+            />
 
-            <li>
-              {" "}
-              <label htmlFor="model_no" className={styles.Omra_Lael}>
-                Model No.
-              </label>
-              <input
-                type="text"
-                name="model_no"
-                id="model_no"
-                placeholder=" "
-                className="box-input-textarea"
-                defaultValue={pData?.model_no}
-                onChange={(e) => setModel_no(e.target.value)}
-              />
-            </li>
-
-            {/* <li> */}
-
-            {/* <h4> Additional  Specifications</h4> */}
-            {/* <hr/> */}
-
-            {/* </li> */}
-
-            
-
-            
-
-            <li>
-              {" "}
-              <label htmlFor="model_no" className={styles.Omra_Lael}>
-                Product code
-              </label>
-              <input
-                type="text"
-                name="model_no"
-                id="model_no"
-                placeholder=" "
-                className="box-input-textarea"
-                onChange={(e) => setModel_no(e.target.value)}
-              />
-            </li>
-
-            <li>
-              {" "}
-              <label htmlFor="model_no" className={styles.Omra_Lael}>
-                Delivery Time
-              </label>
-              <input
-                type="text"
-                name="model_no"
-                id="model_no"
-                placeholder=" "
-                className="box-input-textarea"
-                
-              />
-            </li>
+            <InputWithLabel
+              label="Product code"
+              type="text"
+              name="model_no"
+              id="model_no"
+              placeholder=" "
+              className="box-input-textarea"
+              onChange={(e) => actions.model_no(e.target.value)}
+            />
+            <InputWithLabel
+              label="Delivery Time"
+              type="text"
+              name="model_no"
+              id="model_no"
+              placeholder=" "
+              className="box-input-textarea"
+            />
 
             <h4> Additional Specifications</h4>
-            {additionalSpecification.map((y: any, i: any) => {
+            {additionalSpecification.map((PreviewData: any, index: any) => {
               return (
-                // eslint-disable-next-line react/jsx-key
-                <div style={{ display: "flex" }}>
-                  {pData?.additionalSpecification.map((PreviewData:any,index:any)=>{
-                    return(
-
-                 
-                  <Row key={i}>
+                <div key={index} style={{ display: "flex" }}>
+                  <Row key={index}>
                     <Col md="4">
                       <FormGroup>
-                        {/* <label
-                          className="form-control-label"
-                          htmlFor="atribute"
-                        >
-                          Atribute:
-                        </label> */}
                         <Input
                           className="inputValuesAttibute"
                           id="atribute"
                           placeholder="Add Atributes"
                           name="atribute"
                           type="text"
-                          defaultValue={PreviewData.atribute}
-                          value={y.atribute}
-                          onChange={(e) => handleInputChange(e, i)}
+                          value={PreviewData.atribute}
+                          onChange={(e) => handleInputChange(e, index)}
                         />
                       </FormGroup>
                     </Col>
                     <Col md="4">
                       <FormGroup>
-                        
                         <Input
                           className="inputValuesForm"
                           id="Values"
@@ -769,9 +562,8 @@ const Upload_Product: NextPage = () => {
                           type="text"
                           style={field_color}
                           name="Values"
-                          defaultValue={PreviewData.Values}
-                          value={y.Values}
-                          onChange={(e) => handleInputChange(e, i)}
+                          value={PreviewData.Values}
+                          onChange={(e) => handleInputChange(e, index)}
                         />
                       </FormGroup>
                     </Col>
@@ -782,12 +574,12 @@ const Upload_Product: NextPage = () => {
                           <a
                             href=""
                             className="inputValueCancel"
-                            onClick={(e) => handleRemoveClick(e, i)}
+                            onClick={(e) => handleRemoveClick(e, index)}
                           >
-                            X
+                            ⨉
                           </a>
                         )}
-                        {additionalSpecification.length - 1 === i && (
+                        {additionalSpecification.length - 1 === index && (
                           <a
                             href=""
                             className="btn btn-warning mt-2"
@@ -799,35 +591,16 @@ const Upload_Product: NextPage = () => {
                       </div>
                     </Col>
                   </Row>
-                     )
-                    })}
                 </div>
               );
             })}
-
             <li className={styles.bottonstyle}>
-              {/* <div className={styles.bottonstyle1}>
-                {" "}
-                <input
-                  type="submit"
-                  className={styles.UploadButton}
-                  value="Add Product"
-                  onClick={(e) => alert("uploaded")}
-                />
-              </div> */}
-
               <div className={styles.bottonstyle1}>
-                {" "}
-                <input
-                  type="submit"
-                  className={styles.UploadButton}
-                
-                />
+                <input type="submit" className={styles.UploadButton} />
               </div>
             </li>
           </form>
         </ul>
-
         <ul className="formstyle"></ul>
       </div>
     </DashboardLayout>
@@ -835,3 +608,31 @@ const Upload_Product: NextPage = () => {
 };
 
 export default Upload_Product;
+
+interface InputWithLabelProps extends React.ComponentPropsWithoutRef<"input"> {
+  label: string;
+}
+const InputWithLabel = (props: InputWithLabelProps) => {
+  return (
+    <li>
+      <label htmlFor={props.id} className={styles.Omra_Lael}>
+        {props.label}
+      </label>
+      <input {...props} />
+    </li>
+  );
+};
+interface TextAreaWithLabelProps
+  extends React.ComponentPropsWithoutRef<"textarea"> {
+  label: string;
+}
+const TextAreaWithLabel = (props: TextAreaWithLabelProps) => {
+  return (
+    <li>
+      <label htmlFor={props.id} className={styles.Omra_Lael}>
+        {props.label}
+      </label>
+      <textarea {...props}></textarea>
+    </li>
+  );
+};
