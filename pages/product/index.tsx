@@ -1,19 +1,25 @@
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick-theme.css';
 
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 
-import { AxiosError } from "axios";
-import Footer from "components/Footer/footer";
-import axios from "networkAPI/axios";
-import { useCustomerQuery, usePublicProduct } from "networkAPI/queries";
-import type { NextPage } from "next";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import TopHeader from "pages/topheader";
-import toast from "react-hot-toast";
-import Slider from "react-slick";
-import styles from "styles/Merchant/newproductpage.module.scss";
-import delay from "utils/delay";
+import { AxiosError } from 'axios';
+import Footer from 'components/Footer/footer';
+import axios from 'networkAPI/axios';
+import {
+  useCustomerQuery,
+  usePublicProduct,
+} from 'networkAPI/queries';
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import TopHeader from 'pages/topheader';
+import toast from 'react-hot-toast';
+import Slider from 'react-slick';
+import styles from 'styles/Merchant/newproductpage.module.scss';
+import delay from 'utils/delay';
 
 const NewProductPage: NextPage = () => {
   const router = useRouter();
@@ -305,7 +311,7 @@ const NewProductPage: NextPage = () => {
                 <h1>
                   Business Name:{" "}
                   <span className={styles.span_box}>
-                    {currentProduct?.vendors_name}
+                    {currentProduct?.SubTypeOf_bussiness}
                   </span>{" "}
                 </h1>
                 <h3>{currentProduct?.Merchant_Address}</h3>

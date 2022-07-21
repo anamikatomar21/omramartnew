@@ -1,21 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 
-import { AxiosError } from "axios";
-import DashboardLayout from "components/Merchant/Layout";
+import { AxiosError } from 'axios';
+import DashboardLayout from 'components/Merchant/Layout';
+import editSlice from 'context/editslice';
 import {
   useGetCategory,
   usePublicProduct,
   useUpdateMerchantProduct,
-} from "networkAPI/queries";
-import { NextPage } from "next";
-import Image from "next/image";
-import Router, { useRouter } from "next/router";
-import toast from "react-hot-toast";
-import { Col, FormGroup, Input, Row } from "reactstrap";
-import { useAppSelector } from "redux/hooks";
-import styles from "styles/Merchant/uploadproduct.module.scss";
-import { RootState } from "redux/store";
-import editSlice from "context/editslice";
+} from 'networkAPI/queries';
+import { NextPage } from 'next';
+import Image from 'next/image';
+import Router, { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
+import {
+  Col,
+  FormGroup,
+  Input,
+  Row,
+} from 'reactstrap';
+import { useAppSelector } from 'redux/hooks';
+import { RootState } from 'redux/store';
+import styles from 'styles/Merchant/uploadproduct.module.scss';
 
 const Upload_Product: NextPage = () => {
   const _user = (state: RootState) => state.user;
