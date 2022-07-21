@@ -539,7 +539,7 @@ const Upload_Product: NextPage = () => {
               />
             </li>
 
-            <li>
+            {/* <li>
               {" "}
               <label htmlFor="" className={styles.Omra_Lael}>
                 Unit Size
@@ -551,7 +551,7 @@ const Upload_Product: NextPage = () => {
                 placeholder=""
                 className="box-input-textarea"
               />
-            </li>
+            </li> */}
 
             <li>
               {" "}
@@ -585,7 +585,7 @@ const Upload_Product: NextPage = () => {
 
        
 
-            <li className="qtyproduct">
+            {/* <li className="qtyproduct">
               <div className="row">
                 <div className="col-md-6">
                   <label htmlFor="price" className={styles.Omra_Lael}>
@@ -613,9 +613,9 @@ const Upload_Product: NextPage = () => {
                   />
                 </div>
               </div>
-            </li>
+            </li> */}
 
-            <li>
+            {/* <li>
               {" "}
               <label htmlFor="model_no" className={styles.Omra_Lael}>
                 Production Capacity
@@ -628,12 +628,12 @@ const Upload_Product: NextPage = () => {
                 className="box-input-textarea"
                 onChange={(e) => setModel_no(e.target.value)}
               />
-            </li>
+            </li> */}
 
             <li>
               {" "}
               <label htmlFor="model_no" className={styles.Omra_Lael}>
-                Production code
+                Product code
               </label>
               <input
                 type="text"
@@ -641,7 +641,7 @@ const Upload_Product: NextPage = () => {
                 id="model_no"
                 placeholder=" "
                 className="box-input-textarea"
-                onChange={(e) => setModel_no(e.target.value)}
+                
               />
             </li>
 
@@ -656,7 +656,7 @@ const Upload_Product: NextPage = () => {
                 id="model_no"
                 placeholder=" "
                 className="box-input-textarea"
-                onChange={(e) => setModel_no(e.target.value)}
+               
               />
             </li>
 
