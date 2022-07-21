@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import type { NextPage } from "next";
-import Link from "next/link";
-import Image from "next/image";
 import styles from '../styles/Merchant/Header.module.scss';
 
 const TopHeader: NextPage = () => {
@@ -43,5 +42,3 @@ const TopHeader: NextPage = () => {
 };
 
 export default TopHeader;
-
-

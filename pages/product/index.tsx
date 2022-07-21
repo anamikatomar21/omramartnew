@@ -15,12 +15,11 @@ import {
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import TopHeader from 'pages/topheader';
 import toast from 'react-hot-toast';
 import Slider from 'react-slick';
 import styles from 'styles/Merchant/newproductpage.module.scss';
 import delay from 'utils/delay';
-
-import TopHeader from '../topheader';
 
 const NewProductPage: NextPage =  () => {
   const router = useRouter();
@@ -281,12 +280,7 @@ const NewProductPage: NextPage =  () => {
 
                     <form className={styles.FormWidth} onSubmit={handleBuyerQuery}>
                       <ul>
-                        <div className={styles.DisplayFlex}>
-                          <li>
-                            <input type="checkbox" />
-                            <span>I want to Buy</span>
-                          </li>
-                        </div>
+                        
                         <div className={styles.email_flex}>
                           
                           <li>
