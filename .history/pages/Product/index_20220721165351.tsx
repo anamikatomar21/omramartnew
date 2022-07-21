@@ -209,7 +209,7 @@ const NewProductPage: NextPage = () => {
                       <ul>
                         <div className={styles.DisplayFlex}>
                           <li>
-                            {/* <input type="checkbox" /> */}
+                            <input type="checkbox" />
                             <span>I want to Buy</span>
                           </li>
                         </div>
