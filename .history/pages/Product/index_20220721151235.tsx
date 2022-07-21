@@ -346,7 +346,6 @@ const NewProductPage: NextPage = () => {
           </h1>
 
           <div className={styles.flex_container}>
-          <Slider {...settings}>
             {data?.data.map((item: any, index: any) => {
               if (item.category === router.query.category) {
                 return (
@@ -375,7 +374,6 @@ const NewProductPage: NextPage = () => {
                 );
               }
             })}
-            </Slider>
           </div>
         </div>
 
@@ -387,10 +385,122 @@ const NewProductPage: NextPage = () => {
             OTHER PRODUCT WITH SAME MERCHANTS
           </h1>
           <div className={styles.flex_container}>
-         
+            <Slider {...settings}>
+           <div>1</div>
+           <div>1</div>
+           <div>1</div>
+           <div>1</div>
+           <div>1</div>
+           <div>1</div>
+           <div>1</div>
+           <div>1</div>
+            </Slider>
           </div>
         </div>
- 
+        <div className={styles.background_section}>
+          <h1 className={styles.span_box2}>
+            SIMILAR PRODUCT WITH OTHER MERCHANTS
+          </h1>
+
+          <div className={styles.flex_container}>
+            <div className={styles.cardproduct}>
+              <div className={styles.productimg}>
+                <Image
+                  src={"/omratrade/homebanner.png"}
+                  height={250}
+                  width={300}
+                  alt="productr image"
+                  className={styles.productimagesrc}
+                />
+              </div>
+
+              <div className={styles.productcontent}>
+                <h4>hhhh</h4>
+                <p>hhhhhhhhhhhhhh</p>
+              </div>
+
+              <div className={styles.productcartbtn}>
+                <button type="submit">View More</button>
+              </div>
+            </div>
+
+            <div className={styles.cardproduct}>
+              <div className={styles.productimg}>
+                <Image
+                  src={"/omratrade/homebanner.png"}
+                  height={250}
+                  width={300}
+                  alt="productr image"
+                  className={styles.productimagesrc}
+                />
+              </div>
+              <div className={styles.productcontent}>
+                <h4>hhhh</h4>
+                <p>hhhhhhhhhhhhhh</p>
+              </div>
+              <div className={styles.productcartbtn}>
+                <button type="submit">View More</button>
+              </div>
+            </div>
+
+            <div className={styles.cardproduct}>
+              <div className={styles.productimg}>
+                <Image
+                  src={"/omratrade/homebanner.png"}
+                  height={250}
+                  width={300}
+                  alt="productr image"
+                  className={styles.productimagesrc}
+                />
+              </div>
+              <div className={styles.productcontent}>
+                <h4>hhhh</h4>
+                <p>hhhhhhhhhhhhhh</p>
+              </div>
+              <div className={styles.productcartbtn}>
+                <button type="submit">View More</button>
+              </div>
+            </div>
+
+            <div className={styles.cardproduct}>
+              <div className={styles.productimg}>
+                <Image
+                  src={"/omratrade/homebanner.png"}
+                  height={250}
+                  width={300}
+                  alt="productr image"
+                  className={styles.productimagesrc}
+                />
+              </div>
+              <div className={styles.productcontent}>
+                <h4>hhhh</h4>
+                <p>hhhhhhhhhhhhhh</p>
+              </div>
+              <div className={styles.productcartbtn}>
+                <button type="submit">View More</button>
+              </div>
+            </div>
+
+            <div className={styles.cardproduct}>
+              <div className={styles.productimg}>
+                <Image
+                  src={"/omratrade/homebanner.png"}
+                  height={250}
+                  width={300}
+                  alt="productr image"
+                  className={styles.productimagesrc}
+                />
+              </div>
+              <div className={styles.productcontent}>
+                <h4>hhhh</h4>
+                <p>hhhhhhhhhhhhhh</p>
+              </div>
+              <div className={styles.productcartbtn}>
+                <button type="submit">View More</button>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* Similar Product Slider Ends  */}
 
         <div className={styles.company_table}>

@@ -175,7 +175,7 @@ const Header: NextPage = () => {
           </li>
           <li className={styles.button_box}>
             <i className="fas fa-user"></i>
-           <span className={styles.phone_none}> <Link href="/index1" >Sign in</Link></span>
+           <span className={styles.phone_none} <Link href="/index1" >Sign in</Link>
           </li>
           <li></li>
         </ul>

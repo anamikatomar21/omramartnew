@@ -1413,7 +1413,11 @@ span.validation-error {
   max-width: 1976px;
 }
 
-
+@media (max-width: 600px)  {
+  span.Header_phone_none__77z_w {
+    display: none !important;
+}
+}
 
 
 
