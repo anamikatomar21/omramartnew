@@ -189,7 +189,9 @@ const CategoryProduct: NextPage = () => {
             </div>
           </div>
         </div>
-       
+        <div style={{ marginBottom: "170px" }}>
+          
+        </div>
         <div style={{ marginTop: "170px" }}>
           <SmallBanner />
         </div>

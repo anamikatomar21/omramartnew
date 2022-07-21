@@ -189,7 +189,6 @@ const CategoryProduct: NextPage = () => {
             </div>
           </div>
         </div>
-       
         <div style={{ marginTop: "170px" }}>
           <SmallBanner />
         </div>
@@ -280,7 +279,7 @@ const CategoryProduct: NextPage = () => {
               })}
             </div>
           </div>
-      
+        </div>
         </div>
         <div className={styles.productdiv}>
           <ProductCard

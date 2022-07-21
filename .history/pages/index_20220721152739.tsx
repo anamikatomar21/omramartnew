@@ -100,7 +100,7 @@ const CategoryProduct: NextPage = () => {
   };
 
   return (
-    <div className={styles.container_width}>
+    <div className={styles.container_width }>
       {/* <Header /> */}
       <Toaster position="bottom-center" />
 
@@ -189,14 +189,13 @@ const CategoryProduct: NextPage = () => {
             </div>
           </div>
         </div>
-       
         <div style={{ marginTop: "170px" }}>
           <SmallBanner />
         </div>
         <div>
           <Category />
         </div>
-      
+
         <div className={styles.container}>
           <div className={styles.right}>
             <div>
@@ -280,8 +279,8 @@ const CategoryProduct: NextPage = () => {
               })}
             </div>
           </div>
-      
         </div>
+
         <div className={styles.productdiv}>
           <ProductCard
             title=" Laundry Machine & Equipment "

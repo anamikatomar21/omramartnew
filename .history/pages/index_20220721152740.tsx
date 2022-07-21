@@ -189,14 +189,13 @@ const CategoryProduct: NextPage = () => {
             </div>
           </div>
         </div>
-       
         <div style={{ marginTop: "170px" }}>
           <SmallBanner />
         </div>
         <div>
           <Category />
         </div>
-      
+
         <div className={styles.container}>
           <div className={styles.right}>
             <div>
@@ -280,8 +279,8 @@ const CategoryProduct: NextPage = () => {
               })}
             </div>
           </div>
-      
         </div>
+
         <div className={styles.productdiv}>
           <ProductCard
             title=" Laundry Machine & Equipment "

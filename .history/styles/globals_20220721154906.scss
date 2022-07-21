@@ -1425,8 +1425,8 @@ ul.react-multi-carousel-track{
   transition: none 0s ease 0s;
       overflow: unset;
       transform: translate3d(0px, 0px, 0px);
-      
-      height: 55vh;
+      background: red;
+      height: 61vh;
   }
   
   
@@ -1436,9 +1436,7 @@ ul.react-multi-carousel-track{
       position: relative;
       width: 294px;
       height: 311px;
-     
+      background: pink;
       margin-top: 20px;
   
   }
-
- 
