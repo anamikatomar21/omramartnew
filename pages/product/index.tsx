@@ -16,6 +16,7 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
+import Slider from 'react-slick';
 import styles from 'styles/Merchant/newproductpage.module.scss';
 import delay from 'utils/delay';
 
@@ -426,6 +427,7 @@ const NewProductPage: NextPage =  () => {
           <h1 className={styles.span_box2}>
             SIMILAR PRODUCT WITH OTHER MERCHANTS
           </h1>
+
           <div className={styles.flex_container}>
             {data?.data.map((item: any, index: any) => {
               if (item.category === router.query.category) {
@@ -463,40 +465,49 @@ const NewProductPage: NextPage =  () => {
             OTHER PRODUCT WITH SAME MERCHANTS
           </h1>
           <div className={styles.flex_container}>
+         
+           <Slider {...settings}>
+
             {data?.data.map((item: any, index: any) => {
               if (item.auther_Id == router.query.merchant && index < 15) {
                 return (
-                  <div className={styles.cardproduct}>
-                    <div className={styles.productimg}>
-                      <Image
-                        src={
-                          item.product_image1[0] ? item.product_image1[0] : "/"
-                        }
-                        height={250}
-                        width={300}
-                        alt="productr image"
-                        className={styles.productimagesrc}
-                      />
-                    </div>
+                 
+                    <div className={styles.cardproduct}>
+                      <div className={styles.productimg}>
+                        <Image
+                          src={
+                            item.product_image1[0]
+                              ? item.product_image1[0]
+                              : "/"
+                          }
+                          height={250}
+                          width={300}
+                          alt="productr image"
+                          className={styles.productimagesrc}
+                        />
+                      </div>
 
-                    <div className={styles.productcontent}>
-                      <h4>product Name:</h4>
-                      <p>{item.product_name}</p>
-                    </div>
+                      <div className={styles.productcontent}>
+                        <h4>product Name:</h4>
+                        <p>{item.product_name}</p>
+                      </div>
 
-                    <div className={styles.productcartbtn}>
-                      <button type="submit">View More</button>
+                      <div className={styles.productcartbtn}>
+                        <button type="submit">View More</button>
+                      </div>
                     </div>
-                  </div>
+                  
                 );
               }
             })}
+            </Slider>
           </div>
         </div>
         <div className={styles.background_section}>
           <h1 className={styles.span_box2}>
             SIMILAR PRODUCT WITH OTHER MERCHANTS
           </h1>
+
           <div className={styles.flex_container}>
             <div className={styles.cardproduct}>
               <div className={styles.productimg}>
@@ -597,6 +608,7 @@ const NewProductPage: NextPage =  () => {
           </div>
         </div>
         {/* Similar Product Slider Ends  */}
+
         <div className={styles.company_table}>
           <div className={styles.tableflex_box}>
             <div className={styles.displaytable1}>
