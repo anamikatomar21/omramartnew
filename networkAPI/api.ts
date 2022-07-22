@@ -330,6 +330,7 @@ export const getHomeSubCategory = () =>
 export const CustomerQuery = (
   merchant_Id:string,
   product_Id: string,
+  buyer_Message:string,
   buyer_Email:string,
 
   buyer_Mob:string
@@ -337,7 +338,7 @@ export const CustomerQuery = (
  
 
   return axios
-    .post<CustomerQueryType>("/api/connect_to_buy", {merchant_Id,product_Id,buyer_Email,buyer_Mob})
+    .post<CustomerQueryType>("/api/connect_to_buy", {merchant_Id,product_Id,buyer_Message,buyer_Email,buyer_Mob})
     .then((response) => response.data);
 };
 

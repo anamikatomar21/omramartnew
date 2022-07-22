@@ -1,5 +1,7 @@
 import 'react-multi-carousel/lib/styles.css';
+
 import React from 'react';
+
 import { useGetCategory } from 'networkAPI/queries';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -20,27 +22,27 @@ function ProductCard({ title, data }: Props) {
   const category_data = data2.data;
   console.log(data2.data);
 
-   const responsive = {
+  const responsive = {
     superLargeDesktop: {
-     breakpoint: { max: 4000, min: 3000 },
-  loop:true,
-  items: 5,
+      breakpoint: { max: 4000, min: 3000 },
+      loop: true,
+      items: 5,
     },
 
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
 
-     items: 5,
-     },
-
-   tablet: {
-   breakpoint: { max: 1024, min: 464 },
-
-     items: 3,
+      items: 5,
     },
 
-   mobile: {
-     breakpoint: { max: 464, min: 0 },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+
+      items: 3,
+    },
+
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
 
       items: 1,
     },
@@ -53,10 +55,16 @@ function ProductCard({ title, data }: Props) {
         {data?.data && (
           <Carousel responsive={responsive}>
             {data?.data
-              .filter((item: any) => item.isApproved == true && item.isDeclined== false)
+              .filter(
+                (item: any) =>
+                  item.isApproved == true && item.isDeclined == false
+              )
               .map((item: any, index: any) => {
                 return (
-                  <div className={styles.cardproduct} key={index}>
+                  <div className={styles.cardproduct} key={index}
+                  onClick={() => router.push(`/product?id=${item._id}&category=${item.category}&merchant=${item.auther_Id}`)}
+                  
+                  >
                     <div className={styles.productimg}>
                       <Image
                         src={
@@ -77,7 +85,11 @@ function ProductCard({ title, data }: Props) {
                     <div className={styles.productcartbtn}>
                       <button
                         type="submit"
-                        onClick={() => router.push(`/product?id=${item._id}&category=${item.category}&merchant=${item.auther_Id}`)}
+                        onClick={() =>
+                          router.push(
+                            `/product?id=${item._id}&category=${item.category}&merchant=${item.auther_Id}`
+                          )
+                        }
                       >
                         View More
                       </button>
