@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
@@ -153,21 +154,13 @@ const Header: NextPage = () => {
     // <div className={styles.navbarheader}>
     <div>
       <div className={styles.flex_box}>
-        <div>
-          <Image
-            data-lazyloaded="1"
-            src="/omratrade/el.png"
-            height={100}
-            width={200}
-            alt="Logo Image"
-            className={styles.imageLogo}
-          />
+        <div className={styles.imageLogo}>
+          <img src="logo.png" alt="logo" />
         </div>
 
         <ul className={styles.flex_box1}>
           <li className={styles.button_box1}>
             <span className={styles.phone_icon}>
-              
               <i className="fa fa-phone"></i>
             </span>
 
@@ -175,7 +168,10 @@ const Header: NextPage = () => {
           </li>
           <li className={styles.button_box}>
             <i className="fas fa-user"></i>
-           <span className={styles.phone_none}> <Link href="/index1" >Sign in</Link></span>
+            <span className={styles.phone_none}>
+              {" "}
+              <Link href="/index1">Sign in</Link>
+            </span>
           </li>
           <li></li>
         </ul>
@@ -242,8 +238,9 @@ const Header: NextPage = () => {
             type="submit"
             className={styles.input_section1r}
           >
-          <span className={styles.search_flexbox}>
-            <i className="fa fa-search"></i>Search</span>
+            <span className={styles.search_flexbox}>
+              <i className="fa fa-search"></i>Search
+            </span>
           </button>
         </div>
       </div>

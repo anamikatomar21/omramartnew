@@ -103,7 +103,6 @@ const CategoryProduct: NextPage = () => {
     <div className={styles.container_width}>
       {/* <Header /> */}
       <Toaster position="bottom-center" />
-
       <UserLayout>
         <div className={styles.container}>
           <div className={styles.right}>
@@ -189,14 +188,14 @@ const CategoryProduct: NextPage = () => {
             </div>
           </div>
         </div>
-       
+
         <div style={{ marginTop: "170px" }}>
           <SmallBanner />
         </div>
         <div>
           <Category />
         </div>
-      
+
         <div className={styles.container}>
           <div className={styles.right}>
             <div>
@@ -280,7 +279,6 @@ const CategoryProduct: NextPage = () => {
               })}
             </div>
           </div>
-      
         </div>
         <div className={styles.productdiv}>
           <ProductCard

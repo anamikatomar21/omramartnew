@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import Slider from "react-slick";
 import styles from "styles/Merchant/newproductpage.module.scss";
 import delay from "utils/delay";
+import dummy from "utils/dummy";
 
 const NewProductPage: NextPage = () => {
   const router = useRouter();
@@ -80,11 +81,13 @@ const NewProductPage: NextPage = () => {
   // )
 
   const settings = {
+    autoplay: true,
     dots: true,
     infinite: true,
-    speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+    speed: 500,
+    autoplaySpeed: 2000,
   };
 
   const [userMobileNumber, setuserMobileNumber] = useState();
@@ -437,7 +440,7 @@ const NewProductPage: NextPage = () => {
                     <div className={styles.cardproduct} key={index}>
                       <div className={styles.productimg}>
                         <Image
-                          src={item.product_image1[0]}
+                          src={item.product_image1[0] || dummy}
                           height={250}
                           width={300}
                           alt="productr image"
