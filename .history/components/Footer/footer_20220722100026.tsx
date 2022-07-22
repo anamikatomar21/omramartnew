@@ -1,77 +1,83 @@
-import "react-multi-carousel/lib/styles.css";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import React from "react";
-import type { NextPage } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import styles from "../../styles/Merchant/newfooter.module.scss";
+import 'react-multi-carousel/lib/styles.css';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
+import React from 'react';
+
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import styles from '../../styles/Merchant/newfooter.module.scss';
 
 const NewFooter: NextPage = () => {
   return (
+
+
+
+
+ 
     <div className={styles.footerBox}>
-      <div className={styles.footertop}>
-        <div className="col-md-12">
-          <ul className={styles.footertoplist}>
-            <li>
-              <Image
+
+<div className={styles.footertop}>
+<div className="col-md-12">
+	<ul className={styles.footertoplist}>
+		<li><Image
                 src="/omratrade/el.png"
                 width={170}
                 height={79}
                 alt="sliderbanner"
                 className={styles.facemask}
-              />
-            </li>
-            <li>
-              <div className={styles.formsect}>
-                <p className={styles.text}>
-                  Get exclusive sneak peak to new launches & early access to
-                  offers.
-                </p>
-                <input type="email" className={styles.inputfooter} />
-                <button className={styles.emailbuttonfooter}>Submit</button>
-                <div className={styles.subm}>SIGN UP FOR EMAIL SAVINGS</div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+              /></li>
+			  <li>
+			  <div className={styles.formsect}>
+				<p className={styles.text}>Get exclusive sneak peak to new launches & early access to offers.</p>
+              <input type="email" className={styles.inputfooter} />
+              <button className={styles.emailbuttonfooter}>Submit</button>
+			  <div className={styles.subm}>SIGN UP FOR EMAIL SAVINGS</div>
+            </div>
+			  </li>
+	</ul>
+</div>
+</div>
 
+
+ 
       <div className={styles.footerBoxSection}>
         <div className="row ">
-          <div className={styles.bottom_box}>
-            <Link href="">Top Categories : </Link>
-            <Link href="">Laundery Machine & Equipments |</Link>
-            <Link href="">Dryclean Machine & Equipment | </Link>
-            <Link href="">Laundry Bags| </Link>
-            <Link href="">Chemical & Detergent |</Link>
-            <Link href="">QR code printer |</Link>
-            <Link href="">Basket |</Link>
-            <Link href="">Scanner |</Link>
-            <Link href="">Hanger |</Link>
-          </div>
+			<div className={styles.bottom_box}>
+          <Link href="">Top Categories : </Link>{" "}
+          <Link href="">Laundery Machine & Equipments |</Link>
+          <Link href="">Dryclean Machine & Equipment | </Link>
+          <Link href="">Laundry Bags| </Link>
+          <Link href="">Chemical & Detergent |</Link>
+          <Link href="">QR code printer |</Link>
+          <Link href="">Basket |</Link>
+          <Link href="">Scanner |</Link>
+          <Link href="">Hanger |</Link>
+		  </div>
         </div>
         <div className="row">
-          <div className={styles.bottom_box}>
-            <Link href="">Top Categories : </Link>
-            <Link href="">Laundery Machine |</Link>
-            <Link href="">Dryclean Machine| </Link>
-            <Link href="">Laundry Bags </Link>
-            <Link href="">Chemical & Detergent |</Link>
-            <Link href="">QR code printer |</Link>
-            <Link href="">Basket |</Link>
-            <Link href="">Scanner |</Link>
-            <Link href="">Hanger |</Link>
-          </div>
+		<div className={styles.bottom_box}>
+          <Link href="">Top Categories : </Link>
+          <Link href="">Laundery Machine |</Link>
+          <Link href="">Dryclean Machine| </Link>
+          <Link href="">Laundry Bags </Link>
+          <Link href="">Chemical & Detergent |</Link>
+          <Link href="">QR code printer |</Link>
+          <Link href="">Basket |</Link>
+          <Link href="">Scanner |</Link>
+          <Link href="">Hanger |</Link>
         </div>
+		</div>
         <div className="row">
-          <div className={styles.bottom_box}>
-            <Link href="">Top Cities: </Link> <Link href="">Delhi|</Link>
-            <Link href="">Mumbai | </Link>
-            <Link href="">Agra| </Link>
-            <Link href="">Banglore |</Link>
-            <Link href="">Hyderabad </Link>
-          </div>
+		<div className={styles.bottom_box}>
+          <Link href="">Top Cities: </Link> <Link href="">Delhi|</Link>
+          <Link href="">Mumbai | </Link>
+          <Link href="">Agra| </Link>
+          <Link href="">Banglore |</Link>
+          <Link href="">Hyderabad </Link>
         </div>
+		</div>
         <div className="row">
           <div className="col-md-3">
             <h3>Need help?</h3>
@@ -85,14 +91,14 @@ const NewFooter: NextPage = () => {
           <div className="col-md-6">
             <h3>Office Address</h3>
             <p>
-              ADDRESS Office-1: E-Laundry A Product of OMRA Solutions Office No:
-              103 & 105, D-20 Sector 63, Noida (UP)
+              ADDRESS Office-1: E-Laundry A Product of OMRA Solutions
+              Office No: 103 & 105, D-20 Sector 63, Noida (UP)
             </p>
 
             <p>
-              Office-2: E-Laundry A Product of OMRA Solutions F32, First Floor,
-              Cosmos Square , Rustomjee Global City, Virar West , Maharashtra
-              401303
+              Office-2: E-Laundry  A Product of OMRA Solutions F32, First
+              Floor, Cosmos Square , Rustomjee Global City, Virar West ,
+              Maharashtra 401303
             </p>
           </div>
         </div>

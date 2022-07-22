@@ -314,6 +314,7 @@ export const useCustomerQuery = () => useMutation(
   ({
     merchant_Id,
     product_Id,
+    buyer_Message,
     buyer_Email,
     buyer_Mob
 
@@ -322,6 +323,7 @@ export const useCustomerQuery = () => useMutation(
     CustomerQuery(
       merchant_Id,
       product_Id,
+      buyer_Message,
       buyer_Email,
       buyer_Mob
     ))
