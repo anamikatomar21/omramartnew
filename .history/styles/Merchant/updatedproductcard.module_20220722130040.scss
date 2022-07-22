@@ -83,7 +83,12 @@
   }
   
   @media (max-width: 600px) {
-  
+  a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 10px;
+      padding-left: 4px;
+  }
   
   .newfooter_footertop__hpz_6 .newfooter_formsect__FdK4e .newfooter_subm__WoKyJ {
       font-size: 10px;

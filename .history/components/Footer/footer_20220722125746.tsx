@@ -42,7 +42,7 @@ const NewFooter: NextPage = () => {
         <div className={styles.footerBoxSection}>
           <div className="row ">
             <div className={styles.bottom_box}>
-              <Link href="">Top Categories : </Link>
+              <Link href="">Top Categories : </Link>{" "}
               <Link href="">Laundery Machine & Equipments |</Link>
               <Link href="">Dryclean Machine & Equipment | </Link>
               <Link href="">Laundry Bags| </Link>
