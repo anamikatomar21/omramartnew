@@ -29,9 +29,10 @@ const NewProductPage: NextPage = () => {
   );
 
   const [ProductImage, setProductImage] = useState(
-    currentProduct?.product_image1[0] || "/"
+    currentProduct?.product_image1[0]
   );
 
+  console.log(currentProduct?.product_image1[0]);
   const onImageSelect = (source: string | undefined) => {
     setProductImage(source);
   };
@@ -420,9 +421,8 @@ const NewProductPage: NextPage = () => {
           <h1 className={styles.span_box2}>
             SIMILAR PRODUCT WITH OTHER MERCHANTS
           </h1>
-
           <div className={styles.flex_container}>
-            <Slider {...settings}>
+            {/* <Slider {...settings}>
               {data?.data.map((item: any, index: any) => {
                 if (item.category === router.query.category) {
                   return (
@@ -453,7 +453,7 @@ const NewProductPage: NextPage = () => {
                   );
                 }
               })}
-            </Slider>
+            </Slider> */}
           </div>
         </div>
 
