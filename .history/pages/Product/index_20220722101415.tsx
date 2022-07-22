@@ -259,62 +259,43 @@ const NewProductPage: NextPage = () => {
                     &times;
                   </a>
                   <div className={styles.content1}>
-                    <p className={styles.Font}> I want to buy </p>
+                    <p className={styles.Font}>View Number</p>
 
-                    <form className={styles.FormWidth}>
+                    {/* <form
+                      className={styles.FormWidth}
+                      onSubmit={handleBuyerQuery}
+                    >
                       <ul>
-                        <li>
-                          <textarea
-                            className={styles.TextareaSection}
-                            rows={3}
-                            cols={70}
-                            placeholder="Please include product name, order quantity, usage, special requests if any in your inquiry."
-                          />
-                        </li>
-
-                        <li className={styles.ModalSection}>
-                          <div>
+                        <div className={styles.email_flex}>
+                          <li>
+                            <p> Email ID *</p>
                             <input
                               type="email"
-                              className={styles.Input}
-                              placeholder="EMAIL ID "
+                              value={buyer_Email}
+                              className={styles.NumberInput}
+                              onChange={(e) => setBuyer_Email(e.target.value)}
                               required
                             />
-                          </div>
-                          <div>
-                            {" "}
+                          </li>
+                          <li>
+                            <p> Mobile No. *</p>
                             <input
-                              type="tel"
-                              className={styles.Input}
-                              placeholder="Phone number "
+                              value={buyer_Mob}
+                              type="text"
+                              className={styles.NumberInput}
+                              onChange={(e) => setBuyer_Mob(e.target.value)}
                               required
                             />
-                          </div>
-                        </li>
-                        <li className={styles.checkboxstyle}>
-                          {/* <div>
-                            <input type="checkbox" className={styles.check} />
-                          </div> */}
-
-                          <div>
-                            {/* <span className={styles.SpanClass}>
-                              I agree to{" "}
-                              <a href="#" className={styles.TermsColor}>
-                                terms and conditions
-                              </a>
-                            </span> */}
-                          </div>
-                        </li>
+                          </li>
+                        </div>
 
                         <li>
-                          <button type="submit" className="submit_button_box">
-                            <a href="#">CALL NOW</a>
+                          <button type="submit" className={styles.NumberButton}>
+                            Submit
                           </button>
                         </li>
                       </ul>
-
-                      <div className="buttonmodel"></div>
-                    </form>
+                    </form> */}
                   </div>
                 </div>
               </div>

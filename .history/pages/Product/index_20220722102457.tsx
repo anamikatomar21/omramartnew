@@ -261,7 +261,9 @@ const NewProductPage: NextPage = () => {
                   <div className={styles.content1}>
                     <p className={styles.Font}> I want to buy </p>
 
-                    <form className={styles.FormWidth}>
+                   
+
+<form className={styles.FormWidth}>
                       <ul>
                         <li>
                           <textarea
@@ -271,6 +273,8 @@ const NewProductPage: NextPage = () => {
                             placeholder="Please include product name, order quantity, usage, special requests if any in your inquiry."
                           />
                         </li>
+
+                       
 
                         <li className={styles.ModalSection}>
                           <div>

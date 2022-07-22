@@ -259,9 +259,45 @@ const NewProductPage: NextPage = () => {
                     &times;
                   </a>
                   <div className={styles.content1}>
-                    <p className={styles.Font}> I want to buy </p>
+                    <p className={styles.Font}>View Number</p>
 
-                    <form className={styles.FormWidth}>
+                    {/* <form
+                      className={styles.FormWidth}
+                      onSubmit={handleBuyerQuery}
+                    >
+                      <ul>
+                        <div className={styles.email_flex}>
+                          <li>
+                            <p> Email ID *</p>
+                            <input
+                              type="email"
+                              value={buyer_Email}
+                              className={styles.NumberInput}
+                              onChange={(e) => setBuyer_Email(e.target.value)}
+                              required
+                            />
+                          </li>
+                          <li>
+                            <p> Mobile No. *</p>
+                            <input
+                              value={buyer_Mob}
+                              type="text"
+                              className={styles.NumberInput}
+                              onChange={(e) => setBuyer_Mob(e.target.value)}
+                              required
+                            />
+                          </li>
+                        </div>
+
+                        <li>
+                          <button type="submit" className={styles.NumberButton}>
+                            Submit
+                          </button>
+                        </li>
+                      </ul>
+                    </form> */}
+
+<form className={styles.FormWidth}>
                       <ul>
                         <li>
                           <textarea
@@ -270,6 +306,19 @@ const NewProductPage: NextPage = () => {
                             cols={70}
                             placeholder="Please include product name, order quantity, usage, special requests if any in your inquiry."
                           />
+                        </li>
+
+                        <li className={styles.checkboxstyle}>
+                          <div>
+                            <input type="checkbox" className={styles.check} />
+                          </div>
+
+                          <div>
+                            <span className={styles.SpanClass}>
+                              Send this inquiry to other Suppliers of similar
+                              products(?)
+                            </span>
+                          </div>
                         </li>
 
                         <li className={styles.ModalSection}>
@@ -292,9 +341,9 @@ const NewProductPage: NextPage = () => {
                           </div>
                         </li>
                         <li className={styles.checkboxstyle}>
-                          {/* <div>
+                          <div>
                             <input type="checkbox" className={styles.check} />
-                          </div> */}
+                          </div>
 
                           <div>
                             {/* <span className={styles.SpanClass}>
@@ -308,7 +357,7 @@ const NewProductPage: NextPage = () => {
 
                         <li>
                           <button type="submit" className="submit_button_box">
-                            <a href="#">CALL NOW</a>
+                            <a href="#">SEND INQUIRY</a>
                           </button>
                         </li>
                       </ul>
