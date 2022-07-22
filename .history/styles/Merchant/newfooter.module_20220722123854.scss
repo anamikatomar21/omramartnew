@@ -1,0 +1,184 @@
+.Flex_container {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #f5f6fa;
+}
+
+.footerBox {
+  background-color: #002b6b;
+  color: white;
+  width: 100%;
+}
+
+.footerBoxSection { 
+  padding: 28px 46px 18px 59px;
+}
+
+.finalfooter h3 {
+  text-align: center;
+  font-size: 16px;
+  color: white;
+}
+
+.backgroundbox {
+  background-color: #f8f8f8;
+}
+
+.emailbuttonfooter {
+  background: #002b6b;
+  height: 47px;
+  width: 179px;
+  color: white;
+  font-size: 20px;
+}
+
+.inputfooter {
+  width: 285px;
+  height: 47px;
+  margin-left: 737px;
+  /* display: flex; */
+}
+
+.flex_boxfooter {
+  display: flex;
+}
+
+.par {
+  columns: black !important;
+}
+
+.bottom_box {
+  margin-bottom: 10px;
+}
+
+.footertop {
+  background: #f8f8f8;
+
+  ul.footertoplist {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+  }
+
+  .formsect input {
+    margin-left: 0 !important;
+    padding: 0;
+  }
+
+  .formsect {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 466px;
+  }
+
+  .formsect p.text {
+    font-size: 14px;
+    color: #000000;
+    line-height: 16px;
+  }
+
+  .formsect .subm {
+    font-size: 12px;
+    line-height: 30px;
+    color: #000000;
+    font-weight: 600;
+  }
+}
+
+
+
+.Footer_Flex {
+  display: flex;
+}
+.footer_flexbox {
+  flex: 3;
+}
+.footer_flexbox1 {
+  flex: 2;
+}
+.footer_flexbox2 {
+  flex: 2;
+}
+.footer_flexbox3 {
+  flex: 2;
+}
+
+.footer_flexbox4 {
+  flex: 0.4;
+}
+.footer_flexbox5 {
+  flex: 0.3;
+}
+.Footer_Flexsection {
+  display: flex;
+}
+
+.footer_background {
+  background-color: #f8f8f8;
+  height: 8vh;
+  color: #002b6b;
+  text-align: center;
+}
+
+.footerfont {
+  font-size: 16px;
+}
+@media (max-width: 600px) {
+
+  .Footer_Flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .footer_flexbox,.footer_flexbox1 , .footer_flexbox1{
+    flex: 3;
+  }
+  
+  
+
+
+
+
+  .footertop .formsect {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 273px;
+  }
+  .inputfooter {
+    width: 145px;
+    height: 38px;
+    margin-left: 737px;
+    /* display: flex; */
+  }
+
+  .footertop {
+    .formsect {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 273px;
+    }
+  }
+
+  .emailbuttonfooter {
+    background: #002b6b;
+    height: 38px;
+    width: 57px;
+    color: white;
+    font-size: 13px;
+  }
+
+  .footerBoxSection {
+    overflow: hidden;
+    padding: 0px;
+  }
+
+  .footerfont {
+    ul,
+    li {
+      font-size: 10px !important;
+    }
+  }
+  .footerfont {
+    font-size: 10px !important;
+  }
+}
