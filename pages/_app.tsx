@@ -5,9 +5,10 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-
 import axios from "../networkAPI/axios";
 import { persistor, store } from "../redux/store";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function RootApp({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient({

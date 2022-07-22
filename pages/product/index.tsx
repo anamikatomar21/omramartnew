@@ -437,11 +437,7 @@ const NewProductPage: NextPage = () => {
                     <div className={styles.cardproduct} key={index}>
                       <div className={styles.productimg}>
                         <Image
-                          src={
-                            item.product_image1[0]
-                              ? item.product_image1[0]
-                              : "/"
-                          }
+                          src={item.product_image1[0]}
                           height={250}
                           width={300}
                           alt="productr image"
@@ -472,7 +468,7 @@ const NewProductPage: NextPage = () => {
             SIMILAR PRODUCT WITH OTHER MERCHANTS
           </h1>
           <div className={styles.flex_container}>
-            {/* <Slider {...settings}>
+            <Slider {...settings}>
               {data?.data.map((item: any, index: any) => {
                 if (item.category === router.query.category) {
                   return (
@@ -503,7 +499,7 @@ const NewProductPage: NextPage = () => {
                   );
                 }
               })}
-            </Slider> */}
+            </Slider>
           </div>
         </div>
 
