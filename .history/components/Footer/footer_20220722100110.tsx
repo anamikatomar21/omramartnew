@@ -4,6 +4,7 @@ import React from "react";
 import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
 import styles from "../../styles/Merchant/newfooter.module.scss";
 
 const NewFooter: NextPage = () => {

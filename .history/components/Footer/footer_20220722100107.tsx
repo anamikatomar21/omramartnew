@@ -1,9 +1,11 @@
 import "react-multi-carousel/lib/styles.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import React from "react";
+
 import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
 import styles from "../../styles/Merchant/newfooter.module.scss";
 
 const NewFooter: NextPage = () => {
