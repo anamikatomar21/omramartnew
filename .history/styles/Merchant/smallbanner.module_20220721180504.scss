@@ -1,0 +1,76 @@
+.Flex_Section{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    flex-wrap: wrap;
+    /* margin-left: 140px; */
+    border-radius: 63px;
+    gap: 57px;
+
+    
+}
+
+.smallbanner1{
+    
+    border-radius: 10px 10px 10px 10px;
+    background-repeat: no-repeat;
+    background-image: url(/omratrade/smallbanner1.png);
+  
+    height: 178px !important;
+    width: 295px !important;
+    margin-bottom: 20px;
+    color:black;
+  
+
+
+}
+
+.smallbanner2{
+    
+    border-radius: 15px; 
+    background-repeat: no-repeat;
+    background-image: url(/omratrade/smallbanner2.png);
+  
+    height: 178px !important;
+    width: 295px !important;
+   
+    margin-bottom: 20px;
+    color:black;
+  
+
+
+}
+
+.smallbanner3{
+    
+    border-radius: 15px; 
+    background-repeat: no-repeat;
+    background-image: url(/omratrade/smallbanner3.png);
+  
+    height: 178px !important;
+    width: 295px !important;
+   
+    margin-bottom: 20px;
+    color:black;
+  
+
+
+}
+
+@media (max-width: 600px) {
+
+}
+.smallbanner_Flex_Section {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    /* flex-wrap: wrap; */
+    /* margin-left: 140px; */
+    border-radius: 63px;
+    gap: 6px;
+}
+
