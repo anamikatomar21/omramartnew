@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
@@ -154,8 +153,15 @@ const Header: NextPage = () => {
     // <div className={styles.navbarheader}>
     <div>
       <div className={styles.flex_box}>
-        <div className={styles.imageLogo}>
-          <img src="logo.png" alt="logo" />
+        <div>
+          <Image
+            data-lazyloaded="1"
+            src="/omratrade/el.png"
+            height={100}
+            width={200}
+            alt="Logo Image"
+            className={styles.imageLogo}
+          />
         </div>
 
         <ul className={styles.flex_box1}>

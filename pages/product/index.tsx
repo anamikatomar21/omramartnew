@@ -295,7 +295,7 @@ const NewProductPage: NextPage = () => {
                             />
                           </div>
                           <div>
-                            {" "}
+                          
                             <input
                               type="tel"
                               className={styles.Input}
