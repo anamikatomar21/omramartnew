@@ -22,6 +22,7 @@ const NewProductPage: NextPage = () => {
   const [product_Id, setProduct_Id] = useState<string>("");
   const [buyer_Email, setBuyer_Email] = useState<string>("");
   const [buyer_Mob, setBuyer_Mob] = useState<string>("");
+  const [buyer_Message, setBuyer_Message] = useState<any>("");
   const { data, status } = usePublicProduct();
 
   const currentProduct = data?.data.find(
@@ -29,9 +30,10 @@ const NewProductPage: NextPage = () => {
   );
 
   const [ProductImage, setProductImage] = useState(
-    currentProduct?.product_image1[0] || "/"
+    currentProduct?.product_image1[0]
   );
 
+  console.log(currentProduct?.product_image1[0]);
   const onImageSelect = (source: string | undefined) => {
     setProductImage(source);
   };
@@ -54,16 +56,17 @@ const NewProductPage: NextPage = () => {
     mutate({
       merchant_Id: merchant_query,
       product_Id: product_query,
+      buyer_Message,
       buyer_Email,
       buyer_Mob,
     });
-    const calling = await axios.post(
-      `http://www.apiconnecto.com/UniProUser/Click-2-Call-API.aspx?UserId=DIGIVOICE&pwd=pwd2020&AgentNum=8209239&CustomerNum=${buyer_Mob}&CampId=15823`
-    );
-    console.log(calling);
+    // const calling = await axios.post(
+    //   `http://www.apiconnecto.com/UniProUser/Click-2-Call-API.aspx?UserId=DIGIVOICE&pwd=pwd2020&AgentNum=8209239&CustomerNum=${buyer_Mob}&CampId=15823`
+    // );
+    // console.log(calling);
     const anchorForCall = document.createElement("a");
     document.body.append(anchorForCall);
-    anchorForCall.href = `tel:+4733378901`;
+    anchorForCall.href = `tel:+1234567890`;
     anchorForCall.click();
     document.body.removeChild(anchorForCall);
     await delay(2000);
@@ -149,28 +152,30 @@ const NewProductPage: NextPage = () => {
                       onImageSelect(currentProduct?.product_image2[0])
                     }
                   />
-
-                  <Image
-                    src={currentProduct?.product_image3[0] || "/"}
-                    height={120}
-                    width={120}
-                    alt="productr image"
-                    className={styles.productimagesrc1}
-                    onClick={() =>
-                      onImageSelect(currentProduct?.product_image3[0])
-                    }
-                  />
-
-                  <Image
-                    src={currentProduct?.product_image4[0] || "/"}
-                    height={120}
-                    width={120}
-                    alt="productr image"
-                    className={styles.productimagesrc1}
-                    onClick={() =>
-                      onImageSelect(currentProduct?.product_image4[0])
-                    }
-                  />
+                  {currentProduct?.product_image3[0]?.length > 0 && (
+                    <Image
+                      src={currentProduct?.product_image3[0] || "/"}
+                      height={120}
+                      width={120}
+                      alt="productr image"
+                      className={styles.productimagesrc1}
+                      onClick={() =>
+                        onImageSelect(currentProduct?.product_image3[0])
+                      }
+                    />
+                  )}
+                  {currentProduct?.product_image4[0]?.length > 0 && (
+                    <Image
+                      src={currentProduct?.product_image4[0] || "/"}
+                      height={120}
+                      width={120}
+                      alt="productr image"
+                      className={styles.productimagesrc1}
+                      onClick={() =>
+                        onImageSelect(currentProduct?.product_image4[0])
+                      }
+                    />
+                  )}
                 </div>
               </div>
               <div id="popup1" className={styles.overlay}>
@@ -261,7 +266,10 @@ const NewProductPage: NextPage = () => {
                   <div className={styles.content1}>
                     <p className={styles.Font}> I want to buy </p>
 
-                    <form className={styles.FormWidth}>
+                    <form
+                      className={styles.FormWidth}
+                      onSubmit={handleBuyerQuery}
+                    >
                       <ul>
                         <li>
                           <textarea
@@ -269,6 +277,7 @@ const NewProductPage: NextPage = () => {
                             rows={3}
                             cols={70}
                             placeholder="Please include product name, order quantity, usage, special requests if any in your inquiry."
+                            onChange={(e) => setBuyer_Message(e.target.value)}
                           />
                         </li>
 
@@ -278,6 +287,7 @@ const NewProductPage: NextPage = () => {
                               type="email"
                               className={styles.Input}
                               placeholder="EMAIL ID "
+                              onChange={(e) => setBuyer_Email(e.target.value)}
                               required
                             />
                           </div>
@@ -287,6 +297,7 @@ const NewProductPage: NextPage = () => {
                               type="tel"
                               className={styles.Input}
                               placeholder="Phone number "
+                              onChange={(e) => setBuyer_Mob(e.target.value)}
                               required
                             />
                           </div>
@@ -324,7 +335,7 @@ const NewProductPage: NextPage = () => {
                 <h1>
                   Business Name:{" "}
                   <span className={styles.span_box}>
-                    {currentProduct?.vendors_name}
+                    {currentProduct?.SubTypeOf_bussiness}
                   </span>{" "}
                 </h1>
                 <h3>{currentProduct?.Merchant_Address}</h3>
@@ -413,6 +424,42 @@ const NewProductPage: NextPage = () => {
           </div>
         </div>
         {/* Similar Product Slider Starts  */}
+        <div className={styles.background_section}>
+          <h1 className={styles.span_box2}>
+            SIMILAR PRODUCT WITH SAME MERCHANTS
+          </h1>
+
+          <div className={styles.flex_container}>
+            <Slider {...settings}>
+              {data?.data.map((item: any, index: any) => {
+                if (item.auther_Id === router.query.merchant) {
+                  return (
+                    <div className={styles.cardproduct} key={index}>
+                      <div className={styles.productimg}>
+                        <Image
+                          src={item.product_image1[0]}
+                          height={250}
+                          width={300}
+                          alt="productr image"
+                          className={styles.productimagesrc}
+                        />
+                      </div>
+
+                      <div className={styles.productcontent}>
+                        <h4>Product Name:</h4>
+                        <p>{item.product_name}</p>
+                      </div>
+
+                      <div className={styles.productcartbtn}>
+                        <button type="submit">View More</button>
+                      </div>
+                    </div>
+                  );
+                }
+              })}
+            </Slider>
+          </div>
+        </div>
 
         {/* Similar Product Slider Starts  */}
 
@@ -420,7 +467,6 @@ const NewProductPage: NextPage = () => {
           <h1 className={styles.span_box2}>
             SIMILAR PRODUCT WITH OTHER MERCHANTS
           </h1>
-
           <div className={styles.flex_container}>
             <Slider {...settings}>
               {data?.data.map((item: any, index: any) => {
@@ -459,9 +505,43 @@ const NewProductPage: NextPage = () => {
 
         <div className={styles.background_section}>
           <h1 className={styles.span_box2}>
-            OTHER PRODUCT WITH SAME MERCHANTS
+            Similar PRODUCT WITH OTHER MERCHANTS
           </h1>
-          <div className={styles.flex_container}></div>
+
+          <div className={styles.flex_container}>
+            <Slider {...settings}>
+              {data?.data.map((item: any, index: any) => {
+                if (item.category === router.query.category) {
+                  return (
+                    <div className={styles.cardproduct} key={index}>
+                      <div className={styles.productimg}>
+                        <Image
+                          src={
+                            item.product_image1[0]
+                              ? item.product_image1[0]
+                              : "/"
+                          }
+                          height={250}
+                          width={300}
+                          alt="productr image"
+                          className={styles.productimagesrc}
+                        />
+                      </div>
+
+                      <div className={styles.productcontent}>
+                        <h4>Product Name:</h4>
+                        <p>{item.product_name}</p>
+                      </div>
+
+                      <div className={styles.productcartbtn}>
+                        <button type="submit">View More</button>
+                      </div>
+                    </div>
+                  );
+                }
+              })}
+            </Slider>
+          </div>
         </div>
 
         {/* Similar Product Slider Ends  */}
