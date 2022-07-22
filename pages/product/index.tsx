@@ -270,9 +270,12 @@ const NewProductPage: NextPage = () => {
                     <form
                       className={styles.FormWidth}
                       onSubmit={handleBuyerQuery}
-                    >
+                    > <p className={styles.content1}>I want to buy</p>
+                  
                       <ul>
+                    
                         <div className={styles.email_flex}>
+                       
                           <li>
                             <p> Email ID *</p>
                             <input
