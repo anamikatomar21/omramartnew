@@ -16,237 +16,41 @@ import { useAppSelector } from "redux/hooks";
 import styles from "styles/Merchant/uploadproduct.module.scss";
 import { RootState } from "redux/store";
 import editSlice from "context/editslice";
+import useEdit from "./useedit";
+
+interface InputWithLabelProps extends React.ComponentPropsWithoutRef<"input"> {
+  label: string;
+}
+interface SelectWithLabelProps
+  extends React.ComponentPropsWithoutRef<"select"> {
+  label: string;
+  data: {
+    name: any;
+    value: any;
+  }[];
+}
+interface TextAreaWithLabelProps
+  extends React.ComponentPropsWithoutRef<"textarea"> {
+  label: string;
+}
 
 const Upload_Product: NextPage = () => {
-  const _user = (state: RootState) => state.user;
-  const { user, isAuthenticated } = useAppSelector(_user);
-  const router = useRouter();
-  const _Id = router.query.id;
-
-  const { error, data, mutate } = useUpdateMerchantProduct();
-  const { data: ShowData } = usePublicProduct();
-
-  // CHECKING USER
-  useEffect(() => {
-    if (isAuthenticated) {
-      if (user.role === "Admin") {
-        return;
-      }
-    } else {
-      Router.push(`/`);
-    }
-  }, [user, isAuthenticated]);
-
-  const { actions, initialState, reducer } = editSlice;
-  const [state, dispatch] = React.useReducer(reducer, initialState);
-
-  const [previousData, setpd] = useState<any>({});
-
-  React.useEffect(() => {
-    const previousData = ShowData?.data.find(
-      (updateData: any) => updateData._id === _Id
-    );
-    setpd(previousData);
-  }, [ShowData?.data, _Id]);
-
-  console.log({ previousData });
-  React.useEffect(() => {
-    dispatch(actions.TypesOf_Bussiness(previousData?.TypesOf_Bussiness));
-    dispatch(actions.SubTypeOf_bussiness(previousData?.SubTypeOf_bussiness));
-    dispatch(actions.Merchant_Address(previousData?.Merchant_Address));
-    dispatch(actions.product_name(previousData?.product_name));
-    dispatch(
-      actions.manufacturer_phone_no(previousData?.manufacturer_phone_no)
-    );
-    dispatch(actions.manufacturer_address(previousData?.manufacturer_address));
-    dispatch(actions.brand(previousData?.brand));
-    dispatch(actions.product_image(previousData?.product_image));
-    dispatch(actions.category(previousData?.category));
-    dispatch(actions.sub_category(previousData?.sub_category));
-    dispatch(actions.product_image1(previousData?.product_image1));
-    dispatch(actions.product_image2(previousData?.product_image2));
-    dispatch(actions.product_image3(previousData?.product_image3));
-    dispatch(actions.product_image4(previousData?.product_image4));
-    dispatch(actions.product_image5(previousData?.product_image5));
-    dispatch(actions.price(previousData?.price));
-    dispatch(
-      actions.product_Specification(previousData?.product_Specification)
-    );
-    dispatch(
-      actions.additionalSpecification(previousData?.additionalSpecification)
-    );
-    dispatch(actions.product_description(previousData?.product_description));
-    dispatch(actions.capacity(previousData?.capacity));
-    dispatch(actions.model_no(previousData?.model_no));
-  }, [
-    actions,
-    previousData?.Merchant_Address,
-    previousData?.SubTypeOf_bussiness,
-    previousData?.TypesOf_Bussiness,
-    previousData?.additionalSpecification,
-    previousData?.brand,
-    previousData?.capacity,
-    previousData?.category,
-    previousData?.manufacturer_address,
-    previousData?.manufacturer_phone_no,
-    previousData?.model_no,
-    previousData?.price,
-    previousData?.product_Specification,
-    previousData?.product_description,
-    previousData?.product_image,
-    previousData?.product_image1,
-    previousData?.product_image2,
-    previousData?.product_image3,
-    previousData?.product_image4,
-    previousData?.product_image5,
-    previousData?.product_name,
-    previousData?.sub_category,
-  ]);
-
-  const [additionalSpecification, setAdditionalSpecification] = useState<any>([
-    {
-      atribute: "",
-      Values: "",
-    },
-  ]);
-
   const {
-    Merchant_Address,
-    SubTypeOf_bussiness,
-    TypesOf_Bussiness,
-    brand,
-    capacity,
-    category,
-    manufacturer_address,
-    manufacturer_phone_no,
-    price,
-    product_image,
-    product_image1,
-    product_description,
-    product_image2,
-    product_image3,
-    product_image4,
-    product_image5,
-    product_Specification,
-    product_name,
-    sub_category,
-  } = state;
+    state,
+    onChangeTextField,
+    additionalSpecification,
+    handleAddClick,
+    handleInputChange,
+    handleRemoveClick,
+    handleUpdateProduct,
+    onChangeImage,
+  } = useEdit();
 
-  const [model_no, setModel_no] = useState<string>(previousData?.model_no);
-
-  const [product_image1Preview, setProduct_image1Preview] = useState<any>("");
-  const [product_image2Preview, setProduct_image2Preview] = useState<any>("");
-  const [product_image3Preview, setProduct_image3Preview] = useState<any>("");
-  const [product_image4Preview, setProduct_image4Preview] = useState<any>("");
-  const [product_image5Preview, setProduct_image5Preview] = useState<any>("");
+  const { data: catData } = useGetCategory();
 
   const field_color = {
     color: "red",
   };
-
-  const handleInputChange = (e: any, index: any) => {
-    e.preventDefault();
-    const { name, value } = e.target;
-    const list = [...additionalSpecification];
-    list[index][name] = value;
-    setAdditionalSpecification(list);
-  };
-
-  const handleRemoveClick = (e: any, index: any) => {
-    e.preventDefault();
-
-    const list = [...additionalSpecification];
-    list.splice(index, 1);
-    setAdditionalSpecification(list);
-  };
-
-  const handleAddClick = (e: any) => {
-    e.preventDefault();
-    setAdditionalSpecification([
-      ...additionalSpecification,
-      { atribute: "", Values: "" },
-    ]);
-  };
-
-  const handleUpdateProduct = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const isConfirm = window.confirm("Are you sure to update this product");
-    if (isConfirm) {
-      mutate({
-        product_name,
-
-        TypesOf_Bussiness,
-        manufacturer_phone_no,
-        manufacturer_address,
-        brand,
-        product_image1,
-        product_image2,
-        product_image3,
-        product_image4,
-        product_image5,
-        category,
-        sub_category,
-        price,
-        additionalSpecification,
-        product_Specification,
-        product_description,
-        capacity,
-        model_no,
-        id: _Id as string,
-        // LATER
-        Vendor_Id: "",
-        auther_Id: "",
-        vendors_name: "",
-        isApproved: false,
-        videos: "",
-      });
-    }
-  };
-
-  const data2 = useGetCategory();
-  const category_data = data2.data;
-  useEffect(() => {
-    if (error instanceof AxiosError) {
-      toast.error(error?.response?.data?.message || error.message);
-    }
-
-    if (data) {
-      toast.success("upload Successfull");
-      router.push("/onboarding/dashboard/product/AllProduct");
-    }
-  }, [error, data, router]);
-
-  // useEffect(() => {
-  //   // create the preview
-
-  //   if (product_image1) {
-  //     const objectUrl = URL.createObjectURL(product_image1);
-  //     setProduct_image1Preview(objectUrl);
-  //   }
-
-  //   if (product_image2) {
-  //     const objectUrl2 = URL.createObjectURL(product_image2);
-  //     setProduct_image2Preview(objectUrl2);
-  //   }
-  //   if (product_image3) {
-  //     const objectUrl3 = URL.createObjectURL(product_image3);
-  //     setProduct_image3Preview(objectUrl3);
-  //   }
-  //   if (product_image4) {
-  //     const objectUrl4 = URL.createObjectURL(product_image4);
-  //     setProduct_image4Preview(objectUrl4);
-  //   }
-  //   if (product_image5) {
-  //     const objectUrl5 = URL.createObjectURL(product_image5);
-  //     setProduct_image5Preview(objectUrl5);
-  //   }
-  // }, [
-  //   product_image1,
-  //   product_image2,
-  //   product_image3,
-  //   product_image4,
-  //   product_image5,
-  // ]);
 
   return (
     <DashboardLayout>
@@ -256,9 +60,9 @@ const Upload_Product: NextPage = () => {
           <li>
             <div className={styles.prevpic}>
               <div>
-                {product_image1Preview && (
+                {state.image[0] && (
                   <Image
-                    src={product_image1Preview}
+                    src={URL.createObjectURL(state.image[0])}
                     className={styles.imagestyle2}
                     width={200}
                     height={200}
@@ -267,9 +71,9 @@ const Upload_Product: NextPage = () => {
                 )}
               </div>
               <div>
-                {product_image2Preview && (
+                {state.image1[0] && (
                   <Image
-                    src={product_image2Preview}
+                    src={URL.createObjectURL(state.image1[0])}
                     className={styles.imagestyle2}
                     width={200}
                     height={200}
@@ -278,9 +82,9 @@ const Upload_Product: NextPage = () => {
                 )}
               </div>
               <div>
-                {product_image3Preview && (
+                {state.image2[0] && (
                   <Image
-                    src={product_image3Preview}
+                    src={URL.createObjectURL(state.image2[0])}
                     className={styles.imagestyle2}
                     width={200}
                     height={200}
@@ -289,9 +93,9 @@ const Upload_Product: NextPage = () => {
                 )}
               </div>
               <div>
-                {product_image4Preview && (
+                {state.image3[0] && (
                   <Image
-                    src={product_image4Preview}
+                    src={URL.createObjectURL(state.image3[0])}
                     className={styles.imagestyle2}
                     width={200}
                     height={200}
@@ -300,9 +104,9 @@ const Upload_Product: NextPage = () => {
                 )}
               </div>
               <div>
-                {product_image5Preview && (
+                {state.image4[0] && (
                   <Image
-                    src={product_image5Preview}
+                    src={URL.createObjectURL(state.image4[0])}
                     className={styles.imagestyle2}
                     width={200}
                     height={200}
@@ -319,52 +123,21 @@ const Upload_Product: NextPage = () => {
               </label>
               <div className={styles.row}>
                 <div className="col-md-4">
-                  {/* <img src={product_image1} width={200} height={200} alt="sd" /> */}
-                  <input
-                    type="file"
-                    name="product_image"
-                    onChange={(e: any) =>
-                      actions.product_image1(e.target.files[0])
-                    }
-                  />
-                </div>
-
-                <div className="col-md-4">
-                  <input
-                    type="file"
-                    name="product_image2"
-                    onChange={(e: any) =>
-                      actions.product_image2(e.target.files[0])
-                    }
-                  />
+                  <input type="file" name="image" onChange={onChangeImage} />
                 </div>
                 <div className="col-md-4">
-                  <input
-                    type="file"
-                    name="product_image3"
-                    onChange={(e: any) =>
-                      actions.product_image3(e.target.files[0])
-                    }
-                  />
+                  <input type="file" name="image1" onChange={onChangeImage} />
                 </div>
                 <div className="col-md-4">
-                  <input
-                    type="file"
-                    name="product_image4"
-                    onChange={(e: any) =>
-                      actions.product_image4(e.target.files[0])
-                    }
-                  />
+                  <input type="file" name="image2" onChange={onChangeImage} />
                 </div>
                 <div className="col-md-4">
-                  <input
-                    type="file"
-                    name="product_image5"
-                    onChange={(e: any) =>
-                      actions.product_image5(e.target.files[0])
-                    }
-                  />
+                  <input type="file" name="image3" onChange={onChangeImage} />
                 </div>
+                <div className="col-md-4">
+                  <input type="file" name="image4" onChange={onChangeImage} />
+                </div>
+                {/* YOUTUBE LINK */}
                 <div className="col-md-4">
                   <input type="link" placeholder="Youtube Link" />
                 </div>
@@ -373,91 +146,54 @@ const Upload_Product: NextPage = () => {
             <InputWithLabel
               label="Product Name *"
               type="text"
-              name="productname"
+              name="name"
               id="productname"
-              value={product_name}
               required
-              onChange={(e) => actions.product_name(e.target.value)}
+              value={state.name}
+              onChange={onChangeTextField}
             />
             {/*  CATEGORY */}
             <li>
-              <label htmlFor="category" className={styles.Omra_Lael}>
-                Product Category *
-              </label>
-              <select
+              <SelectWithLabel
+                label={"Product Category *"}
+                data={catData?.data?.map((d: { category_name: any }) => {
+                  return {
+                    name: d?.category_name,
+                    value: d?.category_name,
+                  };
+                })}
                 name="category"
                 className={styles.dropdown}
-                value={category}
+                value={state.category}
                 required
-                onChange={(e) => actions.category(e.target.value)}
-              >
-                <option value="">Select Category</option>
-                {category_data?.data.map((item: any, index: any) => {
-                  return (
-                    <option key={index} value={item.category_name}>
-                      {item.category_name}
-                    </option>
-                  );
-                })}
-              </select>
+                onChange={onChangeTextField as any}
+              />
             </li>
             {/* BRAND NAME */}
             <InputWithLabel
               label="Brand"
               type="text"
-              name="brand_name"
-              id="brand_name"
-              value={brand}
+              name="brand"
+              id="brandname"
               placeholder=" "
-              onChange={(e) => actions.brand(e.target.value)}
+              value={state.brand}
+              onChange={onChangeTextField}
             />
             {/* PRICE */}
-            {/* <li className="qtyproduct">
-              <div className="row">
-                <div className="col-md-6">
-                  <label htmlFor="price" className={styles.Omra_Lael}>
-                    Product Price
-                  </label>
-
-                  <input
-                    type="number"
-                    name="price"
-                    id="price"
-                    className="box-input-section"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                  />
-                </div>
-
-                <div className="col-md-6">
-                  <label htmlFor="" className={styles.Omra_Lael}>
-                    Qty
-                  </label>
-
-                  <input
-                    type="number"
-                    name=""
-                    id=""
-                    className="box-input-section"
-                  />
-                </div>
-              </div>
-            </li> */}
             <InputWithLabel
               label="Price"
               type="number"
               name="price"
               id="price"
               className="box-input-section"
-              value={price}
-              onChange={(e) => actions.price(e.target.value)}
+              value={state.price}
+              onChange={onChangeTextField}
             />
             <InputWithLabel
               label="Quantity"
               type="text"
-              name="brand_name"
+              name="quantity"
               id="brand_name"
-              value={brand}
               placeholder=" "
             />
             <TextAreaWithLabel
@@ -465,10 +201,10 @@ const Upload_Product: NextPage = () => {
               rows={9}
               cols={200}
               id="description"
-              name="description"
+              name="productDescription"
               placeholder="Other Product Specifications "
-              value={product_description}
-              onChange={(e) => actions.product_description(e.target.value)}
+              value={state.productDescription}
+              onChange={onChangeTextField as any}
             />
             <h4> Product Specifications</h4>
             <TextAreaWithLabel
@@ -476,65 +212,49 @@ const Upload_Product: NextPage = () => {
               rows={9}
               cols={200}
               id="specification"
-              name="specification"
+              name="productSpecification"
               placeholder="Other Product Specifications "
-              value={product_Specification}
-              onChange={(e) => actions.product_Specification(e.target.value)}
+              value={state.productSpecification}
+              onChange={onChangeTextField as any}
             />
             <InputWithLabel
               label="Capacity"
               type="text"
               name="capacity"
-              id="capacity"
+              id="Product Capacity"
               placeholder=""
               className="box-input-textarea"
-              value={capacity}
-              onChange={(e) => actions.capacity(e.target.value)}
+              value={state.capacity}
+              onChange={onChangeTextField}
             />
-            {/* <li>
-              {" "}
-              <label htmlFor="capacity" className={styles.Omra_Lael}>
-                Capacity
-              </label>
-              <input
-                type="text"
-                name="capacity"
-                id="capacity"
-                placeholder=""
-                className="box-input-textarea"
-                value={capacity}
-                onChange={(e) => setCapacity(e.target.value)}
-              />
-            </li> */}
             <InputWithLabel
-              label=" Model No."
+              label="Model No."
               type="text"
-              name="model_no"
+              name="modelNumber"
               id="model_no"
               placeholder=" "
               className="box-input-textarea"
-              value={model_no}
-              onChange={(e) => setModel_no(e.target.value)}
+              value={state.modelNumber}
+              onChange={onChangeTextField}
             />
 
             <InputWithLabel
               label="Product code"
               type="text"
-              name="model_no"
+              name="productCode"
               id="model_no"
               placeholder=" "
               className="box-input-textarea"
-              onChange={(e) => actions.model_no(e.target.value)}
+              value={state.productCode}
+              onChange={onChangeTextField}
             />
             <InputWithLabel
               label="Delivery Time"
               type="text"
-              name="model_no"
+              name="deliveryTime"
               id="model_no"
-              placeholder=" "
               className="box-input-textarea"
             />
-
             <h4> Additional Specifications</h4>
             {additionalSpecification.map((PreviewData: any, index: any) => {
               return (
@@ -609,9 +329,6 @@ const Upload_Product: NextPage = () => {
 
 export default Upload_Product;
 
-interface InputWithLabelProps extends React.ComponentPropsWithoutRef<"input"> {
-  label: string;
-}
 const InputWithLabel = (props: InputWithLabelProps) => {
   return (
     <li>
@@ -622,10 +339,7 @@ const InputWithLabel = (props: InputWithLabelProps) => {
     </li>
   );
 };
-interface TextAreaWithLabelProps
-  extends React.ComponentPropsWithoutRef<"textarea"> {
-  label: string;
-}
+
 const TextAreaWithLabel = (props: TextAreaWithLabelProps) => {
   return (
     <li>
@@ -636,3 +350,31 @@ const TextAreaWithLabel = (props: TextAreaWithLabelProps) => {
     </li>
   );
 };
+const SelectWithLabel = (props: SelectWithLabelProps) => {
+  return (
+    <React.Fragment>
+      <label htmlFor={props.id} className={styles.Omra_Lael}>
+        {props.label}
+      </label>
+      <select {...props}>
+        <option disabled>Select Category</option>
+        {props?.data?.map((item: any, index: any) => {
+          return (
+            <option key={index} value={item.value}>
+              {item.name}
+            </option>
+          );
+        })}
+      </select>
+    </React.Fragment>
+  );
+};
+
+const data = [
+  {
+    id: "",
+    type: "text",
+    label: "Delivery Time",
+    name: "Delivery Time",
+  },
+];
