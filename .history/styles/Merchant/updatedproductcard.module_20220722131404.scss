@@ -78,19 +78,12 @@
 }
 
 @media (max-width: 600px) {
-  .cardproduct
-    {.productimg {
+  .cardproduct.updatedproductcard
+  {.
+    productimg {
     width: 100%;
     text-align: center;
     height: 150px;
 }
 }
-
-.heading_section3 {
-  color: #002b6b !important;
-  font-weight: 500;
-  font-size: larger;
-}
-
-
 }

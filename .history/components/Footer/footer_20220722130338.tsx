@@ -52,8 +52,8 @@ const NewFooter: NextPage = () => {
               <Link href="">Scanner |</Link>
               <Link href="">Hanger |</Link>
             </div>
-          
-         
+          </div>
+          <div className="row">
             <div className={styles.bottom_box}>
               <Link href="">Top Categories : </Link>
               <Link href="">Laundery Machine |</Link>
@@ -65,7 +65,7 @@ const NewFooter: NextPage = () => {
               <Link href="">Scanner |</Link>
               <Link href="">Hanger |</Link>
             </div>
-        
+          </div>
         </div>
         <div className={styles.Footer_Flex}>
           <div className={styles.footer_flexbox}>

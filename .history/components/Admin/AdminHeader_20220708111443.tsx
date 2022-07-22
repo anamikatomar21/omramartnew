@@ -19,7 +19,7 @@ const AdminHeader: NextPage = () => {
   const Logout = () => {
     
     dispatch(handleLogout())
-    router.push("/login");
+    router.push("/index1");
   };
   
   const countData=data?.data.map((item:any)=> {
