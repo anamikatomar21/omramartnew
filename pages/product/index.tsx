@@ -60,13 +60,13 @@ const NewProductPage: NextPage = () => {
       buyer_Email,
       buyer_Mob,
     });
-    const calling = await axios.post(
-      `http://www.apiconnecto.com/UniProUser/Click-2-Call-API.aspx?UserId=DIGIVOICE&pwd=pwd2020&AgentNum=8209239&CustomerNum=${buyer_Mob}&CampId=15823`
-    );
-    console.log(calling);
+    // const calling = await axios.post(
+    //   `http://www.apiconnecto.com/UniProUser/Click-2-Call-API.aspx?UserId=DIGIVOICE&pwd=pwd2020&AgentNum=8209239&CustomerNum=${buyer_Mob}&CampId=15823`
+    // );
+    // console.log(calling);
     const anchorForCall = document.createElement("a");
     document.body.append(anchorForCall);
-    anchorForCall.href = `tel:+4733378901`;
+    anchorForCall.href = `tel:+1234567890`;
     anchorForCall.click();
     document.body.removeChild(anchorForCall);
     await delay(2000);
