@@ -22,7 +22,6 @@ function RootApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     axios.interceptors.request.use((config: any) => {
       const token = localStorage.getItem("token");
-      console.log("Token", token);
       config.headers.Authorization = `Bearer ${token}`;
       return config;
     });
